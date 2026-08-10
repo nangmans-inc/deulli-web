@@ -3,148 +3,143 @@ import { Image } from "astro:assets";
 import SignupForm from "./SignupForm.astro";
 import Multiline from "./ui/Multiline.astro";
 import { prelaunch } from "../data/prelaunch";
-import appPlayer from "../assets/app-player.png";
+import { site } from "../data/site";
+import heroMockup from "../assets/hero-mockup.png";
 import mascot from "../assets/mascot.png";
 ---
 
 {
-  /* 세로 1단 · 가운데 정렬 · 네비게이션 없음.
-    빠져나갈 링크를 두지 않고 슬로건 → 폼 → 실제 화면 순서로만 내려간다.
-    바탕을 어둡게 깐 이유는 앱이 원래 다크 UI라 밝은 면 위에서는 스크린샷이
-    붙여 넣은 것처럼 뜨기 때문이다. */
+  /* 왼쪽 카피 · 오른쪽 목업 · 신청 폼은 카피 아래.
+    dionomy-landing의 히어로 구성을 따르되 모바일을 제대로 잡았다 — 그쪽은
+    목업이 먼저 오도록 order를 뒤집어서, 좁은 화면에서 슬로건보다 사진이 앞선다. */
 }
 <section class="hero" data-ga-section="prelaunch">
   <div class="glow" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
 
-  <div class="inner">
-    <Image
-      class="mascot reveal"
-      src={mascot}
-      alt=""
-      widths={[88, 176, 264]}
-      sizes="(min-width: 768px) 88px, 68px"
-      loading="eager"
-    />
+  <div class="container-content grid">
+    <div class="copy">
+      <header class="brand reveal">
+        <Image
+          class="mascot"
+          src={mascot}
+          alt=""
+          widths={[56, 112, 168]}
+          sizes="(min-width: 1024px) 56px, 44px"
+          loading="eager"
+        />
+        <span class="wordmark">{site.nameKo}</span>
+      </header>
 
-    <p class="badge reveal" style="--reveal-delay: 60ms;">
-      <span class="badge-dot" aria-hidden="true"></span>
-      {prelaunch.badge}
-    </p>
+      <p class="badge reveal" style="--reveal-delay: 60ms;">
+        <span class="badge-dot" aria-hidden="true"></span>
+        {prelaunch.badge}
+      </p>
 
-    <h1 class="reveal" style="--reveal-delay: 100ms;">
-      <Multiline text={prelaunch.heading} />
-      <span class="brandword">{prelaunch.headingBrand}</span>
-    </h1>
+      <h1 class="reveal" style="--reveal-delay: 100ms;">
+        <Multiline text={prelaunch.heading} />
+        <span class="brandword">{prelaunch.headingBrand}</span>
+      </h1>
 
-    <p class="lead reveal" style="--reveal-delay: 140ms;">{prelaunch.lead}</p>
+      <p class="lead reveal" style="--reveal-delay: 140ms;">{prelaunch.lead}</p>
 
-    <div class="form reveal" style="--reveal-delay: 180ms;">
-      <SignupForm />
+      <div class="form reveal" style="--reveal-delay: 180ms;">
+        <SignupForm />
+      </div>
     </div>
 
-    <div class="shot reveal" style="--reveal-delay: 240ms;" aria-hidden="true">
+    <div class="shot reveal" style="--reveal-delay: 220ms;">
       <Image
-        src={appPlayer}
-        alt=""
-        widths={[300, 460, 680, 906]}
-        sizes="(min-width: 768px) 320px, 260px"
+        src={heroMockup}
+        alt="들리 앱 재생 화면 — 지금 나오는 문장이 영어와 한국어로 함께 보인다"
+        widths={[300, 450, 600, 900]}
+        sizes="(min-width: 1024px) 380px, (min-width: 640px) 300px, 240px"
         loading="eager"
       />
     </div>
   </div>
 
-  <footer class="foot">
+  <footer class="foot container-content">
     <p>© {new Date().getFullYear()} Deulli. All Rights Reserved.</p>
   </footer>
 </section>
 
 <style>
-  /* 이 페이지는 화면 전체가 어두운 한 장이다. 오버스크롤에서 흰 바탕이 비치지
-     않도록 문서 바탕까지 같이 내린다. */
-  :global(html),
-  :global(body) {
-    background-color: var(--color-bg-deep);
-  }
-
   .hero {
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
     min-height: 100svh;
     overflow: hidden;
-    background: var(--color-bg-deep);
-    color: #ffffff;
-    padding: 2rem 1.25rem 0;
-    text-align: center;
+    background: var(--color-bg);
+    padding-block: 2rem 1.25rem;
   }
 
-  /* 슬로건 뒤 한 번, 스크린샷 뒤 한 번. 평면 검정에 깊이를 준다. */
+  /* 목업 뒤에 옅은 브랜드 블루를 한 겹. 흰 면이 밋밋해지지 않을 만큼만 쓴다. */
   .glow {
     position: absolute;
     inset: 0;
     pointer-events: none;
     background:
       radial-gradient(
-        58rem 34rem at 50% -6%,
-        rgba(1, 80, 229, 0.42),
+        38rem 32rem at 78% 42%,
+        rgba(1, 80, 229, 0.11),
         transparent 66%
       ),
       radial-gradient(
-        40rem 30rem at 50% 104%,
-        rgba(1, 80, 229, 0.34),
-        transparent 68%
+        30rem 24rem at 6% 4%,
+        rgba(251, 240, 230, 0.75),
+        transparent 62%
       );
   }
 
-  /* 그레인 — 그라디언트의 띠(banding)를 덮고 면에 질감을 준다 */
-  .grain {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.045;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
-  .inner {
+  .grid {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 34rem;
     flex: 1;
+    display: grid;
+    align-content: center;
+    gap: 2.5rem;
   }
 
+  /* ── 카피 ─────────────────────────────────────────────── */
+  .copy {
+    max-width: 34rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
   .mascot {
-    width: 3.75rem;
-    height: 3.75rem;
-    filter: drop-shadow(0 16px 32px rgba(1, 80, 229, 0.45));
+    width: 2.75rem;
+    height: 2.75rem;
+    filter: drop-shadow(0 8px 16px rgba(8, 33, 66, 0.18));
+  }
+  .wordmark {
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: var(--color-neutral-900);
   }
 
   .badge {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    margin: 1.1rem 0 0;
+    margin: 1.75rem 0 0;
     border-radius: var(--radius-pill);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: rgba(255, 255, 255, 0.07);
-    padding: 0.34rem 0.85rem;
+    background: var(--color-brand-soft);
+    padding: 0.32rem 0.8rem;
     font-size: 0.78rem;
     font-weight: 600;
     letter-spacing: -0.01em;
-    color: var(--color-blue-100);
-    backdrop-filter: blur(8px);
+    color: var(--color-brand-strong);
   }
   .badge-dot {
     width: 0.4rem;
     height: 0.4rem;
     border-radius: var(--radius-pill);
-    background: var(--color-blue-300);
-    box-shadow: 0 0 0.5rem var(--color-blue-400);
+    background: var(--color-brand);
     animation: badge-pulse 2.4s var(--ease-out-soft) infinite;
   }
   @keyframes badge-pulse {
@@ -163,83 +158,93 @@ import mascot from "../assets/mascot.png";
   }
 
   h1 {
-    margin: 1.1rem 0 0;
+    margin: 0.9rem 0 0;
     font-size: var(--text-display);
     line-height: 1.08;
     letter-spacing: -0.035em;
     font-weight: 800;
-    color: #ffffff;
+    color: var(--color-neutral-900);
   }
   .brandword {
     display: block;
     margin-top: 0.08em;
-    /* 슬로건을 받는 브랜드명. 어두운 바탕에서는 브랜드 블루가 가라앉아 글자로
-       읽히지 않으므로 아이보리를 쓴다. 파랑은 글로우와 버튼이 담당한다. */
+    /* 슬로건을 받는 브랜드명이라 한 단계 크고 브랜드 블루다 */
     font-size: 1.3em;
     line-height: 1;
     letter-spacing: -0.05em;
-    color: var(--color-ivory);
+    color: var(--color-brand);
   }
 
   .lead {
-    margin: 1.1rem 0 0;
+    margin: 1rem 0 0;
     font-size: var(--text-lead);
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.62);
+    color: var(--color-fg-muted);
   }
 
   .form {
-    width: 100%;
     max-width: 27rem;
     margin-top: 1.75rem;
-    text-align: left;
   }
 
-  /* ── 실제 화면 ────────────────────────────────────────── */
-  /* 화면 전체를 세워 두면 세로를 너무 먹는다. 창처럼 잘라서 팔 것만 남긴다 —
-     상태바 말고 문장이 짚이는 부분. 아래는 배경으로 녹여 잘린 티를 지운다. */
-  .shot {
-    position: relative;
-    width: 16.5rem;
-    height: clamp(12rem, 25vh, 15rem);
-    margin-top: 1.75rem;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-bottom: 0;
-    border-radius: 1.5rem 1.5rem 0 0;
-    mask-image: linear-gradient(180deg, #000 62%, transparent 100%);
-    -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent 100%);
-  }
+  /* ── 목업 ─────────────────────────────────────────────── */
   .shot :global(img) {
     display: block;
     width: 100%;
+    max-width: 15rem;
     height: auto;
-    /* 상태바·노치를 걷어내고 스크립트부터 보이게 위로 당긴다 */
-    margin-top: -12%;
+    margin-inline: auto;
   }
 
+  /* ── 푸터 ─────────────────────────────────────────────── */
   .foot {
     position: relative;
-    padding: 1.25rem;
-    font-size: 0.74rem;
-    color: rgba(255, 255, 255, 0.34);
+    margin-top: 2rem;
+    font-size: 0.75rem;
+    color: var(--color-fg-faint);
   }
   .foot p {
     margin: 0;
   }
 
-  /* ── 768px 이상 ───────────────────────────────────────── */
+  /* ── 640px 이상 (아직 1단) ────────────────────────────── */
+  @media (min-width: 640px) {
+    .shot :global(img) {
+      max-width: 18.75rem;
+    }
+  }
+
+  /* ── 2단 전환 ─────────────────────────────────────────── */
+  /* dionomy는 1024px에서 갈랐는데, 그 사이 폭(태블릿 세로)에서 카피는 왼쪽에
+     몰리고 오른쪽이 통째로 비어 버린다. 여기서는 768px부터 가른다. */
   @media (min-width: 768px) {
     .hero {
-      padding-top: 2.5rem;
+      padding-block: 2.5rem 1.5rem;
+    }
+    .grid {
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      align-items: center;
+      gap: 2.5rem;
     }
     .mascot {
-      width: 4.75rem;
-      height: 4.75rem;
+      width: 3.25rem;
+      height: 3.25rem;
     }
-    .shot {
-      width: 19rem;
-      margin-top: 2rem;
+    .wordmark {
+      font-size: 1.2rem;
+    }
+    .shot :global(img) {
+      max-width: 17rem;
+      margin-inline: auto 0;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grid {
+      gap: 3.5rem;
+    }
+    .shot :global(img) {
+      max-width: 23.75rem;
     }
   }
 </style>
