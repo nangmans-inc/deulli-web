@@ -94,6 +94,7 @@ src/
   assets/
     mascot.png                마스코트 — astro:assets가 webp로 최적화
     hero-mockup.png           재생화면이 담긴 iPhone 목업 (배경 투명)
+    mascot.png                마스코트 — 1단 화면에서 슬로건 오른쪽에만 세운다
   styles/global.css           디자인 토큰 2계층 + base/components 레이어
 public/
   logo.svg, favicon.svg       로고 (deulli-policy와 동일 파일)

@@ -5,6 +5,7 @@ import Multiline from "./ui/Multiline.astro";
 import { prelaunch } from "../data/prelaunch";
 import { site } from "../data/site";
 import heroMockup from "../assets/hero-mockup.png";
+import mascot from "../assets/mascot.png";
 ---
 
 {
@@ -33,10 +34,24 @@ import heroMockup from "../assets/hero-mockup.png";
 
   <div class="container-content grid">
     <div class="copy">
-      <h1 class="reveal" style="--reveal-delay: 100ms;">
-        <Multiline text={prelaunch.heading} />
-        <span class="brandword">{prelaunch.headingBrand}</span>
-      </h1>
+      {
+        /* 목업이 없는 1단 화면에서 슬로건 오른쪽이 비어 허전하다. 그 자리에만 세운다. */
+      }
+      <div class="headline">
+        <h1 class="reveal" style="--reveal-delay: 100ms;">
+          <Multiline text={prelaunch.heading} />
+          <span class="brandword">{prelaunch.headingBrand}</span>
+        </h1>
+        <Image
+          class="buddy reveal"
+          style="--reveal-delay: 160ms;"
+          src={mascot}
+          alt=""
+          widths={[160, 320, 520]}
+          sizes="160px"
+          loading="eager"
+        />
+      </div>
 
       <p class="lead reveal" style="--reveal-delay: 140ms;">{prelaunch.lead}</p>
 
@@ -114,6 +129,15 @@ import heroMockup from "../assets/hero-mockup.png";
     color: var(--color-neutral-900);
   }
 
+  .headline {
+    position: relative;
+  }
+
+  /* 2단(목업이 보이는 폭)에서는 쓰지 않는다 */
+  .headline :global(.buddy) {
+    display: none;
+  }
+
   h1 {
     margin: 0;
     font-size: var(--text-display);
@@ -182,6 +206,17 @@ import heroMockup from "../assets/hero-mockup.png";
     }
     .grid {
       padding-block: 1.5rem;
+    }
+    /* 슬로건 마지막 줄("들리") 오른쪽 — 그 줄이 가장 짧아 여백이 가장 크다.
+       크기를 vw에 비례시켜 어느 폭에서도 글자와 겹치지 않는다. */
+    .headline :global(.buddy) {
+      display: block;
+      position: absolute;
+      right: 0;
+      bottom: -0.25rem;
+      width: min(30vw, 8.5rem);
+      height: auto;
+      filter: drop-shadow(0 12px 22px rgba(8, 33, 66, 0.22));
     }
   }
 
