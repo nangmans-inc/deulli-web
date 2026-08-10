@@ -170,6 +170,32 @@ import heroMockup from "../assets/hero-mockup.png";
     margin: 0;
   }
 
+  /* ── 1단 화면 ─────────────────────────────────────────── */
+  /* 목업을 아예 내린다. 좁은 화면에서 목업이 있으면 폼이 첫 화면 밖으로 밀리는데,
+     사전신청 페이지에서 그 자리는 사진보다 입력창이 가져가는 게 맞다. */
+  @media (max-width: 767px) {
+    .shot {
+      display: none;
+    }
+    .masthead {
+      display: flex;
+      justify-content: center;
+    }
+    .grid {
+      padding-block: 1.5rem;
+    }
+    .copy,
+    .form {
+      margin-inline: auto;
+    }
+    .copy {
+      text-align: center;
+    }
+    .foot {
+      text-align: center;
+    }
+  }
+
   /* ── 640px 이상 (아직 1단) ────────────────────────────── */
   @media (min-width: 640px) {
     .shot-inner {
