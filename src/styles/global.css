@@ -1,0 +1,223 @@
+@import "tailwindcss";
+
+/* Self-hosted Pretendard (variable, unicode-range dynamic subset) is loaded
+   via a <link> in BaseLayout.astro so its relative url()s resolve against
+   /fonts/pretendard/ without passing through the bundler. */
+
+/*
+  ──────────────────────────────────────────────────────────────────────────
+  deulli design tokens — 2-tier semantic system
+  Tier 1: primitive palette  (--color-primary-*, --color-ink-*, --color-cream-*)
+  Tier 2: semantic roles      (brand / fg / bg / border / signal)
+  Components should reference ONLY the semantic roles.
+
+  팔레트 출처는 로고(logo.svg)다 — 파랑 #0150e5, 네이비 #082142, 크림 #fbf0e6.
+  deulli-policy의 색 변수와 같은 값을 쓰므로 정책 사이트와 나란히 놓아도 어긋나지 않는다.
+  ──────────────────────────────────────────────────────────────────────────
+*/
+@theme {
+  /* ── Tier 1 · primitives ─────────────────────────────────────────────── */
+  /* brand · deulli blue, anchored on #0150e5 (primary-600) */
+  --color-primary-50: #eff5ff;
+  --color-primary-100: #dbe8ff;
+  --color-primary-200: #bdd6ff;
+  --color-primary-300: #90baff;
+  --color-primary-400: #5b95ff;
+  --color-primary-500: #316ffb;
+  --color-primary-600: #0150e5;
+  --color-primary-700: #0640b9;
+  --color-primary-800: #0a3591;
+  --color-primary-900: #0f2b6f;
+  --color-primary-950: #082142;
+
+  /* neutral · navy-tinted ink (deulli-policy의 텍스트 색과 동일 계열) */
+  --color-ink-50: #f6f8fb;
+  --color-ink-100: #eef2f7;
+  --color-ink-200: #e3e9f0;
+  --color-ink-300: #cbd6e3;
+  --color-ink-400: #9aa9bd;
+  --color-ink-500: #718196;
+  --color-ink-600: #4c5d72;
+  --color-ink-700: #36485e;
+  --color-ink-800: #1f3350;
+  --color-ink-900: #041225;
+  --color-ink-950: #020b18;
+
+  /* cream · 로고 눈동자 색. 따뜻한 배경/강조에만 쓴다 */
+  --color-cream-50: #fefaf6;
+  --color-cream-100: #fbf0e6;
+  --color-cream-200: #f4e1cd;
+
+  /* signal accents */
+  --color-amber-50: #fffbeb;
+  --color-amber-500: #f59e0b;
+
+  --color-rose-50: #fff1f2;
+  --color-rose-500: #f43f5e;
+  --color-rose-600: #e11d48;
+
+  --color-emerald-50: #ecfdf5;
+  --color-emerald-500: #10b981;
+  --color-emerald-600: #059669;
+
+  /* ── Tier 2 · semantic roles ─────────────────────────────────────────── */
+  /* brand */
+  --color-brand: var(--color-primary-600);
+  --color-brand-strong: var(--color-primary-700);
+  --color-brand-deep: var(--color-primary-950);
+  --color-brand-soft: var(--color-primary-50);
+  --color-brand-softer: var(--color-primary-100);
+  --color-on-brand: #ffffff;
+
+  /* foreground (text) */
+  --color-fg: var(--color-ink-900);
+  --color-fg-muted: var(--color-ink-600);
+  --color-fg-subtle: var(--color-ink-500);
+  --color-fg-faint: var(--color-ink-400);
+
+  /* background / surfaces */
+  --color-bg: #ffffff;
+  --color-bg-subtle: var(--color-ink-50);
+  --color-bg-muted: var(--color-ink-100);
+  --color-bg-warm: var(--color-cream-50);
+  --color-bg-inverse: var(--color-ink-950);
+
+  /* borders / hairlines */
+  --color-border: var(--color-ink-200);
+  --color-border-strong: var(--color-ink-300);
+
+  /* signals */
+  --color-signal-warn: var(--color-amber-500);
+  --color-signal-warn-soft: var(--color-amber-50);
+  --color-signal-risk: var(--color-rose-500);
+  --color-signal-risk-soft: var(--color-rose-50);
+  --color-signal-ok: var(--color-emerald-500);
+  --color-signal-ok-soft: var(--color-emerald-50);
+
+  /* ── typography ──────────────────────────────────────────────────────── */
+  --font-sans:
+    "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont,
+    system-ui, "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
+
+  /* fluid display scale */
+  --text-display: clamp(2.2rem, 1.4rem + 3.6vw, 3.75rem);
+  --text-display--line-height: 1.12;
+  --text-display--letter-spacing: -0.03em;
+  --text-display--font-weight: 700;
+
+  --text-h2: clamp(1.7rem, 1.2rem + 2.1vw, 2.6rem);
+  --text-h2--line-height: 1.2;
+  --text-h2--letter-spacing: -0.025em;
+  --text-h2--font-weight: 700;
+
+  --text-h3: clamp(1.25rem, 1.05rem + 0.9vw, 1.5rem);
+  --text-h3--line-height: 1.35;
+  --text-h3--letter-spacing: -0.015em;
+  --text-h3--font-weight: 600;
+
+  --text-lead: clamp(1.05rem, 0.95rem + 0.5vw, 1.25rem);
+  --text-lead--line-height: 1.65;
+
+  /* ── radii ───────────────────────────────────────────────────────────── */
+  --radius-card: 1rem;
+  --radius-panel: 1.5rem;
+  --radius-pill: 999px;
+
+  /* ── motion ──────────────────────────────────────────────────────────── */
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ── layout ──────────────────────────────────────────────────────────── */
+  --container-content: 72rem;
+}
+
+/* ── base layer ────────────────────────────────────────────────────────── */
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "tnum";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  ::selection {
+    background-color: var(--color-primary-200);
+    color: var(--color-primary-950);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+/* ── utilities / components ────────────────────────────────────────────── */
+@layer components {
+  /* page gutter + max width */
+  .container-content {
+    width: 100%;
+    max-width: var(--container-content);
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .container-content {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* vertical rhythm per section */
+  .section-y {
+    padding-block: clamp(4.5rem, 3rem + 7vw, 8rem);
+  }
+
+  /* scroll-reveal — progressive enhancement.
+     Content is fully visible by default; the hidden→revealed animation only
+     applies when JS is active (html.js), so no-JS users never lose content. */
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.7s var(--ease-out-soft),
+      transform 0.7s var(--ease-out-soft);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+  .js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .js .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}

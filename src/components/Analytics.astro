@@ -1,0 +1,62 @@
+---
+// Google Analytics 4 — 프로덕션 빌드 + 측정 ID가 있을 때만 로드.
+// (dev 서버에서는 로드되지 않아 데이터가 오염되지 않음)
+const gaId = import.meta.env.PUBLIC_GA_ID;
+const enabled = import.meta.env.PROD && !!gaId;
+
+const initScript = `
+window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag("js", new Date());
+gtag("config", "${gaId}");
+
+// CTA 클릭 위임 트래킹: [data-ga-event] 요소 클릭 시 이벤트 발사
+document.addEventListener("click", function (e) {
+  var t = e.target;
+  var el = t instanceof Element ? t.closest("[data-ga-event]") : null;
+  if (!el) return;
+  var label = el.getAttribute("data-ga-label");
+  gtag("event", el.getAttribute("data-ga-event"), label ? { label: label } : {});
+});
+
+// 섹션별 노출 추적: [data-ga-section]이 화면 중앙 밴드에 들어오면 section_view 1회
+function initSectionTracking() {
+  var sections = document.querySelectorAll("[data-ga-section]");
+  if (!sections.length || !("IntersectionObserver" in window)) return;
+  var io = new IntersectionObserver(
+    function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        gtag("event", "section_view", {
+          section: entry.target.getAttribute("data-ga-section"),
+        });
+        obs.unobserve(entry.target);
+      });
+    },
+    // 뷰포트 위/아래 35%를 제외한 중앙 30% 밴드에 닿으면 발사 (섹션 높이 무관)
+    { rootMargin: "-35% 0px -35% 0px", threshold: 0 },
+  );
+  sections.forEach(function (s) {
+    io.observe(s);
+  });
+}
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initSectionTracking);
+} else {
+  initSectionTracking();
+}
+`;
+---
+
+{
+  enabled && (
+    <Fragment>
+      <script
+        is:inline
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+      />
+      <script is:inline set:html={initScript} />
+    </Fragment>
+  )
+}

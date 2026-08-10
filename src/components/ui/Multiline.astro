@@ -1,0 +1,18 @@
+---
+// 줄바꿈 문자(\n)를 <br>로 렌더링한다. text-balance/whitespace 유틸과 달리
+// "정확히 이 지점에서만" 줄을 나누고 싶을 때 사용.
+interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+const lines = text.split("\n");
+---
+
+{
+  lines.map((line, i) => (
+    <Fragment>
+      {line}
+      {i < lines.length - 1 && <br />}
+    </Fragment>
+  ))
+}
