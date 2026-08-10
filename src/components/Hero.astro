@@ -172,27 +172,16 @@ import heroMockup from "../assets/hero-mockup.png";
 
   /* ── 1단 화면 ─────────────────────────────────────────── */
   /* 목업을 아예 내린다. 좁은 화면에서 목업이 있으면 폼이 첫 화면 밖으로 밀리는데,
-     사전신청 페이지에서 그 자리는 사진보다 입력창이 가져가는 게 맞다. */
-  @media (max-width: 767px) {
+     사전신청 페이지에서 그 자리는 사진보다 입력창이 가져가는 게 맞다.
+
+     정렬은 데스크톱과 같이 왼쪽으로 둔다. 본문만 가운데로 모으면 왼쪽 위에 붙은
+     헤더와 축이 어긋나 어색해진다. */
+  @media (max-width: 699px) {
     .shot {
       display: none;
     }
-    .masthead {
-      display: flex;
-      justify-content: center;
-    }
     .grid {
       padding-block: 1.5rem;
-    }
-    .copy,
-    .form {
-      margin-inline: auto;
-    }
-    .copy {
-      text-align: center;
-    }
-    .foot {
-      text-align: center;
     }
   }
 
@@ -204,9 +193,10 @@ import heroMockup from "../assets/hero-mockup.png";
   }
 
   /* ── 2단 전환 ─────────────────────────────────────────── */
-  /* dionomy는 1024px에서 갈랐는데, 그 사이 폭(태블릿 세로)에서 카피는 왼쪽에
-     몰리고 오른쪽이 통째로 비어 버린다. 여기서는 768px부터 가른다. */
-  @media (min-width: 768px) {
+  /* dionomy는 1024px에서 갈랐는데, 그 사이 폭에서 카피는 왼쪽에 몰리고 오른쪽이
+     통째로 비어 버린다. 700px부터 가른다 — 그 아래는 한 손 폭이라 1단이 자연스럽고,
+     위로는 목업이 오른쪽을 채운다. */
+  @media (min-width: 700px) {
     .hero {
       padding-block: 0 1.5rem;
     }

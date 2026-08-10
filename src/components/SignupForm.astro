@@ -285,7 +285,10 @@ import { site } from "../data/site";
     display: grid;
     gap: 0.5rem;
   }
-  @media (min-width: 480px) {
+  /* 입력창과 버튼을 나란히 두려면 폼이 그만큼 넓어야 한다. 폼 폭은 27rem이 상한인데
+     2단 히어로의 왼쪽 칸이 그 폭을 확보하는 건 1024px부터다. 그 아래에서 나란히 두면
+     입력창이 200px 아래로 눌린다. */
+  @media (min-width: 1024px) {
     .row {
       grid-template-columns: minmax(0, 1fr) auto;
     }
@@ -302,9 +305,6 @@ import { site } from "../data/site";
     letter-spacing: 0.01em;
     color: var(--color-fg);
     font-variant-numeric: tabular-nums;
-    /* 1단에서 부모가 가운데 정렬이라 그대로 두면 입력값까지 가운데로 간다.
-       타이핑 중에 캐럿이 좌우로 흔들려 읽기 나쁘다. */
-    text-align: left;
     transition:
       border-color 0.18s,
       box-shadow 0.18s;
@@ -395,14 +395,6 @@ import { site } from "../data/site";
     text-decoration: underline;
     text-underline-offset: 0.18em;
   }
-  /* 동의문은 가운데 정렬 면 위에서도 왼쪽 정렬을 유지한다. 체크박스가 왼쪽에
-     붙어 있는데 문장만 가운데로 가면 줄이 어긋나 보인다. */
-  @media (max-width: 767px) {
-    .consent span {
-      text-align: left;
-    }
-  }
-
   .consent-field.has-error .consent input {
     outline: 2px solid var(--color-signal-risk);
     outline-offset: 2px;
