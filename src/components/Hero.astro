@@ -69,16 +69,10 @@ import heroMockup from "../assets/hero-mockup.png";
     display: flex;
     flex-direction: column;
     min-height: 100svh;
-    overflow: hidden;
     padding-block: 2rem 1.25rem;
-    /* 카피가 놓이는 절반은 흰 면 그대로 두고, 거기서부터 브랜드 블루로 넘어간다.
-       1단일 때는 같은 걸 세로로 돌려 목업이 놓이는 아래쪽만 파랗게 만든다. */
-    background: linear-gradient(
-      180deg,
-      var(--color-bg) 0%,
-      var(--color-bg) 50%,
-      var(--color-brand) 96%
-    );
+    /* 배경은 여기서 칠하지 않는다. index.astro의 백드롭이 <main> 바닥에 깔려 있고,
+       히어로가 면을 덮으면 그게 가려진다. overflow도 걸지 않는다 — 블롭을 자르는
+       일은 백드롭 쪽이 맡는다. */
   }
 
   .grid {
@@ -190,12 +184,13 @@ import heroMockup from "../assets/hero-mockup.png";
   }
 
   /* ── 푸터 ─────────────────────────────────────────────── */
-  /* 1단일 때 푸터는 그라데이션의 파란 끝에 놓인다. 회색 글자로는 안 읽힌다. */
+  /* 1단에서는 푸터가 블롭의 옅은 파란 면 위에 놓인다. faint(#9eacbc)로는 대비가
+     모자라 한 단계 진한 subtle을 쓴다. */
   .foot {
     position: relative;
     margin-top: 2rem;
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.72);
+    color: var(--color-fg-subtle);
   }
   .foot p {
     margin: 0;
@@ -214,12 +209,6 @@ import heroMockup from "../assets/hero-mockup.png";
   @media (min-width: 768px) {
     .hero {
       padding-block: 2.5rem 1.5rem;
-      background: linear-gradient(
-        90deg,
-        var(--color-bg) 0%,
-        var(--color-bg) 50%,
-        var(--color-brand) 100%
-      );
     }
     .grid {
       grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
@@ -236,10 +225,6 @@ import heroMockup from "../assets/hero-mockup.png";
     .shot-inner {
       max-width: 17rem;
       margin-inline: auto 0;
-    }
-    /* 2단부터는 푸터가 흰 면 위로 돌아온다 */
-    .foot {
-      color: var(--color-fg-faint);
     }
   }
 
