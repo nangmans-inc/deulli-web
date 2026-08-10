@@ -10,6 +10,15 @@ import { site } from "../data/site";
 }
 <div class="signup">
   <form id="signup-form" novalidate>
+    {
+      prelaunch.perk && (
+        <p class="perk">
+          <span class="perk-dot" aria-hidden="true" />
+          {prelaunch.perk}
+        </p>
+      )
+    }
+
     <p class="intro">{prelaunch.formIntro}</p>
 
     <div class="field">
@@ -273,6 +282,27 @@ import { site } from "../data/site";
     width: 1px;
     height: 1px;
     overflow: hidden;
+  }
+
+  /* prelaunch.perk가 비어 있으면 렌더되지 않는다 */
+  .perk {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin: 0 0 0.75rem;
+    border-radius: var(--radius-pill);
+    background: var(--color-brand-soft);
+    padding: 0.3rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-brand-strong);
+  }
+  .perk-dot {
+    width: 0.36rem;
+    height: 0.36rem;
+    border-radius: var(--radius-pill);
+    background: var(--color-brand);
   }
 
   .intro {
