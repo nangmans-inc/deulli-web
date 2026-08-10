@@ -236,6 +236,20 @@ import mascot from "../assets/mascot.png";
     }
   }
 
+  /* 세로가 짧은 1단 화면(구형 소형 기기)에서만 리듬을 조인다. 일반 폰에는
+     영향이 없다. */
+  @media (max-width: 699px) and (max-height: 700px) {
+    .grid {
+      padding-block: 0.5rem;
+    }
+    .lead {
+      margin-top: 0.75rem;
+    }
+    .form {
+      margin-top: 1.25rem;
+    }
+  }
+
   /* ── 2단 전환 ─────────────────────────────────────────── */
   /* dionomy는 1024px에서 갈랐는데, 그 사이 폭에서 카피는 왼쪽에 몰리고 오른쪽이
      통째로 비어 버린다. 700px부터 가른다 — 그 아래는 한 손 폭이라 1단이 자연스럽고,
