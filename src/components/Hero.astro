@@ -27,11 +27,6 @@ import heroMockup from "../assets/hero-mockup.png";
         <span class="wordmark">{site.nameKo}</span>
       </header>
 
-      <p class="badge reveal" style="--reveal-delay: 60ms;">
-        <span class="badge-dot" aria-hidden="true"></span>
-        {prelaunch.badge}
-      </p>
-
       <h1 class="reveal" style="--reveal-delay: 100ms;">
         <Multiline text={prelaunch.heading} />
         <span class="brandword">{prelaunch.headingBrand}</span>
@@ -105,43 +100,8 @@ import heroMockup from "../assets/hero-mockup.png";
     color: var(--color-neutral-900);
   }
 
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin: 1.75rem 0 0;
-    border-radius: var(--radius-pill);
-    background: var(--color-brand-soft);
-    padding: 0.32rem 0.8rem;
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    color: var(--color-brand-strong);
-  }
-  .badge-dot {
-    width: 0.4rem;
-    height: 0.4rem;
-    border-radius: var(--radius-pill);
-    background: var(--color-brand);
-    animation: badge-pulse 2.4s var(--ease-out-soft) infinite;
-  }
-  @keyframes badge-pulse {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.35;
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .badge-dot {
-      animation: none;
-    }
-  }
-
   h1 {
-    margin: 0.9rem 0 0;
+    margin: 2rem 0 0;
     font-size: var(--text-display);
     line-height: 1.08;
     letter-spacing: -0.035em;

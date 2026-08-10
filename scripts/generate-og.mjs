@@ -51,7 +51,7 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" 
   <text x="88" y="304" font-family="${FONT}" font-size="72" font-weight="700" fill="${NAVY}" letter-spacing="-2.5">들리니까,</text>
   <text x="88" y="416" font-family="${FONT}" font-size="100" font-weight="800" fill="${BLUE}" letter-spacing="-5">들리</text>
 
-  <text x="88" y="478" font-family="${FONT}" font-size="30" font-weight="500" fill="${MUTED}" letter-spacing="-0.8">팟캐스트로 하는 영어 공부</text>
+  <text x="88" y="478" font-family="${FONT}" font-size="30" font-weight="500" fill="${MUTED}" letter-spacing="-0.8">팟캐스트로 하는 최고의 영어 공부</text>
 
   <rect x="88" y="518" width="252" height="52" rx="26" fill="${BLUE}"/>
   <text x="214" y="552" font-family="${FONT}" font-size="24" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="-0.5">deulli.com</text>
