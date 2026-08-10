@@ -22,9 +22,6 @@ export const prelaunch = {
   submitLabel: "출시되면 알려주세요",
   submitPendingLabel: "보내는 중…",
 
-  /** 폼 아래 한 줄. 무엇을 언제 보내는지 명확히 — 전환율의 핵심. */
-  formNote: "출시하는 날 문자 한 통. 그게 전부입니다.",
-
   successHeading: "번호를 받았습니다",
   successBody: "출시하는 날, 이 번호로 가장 먼저 알려드릴게요.",
 
