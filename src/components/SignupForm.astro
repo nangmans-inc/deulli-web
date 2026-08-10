@@ -4,20 +4,28 @@ import { prelaunch } from "../data/prelaunch";
 import { site } from "../data/site";
 ---
 
+{
+  /* 이 폼은 아이보리 면 위에 놓이는 것을 전제로 색을 잡았다.
+    브랜드 블루 면에 올리려면 아래 스타일의 색부터 다시 봐야 한다. */
+}
 <div class="signup">
-  <form id="signup-form" novalidate class="space-y-3.5">
+  <form id="signup-form" novalidate>
     <div class="field">
       <label for="f-phone">{prelaunch.formLabel}</label>
-      <input
-        id="f-phone"
-        name="phone"
-        type="tel"
-        inputmode="numeric"
-        autocomplete="tel-national"
-        maxlength="13"
-        required
-        placeholder={prelaunch.formPlaceholder}
-      />
+      <div class="row">
+        <input
+          id="f-phone"
+          name="phone"
+          type="tel"
+          inputmode="numeric"
+          autocomplete="tel-national"
+          maxlength="13"
+          required
+          placeholder={prelaunch.formPlaceholder}
+        />
+        <button type="submit" class="submit-btn">{prelaunch.submitLabel}</button
+        >
+      </div>
       <p class="field-error" data-phone-error hidden>
         휴대폰 번호를 정확히 입력해 주세요.
       </p>
@@ -40,8 +48,7 @@ import { site } from "../data/site";
         <input id="f-consent" name="consent" type="checkbox" required />
         <span>
           출시 알림 발송을 위한 <strong>개인정보 수집·이용</strong>에
-          동의합니다. 수집 항목은 전화번호이며, 출시 알림 1회 발송 후
-          파기합니다. (<a
+          동의합니다. 수집 항목은 전화번호이며, 발송 후 파기합니다. (<a
             href={site.policy.privacy}
             target="_blank"
             rel="noopener">개인정보 처리방침</a
@@ -53,33 +60,23 @@ import { site } from "../data/site";
       </p>
     </div>
 
-    <button type="submit" class="submit-btn">{prelaunch.submitLabel}</button>
-
-    <p class="text-center text-[0.78rem] text-fg-faint">
-      {prelaunch.formNote}
-    </p>
+    <p class="note">{prelaunch.formNote}</p>
   </form>
 
   <!-- success state (hidden until submit) -->
-  <div id="signup-success" hidden class="py-4 text-center">
-    <div
-      class="mx-auto grid size-14 place-items-center rounded-full bg-signal-ok-soft"
-    >
-      <CheckIcon class="size-7 text-signal-ok" />
+  <div id="signup-success" hidden class="done">
+    <div class="done-mark">
+      <CheckIcon />
     </div>
-    <p class="mt-4 text-h3 font-bold text-fg">{prelaunch.successHeading}</p>
-    <p class="mt-2 text-[0.92rem] text-fg-muted">{prelaunch.successBody}</p>
+    <div>
+      <p class="done-title">{prelaunch.successHeading}</p>
+      <p class="done-body">{prelaunch.successBody}</p>
+    </div>
   </div>
 </div>
 
 <!-- toast -->
-<div
-  id="signup-toast"
-  role="status"
-  aria-live="polite"
-  class="pointer-events-none fixed bottom-6 left-1/2 z-50 max-w-[min(24rem,calc(100vw-2.5rem))] -translate-x-1/2 translate-y-4 rounded-pill bg-ink-950 px-5 py-3 text-center text-sm font-semibold text-white opacity-0 shadow-lg transition-all duration-300"
->
-</div>
+<div id="signup-toast" role="status" aria-live="polite" class="toast"></div>
 
 <script>
   import { prelaunch } from "../data/prelaunch";
@@ -141,6 +138,10 @@ import { site } from "../data/site";
     return `${d.slice(0, 3)}-${d.slice(3, 7)}-${d.slice(7)}`;
   }
 
+  function isValidPhone(v: string) {
+    return /^01[016789]\d{7,8}$/.test(v.replace(/\D/g, ""));
+  }
+
   phoneInput?.addEventListener("input", () => {
     const el = phoneInput;
     const atEnd = el.selectionStart === el.value.length;
@@ -156,10 +157,6 @@ import { site } from "../data/site";
     }
   });
 
-  function isValidPhone(v: string) {
-    return /^01[016789]\d{7,8}$/.test(v.replace(/\D/g, ""));
-  }
-
   // GA 전환 이벤트 — gtag 미로드 시 안전하게 무시
   function track(name: string, params: Record<string, unknown> = {}) {
     (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag?.(
@@ -173,13 +170,12 @@ import { site } from "../data/site";
   function showToast(message: string) {
     if (!toast) return;
     toast.textContent = message;
-    toast.classList.remove("opacity-0", "translate-y-4");
-    toast.classList.add("opacity-100", "translate-y-0");
+    toast.classList.add("is-visible");
     window.clearTimeout(toastTimer);
-    toastTimer = window.setTimeout(() => {
-      toast.classList.add("opacity-0", "translate-y-4");
-      toast.classList.remove("opacity-100", "translate-y-0");
-    }, 3200);
+    toastTimer = window.setTimeout(
+      () => toast.classList.remove("is-visible"),
+      3200,
+    );
   }
 
   // 첫 입력 시 퍼널 이벤트 1회
@@ -281,17 +277,28 @@ import { site } from "../data/site";
 
   .field label {
     display: block;
-    margin-bottom: 0.4rem;
-    font-size: 0.84rem;
+    margin-bottom: 0.45rem;
+    font-size: 0.82rem;
     font-weight: 600;
     color: var(--color-fg-muted);
   }
+
+  .row {
+    display: grid;
+    gap: 0.5rem;
+  }
+  @media (min-width: 480px) {
+    .row {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+  }
+
   .field input {
     width: 100%;
-    border-radius: 0.8rem;
-    border: 1px solid var(--color-border);
-    background: var(--color-bg);
-    padding: 0.85rem 1rem;
+    border-radius: 0.85rem;
+    border: 1px solid var(--color-border-strong);
+    background: #ffffff;
+    padding: 0.9rem 1rem;
     font-size: 1.05rem;
     font-weight: 500;
     letter-spacing: 0.01em;
@@ -315,15 +322,47 @@ import { site } from "../data/site";
   }
   .field input.has-error {
     border-color: var(--color-signal-risk);
+    box-shadow: 0 0 0 3px
+      color-mix(in srgb, var(--color-signal-risk) 16%, transparent);
   }
 
   .field-error {
-    margin-top: 0.4rem;
+    margin: 0.5rem 0 0;
     font-size: 0.8rem;
-    color: var(--color-signal-risk);
+    font-weight: 500;
+    color: var(--color-danger-700);
   }
 
-  /* consent checkbox */
+  .submit-btn {
+    border-radius: 0.85rem;
+    background: var(--color-brand);
+    padding: 0.9rem 1.35rem;
+    font-size: 1rem;
+    font-weight: 700;
+    white-space: nowrap;
+    color: var(--color-on-brand);
+    box-shadow: 0 10px 24px -14px
+      color-mix(in srgb, var(--color-brand) 95%, transparent);
+    transition:
+      background-color 0.18s,
+      transform 0.18s;
+  }
+  .submit-btn:hover:not(:disabled) {
+    background: var(--color-brand-strong);
+    transform: translateY(-1px);
+  }
+  .submit-btn:active:not(:disabled) {
+    transform: translateY(0);
+  }
+  .submit-btn:disabled {
+    opacity: 0.6;
+    cursor: progress;
+  }
+
+  /* ── 동의 ─────────────────────────────────────────────── */
+  .consent-field {
+    margin-top: 0.9rem;
+  }
   .consent {
     display: flex;
     align-items: flex-start;
@@ -358,32 +397,76 @@ import { site } from "../data/site";
     border-radius: 0.2rem;
   }
 
-  .submit-btn {
-    width: 100%;
-    border-radius: 0.8rem;
-    background: var(--color-brand);
-    padding: 0.95rem 1rem;
-    font-size: 1rem;
+  .note {
+    margin: 0.9rem 0 0;
+    font-size: 0.78rem;
+    color: var(--color-fg-subtle);
+  }
+
+  /* ── 완료 ─────────────────────────────────────────────── */
+  .done {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    border-radius: 1rem;
+    border: 1px solid var(--color-border);
+    background: #ffffff;
+    padding: 1.1rem 1.25rem;
+    box-shadow: 0 18px 40px -28px rgba(8, 33, 66, 0.45);
+  }
+  .done-mark {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    border-radius: var(--radius-pill);
+    background: var(--color-brand-soft);
+  }
+  /* 자식 컴포넌트가 그리는 <svg>라 스코프 셀렉터가 닿지 않는다.
+     부모(.done-mark)로 범위를 잡고 :global로 내려간다. */
+  .done-mark :global(svg) {
+    width: 1.35rem;
+    height: 1.35rem;
+    color: var(--color-brand);
+  }
+  .done-title {
+    margin: 0;
+    font-size: 1.02rem;
     font-weight: 700;
-    color: var(--color-on-brand);
-    box-shadow: 0 10px 24px -12px
-      color-mix(in srgb, var(--color-brand) 90%, transparent);
+    color: var(--color-fg);
+  }
+  .done-body {
+    margin: 0.2rem 0 0;
+    font-size: 0.84rem;
+    line-height: 1.5;
+    color: var(--color-fg-muted);
+  }
+
+  /* ── 토스트 ───────────────────────────────────────────── */
+  .toast {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    z-index: 50;
+    max-width: min(24rem, calc(100vw - 2.5rem));
+    transform: translate(-50%, 1rem);
+    border-radius: var(--radius-pill);
+    background: var(--color-neutral-950);
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-align: center;
+    color: #ffffff;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 0 18px 40px -18px rgba(4, 12, 34, 0.6);
     transition:
-      background-color 0.18s,
-      transform 0.18s,
-      box-shadow 0.18s;
+      opacity 0.3s,
+      transform 0.3s;
   }
-  .submit-btn:hover:not(:disabled) {
-    background: var(--color-brand-strong);
-    transform: translateY(-1px);
-    box-shadow: 0 14px 28px -12px
-      color-mix(in srgb, var(--color-brand) 90%, transparent);
-  }
-  .submit-btn:active:not(:disabled) {
-    transform: translateY(0);
-  }
-  .submit-btn:disabled {
-    opacity: 0.62;
-    cursor: progress;
+  .toast.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
   }
 </style>

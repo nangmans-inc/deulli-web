@@ -26,7 +26,7 @@ const orgJsonLd = {
   logo: new URL("/logo.svg", Astro.site ?? site.url).href,
   description: site.description,
   email: site.email,
-  slogan: "영어 팟캐스트를 끝까지 듣게.",
+  slogan: site.slogan,
 };
 
 // 앱 랜딩이므로 제품 자체도 기술한다. 생성형 검색이 "들리가 뭐냐"에 답할 근거가 된다.
@@ -69,7 +69,7 @@ const appJsonLd = {
       name="robots"
       content="index, follow, max-image-preview:large, max-snippet:-1"
     />
-    <meta name="theme-color" content="#0150e5" />
+    <meta name="theme-color" content="#fbf0e6" />
 
     <!-- Self-hosted Pretendard (variable · unicode-range dynamic subset) -->
     <link

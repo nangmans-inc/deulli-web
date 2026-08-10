@@ -31,6 +31,24 @@ pnpm og           # public/og-image.png 재생성
 출시 알림에 필요한 건 번호 하나다. 필드를 추가하려면 **그 데이터로 무엇을 할지부터**
 정하고 개인정보 처리방침의 수집 항목도 같이 고쳐야 한다.
 
+## 디자인 원본은 Figma다
+
+색·서체·슬로건·마스코트·앱 스크린샷은 전부
+[deulli Figma 파일](https://www.figma.com/design/kZeAdHPAC8JeBHAGE2D6p9/deulli)에서 가져왔다.
+**여기서 새로 지어내지 않는다.** 바꿔야 하면 Figma를 먼저 고치고 이쪽에 반영한다.
+
+| 이 저장소                         | Figma 원본                                  |
+| --------------------------------- | ------------------------------------------- |
+| `styles/global.css`의 `@theme`    | Deulli Color System / v1 (`89:2`)           |
+| 서체·타입 스케일                  | Deulli Design System · Typography (`103:2`) |
+| 슬로건 "듣다 보면 들리니까, 들리" | FINAL 1 · 슬로건 + 재생화면 목업 (`213:2`)  |
+| 아이보리 + 네이비 + 블루 조합     | Feature Graphic · v2 안들리면들리 (`291:3`) |
+| `assets/mascot.png`               | deulli-mascot-hq-v5 (`170:3`)               |
+| `assets/app-player.png`           | app-01-player (`204:5`)                     |
+
+제품을 글머리표로 설명하지 않고 **실제 플레이어 화면을 그대로 보여준다.** 문장이 어떻게
+짚이는지는 기능 설명 세 줄보다 스크린샷 하나가 빠르다.
+
 ## 구조
 
 ```
@@ -38,13 +56,16 @@ src/
   pages/index.astro           사전신청 페이지 (전환 시 여기를 갈아끼운다)
   layouts/BaseLayout.astro    <head> 메타·JSON-LD·스크롤 리빌
   components/
-    Prelaunch.astro           사전신청 카드 레이아웃·카피  ┐ 전환 시
-    SignupForm.astro          전화번호 폼·검증·전송        ┘ 통째로 삭제
+    Hero.astro                슬로건·마스코트·목업·폼 배치  ┐ 전환 시
+    SignupForm.astro          전화번호 폼·검증·전송         ┘ 통째로 삭제
     Analytics.astro           GA4 (PROD + 측정 ID 있을 때만)
     ui/                       CheckIcon, Multiline
   data/
     site.ts                   도메인·브랜드·SEO 메타 (계속 쓴다)
     prelaunch.ts              사전신청 카피         (전환 시 삭제)
+  assets/
+    mascot.png                마스코트 — astro:assets가 webp로 최적화
+    app-player.png            실제 플레이어 화면 (iPhone 17 Pro 시뮬레이터)
   styles/global.css           디자인 토큰 2계층 + base/components 레이어
 public/
   logo.svg, favicon.svg       로고 (deulli-policy와 동일 파일)
@@ -56,10 +77,12 @@ docs/apps-script-form.md      시트·Apps Script 설정 절차
 
 ### 색
 
-`logo.svg`에서 뽑았다 — 파랑 `#0150e5`, 네이비 `#082142`, 크림 `#fbf0e6`. `deulli-policy`의
-CSS 변수와 같은 값이므로 두 사이트를 오가도 색이 어긋나지 않는다. 컴포넌트에서는 원시
-팔레트(`--color-primary-*`)를 직접 쓰지 말고 의미 역할(`--color-brand`, `--color-fg` …)만
+파랑 `#0150e5`, 네이비 `#082142`, 아이보리 `#fbf0e6`. 컴포넌트에서는 원시
+팔레트(`--color-blue-*`)를 직접 쓰지 말고 의미 역할(`--color-brand`, `--color-fg` …)만
 참조한다.
+
+`SignupForm.astro`는 **아이보리 면 위에 놓이는 것을 전제로** 색을 잡았다. 브랜드 블루 같은
+짙은 면으로 옮기면 입력창 테두리·오류색·동의문 색이 전부 무너지므로 그때 다시 봐야 한다.
 
 ## 폼은 어디로 가는가
 
@@ -119,7 +142,7 @@ GA4는 프로덕션 빌드에서만 로드된다(dev 트래픽 오염 방지). �
 사전신청이 끝나면:
 
 1. `src/pages/index.astro`의 내용을 공식 홈으로 교체
-2. `components/Prelaunch.astro`, `components/SignupForm.astro`, `data/prelaunch.ts` 삭제
+2. `components/Hero.astro`, `components/SignupForm.astro`, `data/prelaunch.ts`, `assets/` 삭제
 3. `src/env.d.ts`에서 `PUBLIC_FORM_ENDPOINT` 항목 제거, Vercel 환경 변수도 삭제
 4. `apps-script/`, `docs/apps-script-form.md`는 남겨 둔다 — 시트에 남은 개인정보를 파기할
    때까지 무엇을 어떻게 받았는지가 기록으로 필요하다
