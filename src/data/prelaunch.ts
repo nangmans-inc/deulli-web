@@ -15,7 +15,12 @@ export const prelaunch = {
 
   lead: "팟캐스트로 하는 최고의 영어 공부",
 
-  formLabel: "전화번호",
+  /* 이 페이지가 "아직 안 나온 물건의 대기 명단"이라는 걸 알려주는 한 줄.
+     슬로건과 버튼만으로는 왜 번호를 달라는지가 전해지지 않는다. */
+  formIntro:
+    "아직 출시 전이에요. 번호를 남겨두시면 나오는 날 가장 먼저 알려드릴게요.",
+
+  formLabel: "전화번호를 입력해주세요",
   formPlaceholder: "010-0000-0000",
   submitLabel: "출시되면 알려주세요",
   submitPendingLabel: "보내는 중…",

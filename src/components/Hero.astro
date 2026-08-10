@@ -204,16 +204,25 @@ import mascot from "../assets/mascot.png";
     .shot {
       display: none;
     }
-    .grid {
-      padding-block: 1.5rem;
+    /* 1단에서는 컨테이너를 내용 폭까지 좁혀 가운데 둔다. 72rem 그대로 두면
+       600~699px 구간에서 내용이 왼쪽에 붙고 오른쪽만 100px 넘게 빈다.
+       36.5rem = 내용 34rem + 좌우 여백 2.5rem. */
+    .masthead,
+    .grid,
+    .foot {
+      max-width: 36.5rem;
     }
-    /* 슬로건 마지막 줄("들리") 오른쪽 — 그 줄이 가장 짧아 여백이 가장 크다.
+    .grid {
+      padding-block: 1rem;
+    }
+    /* 슬로건 세 줄 기준 오른쪽 · 세로 가운데.
        크기를 vw에 비례시켜 어느 폭에서도 글자와 겹치지 않는다. */
     .headline :global(.buddy) {
       display: block;
       position: absolute;
       right: 0;
-      bottom: -0.25rem;
+      top: 50%;
+      translate: 0 -50%;
       width: min(30vw, 8.5rem);
       height: auto;
       filter: drop-shadow(0 12px 22px rgba(8, 33, 66, 0.22));
@@ -261,7 +270,9 @@ import mascot from "../assets/mascot.png";
       gap: 3.5rem;
     }
     .shot-inner {
-      max-width: 23.75rem;
+      /* 세로가 짧은 화면(예: 1024×768)에서는 목업 높이가 화면을 넘겨 스크롤이 생긴다.
+         목업 비율이 1:1.67이라 높이를 뷰포트에 묶어 두면 폭이 알아서 줄어든다. */
+      max-width: min(23.75rem, 45vh);
     }
   }
 </style>
