@@ -13,20 +13,26 @@ import heroMockup from "../assets/hero-mockup.png";
     목업이 먼저 오도록 order를 뒤집어서, 좁은 화면에서 슬로건보다 사진이 앞선다. */
 }
 <section class="hero" data-ga-section="prelaunch">
+  {
+    /* 로고만 있는 최소 헤더. 링크는 두지 않는다 — 사전신청 페이지에서 피해야 하는 건
+      브랜드 마크가 아니라 페이지 밖으로 빠져나갈 경로다. */
+  }
+  <header class="masthead container-content reveal">
+    <div class="brand">
+      <img
+        class="appicon"
+        src="/logo.svg"
+        alt=""
+        width="32"
+        height="32"
+        loading="eager"
+      />
+      <span class="wordmark">{site.nameKo}</span>
+    </div>
+  </header>
+
   <div class="container-content grid">
     <div class="copy">
-      <header class="brand reveal">
-        <img
-          class="appicon"
-          src="/logo.svg"
-          alt=""
-          width="32"
-          height="32"
-          loading="eager"
-        />
-        <span class="wordmark">{site.nameKo}</span>
-      </header>
-
       <h1 class="reveal" style="--reveal-delay: 100ms;">
         <Multiline text={prelaunch.heading} />
         <span class="brandword">{prelaunch.headingBrand}</span>
@@ -70,12 +76,17 @@ import heroMockup from "../assets/hero-mockup.png";
        일은 백드롭 쪽이 맡는다. */
   }
 
+  .masthead {
+    position: relative;
+  }
+
   .grid {
     position: relative;
     flex: 1;
     display: grid;
     align-content: center;
     gap: 2.5rem;
+    padding-block: 2rem;
   }
 
   /* ── 카피 ─────────────────────────────────────────────── */
@@ -101,7 +112,7 @@ import heroMockup from "../assets/hero-mockup.png";
   }
 
   h1 {
-    margin: 2rem 0 0;
+    margin: 0;
     font-size: var(--text-display);
     line-height: 1.08;
     letter-spacing: -0.035em;
