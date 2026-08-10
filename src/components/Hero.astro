@@ -70,14 +70,17 @@ import heroMockup from "../assets/hero-mockup.png";
     display: flex;
     flex-direction: column;
     min-height: 100svh;
-    padding-block: 2rem 1.25rem;
+    padding-block: 0 1.25rem;
     /* 배경은 여기서 칠하지 않는다. index.astro의 백드롭이 <main> 바닥에 깔려 있고,
        히어로가 면을 덮으면 그게 가려진다. overflow도 걸지 않는다 — 블롭을 자르는
        일은 백드롭 쪽이 맡는다. */
   }
 
+  /* 위 패딩은 섹션이 아니라 헤더가 갖는다. 섹션에 주면 헤더가 화면 위에서 그만큼
+     떠 버려 머리글이 아니라 떠다니는 요소로 보인다. */
   .masthead {
     position: relative;
+    padding-block: 1.25rem 0;
   }
 
   .grid {
@@ -179,7 +182,10 @@ import heroMockup from "../assets/hero-mockup.png";
      몰리고 오른쪽이 통째로 비어 버린다. 여기서는 768px부터 가른다. */
   @media (min-width: 768px) {
     .hero {
-      padding-block: 2.5rem 1.5rem;
+      padding-block: 0 1.5rem;
+    }
+    .masthead {
+      padding-block: 1.5rem 0;
     }
     .grid {
       grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
