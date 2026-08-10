@@ -46,6 +46,13 @@ pnpm og           # public/og-image.png 재생성
 | `assets/mascot.png`               | deulli-mascot-hq-v5 (`170:3`)               |
 | `assets/app-player.png`           | app-01-player (`204:5`)                     |
 
+### 목업을 받을 때 — export 말고 rawImages
+
+`319:66`은 배경이 `#f5f5f5`인 프레임 안에 있다. MCP의 **export URL로 받으면 그 프레임
+채움까지 그려져** 회색 판이 붙은 PNG가 나온다(모서리 픽셀이 `245,245,245,255`).
+투명 배경이 필요하면 응답의 **`rawImages` URL**을 받아 `trim()` 해야 한다
+(모서리 `0,0,0,0`). 목업이 흰 면에서 네모난 회색 판을 달고 있으면 이걸 의심한다.
+
 제품을 글머리표로 설명하지 않고 **실제 플레이어 화면을 그대로 보여준다.** 문장이 어떻게
 짚이는지는 기능 설명 세 줄보다 스크린샷 하나가 빠르다.
 
@@ -71,6 +78,7 @@ src/
   assets/
     mascot.png                마스코트 — astro:assets가 webp로 최적화
     hero-mockup.png           재생화면이 담긴 iPhone 목업 (배경 투명)
+    mascot.png                3D 마스코트 — 목업 왼쪽 아래에 세운다
   styles/global.css           디자인 토큰 2계층 + base/components 레이어
 public/
   logo.svg, favicon.svg       로고 (deulli-policy와 동일 파일)
