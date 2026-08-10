@@ -5,7 +5,6 @@ import Multiline from "./ui/Multiline.astro";
 import { prelaunch } from "../data/prelaunch";
 import { site } from "../data/site";
 import heroMockup from "../assets/hero-mockup.png";
-import mascot from "../assets/mascot.png";
 ---
 
 {
@@ -55,18 +54,6 @@ import mascot from "../assets/mascot.png";
           alt="들리 앱 재생 화면 — 지금 나오는 문장이 영어와 한국어로 함께 보인다"
           widths={[300, 450, 600, 900]}
           sizes="(min-width: 1024px) 380px, (min-width: 640px) 300px, 240px"
-          loading="eager"
-        />
-        {
-          /* 마스코트를 32px 아이콘으로 쓰기엔 아까워서 목업 옆에 세웠다.
-            크기·위치를 목업 폭의 %로 잡아 두면 브레이크포인트마다 다시 잡을 필요가 없다. */
-        }
-        <Image
-          class="buddy"
-          src={mascot}
-          alt=""
-          widths={[120, 240, 360]}
-          sizes="(min-width: 1024px) 130px, 84px"
           loading="eager"
         />
       </div>
@@ -213,29 +200,6 @@ import mascot from "../assets/mascot.png";
     display: block;
     width: 100%;
     height: auto;
-  }
-  .shot-inner :global(.buddy) {
-    position: absolute;
-    left: -17%;
-    bottom: -1%;
-    width: 33%;
-    height: auto;
-    filter: drop-shadow(0 16px 28px rgba(8, 33, 66, 0.28));
-    animation: buddy-float 4.5s ease-in-out infinite;
-  }
-  @keyframes buddy-float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-5%);
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .shot-inner :global(.buddy) {
-      animation: none;
-    }
   }
 
   /* ── 푸터 ─────────────────────────────────────────────── */

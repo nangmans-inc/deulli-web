@@ -48,10 +48,26 @@ pnpm og           # public/og-image.png 재생성
 
 ### 목업을 받을 때 — export 말고 rawImages
 
-`319:66`은 배경이 `#f5f5f5`인 프레임 안에 있다. MCP의 **export URL로 받으면 그 프레임
-채움까지 그려져** 회색 판이 붙은 PNG가 나온다(모서리 픽셀이 `245,245,245,255`).
-투명 배경이 필요하면 응답의 **`rawImages` URL**을 받아 `trim()` 해야 한다
-(모서리 `0,0,0,0`). 목업이 흰 면에서 네모난 회색 판을 달고 있으면 이걸 의심한다.
+`319:66`은 프레임이 아니라 **채움이 둘 겹친 사각형 노드**다 — `#f5f5f5` 배경 채움 위에
+목업 이미지 채움. 그래서 MCP의 **export URL로 받으면 배경 채움까지 함께 그려져** 회색 판이
+붙은 PNG가 나온다(모서리 픽셀 `245,245,245,255`). `defaultFormat`을 png로 지정해도 같다 —
+투명하게 받을 방법은 응답의 **`rawImages` URL**뿐이고, 받은 뒤 `trim()` 한다
+(모서리 `0,0,0,0`).
+
+목업이 흰 면에서 네모난 회색 판을 달고 있으면 두 가지를 순서대로 의심한다:
+
+1. **떠 있는 옛 dev 서버.** 포트를 바꿔가며 띄우면 이전 서버가 계속 옛 이미지를 서빙한다.
+   `lsof -nP -iTCP -sTCP:LISTEN | grep 432`로 확인하고 전부 죽인 뒤 하나만 띄운다.
+2. 그래도 남으면 export URL로 받은 파일이다. `rawImages` 쪽으로 다시 받는다.
+
+확인은 눈이 아니라 픽셀로 한다:
+
+```bash
+node -e "require('sharp')('src/assets/hero-mockup.png').ensureAlpha().raw()
+  .toBuffer({resolveWithObject:true}).then(({data,info})=>
+    console.log('모서리 알파', data[3], data[(info.width-1)*info.channels+3]))"
+# 0 0  → 투명. 255면 회색 판이 붙어 있다.
+```
 
 제품을 글머리표로 설명하지 않고 **실제 플레이어 화면을 그대로 보여준다.** 문장이 어떻게
 짚이는지는 기능 설명 세 줄보다 스크린샷 하나가 빠르다.
@@ -78,7 +94,6 @@ src/
   assets/
     mascot.png                마스코트 — astro:assets가 webp로 최적화
     hero-mockup.png           재생화면이 담긴 iPhone 목업 (배경 투명)
-    mascot.png                3D 마스코트 — 목업 왼쪽 아래에 세운다
   styles/global.css           디자인 토큰 2계층 + base/components 레이어
 public/
   logo.svg, favicon.svg       로고 (deulli-policy와 동일 파일)
