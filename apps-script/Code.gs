@@ -21,6 +21,9 @@ const DISCORD_WEBHOOK = "";
 // 켜기 전에 개인정보 처리방침을 먼저 고쳐야 한다 — 아래 maskPhone 주석 참고.
 const DISCORD_SEND_FULL_PHONE = false;
 
+// 배포된 코드가 어느 버전인지 GET으로 확인하기 위한 값. Code.gs를 고치면 올린다.
+const VERSION = "2026-08-11.1";
+
 const TAB = "deulli";
 const HEADERS = ["접수시각", "전화번호", "동의", "유입경로", "랜딩 URL"];
 const PHONE_COL = 2; // 중복 검사할 열 (1-based) — B열 전화번호
@@ -73,9 +76,21 @@ function doPost(e) {
   }
 }
 
-// GET 으로 배포 상태 확인용
+/**
+ * GET 으로 배포 상태 확인용.
+ *
+ * 붙여넣기와 재배포가 실제로 반영됐는지, 웹훅이 채워진 사본을 붙였는지를
+ * 눈이 아니라 응답으로 가린다. 값 자체는 절대 돌려주지 않는다 — 웹훅 URL은
+ * 그걸 아는 사람이 채널에 글을 쓸 수 있는 비밀값이다.
+ */
 function doGet() {
-  return json({ ok: true, msg: "deulli form endpoint alive" });
+  return json({
+    ok: true,
+    msg: "deulli form endpoint alive",
+    version: VERSION,
+    discord: !!DISCORD_WEBHOOK,
+    mail: !!NOTIFY_EMAIL,
+  });
 }
 
 /** deulli 탭을 찾고, 없으면 헤더까지 넣어 만든다 */

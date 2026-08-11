@@ -304,6 +304,23 @@ console.log("6) doGet 헬스체크");
     r.ok === true && r.msg === "deulli form endpoint alive",
     r.msg,
   );
+  check(
+    "version 노출",
+    typeof r.version === "string" && r.version.length > 0,
+    r.version,
+  );
+  check(
+    "웹훅 미설정이면 discord=false",
+    r.discord === false,
+    String(r.discord),
+  );
+}
+{
+  const r = JSON.parse(
+    load(makeEnv(["얼리어답터"]), { webhook: HOOK }).doGet(),
+  );
+  check("웹훅 설정되면 discord=true", r.discord === true);
+  check("URL 자체는 응답에 없음", !JSON.stringify(r).includes("discord.test"));
 }
 
 console.log(`\n결과: ${pass} PASS / ${fail} FAIL`);
