@@ -68,6 +68,15 @@ function makeEnv(initialSheets, opts = {}) {
         },
       },
       console: { error: (m) => errors.push(String(m)), log: () => {} },
+      PropertiesService: (() => {
+        const store = {};
+        return {
+          getScriptProperties: () => ({
+            setProperty: (k, v) => (store[k] = v),
+            getProperty: (k) => store[k] ?? null,
+          }),
+        };
+      })(),
       ContentService: {
         MimeType: { JSON: "json" },
         createTextOutput: (t) => ({ setMimeType: () => t }),
@@ -294,6 +303,43 @@ console.log("8) ★ 알림이 실패해도 신청은 저장된다");
     "응답 코드를 로그에 남김",
     env.errors.some((e) => /디스코드 응답 404/.test(e)),
   );
+}
+
+console.log("9) 마지막 웹훅 결과가 doGet에 남는가");
+{
+  const env = makeEnv(["얼리어답터"]);
+  const api = load(env, { webhook: HOOK });
+  post(api, deulli);
+  const g = JSON.parse(api.doGet());
+  check("성공 → ok 204", /ok 204/.test(g.lastDiscord), g.lastDiscord);
+}
+{
+  const env = makeEnv(["얼리어답터"], { fetchThrows: true });
+  const api = load(env, { webhook: HOOK });
+  post(api, deulli);
+  const g = JSON.parse(api.doGet());
+  check(
+    "예외 → throw …",
+    /throw .*network down/.test(g.lastDiscord),
+    g.lastDiscord,
+  );
+}
+{
+  const env = makeEnv(["얼리어답터"], {
+    fetchStatus: 400,
+    fetchBody: '{"message":"bad"}',
+  });
+  const api = load(env, { webhook: HOOK });
+  post(api, deulli);
+  const g = JSON.parse(api.doGet());
+  check("HTTP 오류 → http 400", /http 400/.test(g.lastDiscord), g.lastDiscord);
+}
+{
+  const env = makeEnv(["얼리어답터"]);
+  const api = load(env);
+  post(api, deulli);
+  const g = JSON.parse(api.doGet());
+  check("웹훅 미설정 → skipped", /skipped/.test(g.lastDiscord), g.lastDiscord);
 }
 
 console.log("6) doGet 헬스체크");

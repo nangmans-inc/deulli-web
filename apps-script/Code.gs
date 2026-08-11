@@ -22,7 +22,7 @@ const DISCORD_WEBHOOK = "";
 const DISCORD_SEND_FULL_PHONE = false;
 
 // 배포된 코드가 어느 버전인지 GET으로 확인하기 위한 값. Code.gs를 고치면 올린다.
-const VERSION = "2026-08-11.1";
+const VERSION = "2026-08-11.2";
 
 const TAB = "deulli";
 const HEADERS = ["접수시각", "전화번호", "동의", "유입경로", "랜딩 URL"];
@@ -90,6 +90,7 @@ function doGet() {
     version: VERSION,
     discord: !!DISCORD_WEBHOOK,
     mail: !!NOTIFY_EMAIL,
+    lastDiscord: readLastDiscord(),
   });
 }
 
@@ -137,6 +138,17 @@ function formatPhone(raw) {
     : d.slice(0, 3) + "-" + d.slice(3, 6) + "-" + d.slice(6);
 }
 
+function readLastDiscord() {
+  try {
+    return (
+      PropertiesService.getScriptProperties().getProperty("lastDiscord") ||
+      "(기록 없음 — 아직 신청이 들어오지 않았거나 옛 버전이 배포됨)"
+    );
+  } catch (err) {
+    return "(조회 실패: " + err + ")";
+  }
+}
+
 /**
  * 010-1234-5678 → 010-****-5678
  *
@@ -170,8 +182,24 @@ function notifyMail(row) {
   }
 }
 
+/** 마지막 웹훅 시도 결과를 남긴다. 알림 실패는 사용자에게 보이지 않으므로,
+ *  나중에 doGet으로 확인할 수 있어야 원인을 찾을 수 있다. */
+function recordDiscord(result) {
+  try {
+    PropertiesService.getScriptProperties().setProperty(
+      "lastDiscord",
+      new Date().toISOString() + " " + result,
+    );
+  } catch (err) {
+    // 기록 실패가 신청을 막지 않는다
+  }
+}
+
 function notifyDiscord(phone, row, total) {
-  if (!DISCORD_WEBHOOK) return;
+  if (!DISCORD_WEBHOOK) {
+    recordDiscord("skipped: webhook 미설정");
+    return;
+  }
   const payload = {
     username: "들리 사전신청",
     embeds: [
@@ -196,9 +224,13 @@ function notifyDiscord(phone, row, total) {
     const code = res.getResponseCode();
     if (code >= 300) {
       console.error("디스코드 응답 " + code + ": " + res.getContentText());
+      recordDiscord("http " + code + " " + res.getContentText().slice(0, 200));
+    } else {
+      recordDiscord("ok " + code);
     }
   } catch (err) {
     console.error("디스코드 발송 실패: " + err);
+    recordDiscord("throw " + String(err).slice(0, 200));
   }
 }
 
