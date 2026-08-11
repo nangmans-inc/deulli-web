@@ -12,7 +12,8 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "og": "node scripts/generate-og.mjs"
+    "og": "node scripts/generate-og.mjs",
+    "test:gs": "node apps-script/test/code.test.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

@@ -15,7 +15,7 @@ const NOTIFY_EMAIL = "contact@nangmans.com";
 const SHEETS = {
   deulli: {
     tab: "deulli",
-    title: "들리 사전신청",
+    subject: "[들리] 새 사전신청",
     headers: ["접수시각", "전화번호", "동의", "유입경로", "랜딩 URL"],
     // 전화번호는 중복 검사 대상이라 컬럼 위치를 따로 잡아 둔다(1-based)
     dedupeColumn: 2,
@@ -33,8 +33,8 @@ const SHEETS = {
 
   // form 값이 없는 기존 dionomy 폼. 첫 번째 탭에 그대로 쌓는다.
   default: {
-    tab: null, // null이면 getSheets()[0]
-    title: "얼리어답터 신청",
+    tab: null, // null이면 "관리 대상이 아닌 첫 번째 시트"
+    subject: "[Dionomy] 새 얼리어답터 신청",
     headers: [
       "접수시각",
       "이름",
@@ -58,6 +58,16 @@ const SHEETS = {
     },
   },
 };
+
+// 이 스크립트가 이름으로 만들고 관리하는 탭. default 폼이 여기에 잘못 쓰지 않도록
+// 아래 getSheet()에서 제외 대상으로 쓴다.
+const MANAGED_TABS = Object.keys(SHEETS)
+  .map(function (k) {
+    return SHEETS[k].tab;
+  })
+  .filter(function (t) {
+    return !!t;
+  });
 
 function doPost(e) {
   const lock = LockService.getScriptLock();
@@ -103,11 +113,22 @@ function doGet() {
 /** 탭을 찾고, 없으면 헤더까지 넣어 만든다 */
 function getSheet(config) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
-  if (!config.tab) return ss.getSheets()[0];
+
+  // tab이 없는 폼(기존 dionomy)은 "관리 대상이 아닌 첫 시트"에 쓴다.
+  // 그냥 getSheets()[0]으로 두면, deulli 탭이 앞쪽에 꽂히는 순간 dionomy 신청이
+  // deulli 탭에 쌓인다. 조용히 섞이는 사고라 인덱스로 고르면 안 된다.
+  if (!config.tab) {
+    const sheets = ss.getSheets();
+    for (let i = 0; i < sheets.length; i++) {
+      if (MANAGED_TABS.indexOf(sheets[i].getName()) === -1) return sheets[i];
+    }
+    return sheets[0];
+  }
 
   let sheet = ss.getSheetByName(config.tab);
   if (!sheet) {
-    sheet = ss.insertSheet(config.tab);
+    // 항상 맨 끝에 만든다 — 앞에 꽂히면 위의 방어가 없을 때 순서가 뒤집힌다
+    sheet = ss.insertSheet(config.tab, ss.getNumSheets());
     sheet.appendRow(config.headers);
     sheet.setFrozenRows(1);
     sheet.getRange(1, 1, 1, config.headers.length).setFontWeight("bold");
@@ -153,11 +174,7 @@ function notify(config, data) {
   const lines = config.headers.map(function (header, i) {
     return header + ": " + row[i];
   });
-  MailApp.sendEmail(
-    NOTIFY_EMAIL,
-    "[" + config.title + "] 새 신청",
-    lines.join("\n"),
-  );
+  MailApp.sendEmail(NOTIFY_EMAIL, config.subject, lines.join("\n"));
 }
 
 function json(obj) {
