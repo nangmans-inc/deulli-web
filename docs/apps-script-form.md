@@ -27,7 +27,16 @@
 ## 2. Apps Script 코드 붙여넣기
 
 1. 시트 상단 메뉴 **확장 프로그램 → Apps Script**
-2. 기본 `Code.gs` 내용을 [`apps-script/Code.gs`](../apps-script/Code.gs)로 전부 교체
+2. 기본 `Code.gs` 내용을 전부 교체합니다
+
+   ```bash
+   pnpm gs:local          # .env의 비밀값을 채운 사본을 만든다
+   ```
+
+   생기는 `apps-script/Code.local.gs`를 통째로 복사해 붙여넣으세요. 저장소의
+   [`apps-script/Code.gs`](../apps-script/Code.gs)는 `DISCORD_WEBHOOK`이 빈 채로
+   커밋돼 있고, 사본은 `.gitignore` 대상이라 올라가지 않습니다
+
 3. 파일 맨 위 상수 세 개를 채웁니다
    - `NOTIFY_EMAIL` — 알림 받을 주소 (비워 두면 메일 생략)
    - `DISCORD_WEBHOOK` — 디스코드 웹훅 URL (비워 두면 발송 생략).

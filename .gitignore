@@ -14,3 +14,5 @@ pnpm-debug.log*
 .env.production
 # macOS / editor
 .DS_Store
+# 비밀값이 채워진 붙여넣기용 사본
+apps-script/Code.local.gs

@@ -13,7 +13,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "og": "node scripts/generate-og.mjs",
-    "test:gs": "node apps-script/test/code.test.mjs"
+    "test:gs": "node apps-script/test/code.test.mjs",
+    "gs:local": "node scripts/gs-local.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
