@@ -22,7 +22,7 @@ const DISCORD_WEBHOOK = "";
 const DISCORD_SEND_FULL_PHONE = false;
 
 // 배포된 코드가 어느 버전인지 GET으로 확인하기 위한 값. Code.gs를 고치면 올린다.
-const VERSION = "2026-08-11.2";
+const VERSION = "2026-08-11.3";
 
 const TAB = "deulli";
 const HEADERS = ["접수시각", "전화번호", "동의", "유입경로", "랜딩 URL"];
@@ -232,6 +232,43 @@ function notifyDiscord(phone, row, total) {
     console.error("디스코드 발송 실패: " + err);
     recordDiscord("throw " + String(err).slice(0, 200));
   }
+}
+
+/**
+ * 편집기에서 직접 실행하는 용도. 두 가지를 한 번에 한다.
+ *
+ * 1. 권한 승인 — UrlFetchApp을 호출하므로 "외부 서비스에 연결" 동의 화면이 뜬다.
+ *    웹 앱은 배포 시점의 승인으로 돌기 때문에, 코드에 UrlFetchApp을 추가하는 것만으로는
+ *    승인 화면이 뜨지 않는다. 편집기에서 한 번 실행해 줘야 한다.
+ * 2. 확인 — 승인 후에는 디스코드에 테스트 메시지가 실제로 올라간다.
+ *
+ * 실행 후 반드시 재배포한다(배포 관리 → 편집 → 새 버전).
+ */
+function testDiscord() {
+  if (!DISCORD_WEBHOOK) {
+    throw new Error("DISCORD_WEBHOOK이 비어 있습니다. Code.local.gs를 붙여넣었는지 확인하세요.");
+  }
+  const res = UrlFetchApp.fetch(DISCORD_WEBHOOK, {
+    method: "post",
+    contentType: "application/json",
+    payload: JSON.stringify({
+      username: "들리 사전신청",
+      embeds: [
+        {
+          title: "권한 승인 확인",
+          description:
+            "Apps Script 편집기에서 실행한 테스트입니다. 이 메시지가 보이면 외부 요청 권한이 승인된 것입니다.",
+          color: 0x0150e5,
+          footer: { text: "deulli.com · " + VERSION },
+        },
+      ],
+    }),
+    muteHttpExceptions: true,
+  });
+  const out = "http " + res.getResponseCode() + " " + res.getContentText();
+  recordDiscord("test " + out);
+  console.log(out);
+  return out;
 }
 
 function json(obj) {
