@@ -19,8 +19,6 @@ import { site } from "../data/site";
       )
     }
 
-    <p class="intro">{prelaunch.formIntro}</p>
-
     <div class="field">
       <label for="f-phone">{prelaunch.formLabel}</label>
       <div class="row">
@@ -289,7 +287,7 @@ import { site } from "../data/site";
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
-    margin: 0 0 0.7rem;
+    margin: 0 0 1.15rem;
     border-radius: var(--radius-pill);
     background: var(--color-brand-soft);
     padding: 0.3rem 0.75rem;
@@ -303,13 +301,6 @@ import { site } from "../data/site";
     height: 0.36rem;
     border-radius: var(--radius-pill);
     background: var(--color-brand);
-  }
-
-  .intro {
-    margin: 0 0 0.85rem;
-    font-size: 0.86rem;
-    line-height: 1.55;
-    color: var(--color-fg-muted);
   }
 
   .field label {
