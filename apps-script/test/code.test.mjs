@@ -13,8 +13,10 @@ import { dirname, join } from "node:path";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 
 // ── Apps Script 런타임 흉내 ──────────────────────────────
-function makeEnv(initialSheets) {
+function makeEnv(initialSheets, opts = {}) {
   const mails = [];
+  const posts = [];
+  const errors = [];
   const sheets = initialSheets.map((name) => ({ name, rows: [] }));
   const api = (o) => ({
     getName: () => o.name,
@@ -45,6 +47,8 @@ function makeEnv(initialSheets) {
   return {
     sheets,
     mails,
+    posts,
+    errors,
     globals: {
       SpreadsheetApp: { getActiveSpreadsheet: () => ss },
       MailApp: {
@@ -53,6 +57,17 @@ function makeEnv(initialSheets) {
       LockService: {
         getScriptLock: () => ({ waitLock() {}, releaseLock() {} }),
       },
+      UrlFetchApp: {
+        fetch: (url, params) => {
+          if (opts.fetchThrows) throw new Error("network down");
+          posts.push({ url, body: JSON.parse(params.payload) });
+          return {
+            getResponseCode: () => opts.fetchStatus ?? 204,
+            getContentText: () => opts.fetchBody ?? "",
+          };
+        },
+      },
+      console: { error: (m) => errors.push(String(m)), log: () => {} },
       ContentService: {
         MimeType: { JSON: "json" },
         createTextOutput: (t) => ({ setMimeType: () => t }),
@@ -61,12 +76,25 @@ function makeEnv(initialSheets) {
   };
 }
 
-const src = readFileSync(join(root, "apps-script", "Code.gs"), "utf8");
-function load(env) {
+const rawSrc = readFileSync(join(root, "apps-script", "Code.gs"), "utf8");
+/** 저장소의 Code.gs는 웹훅 URL이 비어 있다(public 저장소라 비밀값을 넣지 않는다).
+ *  테스트에서는 채운 상태를 흉내 낸다. */
+function load(env, { webhook = "", fullPhone = false } = {}) {
+  let src = rawSrc.replace(
+    'const DISCORD_WEBHOOK = "";',
+    "const DISCORD_WEBHOOK = " + JSON.stringify(webhook) + ";",
+  );
+  if (fullPhone) {
+    src = src.replace(
+      "const DISCORD_SEND_FULL_PHONE = false;",
+      "const DISCORD_SEND_FULL_PHONE = true;",
+    );
+  }
   const keys = Object.keys(env.globals);
   const fn = new Function(...keys, src + "\nreturn { doPost, doGet };");
   return fn(...keys.map((k) => env.globals[k]));
 }
+const HOOK = "https://discord.test/api/webhooks/1/abc";
 const post = (a, o) =>
   JSON.parse(a.doPost({ postData: { contents: JSON.stringify(o) } }));
 
@@ -190,6 +218,82 @@ console.log("5) 기존 deulli 탭이 있으면 재사용");
   post(load(env), deulli);
   check("탭을 새로 만들지 않음", env.sheets.length === 2);
   check("기존 탭에 이어 씀", env.sheets[1].rows.length === 2);
+}
+
+console.log("7) 디스코드 웹훅");
+{
+  const env = makeEnv(["얼리어답터"]);
+  post(load(env, { webhook: HOOK }), deulli);
+  check("웹훅 1회 호출", env.posts.length === 1);
+  const b = env.posts[0]?.body;
+  check("URL 정확", env.posts[0]?.url === HOOK);
+  check(
+    "전화번호 가림",
+    b?.embeds[0].fields[0].value === "010-****-5678",
+    b?.embeds[0].fields[0].value,
+  );
+  check("원본 번호가 payload에 없음", !JSON.stringify(b).includes("1234-5678"));
+  check(
+    "누적 인원 표기",
+    /누적 1명/.test(b?.embeds[0].title),
+    b?.embeds[0].title,
+  );
+}
+{
+  const env = makeEnv(["얼리어답터"]);
+  post(load(env, { webhook: HOOK, fullPhone: true }), deulli);
+  check(
+    "옵션 켜면 원본 번호 전송",
+    env.posts[0].body.embeds[0].fields[0].value === "010-1234-5678",
+  );
+}
+{
+  const env = makeEnv(["얼리어답터"]);
+  const api = load(env, { webhook: HOOK });
+  post(api, deulli);
+  const dup = post(api, deulli);
+  check(
+    "중복 신청은 웹훅 안 쏨",
+    env.posts.length === 1 && dup.duplicate === true,
+  );
+  const bad = post(api, { ...deulli, phone: "02-1234-5678" });
+  check("거절된 신청도 웹훅 안 쏨", env.posts.length === 1 && bad.ok === false);
+}
+{
+  const env = makeEnv(["얼리어답터"]);
+  check(
+    "웹훅 URL이 비면 호출 안 함",
+    (post(load(env), deulli), env.posts.length === 0),
+  );
+}
+
+console.log("8) ★ 알림이 실패해도 신청은 저장된다");
+{
+  const env = makeEnv(["얼리어답터"], { fetchThrows: true });
+  const r = post(load(env, { webhook: HOOK }), deulli);
+  const d = env.sheets.find((s) => s.name === "deulli");
+  check(
+    "응답은 여전히 ok",
+    r.ok === true && r.duplicate === false,
+    JSON.stringify(r),
+  );
+  check("행은 저장됨", d.rows.length === 2);
+  check(
+    "에러는 로그로만",
+    env.errors.some((e) => /디스코드 발송 실패/.test(e)),
+  );
+}
+{
+  const env = makeEnv(["얼리어답터"], {
+    fetchStatus: 404,
+    fetchBody: "unknown webhook",
+  });
+  const r = post(load(env, { webhook: HOOK }), deulli);
+  check("웹훅 404여도 신청은 ok", r.ok === true);
+  check(
+    "응답 코드를 로그에 남김",
+    env.errors.some((e) => /디스코드 응답 404/.test(e)),
+  );
 }
 
 console.log("6) doGet 헬스체크");
