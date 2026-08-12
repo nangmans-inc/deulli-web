@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import { site } from "../data/site";
 import Analytics from "../components/Analytics.astro";
+import MetaPixel from "../components/MetaPixel.astro";
 
 interface Props {
   title?: string;
@@ -108,8 +109,10 @@ const appJsonLd = {
     />
 
     <Analytics />
+    <MetaPixel />
   </head>
   <body>
+    <MetaPixel fallback />
     <slot />
 
     <!-- scroll-reveal: adds .is-visible to .reveal elements as they enter view -->
