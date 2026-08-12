@@ -17,12 +17,15 @@ const NOTIFY_EMAIL = "contact@nangmans.com";
 // URL을 아는 사람은 누구나 채널에 글을 쓸 수 있으므로 사실상 비밀값이다.
 const DISCORD_WEBHOOK = "";
 
-// 디스코드로 전화번호를 통째로 보낼지. 기본은 가림(010-****-5678).
-// 켜기 전에 개인정보 처리방침을 먼저 고쳐야 한다 — 아래 maskPhone 주석 참고.
-const DISCORD_SEND_FULL_PHONE = false;
+// 디스코드로 전화번호를 통째로 보낼지.
+//
+// true면 디스코드(해외 서비스)로 전화번호가 그대로 나간다. 개인정보 국외 이전에
+// 해당하므로 개인정보 처리방침에 이전받는 자·국가·목적·보유기간이 적혀 있어야 한다
+// (deulli-policy 저장소). false로 두면 010-****-5678 형태로만 나간다.
+const DISCORD_SEND_FULL_PHONE = true;
 
 // 배포된 코드가 어느 버전인지 GET으로 확인하기 위한 값. Code.gs를 고치면 올린다.
-const VERSION = "2026-08-11.3";
+const VERSION = "2026-08-12.1";
 
 const TAB = "deulli";
 const HEADERS = ["접수시각", "전화번호", "동의", "유입경로", "랜딩 URL"];
@@ -152,10 +155,7 @@ function readLastDiscord() {
 /**
  * 010-1234-5678 → 010-****-5678
  *
- * 디스코드는 해외 서비스라 번호를 그대로 보내면 개인정보 국외 이전에 해당한다.
- * 지금 동의문에는 그런 내용이 없고 처리방침에도 이전 대상이 적혀 있지 않다.
- * 알림의 목적은 "새 신청이 들어왔다"를 아는 것이지 번호를 옮기는 게 아니므로,
- * 번호는 시트에만 두고 디스코드에는 가려서 보낸다.
+ * DISCORD_SEND_FULL_PHONE이 false일 때 쓴다.
  */
 function maskPhone(formatted) {
   const parts = String(formatted || "").split("-");

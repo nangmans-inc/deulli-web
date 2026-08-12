@@ -93,12 +93,11 @@ function load(env, { webhook = "", fullPhone = false } = {}) {
     'const DISCORD_WEBHOOK = "";',
     "const DISCORD_WEBHOOK = " + JSON.stringify(webhook) + ";",
   );
-  if (fullPhone) {
-    src = src.replace(
-      "const DISCORD_SEND_FULL_PHONE = false;",
-      "const DISCORD_SEND_FULL_PHONE = true;",
-    );
-  }
+  // 저장소의 기본값이 무엇이든 테스트가 원하는 값으로 강제한다
+  src = src.replace(
+    /const DISCORD_SEND_FULL_PHONE = (?:true|false);/,
+    "const DISCORD_SEND_FULL_PHONE = " + String(fullPhone) + ";",
+  );
   const keys = Object.keys(env.globals);
   const fn = new Function(...keys, src + "\nreturn { doPost, doGet };");
   return fn(...keys.map((k) => env.globals[k]));
@@ -232,7 +231,7 @@ console.log("5) 기존 deulli 탭이 있으면 재사용");
 console.log("7) 디스코드 웹훅");
 {
   const env = makeEnv(["얼리어답터"]);
-  post(load(env, { webhook: HOOK }), deulli);
+  post(load(env, { webhook: HOOK, fullPhone: false }), deulli);
   check("웹훅 1회 호출", env.posts.length === 1);
   const b = env.posts[0]?.body;
   check("URL 정확", env.posts[0]?.url === HOOK);
@@ -255,6 +254,12 @@ console.log("7) 디스코드 웹훅");
     "옵션 켜면 원본 번호 전송",
     env.posts[0].body.embeds[0].fields[0].value === "010-1234-5678",
   );
+}
+{
+  // 저장소에 커밋된 기본값 자체를 확인한다 — 개인정보가 나가는 설정이라
+  // 의도치 않게 바뀌면 알아야 한다
+  const m = rawSrc.match(/const DISCORD_SEND_FULL_PHONE = (true|false);/);
+  check("저장소 기본값이 true(원본 전송)", m?.[1] === "true", m?.[1]);
 }
 {
   const env = makeEnv(["얼리어답터"]);
