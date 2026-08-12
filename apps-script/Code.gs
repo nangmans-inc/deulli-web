@@ -25,7 +25,7 @@ const DISCORD_WEBHOOK = "";
 const DISCORD_SEND_FULL_PHONE = true;
 
 // 배포된 코드가 어느 버전인지 GET으로 확인하기 위한 값. Code.gs를 고치면 올린다.
-const VERSION = "2026-08-12.1";
+const VERSION = "2026-08-12.2";
 
 const TAB = "deulli";
 const HEADERS = ["접수시각", "전화번호", "동의", "유입경로", "랜딩 URL"];
@@ -92,6 +92,9 @@ function doGet() {
     msg: "deulli form endpoint alive",
     version: VERSION,
     discord: !!DISCORD_WEBHOOK,
+    // 개인정보가 나가는 설정이라 밖에서 확인할 수 있어야 한다.
+    // 붙여넣기·재배포를 빠뜨리면 저장소는 true인데 배포본은 false인 상태가 된다.
+    fullPhone: DISCORD_SEND_FULL_PHONE,
     mail: !!NOTIFY_EMAIL,
     lastDiscord: readLastDiscord(),
   });

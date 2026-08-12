@@ -373,6 +373,19 @@ console.log("6) doGet 헬스체크");
   check("웹훅 설정되면 discord=true", r.discord === true);
   check("URL 자체는 응답에 없음", !JSON.stringify(r).includes("discord.test"));
 }
+{
+  const on = JSON.parse(
+    load(makeEnv(["얼리어답터"]), { webhook: HOOK, fullPhone: true }).doGet(),
+  );
+  const off = JSON.parse(
+    load(makeEnv(["얼리어답터"]), { webhook: HOOK, fullPhone: false }).doGet(),
+  );
+  check(
+    "fullPhone 설정이 응답에 드러남",
+    on.fullPhone === true && off.fullPhone === false,
+    String(on.fullPhone) + "/" + String(off.fullPhone),
+  );
+}
 
 console.log(`\n결과: ${pass} PASS / ${fail} FAIL`);
 process.exit(fail ? 1 : 0);
