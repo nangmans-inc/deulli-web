@@ -31,6 +31,11 @@ export const site = {
   /** Figma의 스토어 아트에서 확정된 슬로건. JSON-LD와 OG에 같은 문구를 쓴다. */
   slogan: "듣다 보면 들리니까, 들리",
 
+  stores: {
+    appStore: "https://apps.apple.com/kr/app/id6798545609",
+    googlePlay: "https://play.google.com/store/apps/details?id=com.deulli.app",
+  },
+
   /** 정책 문서는 별도 정적 사이트(deulli-policy)에서 서비스한다. */
   policy: {
     privacy: "https://deulli.policy.nangmans.com/privacy",
