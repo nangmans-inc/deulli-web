@@ -1,0 +1,54 @@
+---
+import { site } from "../data/site";
+---
+
+<div class="store-links">
+  <a
+    class="store-link"
+    href={site.stores.appStore}
+    target="_blank"
+    rel="noopener"
+    aria-label="App Store에서 들리 다운로드 (새 창)"
+  >
+    <img src="/badges/app-store-ko.svg" alt="" width="130" height="40" />
+  </a>
+  <a
+    class="store-link store-link--google-play"
+    href={site.stores.googlePlay}
+    target="_blank"
+    rel="noopener"
+    aria-label="Google Play에서 들리 다운로드 (새 창)"
+  >
+    <img src="/badges/google-play-ko.png" alt="" width="646" height="250" />
+  </a>
+</div>
+
+<style>
+  .store-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .store-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    border-radius: 0.5rem;
+  }
+
+  .store-link img {
+    display: block;
+    width: auto;
+    height: 3rem;
+  }
+
+  /* Google 원본의 투명 여백을 유지하면서 두 배지의 보이는 높이를 48px로 맞춘다.
+     원본 250px 중 배지 본체는 192px이므로 이미지 전체 높이는 62.5px이다. */
+  .store-link--google-play img {
+    height: 3.90625rem;
+  }
+</style>

@@ -86,6 +86,7 @@ src/
   components/
     Hero.astro                슬로건·마스코트·스크린샷·폼   ┐ 전환 시
     SignupForm.astro          전화번호 폼·검증·전송         ┘ 통째로 삭제
+    StoreLinks.astro          App Store·Google Play 다운로드 링크
     Analytics.astro           GA4 (PROD + 측정 ID 있을 때만)
     ui/                       CheckIcon, Multiline
   data/
@@ -112,6 +113,19 @@ docs/apps-script-form.md      시트·Apps Script 설정 절차
 
 `SignupForm.astro`는 **밝은 면 위에 놓이는 것을 전제로** 색을 잡았다. 어두운 면으로 옮기면
 입력창 테두리·동의문·오류색이 전부 안 보이므로 그때 색부터 다시 봐야 한다.
+
+### 스토어 버튼
+
+신청 폼 아래에 App Store·Google Play 다운로드 버튼을 둔다. 주소는 `src/data/site.ts`의
+`stores`에서 관리한다. 한국어 공식 배지를 `public/badges/`에 저장해 외부 이미지 서버에
+의존하지 않으며, App Store를 먼저 배치하고 두 배지의 보이는 높이를 48px로 맞춘다.
+좁은 화면에서는 줄바꿈하고, 신청 완료 화면에서도 버튼을 계속 보여준다.
+
+배지는 [Apple 공식 배지 API](https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ko-kr?size=250x83)와
+[Google Play 공식 한국어 배지](https://play.google.com/intl/en_us/badges/static/images/badges/ko_badge_web_generic.png) 원본을 수정 없이 사용한다.
+기존 들리 팔레트와 Pretendard를 유지하고, 스토어를 즉시 식별할 수 있는 검정 배지를 보조
+액션으로 배치한다. 버튼 추가의 디자인 기준은 ENERGY 1 / RHYTHM 1 / MOTION 1이며,
+별도의 애니메이션을 넣지 않는다.
 
 ## 폼은 어디로 가는가
 
