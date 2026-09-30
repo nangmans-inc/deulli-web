@@ -37,21 +37,25 @@ pnpm og           # public/og-image.png 재생성
 [deulli Figma 파일](https://www.figma.com/design/kZeAdHPAC8JeBHAGE2D6p9/deulli)에서 가져왔다.
 **여기서 새로 지어내지 않는다.** 바꿔야 하면 Figma를 먼저 고치고 이쪽에 반영한다.
 
-| 이 저장소                         | Figma 원본                                  |
-| --------------------------------- | ------------------------------------------- |
-| `styles/global.css`의 `@theme`    | Deulli Color System / v1 (`89:2`)           |
-| 서체·타입 스케일                  | Deulli Design System · Typography (`103:2`) |
-| 슬로건 "듣다 보면 들리니까, 들리" | FINAL 1 · 슬로건 + 재생화면 목업 (`213:2`)  |
-| 아이보리 + 네이비 + 블루 조합     | Feature Graphic · v2 안들리면들리 (`291:3`) |
-| `assets/mascot.png`               | deulli-mascot-hq-v5 (`170:3`)               |
-| `assets/app-player.png`           | app-01-player (`204:5`)                     |
+| 이 저장소                         | Figma 원본                                            |
+| --------------------------------- | ----------------------------------------------------- |
+| `styles/global.css`의 `@theme`    | Deulli Color System / v1 (`89:2`)                     |
+| 서체·타입 스케일                  | Deulli Design System · Typography (`103:2`)           |
+| 슬로건 "듣다 보면 들리니까, 들리" | FINAL 1 · 슬로건 + 재생화면 목업 (`213:2`)            |
+| 아이보리 + 네이비 + 블루 조합     | Feature Graphic · v2 안들리면들리 (`291:3`)           |
+| `assets/mascot.png`               | deulli-mascot-hq-v5 (`170:3`)                         |
+| `assets/hero-mockup.png`          | Perspective iPhone 17 Mockup · Semi Right (`2391:52`) |
 
 ### 목업을 받을 때 — export 말고 rawImages
 
-`319:66`은 프레임이 아니라 **채움이 둘 겹친 사각형 노드**다 — `#f5f5f5` 배경 채움 위에
-목업 이미지 채움. 그래서 MCP의 **export URL로 받으면 배경 채움까지 함께 그려져** 회색 판이
-붙은 PNG가 나온다(모서리 픽셀 `245,245,245,255`). `defaultFormat`을 png로 지정해도 같다 —
-투명하게 받을 방법은 응답의 **`rawImages` URL**뿐이고, 받은 뒤 `trim()` 한다
+현재 목업은 [Figma `2391:52`](https://www.figma.com/design/kZeAdHPAC8JeBHAGE2D6p9/deulli?node-id=2391-52)의
+**Perspective iPhone 17 Mockup (Semi Right)**다. `download_assets` 응답의 **`rawImages` URL**로
+받은 2458×4096 투명 PNG 원본을 수정 없이 저장한다. 웹에서는 `astro:assets`가 화면 크기에
+맞는 WebP를 생성하므로 원본 PNG 전체를 브라우저에 보내지 않는다.
+
+노드의 **export URL은 배경 채움까지 함께 그릴 수 있다.** 예전 `319:66` 목업은
+`#f5f5f5` 배경 채움이 겹쳐 있어 export에 회색 판이 붙었고, 새 노드의 Figma 렌더에도
+밝은 배경이 보인다. 페이지에는 배경이 투명한 원본 이미지 채움만 사용한다
 (모서리 `0,0,0,0`).
 
 목업이 흰 면에서 네모난 회색 판을 달고 있으면 두 가지를 순서대로 의심한다:
@@ -94,7 +98,7 @@ src/
     prelaunch.ts              사전신청 카피         (전환 시 삭제)
   assets/
     mascot.png                마스코트 — astro:assets가 webp로 최적화
-    hero-mockup.png           재생화면이 담긴 iPhone 목업 (배경 투명)
+    hero-mockup.png           Figma 2391:52의 iPhone 17 목업 (배경 투명)
     mascot.png                마스코트 — 1단 화면에서 슬로건 오른쪽에만 세운다
   styles/global.css           디자인 토큰 2계층 + base/components 레이어
 public/
