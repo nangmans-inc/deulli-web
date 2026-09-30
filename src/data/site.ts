@@ -7,7 +7,7 @@ export const site = {
   email: "contact@nangmans.com",
   defaultTitle: "들리 deulli · 팟캐스트로 하는 영어 공부",
   description:
-    "들리(deulli)는 팟캐스트로 영어를 공부하는 앱입니다. 듣다가 놓친 문장은 화면에서 영어와 한국어로 바로 확인하고, 그 문장부터 다시 들으면 됩니다. 지금 전화번호를 남기시면 출시일에 가장 먼저 알려드립니다.",
+    "들리(deulli)는 팟캐스트로 영어를 공부하는 앱입니다. 듣다가 놓친 문장은 화면에서 영어와 한국어로 바로 확인하고, 그 문장부터 다시 들으면 됩니다.",
   // 검색·SEO용 키워드. 브랜드명과 제품 핵심어 위주.
   keywords: [
     "들리",
@@ -21,15 +21,18 @@ export const site = {
     "영어 공부 앱",
     "팟캐스트 영어",
     "영어 회화 듣기",
-    "출시 알림",
-    "사전신청",
   ],
   ogImage: "/og-image.png", // 1200x630
   ogImageAlt:
-    "들리 deulli — 듣다 보면 들리니까, 들리. 팟캐스트로 하는 영어 공부",
+    "들리 deulli: 듣다 보면 들리니까, 들리. 팟캐스트로 하는 영어 공부",
 
   /** Figma의 스토어 아트에서 확정된 슬로건. JSON-LD와 OG에 같은 문구를 쓴다. */
   slogan: "듣다 보면 들리니까, 들리",
+
+  hero: {
+    heading: "듣다 보면\n들리니까,",
+    lead: "팟캐스트로 하는 최고의 영어 공부",
+  },
 
   stores: {
     appStore: "https://apps.apple.com/kr/app/id6798545609",

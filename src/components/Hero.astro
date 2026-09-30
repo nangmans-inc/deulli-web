@@ -1,24 +1,13 @@
 ---
 import { Image } from "astro:assets";
-import SignupForm from "./SignupForm.astro";
 import StoreLinks from "./StoreLinks.astro";
 import Multiline from "./ui/Multiline.astro";
-import { prelaunch } from "../data/prelaunch";
 import { site } from "../data/site";
 import heroMockup from "../assets/hero-mockup.png";
 import mascot from "../assets/mascot.png";
 ---
 
-{
-  /* 왼쪽 카피 · 오른쪽 목업 · 신청 폼은 카피 아래.
-    dionomy-landing의 히어로 구성을 따르되 모바일을 제대로 잡았다 — 그쪽은
-    목업이 먼저 오도록 order를 뒤집어서, 좁은 화면에서 슬로건보다 사진이 앞선다. */
-}
-<section class="hero" data-ga-section="prelaunch">
-  {
-    /* 로고만 있는 최소 헤더. 링크는 두지 않는다 — 사전신청 페이지에서 피해야 하는 건
-      브랜드 마크가 아니라 페이지 밖으로 빠져나갈 경로다. */
-  }
+<section class="hero" data-ga-section="home">
   <header class="masthead container-content reveal">
     <div class="brand">
       <img
@@ -40,8 +29,8 @@ import mascot from "../assets/mascot.png";
       }
       <div class="headline">
         <h1 class="reveal" style="--reveal-delay: 100ms;">
-          <Multiline text={prelaunch.heading} />
-          <span class="brandword">{prelaunch.headingBrand}</span>
+          <Multiline text={site.hero.heading} />
+          <span class="brandword">{site.nameKo}</span>
         </h1>
         <Image
           class="buddy reveal"
@@ -54,10 +43,9 @@ import mascot from "../assets/mascot.png";
         />
       </div>
 
-      <p class="lead reveal" style="--reveal-delay: 140ms;">{prelaunch.lead}</p>
+      <p class="lead reveal" style="--reveal-delay: 140ms;">{site.hero.lead}</p>
 
-      <div class="form reveal" style="--reveal-delay: 180ms;">
-        <SignupForm />
+      <div class="downloads reveal" style="--reveal-delay: 180ms;">
         <StoreLinks />
       </div>
     </div>
@@ -165,7 +153,7 @@ import mascot from "../assets/mascot.png";
     color: var(--color-fg-muted);
   }
 
-  .form {
+  .downloads {
     max-width: 27rem;
     margin-top: 1.75rem;
   }
@@ -184,24 +172,20 @@ import mascot from "../assets/mascot.png";
   }
 
   /* ── 푸터 ─────────────────────────────────────────────── */
-  /* 1단에서는 푸터가 블롭의 옅은 파란 면 위에 놓인다. faint(#9eacbc)로는 대비가
-     모자라 한 단계 진한 subtle을 쓴다. */
+  /* 작은 저작권 문구도 옅은 배경 위에서 읽히도록 본문 보조색을 쓴다. */
   .foot {
     position: relative;
     margin-top: 2rem;
     font-size: 0.75rem;
-    color: var(--color-fg-subtle);
+    color: var(--color-fg-muted);
   }
   .foot p {
     margin: 0;
   }
 
   /* ── 1단 화면 ─────────────────────────────────────────── */
-  /* 목업을 아예 내린다. 좁은 화면에서 목업이 있으면 폼이 첫 화면 밖으로 밀리는데,
-     사전신청 페이지에서 그 자리는 사진보다 입력창이 가져가는 게 맞다.
-
-     정렬은 데스크톱과 같이 왼쪽으로 둔다. 본문만 가운데로 모으면 왼쪽 위에 붙은
-     헤더와 축이 어긋나 어색해진다. */
+  /* 모바일은 마스코트로 제품을 보여주고 다운로드 버튼을 첫 화면에 둔다.
+     본문을 헤더와 같은 왼쪽 축에 맞춘다. */
   @media (max-width: 699px) {
     .shot {
       display: none;
@@ -247,7 +231,7 @@ import mascot from "../assets/mascot.png";
     .lead {
       margin-top: 0.75rem;
     }
-    .form {
+    .downloads {
       margin-top: 1.25rem;
     }
   }
