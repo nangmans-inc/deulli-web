@@ -139,7 +139,7 @@ const appJsonLd = {
           // 첫 화면에 이미 들어와 있는 요소는 옵저버에 맡기지 않는다.
           // rootMargin의 -10%가 화면 하단 10%에 걸친 요소를 제외시키는데,
           // 스크롤할 여지가 없는 한 화면짜리 페이지에서는 그 요소가 영영
-          // opacity:0으로 남는다. (사전신청 페이지의 푸터가 실제로 그랬다)
+          // opacity:0으로 남는다.
           if (el.getBoundingClientRect().top < window.innerHeight) {
             // 다음 프레임에 넣어야 초기 스타일이 커밋된 뒤라 transition이 재생된다
             requestAnimationFrame(() =>

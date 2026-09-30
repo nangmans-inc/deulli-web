@@ -2,10 +2,9 @@
 
 영어 팟캐스트 학습 앱 **들리(deulli)**의 공식 웹사이트.
 
-배포 주소 — **https://deulli.com**
+배포 주소: **https://deulli.com**
 
-지금은 **사전신청 페이지 한 장**이다. 출시하면 같은 저장소에서 공식 홈페이지로 갈아끼운다.
-(→ [공식 페이지로 전환](#공식-페이지로-전환))
+앱 소개와 **App Store·Google Play 다운로드**를 제공하는 단일 페이지다.
 
 빌드는 Astro, 스타일은 Tailwind v4. `dionomy-landing`과 같은 구성이라 그쪽에서 만든
 컴포넌트·설정을 그대로 가져다 쓸 수 있다.
@@ -21,15 +20,6 @@ pnpm og           # public/og-image.png 재생성
 ```
 
 ---
-
-## 왜 사전신청 페이지가 필요한가
-
-앱을 만드는 동안 **출시 시점에 연락할 수 있는 사람 명단**을 모은다. 출시일에 문자를 한 통
-보내는 것이 전부라 받는 정보도 전화번호 하나뿐이다.
-
-받는 항목을 늘릴수록 전환율은 떨어진다. 이름·이메일·관심분야를 묻고 싶은 유혹이 있지만,
-출시 알림에 필요한 건 번호 하나다. 필드를 추가하려면 **그 데이터로 무엇을 할지부터**
-정하고 개인정보 처리방침의 수집 항목도 같이 고쳐야 한다.
 
 ## 디자인 원본은 Figma다
 
@@ -76,37 +66,30 @@ node -e "require('sharp')('src/assets/hero-mockup.png').ensureAlpha().raw()
 제품을 글머리표로 설명하지 않고 **실제 플레이어 화면을 그대로 보여준다.** 문장이 어떻게
 짚이는지는 기능 설명 세 줄보다 스크린샷 하나가 빠르다.
 
-레이아웃은 `dionomy-landing`의 히어로 구성을 가져왔다 — 왼쪽 카피, 오른쪽 목업, 신청 폼은
-카피 아래. 다만 **모바일은 그쪽을 따라가지 않았다.** dionomy는 `order`를 뒤집어 좁은 화면에서
-목업이 슬로건보다 먼저 오고, 2단 전환이 1024px이라 태블릿 세로에서 오른쪽이 통째로 빈다.
-여기서는 순서를 뒤집지 않고 768px부터 가른다.
+700px 이상에서는 왼쪽에 브랜드 카피와 다운로드 버튼, 오른쪽에 재생 화면 목업을 배치한다.
+모바일에서는 슬로건 옆의 마스코트로 제품을 보여주고 다운로드 버튼을 첫 화면에 둔다.
 
 ## 구조
 
 ```
 src/
-  pages/index.astro           사전신청 페이지 (전환 시 여기를 갈아끼운다)
+  pages/index.astro           앱 다운로드 페이지
   layouts/BaseLayout.astro    <head> 메타·JSON-LD·스크롤 리빌
   components/
-    Hero.astro                슬로건·마스코트·스크린샷·폼   ┐ 전환 시
-    SignupForm.astro          전화번호 폼·검증·전송         ┘ 통째로 삭제
+    Hero.astro                슬로건·마스코트·스크린샷·다운로드 버튼
     StoreLinks.astro          App Store·Google Play 다운로드 링크
     Analytics.astro           GA4 (PROD + 측정 ID 있을 때만)
-    ui/                       CheckIcon, Multiline
+    ui/                       Multiline
   data/
-    site.ts                   도메인·브랜드·SEO 메타 (계속 쓴다)
-    prelaunch.ts              사전신청 카피         (전환 시 삭제)
+    site.ts                   도메인·브랜드 카피·스토어 주소·SEO 메타
   assets/
     mascot.png                마스코트 — astro:assets가 webp로 최적화
     hero-mockup.png           Figma 2391:52의 iPhone 17 목업 (배경 투명)
-    mascot.png                마스코트 — 1단 화면에서 슬로건 오른쪽에만 세운다
   styles/global.css           디자인 토큰 2계층 + base/components 레이어
 public/
   logo.svg, favicon.svg       로고 (deulli-policy와 동일 파일)
   og-image.png                1200×630 공유 카드 — scripts/generate-og.mjs 산출물
   fonts/pretendard/           자체 호스팅 Pretendard (가변·동적 서브셋)
-apps-script/Code.gs           폼 백엔드 — 시트에 적재 + 메일 알림
-docs/apps-script-form.md      시트·Apps Script 설정 절차
 ```
 
 ### 색
@@ -115,47 +98,26 @@ docs/apps-script-form.md      시트·Apps Script 설정 절차
 팔레트(`--color-blue-*`)를 직접 쓰지 말고 의미 역할(`--color-brand`, `--color-fg` …)만
 참조한다.
 
-`SignupForm.astro`는 **밝은 면 위에 놓이는 것을 전제로** 색을 잡았다. 어두운 면으로 옮기면
-입력창 테두리·동의문·오류색이 전부 안 보이므로 그때 색부터 다시 봐야 한다.
-
 ### 스토어 버튼
 
-신청 폼 아래에 App Store·Google Play 다운로드 버튼을 둔다. 주소는 `src/data/site.ts`의
+브랜드 카피 아래에 App Store·Google Play 다운로드 버튼을 둔다. 주소는 `src/data/site.ts`의
 `stores`에서 관리한다. 한국어 공식 배지를 `public/badges/`에 저장해 외부 이미지 서버에
 의존하지 않으며, App Store를 먼저 배치하고 두 배지의 보이는 높이를 48px로 맞춘다.
-좁은 화면에서는 줄바꿈하고, 신청 완료 화면에서도 버튼을 계속 보여준다.
+좁은 화면에서는 줄바꿈하고, 각 링크의 터치 영역은 최소 48px 높이로 둔다.
 
 배지는 [Apple 공식 배지 API](https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ko-kr?size=250x83)와
 [Google Play 공식 한국어 배지](https://play.google.com/intl/en_us/badges/static/images/badges/ko_badge_web_generic.png) 원본을 수정 없이 사용한다.
-기존 들리 팔레트와 Pretendard를 유지하고, 스토어를 즉시 식별할 수 있는 검정 배지를 보조
-액션으로 배치한다. 버튼 추가의 디자인 기준은 ENERGY 1 / RHYTHM 1 / MOTION 1이며,
+기존 들리 팔레트와 Pretendard를 사용하고, 스토어를 즉시 식별할 수 있는 검정 배지를 주요
+액션으로 배치한다. 버튼 자체의 디자인 기준은 ENERGY 1 / RHYTHM 1 / MOTION 1이며,
 별도의 애니메이션을 넣지 않는다.
-
-## 폼은 어디로 가는가
-
-브라우저 → Apps Script 웹 앱 → Google Sheet. 서버가 없다.
-
-설정 절차와 코드는 [docs/apps-script-form.md](docs/apps-script-form.md)에 있다. 기존
-`dionomy-landing` 시트를 재활용할지 새로 팔지도 거기서 정한다. payload에 `form: "deulli"`가
-실려 가고 스크립트가 그 값으로 탭을 고르므로, 어느 쪽을 택해도 클라이언트 코드는 같다.
-
-`PUBLIC_FORM_ENDPOINT`가 비어 있으면 폼은 콘솔에 payload만 찍고 성공 화면으로 넘어간다.
-로컬 개발 중에는 비워 두면 된다.
-
-### 중복 신청
-
-같은 브라우저는 `localStorage`(`deulli:applied`)로 막고, 같은 번호는 Apps Script가 시트를
-훑어 막는다. 둘 다 사용자에게는 완료 화면을 보여준다 — "이미 신청하셨습니다"는 알려줄
-가치가 없고, 번호가 시트에 있는지를 외부에 노출하는 셈이라 좋지도 않다.
 
 ## 환경 변수
 
 `.env.example`을 `.env`로 복사해서 채운다. Vercel에도 같은 이름으로 등록한다.
 
-| 이름                   | 없으면                       |
-| ---------------------- | ---------------------------- |
-| `PUBLIC_FORM_ENDPOINT` | 폼이 전송하지 않고 콘솔 스텁 |
-| `PUBLIC_GA_ID`         | GA를 로드하지 않음           |
+| 이름           | 없으면             |
+| -------------- | ------------------ |
+| `PUBLIC_GA_ID` | GA를 로드하지 않음 |
 
 `PUBLIC_` 접두사가 붙은 값은 **빌드 시점에 클라이언트 번들로 인라인된다.** 배포 전에
 등록되어 있어야 하고, 비밀값은 절대 넣으면 안 된다.
@@ -171,32 +133,14 @@ Vercel에 정적 빌드로 올린다. `astro.config.mjs`의 `site`가 canonical�
 
 ## 측정
 
-GA4는 프로덕션 빌드에서만 로드된다(dev 트래픽 오염 방지). 폼 퍼널은 이렇게 찍힌다.
+GA4와 Meta Pixel은 프로덕션 빌드에서만 로드된다. GA4는 페이지 조회와 `home` 섹션 노출을,
+Meta Pixel은 `PageView`를 기록한다. 로컬 개발 서버에서는 둘 다 로드되지 않는다.
 
-| 이벤트                                     | 시점                       |
-| ------------------------------------------ | -------------------------- |
-| `signup_form_start`                        | 폼에 첫 입력               |
-| `signup_submit`                            | 제출 버튼 클릭(검증 전)    |
-| `signup_invalid` (`reason: phone,consent`) | 검증 실패 — 마찰 지점 파악 |
-| `generate_lead`                            | 신청 완료                  |
-| `signup_error`                             | 전송 실패                  |
+## 과거 운영 기록
 
-`signup_submit` 대비 `generate_lead` 비율이 낮으면 검증에서 막히고 있다는 뜻이고,
-`signup_invalid`의 `reason`이 어디인지 알려준다.
-
-## 공식 페이지로 전환
-
-사전신청이 끝나면:
-
-1. `src/pages/index.astro`의 내용을 공식 홈으로 교체
-2. `components/Hero.astro`, `components/SignupForm.astro`, `data/prelaunch.ts`, `assets/` 삭제
-3. `src/env.d.ts`에서 `PUBLIC_FORM_ENDPOINT` 항목 제거, Vercel 환경 변수도 삭제
-4. `apps-script/`, `docs/apps-script-form.md`는 남겨 둔다 — 시트에 남은 개인정보를 파기할
-   때까지 무엇을 어떻게 받았는지가 기록으로 필요하다
-5. `data/site.ts`의 `description`·`keywords`·`ogImage`를 제품 소개용으로 갱신하고 `pnpm og`
-6. 신청자에게 출시 문자를 보낸 뒤 시트의 전화번호 열을 파기 (개인정보 처리방침에 적은 대로)
-
-`data/site.ts`, `layouts/BaseLayout.astro`, `styles/global.css`, `public/fonts`는 그대로 쓴다.
+`apps-script/`와 [docs/apps-script-form.md](docs/apps-script-form.md)는 이전 폼의 코드와
+수집 항목·시트 설정을 확인하기 위한 보관 자료다. 현재 웹페이지에서는 호출하지 않는다.
+기존 개인정보의 보관·파기 이력을 확인할 수 있도록 이 자료는 유지한다.
 
 ## 관련 저장소
 
