@@ -4,7 +4,7 @@
 
 배포 주소: **https://deulli.com**
 
-앱 소개와 **App Store·Google Play 다운로드**를 제공하는 단일 페이지다.
+앱 소개·스토어 다운로드를 제공하는 정적 홈과 에피소드·쇼츠의 서버 렌더링 공유 페이지다.
 
 빌드는 Astro, 스타일은 Tailwind v4. `dionomy-landing`과 같은 구성이라 그쪽에서 만든
 컴포넌트·설정을 그대로 가져다 쓸 수 있다.
@@ -12,12 +12,19 @@
 ```bash
 pnpm install
 pnpm dev          # http://localhost:4321
-pnpm build        # dist/ 로 정적 빌드
-pnpm preview      # 빌드 결과 확인
+pnpm build        # Vercel 정적 홈 + 공유 SSR 함수 (.vercel/output/)
+pnpm test         # Node 22.18+ 계약·보안·캐시 단위 테스트
+pnpm test:http    # 로컬 mock API + 실제 Astro SSR HTTP 검증
+pnpm test:http --built # build 후 Vercel 함수 직접 실행 + 정적 홈 산출물 검증
 pnpm lint         # astro check + eslint
 pnpm format       # prettier --write
 pnpm og           # public/og-image.png 재생성
 ```
+
+Node 22.18 이상과 pnpm을 사용한다. Vercel adapter는 Astro 5와 호환되는
+`@astrojs/vercel@8.2.11`로 고정했다(peer `astro: ^5.0.0`, npm registry 확인).
+Vercel adapter는 `astro preview`를 지원하지 않으므로 로컬 SSR 확인은 `pnpm dev`나
+`pnpm test:http`를 사용한다. 빌드된 Vercel 함수는 `pnpm test:http --built`로 확인한다.
 
 ---
 
@@ -74,6 +81,10 @@ node -e "require('sharp')('src/assets/hero-mockup.png').ensureAlpha().raw()
 ```
 src/
   pages/index.astro           앱 다운로드 페이지
+  pages/share/[kind]/[id].astro  에피소드·쇼츠 공유 SSR
+  pages/share/og/[kind]/[id].ts   최신 서명 이미지 바이트 프록시
+  lib/share.ts               익명 API 계약·ID 검증·이미지 보안·제한 캐시
+  lib/share-service.ts       서버 환경 변수·로컬 폴백 이미지 연결
   layouts/BaseLayout.astro    <head> 메타·JSON-LD·스크롤 리빌
   components/
     Hero.astro                슬로건·마스코트·스크린샷·다운로드 버튼
@@ -115,21 +126,93 @@ public/
 
 `.env.example`을 `.env`로 복사해서 채운다. Vercel에도 같은 이름으로 등록한다.
 
-| 이름           | 없으면             |
-| -------------- | ------------------ |
-| `PUBLIC_GA_ID` | GA를 로드하지 않음 |
+| 이름           | 없으면                            |
+| -------------- | --------------------------------- |
+| `PUBLIC_GA_ID` | GA를 로드하지 않음                |
+| `API_BASE`     | `https://api.deulli.nangmans.com` |
 
 `PUBLIC_` 접두사가 붙은 값은 **빌드 시점에 클라이언트 번들로 인라인된다.** 배포 전에
 등록되어 있어야 하고, 비밀값은 절대 넣으면 안 된다.
 
+`API_BASE`는 **서버 전용**이며 `PUBLIC_` 접두사를 붙이지 않는다. Vercel 런타임의
+`process.env.API_BASE`를 우선하고 로컬 `.env` 값을 지원한다. HTTPS API URL을 사용하며,
+로컬 테스트에서는 `http://127.0.0.1:포트` 또는 `http://localhost:포트`도 허용한다.
+인증 헤더·사용자 쿠키를 API에 전달하지 않는다. URL에 자격증명·쿼리·fragment를 넣지 않는다.
+
+## 공개 공유 페이지
+
+- `https://deulli.com/share/episode/{id}` → 익명 `GET {API_BASE}/podcasts/{id}`.
+  응답의 `id`, `name`, `description`, `thumbnail_url`을 사용한다.
+- `https://deulli.com/share/shorts/{id}` → 새 익명 `GET {API_BASE}/shorts/{id}/share`.
+  응답은 `id`, `title`, `summary`, `podcast_id`, `podcast_name`, `thumbnail_url`이며
+  `summary`·`thumbnail_url`은 `null`을 허용한다. **백엔드 공개 계약 배포가 선행되어야 한다.**
+
+ID는 선행 0 없는 양의 JavaScript safe integer다. 잘못된 경로·없는/비공개 콘텐츠는 404,
+타임아웃·5xx·잘못된 응답은 503이며 오류 응답은 모두 `Cache-Control: no-store`다.
+백엔드 401/403/404/410은 공개 접근 불가로 처리한다. 형식 오류를 웹에서 미리 거르므로
+정상 ID에 대한 백엔드 422는 계약 오류(503)로 처리한다.
+
+OG/Twitter 태그는 JavaScript 실행 전 HTML에 포함되고 canonical은 요청 호스트·쿼리와
+관계없이 `https://deulli.com/share/...`다. 동적 콘텐츠는 Astro의 기본 escaping으로 출력한다.
+페이지는 자동 이동하지 않으며 사용자가 `deulli://app/episode/{id}` 또는
+`deulli://app/shorts/{id}` 버튼을 누르거나 기존 스토어 링크를 선택한다.
+
+공유 이미지 주소는 `/share/og/episode/{id}`·`/share/og/shorts/{id}`로 고정된다.
+서명 URL은 HTML·리다이렉트·응답 헤더에 노출하지 않는다. 프록시는 매 요청마다 공개
+메타데이터를 새로 받고 최신 서명 URL로 이미지를 내려받아 바이트를 반환한다.
+
+이미지는 HTTPS의 **정확한 호스트 `d19hzt4ehho5l3.cloudfront.net`만** 허용한다.
+2026-10-25 운영 익명 `GET /podcasts/105948` 응답의 `thumbnail_url`에서 이 호스트와
+`/images/channels/3.jpg` 경로를 확인했다(서명 쿼리 값은 저장하지 않음).
+다른 CloudFront 배포·임의 호스트·포트·자격증명은 허용하지 않으며 모든 upstream
+리다이렉트를 거부한다. CDN 변경 시 실제 메타데이터와 소유권을 확인하고 코드의
+`IMAGE_HOSTS`를 변경해야 한다. 클라이언트가 보낸 이미지 URL은 사용하지 않는다.
+
+메타데이터는 128 KiB, 이미지는 5 MiB까지 스트림으로 읽고 각 요청 전체에 5초 제한을 둔다.
+PNG/JPEG/WebP/GIF의 Content-Type과 파일 시그니처를 함께 검사하며 SVG는 허용하지 않는다.
+이미지가 없거나 안전하게 읽을 수 없으면 서버에 번들된 `public/og-image.png`를 반환한다.
+정상 이미지는 브라우저 60초·공유 CDN 300초, HTML은 공유 CDN 60초까지 캐시한다.
+따라서 공개 해제 직후 기존 CDN 응답이 남을 수 있는 상한은 각각 5분·1분이다.
+
+서버 메모리에는 성공한 이미지 바이트만 최대 32개/16 MiB/5분 보관한다. **새 메타데이터가
+여전히 공개이며 같은 허용 호스트·이미지 경로인 경우에만**, 이미지 다운로드 실패 시
+이 캐시를 폴백으로 사용한다. 메타데이터 오류/비공개 또는 이미지 경로 변경에는 기존
+캐시를 사용하지 않는다. 일시적 실패의 캐시·로컬 이미지 폴백은 `no-store`이며 메타데이터
+장애 시 로컬 이미지 응답도 503이다. 이 캐시는 서버 인스턴스별이며 지속성을 보장하지 않는다.
+
 ## 배포
 
-Vercel에 정적 빌드로 올린다. `astro.config.mjs`의 `site`가 canonical·og:url·sitemap의
+Vercel에 정적 홈과 SSR 함수를 함께 올린다. `output: "static"`을 유지하고 공유 페이지와
+이미지 경로만 `prerender = false`다. `astro.config.mjs`의 `site`가 홈의 canonical·og:url·sitemap의
 절대경로를 만들므로 도메인을 바꾸면 여기부터 고친다.
 
 - 프레임워크 프리셋: Astro (자동 감지)
 - 도메인: `deulli.com`
 - 환경 변수: 위 표
+- Node 런타임: 22.x. 빌드: `pnpm build`, 기존 정적 전용 output override가 있으면 제거한다.
+- `.vercel/output/`의 정적 홈과 `_render` 함수를 함께 배포한다. `dist/`만 업로드하면 공유가 동작하지 않는다.
+- 서버 함수에서 API와 위 CloudFront 호스트로 HTTPS 접근이 가능해야 한다.
+
+### 앱 링크 연결 전제
+
+`public/.well-known/apple-app-site-association`은
+`GT75SU9T79.com.deulli.app`의 `/share/episode/*`·`/share/shorts/*`만 연결한다.
+근거는 형제 앱 저장소 `ios/Flutter/Signing.xcconfig`의 `DEVELOPMENT_TEAM = GT75SU9T79`와
+`ios/Runner.xcodeproj/project.pbxproj`의 `PRODUCT_BUNDLE_IDENTIFIER = com.deulli.app`다.
+개인 로컬 signing override를 사용하는 앱은 이 운영 association 대상이 아니다.
+Vercel 헤더는 이 확장자 없는 파일을 `application/json`으로 제공한다.
+
+실제 iOS Universal Links 동작에는 운영 도메인 HTTPS, 인증·리다이렉트 없는 AASA 200 응답,
+배포 앱의 `applinks:deulli.com` entitlement·프로비저닝, HTTPS `/share/...` 수신 구현과
+실기기 검증이 필요하다. 앱 수신 구현은 `deulli-app`에서 담당한다. AASA를 올리는 것만으로
+기존 설치 앱이 즉시 연결되는 것은 아니며 Apple의 association 캐시도 확인해야 한다.
+
+Android는 **Play App Signing SHA-256 인증서 지문이 아직 확인되지 않아**
+`assetlinks.json`을 생성하지 않았다. 운영 Play Console의 앱 서명 인증서 SHA-256을 확보한 뒤
+패키지 `com.deulli.app`에 대한 `delegate_permission/common.handle_all_urls` association을
+`/.well-known/assetlinks.json`에 추가하고 앱의 HTTPS intent filter·autoVerify와 실기기
+검증을 완료해야 한다. 업로드 키·디버그 키 지문으로 대신하지 않는다.
+웹 배포, iOS/Android OS 연결, 실제 메신저 미리보기 재수집 검증은 별도 운영 절차다.
 
 ## 측정
 

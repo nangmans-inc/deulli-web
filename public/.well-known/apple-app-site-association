@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "GT75SU9T79.com.deulli.app",
+        "paths": ["/share/episode/*", "/share/shorts/*"]
+      }
+    ]
+  }
+}
