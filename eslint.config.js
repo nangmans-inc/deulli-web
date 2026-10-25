@@ -7,7 +7,7 @@ import globals from "globals";
 export default [
   {
     // 빌드 산출물·생성물·Astro 자동생성 타입은 린트 대상에서 제외
-    ignores: ["dist/", ".astro/", "node_modules/", "**/*.d.ts"],
+    ignores: ["dist/", ".astro/", ".vercel/", "node_modules/", "**/*.d.ts"],
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,
