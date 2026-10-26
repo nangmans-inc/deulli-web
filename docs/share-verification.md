@@ -1,17 +1,18 @@
 # 공개 공유 링크 구현·검증 기록
 
 - 날짜: 2026-10-26
-- 기준: main `70ddf74`(PR #7), 작업 브랜치 `fix/share-fallback-restore`.
-- 범위: PR #6 `c7e004a`의 전체 공유 UI/CSS 복원, 모바일 자동 이동의 방문 기록 보존,
-  테스트·문서 수정. 앱·백엔드 변경이나 배포는 하지 않았다.
-- 기존 운영·앱 검증 기록과 이번 코디네이터의 실제 Safari 진단, 웹 자동화 검증을 아래에서 구분한다.
+- 기준: main `1878919`(PR #8), 작업 브랜치 `feat/android-app-links`.
+- 범위: Android 정적 association·Vercel 헤더·기존 HTTP 검증·문서.
+  AASA·공유 fallback·OG 동작은 유지하며 앱·백엔드 변경이나 배포는 하지 않았다.
+- 이전 공유 fallback 복원 당시의 Safari·운영 검증 기록은 유지하고 Android 준비 상태를 갱신했다.
 
 ## 현재 공유 흐름
 
 1. 외부의 `/share/episode/{id}`·`/share/shorts/{id}` 링크는 OS의 유효한
    Universal/App Links 연결을 통해 앱에서 열릴 수 있다. Safari 주소창 입력이나 사용자의
    브라우저 열기 선택 때문에 앱이 설치되어 있어도 웹에 도달할 수 있다. 웹 도달은 앱
-   미설치의 증거가 아니다. Android verified association은 아직 미구성이다.
+   미설치의 증거가 아니다. Android association 파일은 준비했으며 배포·앱 릴리스·실기기
+   검증이 남아 있다.
 2. 웹에 도달한 정상 공유 응답은 200 SSR HTML에 escaped OG/Twitter 메타,
    고정 `https://deulli.com` canonical, 서명 쿼리 없는 `/share/og/{kind}/{id}`를 포함한다.
    기존 익명 API 계약·이미지 프록시·캐시·오류 상태는 유지한다.
@@ -70,8 +71,45 @@ Node `vm`으로 원본과 실제 개발/빌드 SSR HTML에 실린 코드를 실�
 - 쇼츠 `8349`·에피소드 `105948`의 네이티브 Share → Copy를 확인했다.
 - iOS AASA 대상은 `GT75SU9T79.com.deulli.app`, 경로는 `/share/episode/*`·`/share/shorts/*`다.
   운영 도메인·앱 entitlement/프로비저닝·OS association 캐시가 연결의 전제다.
-- Play App Signing SHA-256은 아직 없으며 `assetlinks.json`도 생성하지 않았다.
-  Android verified App Links는 미검증이다.
+- Android 웹 association과 Play 서명 인증서 출처는 다음 절에 기록했다.
+  운영 배포 후 verified App Links와 실기기 동작은 미검증이다.
+
+## Android App Links 웹 설정
+
+`public/.well-known/assetlinks.json`은 `android_app` 패키지 `com.deulli.app`에
+`delegate_permission/common.handle_all_urls`를 부여한다. 운영 앱 서명 SHA-256은 파일에
+기록한 **3개만** 사용한다. Vercel에 해당 경로의 `application/json`과
+`Cache-Control: public, max-age=3600`을 명시했으며 SSR 대신 정적 파일로 제공한다.
+
+2026-10-26 코디네이터가 로그인된 소유자 계정의 NAVER Whale에서
+[Play Console 앱 무결성 페이지](https://play.google.com/console/u/0/developers/5473866273185092286/app/4976048264985058292/keymanagement)를 열어
+업로드 키 영역 위 **앱 서명** 영역의 “모든 인증서 지문 복사” → SHA-256으로 확보했다.
+Console이 생성한 연결 JSON에는 첫 인증서만 있었으나 전체 앱 서명 복사 결과는 3개였다.
+[Google Play 공식 안내](https://support.google.com/googleplay/android-developer/answer/9842756)의
+키 업그레이드 후 모든 서명 인증서 지문 등록 지침에 따라 전체를 등록했다.
+코디네이터가 별도 업로드 키 SHA-256과 대조해 이 3개에 포함되지 않음을 확인했다.
+로컬 디버그·업로드 키는 사용하지 않았다.
+
+앱 작업본에는 HTTPS `autoVerify` intent filter가 추가되어 있다. 이를 포함한 서명 앱의
+Play 릴리스가 별도로 필요하며, 웹 배포만으로 기존 설치 앱에 intent filter를 추가할 수 없다.
+코디네이터가 기존 로컬 AAB `1.4.0+13`·`1.4.1+15`의 manifest를 읽기 전용으로 검사했으며
+해당 산출물에는 HTTPS App Links 설정이 없었다.
+이번 작업에서는 앱 작업본을 수정하지 않았다. `adb devices`가 비어 실기기 검증은 못 했다.
+
+배포 후 다음 순서로 확인한다.
+
+1. `curl --max-redirs 0 -i https://deulli.com/.well-known/assetlinks.json`으로 인증 없는
+   HTTPS 200·리다이렉트 없음·JSON MIME·캐시 헤더와 본문의 패키지/지문 3개를 확인한다.
+2. Google Digital Asset Links에서 각 운영 인증서와 `com.deulli.app`의
+   `delegate_permission/common.handle_all_urls` 연결을 확인한다.
+3. 해당 intent filter를 포함한 Play 서명 릴리스를 실기기에 설치한 뒤
+   `adb shell pm verify-app-links --re-verify com.deulli.app`을 실행한다. 검증이 끝나면
+   `adb shell pm get-app-links com.deulli.app`에서 `deulli.com: verified`를 확인한다.
+4. 외부 앱의 실제 `/share/episode/{id}`·`/share/shorts/{id}` HTTPS 링크에서 warm/cold 실행과
+   대상 콘텐츠 열기를 확인하고, 앱이 없는 경우 기존 웹·스토어 fallback도 확인한다.
+
+로컬 HTTP 검증은 Vercel 정적 산출물·라우팅·선언 헤더를 검사하며 운영 HTTPS·Google 응답이나
+기기 연결 성공을 검증하지 않는다. 운영 배포와 원격 확인은 코디네이터가 별도로 담당한다.
 
 ## 이번 로컬 검증 결과
 
@@ -82,8 +120,8 @@ Node `v22.22.0`, pnpm `10.17.0`을 사용했고 추가 의존성을 설치하지
 | `pnpm test`                            | 43/43 통과: 기존 계약·보안·캐시 30개와 모바일/데스크톱/iPad/크롤러/배경/사전 렌더링/차단/오류/로드 완료/방문 기록·복귀 테스트 13개                           |
 | `pnpm lint`                            | Astro 0 errors/warnings/hints, ESLint 통과                                                                                                                   |
 | `pnpm build`                           | 정적 홈과 Vercel SSR 함수 생성 통과                                                                                                                          |
-| `pnpm test:http`                       | 개발 SSR HTTP 통과: 전체 fallback 콘텐츠·아트워크·앱/스토어 링크, OG/Twitter/escaping/canonical·실린 스크립트·방문 기록/복귀·PNG·404/503/retry/no-store·AASA |
-| `pnpm test:http --built`               | 빌드된 Vercel 함수에서 같은 HTTP/스크립트 검증 통과, 정적 홈·SSR 라우팅 산출물 확인                                                                          |
+| `pnpm test:http`                       | 개발 SSR·정적 HTTP 통과: 기존 fallback·OG·오류·AASA 검증과 assetlinks 200/JSON·패키지/relation·정확한 SHA-256 3개·리다이렉트/인증 없음·Vercel 선언 헤더 확인 |
+| `pnpm test:http --built`               | 같은 SSR 검증과 빌드된 assetlinks 정적 파일 HTTP 제공·원본 일치·MIME/캐시 헤더·filesystem 라우팅, 정적 홈·SSR 산출물 확인                                    |
 | 변경 파일 Prettier, `git diff --check` | 통과                                                                                                                                                         |
 
 리다이렉트 테스트는 iOS/Android/데스크톱/iPad와 모바일 UA를 가진 주요 crawler를 구분하고,
@@ -124,5 +162,5 @@ UA만 iPhone으로 바꾸거나 Node VM에 iPhone UA를 넣어도 실제 Safari/
   미검증이다. Node `vm`의 history 모델은 실제 브라우저의 외부 앱 전환·탐색 정책을 검증하지 않는다.
 - 실기기 iOS Universal Links, 실제 메신저/SNS 미리보기·재수집·캐시 무효화는 미검증이다.
   과거 화면 검증과 위의 이번 Chromium 화면 검증은 구분한다.
-- Android는 정확한 Play 앱 서명 SHA-256 확보 후 `assetlinks.json`, 앱 HTTPS intent filter와
-  autoVerify, 실기기 검증이 필요하다. 업로드 키나 디버그 키 지문으로 대체하지 않는다.
+- Android는 웹 association의 운영 배포·HTTPS/Google 원격 확인, HTTPS `autoVerify` intent filter를
+  포함하는 Play 서명 앱 릴리스와 실기기 검증이 남아 있다. `adb devices`가 비어 기기 검증은 불가했다.
