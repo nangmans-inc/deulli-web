@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import StoreLinks from "../../../components/StoreLinks.astro";
 import { site } from "../../../data/site";
 import { sharePage } from "../../../lib/share";
 import { shareService } from "../../../lib/share-service";
@@ -11,6 +12,7 @@ const page = await sharePage(shareService, Astro.params.kind, Astro.params.id);
 Astro.response.status = page.status;
 Astro.response.headers.set("Cache-Control", page.cacheControl);
 if (page.status === 503) Astro.response.headers.set("Retry-After", "30");
+const label = Astro.params.kind === "shorts" ? "쇼츠" : "에피소드";
 ---
 
 <BaseLayout
@@ -21,68 +23,198 @@ if (page.status === 503) Astro.response.headers.set("Retry-After", "30");
   canonicalPath={page.urls?.canonical}
   noindex={page.status !== 200}
 >
-  <main aria-labelledby="share-title">
-    {
-      page.urls ? (
-        <>
-          <h1 id="share-title">들리에서 듣기</h1>
-          <p>앱이나 스토어가 열리지 않으면 아래 링크를 눌러 주세요.</p>
-          <nav
-            aria-label="앱 열기 및 다운로드"
-            data-share-redirect
-            data-app-store={site.stores.appStore}
-            data-google-play={site.stores.googlePlay}
-          >
-            <a href={page.urls.app}>들리 앱 열기</a>
-            <a href={site.stores.appStore}>App Store</a>
-            <a href={site.stores.googlePlay}>Google Play</a>
-          </nav>
-          <script
-            is:inline
-            data-share-redirect-script
-            set:html={shareRedirectScript}
-          />
-        </>
-      ) : (
-        <>
-          <h1 id="share-title">{page.title.replace(" | 들리", "")}</h1>
-          <p>{page.description}</p>
-          <nav aria-label="오류 페이지 이동">
+  <main class="share-page">
+    <header class="container-content">
+      <a class="brand" href="/" aria-label="들리 홈">
+        <img src="/logo.svg" alt="" width="36" height="36" />
+        <span>들리</span>
+      </a>
+    </header>
+    <section
+      class="share-content container-content"
+      aria-labelledby="share-title"
+    >
+      {
+        page.metadata && page.urls ? (
+          <>
+            <div class="artwork">
+              <img
+                src={new URL(page.urls.image).pathname}
+                alt=""
+                width="630"
+                height="630"
+              />
+            </div>
+            <div class="copy">
+              <p class="eyebrow">함께 듣는 들리 {label}</p>
+              {page.metadata.podcastName && (
+                <p class="podcast">{page.metadata.podcastName}</p>
+              )}
+              <h1 id="share-title">{page.metadata.title}</h1>
+              <p class="description">{page.description}</p>
+              <nav
+                aria-label="앱 열기 및 다운로드"
+                data-share-redirect
+                data-app-store={site.stores.appStore}
+                data-google-play={site.stores.googlePlay}
+              >
+                <a class="open-app" href={page.urls.app}>
+                  들리 앱에서 듣기
+                </a>
+                <p class="download-hint">
+                  앱이 없다면 지금 들리를 다운로드하세요.
+                </p>
+                <StoreLinks />
+              </nav>
+            </div>
+          </>
+        ) : (
+          <div class="copy error">
+            <p class="eyebrow">들리</p>
+            <h1 id="share-title">{page.title.replace(" | 들리", "")}</h1>
+            <p class="description">{page.description}</p>
             {page.status === 503 && (
-              <a href={Astro.url.pathname}>다시 시도하기</a>
+              <a class="open-app" href={Astro.url.pathname}>
+                다시 시도하기
+              </a>
             )}
-            <a href="/">들리 홈으로</a>
-          </nav>
-        </>
-      )
-    }
+            <a class="home-link" href="/">
+              들리 홈으로
+            </a>
+            <StoreLinks />
+          </div>
+        )
+      }
+    </section>
+    <footer class="container-content">듣다 보면 들리니까, 들리</footer>
   </main>
+  {
+    page.urls && (
+      <script
+        is:inline
+        data-share-redirect-script
+        set:html={shareRedirectScript}
+      />
+    )
+  }
 </BaseLayout>
 
 <style>
-  main {
-    max-width: 32rem;
-    margin-inline: auto;
-    padding: 2rem 1.25rem;
+  .share-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+    background: linear-gradient(
+      145deg,
+      var(--color-bg-warm),
+      var(--color-bg) 60%
+    );
   }
-  h1 {
+  header {
+    padding-block: 1.5rem;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--color-fg);
+    text-decoration: none;
     font-size: 1.25rem;
     font-weight: 700;
   }
-  p {
-    margin-block: 0.75rem;
+  .brand img {
+    border-radius: 0.6rem;
+  }
+  .share-content {
+    flex: 1;
+    display: grid;
+    align-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding-block: 2rem 3rem;
+    max-width: 68rem;
+  }
+  .artwork {
+    width: min(100%, 25rem);
+    margin-inline: auto;
+    overflow: hidden;
+    border-radius: var(--radius-panel);
+    background: var(--color-bg-muted);
+    box-shadow: 0 20px 60px rgb(8 33 66 / 12%);
+  }
+  .artwork img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+  .copy {
+    min-width: 0;
+  }
+  .eyebrow {
+    color: var(--color-brand);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+  .podcast {
+    color: var(--color-fg-muted);
+    margin-bottom: 0.5rem;
+  }
+  h1 {
+    font-size: var(--text-h2);
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+    overflow-wrap: anywhere;
+  }
+  .description {
+    margin-top: 1.25rem;
+    font-size: var(--text-lead);
     color: var(--color-fg-muted);
   }
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem 1.25rem;
-  }
-  a {
+  .open-app {
     display: inline-flex;
     align-items: center;
-    min-height: 2.75rem;
+    justify-content: center;
+    min-height: 3.25rem;
+    margin-top: 1.75rem;
+    padding: 0.8rem 1.6rem;
+    border-radius: var(--radius-card);
+    background: var(--color-brand);
+    color: var(--color-on-brand);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .open-app:hover {
+    background: var(--color-brand-strong);
+  }
+  .download-hint {
+    margin-block: 1.5rem 0.5rem;
+    color: var(--color-fg-muted);
+    font-size: 0.875rem;
+  }
+  .home-link {
+    display: block;
+    margin-block: 1.5rem;
     color: var(--color-brand);
-    text-decoration: underline;
+  }
+  .error {
+    max-width: 40rem;
+    margin-inline: auto;
+  }
+  footer {
+    padding-block: 1.25rem;
+    color: var(--color-fg-muted);
+    font-size: 0.875rem;
+  }
+  @media (min-width: 768px) {
+    .share-content {
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 3.5rem;
+    }
+    .error {
+      grid-column: 1 / -1;
+    }
   }
 </style>
