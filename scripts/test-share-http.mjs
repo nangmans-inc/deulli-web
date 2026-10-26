@@ -9,6 +9,33 @@ import {
   shareRedirectFromHtml,
 } from "../tests/helpers/share-browser.mjs";
 
+const built = process.argv.includes("--built");
+const assetlinksPath = "/.well-known/assetlinks.json";
+const fingerprints = [
+  "34:70:39:F3:3D:0B:5D:D4:C8:DA:03:EB:48:A4:7F:B0:78:69:70:68:52:0C:78:B1:5F:62:7C:24:25:FC:01:FE",
+  "BA:C1:F8:5B:95:15:3F:7D:1D:3C:D6:BF:9A:6C:EB:36:B9:CD:22:2F:C1:BC:90:D0:B7:5F:AC:0D:35:9D:1B:DA",
+  "D7:AE:9C:AC:18:9A:37:CF:57:1A:06:6D:F4:76:4B:E7:AD:A6:7D:59:28:C8:95:66:30:7C:38:FD:A0:17:31:89",
+];
+const hosting = JSON.parse(await readFile("vercel.json", "utf8"));
+const assetlinksRules = hosting.headers.filter(
+  (rule) => rule.source === assetlinksPath,
+);
+assert.equal(assetlinksRules.length, 1);
+const assetlinksHeaders = Object.fromEntries(
+  assetlinksRules[0].headers.map(({ key, value }) => [
+    key.toLowerCase(),
+    value,
+  ]),
+);
+assert.deepEqual(assetlinksHeaders, {
+  "content-type": "application/json",
+  "cache-control": "public, max-age=3600",
+});
+const assetlinksBody = await readFile(
+  `${built ? ".vercel/output/static" : "public"}${assetlinksPath}`,
+  "utf8",
+);
+
 // Exercise Astro's real SSR renderer and HTML escaping, with no production API mutation.
 const calls = [];
 const attack = 'A "quote" & <script id="injected">alert(1)</script>';
@@ -49,7 +76,6 @@ portProbe.listen(0, "127.0.0.1");
 await once(portProbe, "listening");
 const port = portProbe.address().port;
 await new Promise((resolve) => portProbe.close(resolve));
-const built = process.argv.includes("--built");
 let builtServer;
 let child;
 if (built) {
@@ -57,6 +83,11 @@ if (built) {
   const { default: handler } =
     await import("../.vercel/output/functions/_render.func/dist/server/entry.mjs");
   builtServer = createServer((req, res) => {
+    // The local adapter handler only serves SSR; Vercel serves static files first.
+    if (req.url === assetlinksPath) {
+      res.writeHead(200, assetlinksHeaders).end(assetlinksBody);
+      return;
+    }
     void handler(req, res).catch((error) => {
       console.error(error);
       res.writeHead(500).end();
@@ -122,6 +153,42 @@ try {
     await new Promise((resolve) => setTimeout(resolve, 200));
   }
   assert.ok(ready, output);
+  const assetlinksResponse = await fetch(`${base}${assetlinksPath}`, {
+    redirect: "manual",
+  });
+  assert.equal(assetlinksResponse.status, 200);
+  assert.equal(assetlinksResponse.headers.get("location"), null);
+  assert.equal(assetlinksResponse.headers.get("www-authenticate"), null);
+  assert.match(
+    assetlinksResponse.headers.get("content-type"),
+    /^application\/json(?:\s*;|$)/i,
+  );
+  if (built) {
+    assert.equal(
+      assetlinksResponse.headers.get("cache-control"),
+      "public, max-age=3600",
+    );
+    assert.equal(
+      assetlinksBody,
+      await readFile(`public${assetlinksPath}`, "utf8"),
+    );
+  }
+  const assetlinksText = await assetlinksResponse.text();
+  assert.equal(assetlinksText, assetlinksBody);
+  const assetlinks = JSON.parse(assetlinksText);
+  assert.deepEqual(assetlinks, [
+    {
+      relation: ["delegate_permission/common.handle_all_urls"],
+      target: {
+        namespace: "android_app",
+        package_name: "com.deulli.app",
+        sha256_cert_fingerprints: fingerprints,
+      },
+    },
+  ]);
+  for (const fingerprint of assetlinks[0].target.sha256_cert_fingerprints) {
+    assert.match(fingerprint, /^(?:[0-9A-F]{2}:){31}[0-9A-F]{2}$/);
+  }
   for (const kind of ["episode", "shorts"]) {
     const response = await fetch(
       `${base}/share/${kind}/7?image=http://127.0.0.1/private`,
@@ -339,6 +406,21 @@ try {
     const config = JSON.parse(
       await readFile(".vercel/output/config.json", "utf8"),
     );
+    const filesystemIndex = config.routes.findIndex(
+      (route) => route.handle === "filesystem",
+    );
+    assert.ok(filesystemIndex >= 0);
+    assert.ok(
+      config.routes
+        .slice(0, filesystemIndex)
+        .every(
+          (route) =>
+            !route.src ||
+            !new RegExp(route.src).test(assetlinksPath) ||
+            (!route.dest && !route.status),
+        ),
+      "assetlinks must reach the static filesystem without redirects or rewrites",
+    );
     assert.ok(
       config.routes.some(
         (route) => route.src?.includes("share/og/") && route.dest === "_render",
@@ -346,7 +428,7 @@ try {
     );
   }
   console.log(
-    `${built ? "Built Vercel" : "Astro dev"} SSR HTTP checks passed: episode/shorts full fallback content/artwork/app/store links, OG, escaping, canonical, shipped redirect behavior, local PNG, ID/status/cache/retry and AASA.`,
+    `${built ? "Built Vercel" : "Astro dev"} SSR/static HTTP checks passed: episode/shorts full fallback content/artwork/app/store links, OG, escaping, canonical, shipped redirect behavior, local PNG, ID/status/cache/retry, AASA and assetlinks JSON/package/relation/three Play SHA-256 fingerprints/hosting headers.`,
   );
 } catch (error) {
   console.error(output);

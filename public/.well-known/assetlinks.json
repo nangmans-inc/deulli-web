@@ -1,0 +1,14 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.deulli.app",
+      "sha256_cert_fingerprints": [
+        "34:70:39:F3:3D:0B:5D:D4:C8:DA:03:EB:48:A4:7F:B0:78:69:70:68:52:0C:78:B1:5F:62:7C:24:25:FC:01:FE",
+        "BA:C1:F8:5B:95:15:3F:7D:1D:3C:D6:BF:9A:6C:EB:36:B9:CD:22:2F:C1:BC:90:D0:B7:5F:AC:0D:35:9D:1B:DA",
+        "D7:AE:9C:AC:18:9A:37:CF:57:1A:06:6D:F4:76:4B:E7:AD:A6:7D:59:28:C8:95:66:30:7C:38:FD:A0:17:31:89"
+      ]
+    }
+  }
+]

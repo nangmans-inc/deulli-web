@@ -161,8 +161,8 @@ Safari 주소창 입력이나 사용자의 브라우저 열기 선택 등으로 
 정상 공유 HTML을 모바일 브라우저에서 열면 iOS는 App Store, Android는 Google Play로
 `location.assign`한다. 스토어 주소는 `src/data/site.ts`의 기존 `stores`를 사용하며,
 iPad의 데스크톱 UA도 `MacIntel`·멀티터치로 판별한다. 설치 여부를 추측하는 타이머나
-자동 커스텀 scheme 호출은 사용하지 않는다. Android의 verified App Links는 아래 전제가
-아직 충족되지 않아 동작이 검증되지 않았다.
+자동 커스텀 scheme 호출은 사용하지 않는다. Android의 verified App Links는 아래 웹 연결
+파일을 준비했으며, 이를 배포하고 앱 릴리스·실기기 검증을 완료해야 한다.
 
 공유 페이지는 `/share/og/{kind}/{id}` 아트워크, 콘텐츠 종류·팟캐스트명(쇼츠)·제목·요약,
 `deulli://app/{kind}/{id}`의 수동 앱 열기, App Store·Google Play 배지와 브랜드 헤더·푸터를
@@ -227,11 +227,20 @@ Vercel 헤더는 이 확장자 없는 파일을 `application/json`으로 제공�
 실기기 검증이 필요하다. 앱 수신 구현은 `deulli-app`에서 담당한다. AASA를 올리는 것만으로
 기존 설치 앱이 즉시 연결되는 것은 아니며 Apple의 association 캐시도 확인해야 한다.
 
-Android는 **Play App Signing SHA-256 인증서 지문이 아직 확인되지 않아**
-`assetlinks.json`을 생성하지 않았다. 운영 Play Console의 앱 서명 인증서 SHA-256을 확보한 뒤
-패키지 `com.deulli.app`에 대한 `delegate_permission/common.handle_all_urls` association을
-`/.well-known/assetlinks.json`에 추가하고 앱의 HTTPS intent filter·autoVerify와 실기기
-검증을 완료해야 한다. 업로드 키·디버그 키 지문으로 대신하지 않는다.
+Android는 `public/.well-known/assetlinks.json`에 패키지 `com.deulli.app`의
+`delegate_permission/common.handle_all_urls` 연결과 운영 Play 앱 서명 SHA-256 **3개**를 등록했다.
+2026-10-26 소유자 계정의 [Play Console 앱 무결성 페이지](https://play.google.com/console/u/0/developers/5473866273185092286/app/4976048264985058292/keymanagement)에서
+앱 서명 영역의 “모든 인증서 지문 복사” → SHA-256으로 확인했으며, 별도 업로드 키와
+디버그 키는 포함하지 않았다. 키 업그레이드에 따른 모든 서명 지문 등록 근거와 상세 검증은
+[검증 기록](docs/share-verification.md#android-app-links-웹-설정)을 따른다.
+Vercel에는 `application/json`, `Cache-Control: public, max-age=3600`을 명시했다.
+배포 후 `https://deulli.com/.well-known/assetlinks.json`이 인증·리다이렉트 없이 HTTPS 200을
+반환해야 한다. 로컬 HTTP 검증은 운영 HTTPS·Google 연결 검증을 대신하지 않는다.
+
+앱 작업본에 추가된 HTTPS `autoVerify` intent filter를 포함하는 서명 앱 릴리스도 필요하다.
+검사한 기존 로컬 AAB `1.4.0+13`·`1.4.1+15`에는 해당 HTTPS 연결 설정이 없었다.
+웹 파일만으로 기존 설치 앱에 intent filter가 추가되지는 않는다. 이 작업에서는 앱을 수정하거나
+배포하지 않았으며, `adb devices`가 비어 Android 실기기 검증은 수행하지 못했다.
 
 2026-10-26 인계된 검증 기록 기준 웹 PR #6 (`c7e004a`)와 백엔드 운영 PR #382의
 배포 실행 `40205745549`는 성공했다. iOS 17 시뮬레이터에서 Universal Link의 warm/cold
