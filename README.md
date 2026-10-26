@@ -4,7 +4,7 @@
 
 배포 주소: **https://deulli.com**
 
-앱 소개·스토어 다운로드를 제공하는 정적 홈과 에피소드·쇼츠의 서버 렌더링 공유 페이지다.
+앱 소개·스토어 다운로드를 제공하는 정적 홈과 에피소드·쇼츠·채널·시리즈의 서버 렌더링 공유 페이지다.
 
 빌드는 Astro, 스타일은 Tailwind v4. `dionomy-landing`과 같은 구성이라 그쪽에서 만든
 컴포넌트·설정을 그대로 가져다 쓸 수 있다.
@@ -81,7 +81,7 @@ node -e "require('sharp')('src/assets/hero-mockup.png').ensureAlpha().raw()
 ```
 src/
   pages/index.astro           앱 다운로드 페이지
-  pages/share/[kind]/[id].astro  에피소드·쇼츠 공유 SSR
+  pages/share/[kind]/[id].astro  에피소드·쇼츠·채널·시리즈 공유 SSR
   pages/share/og/[kind]/[id].ts   최신 서명 이미지 바이트 프록시
   lib/share.ts               익명 API 계약·ID 검증·이미지 보안·제한 캐시
   lib/share-service.ts       서버 환경 변수·로컬 폴백 이미지 연결
@@ -147,6 +147,14 @@ public/
 - `https://deulli.com/share/shorts/{id}` → 익명 `GET {API_BASE}/shorts/{id}/share`.
   응답은 `id`, `title`, `summary`, `podcast_id`, `podcast_name`, `thumbnail_url`이며
   `summary`·`thumbnail_url`은 `null`을 허용한다.
+- `https://deulli.com/share/channel/{id}` → 익명 `GET {API_BASE}/channels/{id}/share`.
+  응답은 `id`, `name`, `description`, `cover_url`이다.
+- `https://deulli.com/share/series/{id}` → 익명 `GET {API_BASE}/series/{id}/share`.
+  응답은 `id`, `title`, `description`, `cover_url`이다.
+  채널·시리즈의 `description`·`cover_url`은 `null`을 허용하며, 숫자 `id` 일치와 비어 있지 않은
+  문자열 제목을 검증한다. 설명이 없으면 각 콘텐츠 종류에 맞는 문구를, 표지가 없으면 로컬 기본 이미지를 제공한다.
+  신규 API의 운영 배포 전에는 404 fallback을 표시한다. 이번 웹 검증은 로컬 계약 fixture를
+  사용했으며 신규 운영 API의 정상 메타데이터·서명 표지는 아직 검증하지 않았다.
 
 ID는 선행 0 없는 양의 JavaScript safe integer다. 잘못된 경로·없는/비공개 콘텐츠는 404,
 타임아웃·5xx·잘못된 응답은 503이며 오류 응답은 모두 `Cache-Control: no-store`다.
@@ -177,7 +185,8 @@ Timing의 `back_forward`로 처리한다. 해당 API가 없는 브라우저는 �
 404/503 오류 페이지에는 자동 이동 코드를 포함하지 않는다. 서버 302나 meta refresh를
 사용하지 않으므로 최초 응답의 OG/Twitter HTML은 유지된다.
 
-공유 이미지 주소는 `/share/og/episode/{id}`·`/share/og/shorts/{id}`로 고정된다.
+공유 이미지 주소는 `/share/og/{kind}/{id}`로 고정되며 `kind`는
+`episode`·`shorts`·`channel`·`series`다.
 서명 URL은 HTML·리다이렉트·응답 헤더에 노출하지 않는다. 프록시는 매 요청마다 공개
 메타데이터를 새로 받고 최신 서명 URL로 이미지를 내려받아 바이트를 반환한다.
 
@@ -216,7 +225,7 @@ Vercel에 정적 홈과 SSR 함수를 함께 올린다. `output: "static"`을 �
 ### 앱 링크 연결 전제
 
 `public/.well-known/apple-app-site-association`은
-`GT75SU9T79.com.deulli.app`의 `/share/episode/*`·`/share/shorts/*`만 연결한다.
+`GT75SU9T79.com.deulli.app`의 `/share/episode/*`·`/share/shorts/*`·`/share/channel/*`·`/share/series/*`만 연결한다.
 근거는 형제 앱 저장소 `ios/Flutter/Signing.xcconfig`의 `DEVELOPMENT_TEAM = GT75SU9T79`와
 `ios/Runner.xcodeproj/project.pbxproj`의 `PRODUCT_BUNDLE_IDENTIFIER = com.deulli.app`다.
 개인 로컬 signing override를 사용하는 앱은 이 운영 association 대상이 아니다.
