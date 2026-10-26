@@ -23,16 +23,16 @@
   if (!store) return;
 
   const app = links.dataset.appUrl;
+  const openApp = links.querySelector("[data-open-app]");
+  if (
+    !openApp ||
+    !/^deulli:\/\/app\/(episode|shorts|channel|series)\/[1-9]\d*$/.test(
+      app || "",
+    )
+  ) {
+    return;
+  }
   if (isAndroid) {
-    const openApp = links.querySelector("[data-open-app]");
-    if (
-      !openApp ||
-      !/^deulli:\/\/app\/(episode|shorts|channel|series)\/[1-9]\d*$/.test(
-        app || "",
-      )
-    ) {
-      return;
-    }
     // Store fallback belongs to an explicit tap, not a blocked automatic launch.
     openApp.href = `intent:${app.slice("deulli:".length)}#Intent;scheme=deulli;package=com.deulli.app;S.browser_fallback_url=${encodeURIComponent(store)};end`;
   }
@@ -46,11 +46,9 @@
   }
 
   let attempted = false;
-  let ready = isAndroid || document.readyState === "complete";
   const redirect = () => {
     if (
       attempted ||
-      !ready ||
       document.visibilityState !== "visible" ||
       document.prerendering
     ) {
@@ -59,23 +57,13 @@
     attempted = true;
     document.removeEventListener("visibilitychange", redirect);
     document.removeEventListener("prerenderingchange", redirect);
-    window.removeEventListener("pageshow", onPageShow);
     try {
-      window.location.assign(isAndroid ? app : store);
+      window.location.assign(app);
     } catch {
       // Manual links remain available if the browser blocks navigation.
     }
   };
-  const onPageShow = () => {
-    window.removeEventListener("pageshow", onPageShow);
-    // Let the load task finish so assign() adds an entry instead of replacing it.
-    window.requestAnimationFrame(() => {
-      ready = true;
-      redirect();
-    });
-  };
   document.addEventListener("visibilitychange", redirect);
   document.addEventListener("prerenderingchange", redirect);
-  window.addEventListener("pageshow", onPageShow);
   redirect();
 })();

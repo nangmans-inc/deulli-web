@@ -1,9 +1,9 @@
 # 공개 공유 링크 구현·검증 기록
 
 - 날짜: 2026-10-26
-- 기준: main `e636794`(PR #10), 작업 브랜치 `fix/android-share-app-open`.
-- 범위: Android 공유 페이지의 즉시 앱 실행 시도와 수동 intent fallback.
-  기존 4종류 SSR·OG 이미지·전체 fallback·iOS 이동과 association 파일은 유지하며 앱·백엔드는 변경하지 않았다.
+- 기준: main `c5d39ad`(PR #11), 작업 브랜치 `fix/mobile-share-app-open`.
+- 범위: Android에서 추가한 즉시 앱 실행 시도를 iOS에도 적용한다.
+  기존 4종류 SSR·OG 이미지·전체 fallback·Android intent와 association 파일은 유지하며 앱·백엔드는 변경하지 않았다.
 - 이전 공유 fallback 복원 당시의 Safari·운영 검증 기록과 Android 준비 상태 기록은 유지했다.
 
 ## 채널·시리즈 확장
@@ -40,22 +40,21 @@
 2. 웹에 도달한 정상 공유 응답은 200 SSR HTML에 escaped OG/Twitter 메타,
    고정 `https://deulli.com` canonical, 서명 쿼리 없는 `/share/og/{kind}/{id}`를 포함한다.
    기존 익명 API 계약·이미지 프록시·캐시·오류 상태는 유지한다.
-3. Android는 정상 공유 HTML의 스크립트 실행 시 `deulli://app/{kind}/{id}`를 즉시 한 번
-   시도한다. 설치 여부를 추측하거나 자동으로 Google Play로 보내지 않는다. 수동 앱 열기
+3. iOS·Android는 정상 공유 HTML의 스크립트 실행 시 `deulli://app/{kind}/{id}`를 즉시 한 번
+   시도한다. 설치 여부를 추측하거나 자동으로 스토어로 보내지 않는다. Android 수동 앱 열기
    버튼은 동일 경로와 고정 패키지 `com.deulli.app`의 `intent:` 링크로 바꾸고, 명시적 탭에서만
-   기존 Play 주소를 `browser_fallback_url`로 제공한다. 타이머·외부 브라우저 강제 호출은 없다.
-   iPhone/iPod/iPad의 기존 App Store 이동은 유지한다. iPad 데스크톱 UA는
+   기존 Play 주소를 `browser_fallback_url`로 제공한다. iOS 수동 버튼은 custom scheme을 사용한다.
+   타이머·외부 브라우저 강제 호출은 없다. iPad 데스크톱 UA는
    `MacIntel`·`maxTouchPoints > 1`로 구분하며 스토어 주소는 `site.stores`에서 전달한다.
 4. 알려진 크롤러/미리보기 UA, 데스크톱, 알 수 없는 플랫폼은 자동 이동하지 않는다.
-   Android는 아트워크 다운로드 완료를 기다리지 않는다. iOS는 최초 `pageshow` 다음
-   `requestAnimationFrame`까지 기다려 이미지와 문서 로드 태스크가 끝난 뒤 이동한다.
+   양쪽 모두 아트워크 다운로드나 `pageshow`를 기다리지 않는다.
    양쪽 모두 백그라운드·사전 렌더링 문서는 활성화와 표시를 기다리며 한 번만 시도한다.
 5. 아트워크(`/share/og/{kind}/{id}`), 콘텐츠 종류·팟캐스트명(쇼츠)·제목·요약,
    수동 앱 열기 CTA, `StoreLinks` 배지, 브랜드 헤더·푸터의 전체 랜딩을 유지한다.
    JavaScript 비활성·자동 이동 차단·스토어에서 복귀한 경우에도 이 fallback을 사용할 수 있다.
    JavaScript가 없거나 Android 외 환경이면 수동 앱 열기는 기존
    `deulli://app/{kind}/{id}`를 사용한다.
-6. `replace` 대신 `assign`으로 공유 페이지를 방문 기록에 남긴다. BFCache 복귀는 기존
+6. `assign`으로 앱 실행을 시도한다. BFCache 복귀는 기존
    일회성 상태를 유지하고, 새 문서로 뒤로/앞으로 복귀하면 Navigation Timing의
    `back_forward`를 보고 자동 이동하지 않는다. 이 API가 없는 브라우저의 새 문서 복귀
    판별은 제한된다. 이동 코드는 전체 랜딩 마크업 뒤에 둔다.
@@ -67,26 +66,27 @@ Node `vm`으로 원본과 실제 개발/빌드 SSR HTML에 실린 코드를 실�
 연결을 검증한다. 이는 브라우저·OS의 실제 스토어/앱 전환 검증은 아니다.
 초기 HTML의 전체 fallback과 메타는 JavaScript 실행에 의존하지 않는다.
 
-### Android 카카오 인앱 브라우저 보완
+### 모바일 카카오 인앱 브라우저 보완
 
 카카오에서 앱이 설치돼 있어도 웹뷰로 공유 페이지가 열릴 수 있으므로, 웹 도달을 미설치로
-간주하던 Play 직행을 제거했다. 자동 실행이 차단돼도 스토어로 재시도하지 않으며 기존 전체
-fallback을 유지한다. 수동 버튼은 사용자의 탭에서 실행할 수 있도록 `intent:` href를 제공한다.
+간주하던 스토어 직행을 양쪽 모두 제거했다. 자동 실행이 차단돼도 스토어로 재시도하지 않으며 기존 전체
+fallback을 유지한다. Android 수동 버튼은 사용자의 탭에서 실행할 수 있도록 `intent:` href를 제공한다.
 뒤로/앞으로 복귀에서는 자동 실행을 건너뛰어도 Android 수동 버튼은 계속 사용할 수 있다.
 
 [Chrome 공식 문서](https://developer.chrome.com/docs/android/intents)는 사용자 제스처가 없는
 외부 앱 호출을 차단할 수 있으며, 이 경우 `browser_fallback_url`로 이동할 수도 있다고 설명한다.
 따라서 자동 시도에는 스토어 fallback을 넣지 않았다. Node VM과 HTTP 검증은 호출 주소·실행 순서·
 일회성 처리·fallback 보존을 확인하며, 실제 카카오/기기에서의 앱 실행 성공을 의미하지 않는다.
-앱의 `deulli://app` 수신은 Android 1.4.2부터 포함된다. 이전 스토어 버전 1.4.1의 manifest에는
-해당 intent-filter가 없으므로 새 앱 버전도 필요하다. 앱·백엔드·association 파일은 이번에 수정하지 않는다.
+앱의 `deulli://app` 수신은 iOS·Android 모두 1.4.2부터 포함된다. 이전 스토어 버전 1.4.1의
+Android manifest·iOS Info.plist에는 해당 scheme 등록이 없으므로 새 앱 버전도 필요하다.
+앱·백엔드·association 파일은 이번에 수정하지 않는다.
 
 보완 후 단위 검사 53/53, Astro check 0 errors/warnings/hints, 개발 서버·빌드된 Vercel 함수의
 4종류 HTTP 검증과 운영 빌드가 통과했다. ESLint도 기존 로컬 증거 디렉터리 `tmp/**`를 제외하면
 통과했다. 기본 `pnpm lint`는 변경 전부터 존재한 `tmp/channel-series-production-release/audit-production.mjs`의
 불필요한 escape 한 건을 함께 검사해 실패했으며, 해당 과거 증거 파일은 수정하지 않았다.
 
-## 이번 실제 Safari·시뮬레이터 진단
+## 이전 Safari·시뮬레이터 진단
 
 아래는 코디네이터가 iPhone 17 / iOS 26.5 시뮬레이터의 실제 Safari에서 확인한 결과다.
 
