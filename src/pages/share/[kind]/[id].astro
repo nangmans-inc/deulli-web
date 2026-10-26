@@ -57,10 +57,11 @@ const label = isShareKind(Astro.params.kind)
               <nav
                 aria-label="앱 열기 및 다운로드"
                 data-share-redirect
+                data-app-url={page.urls.app}
                 data-app-store={site.stores.appStore}
                 data-google-play={site.stores.googlePlay}
               >
-                <a class="open-app" href={page.urls.app}>
+                <a class="open-app" href={page.urls.app} data-open-app>
                   들리 앱에서 듣기
                 </a>
                 <p class="download-hint">

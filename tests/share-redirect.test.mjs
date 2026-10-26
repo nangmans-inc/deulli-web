@@ -13,6 +13,9 @@ const ios =
 const android =
   "Mozilla/5.0 (Linux; Android 14; Pixel 8) Chrome/130 Mobile Safari";
 const mac = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) Version/17 Safari";
+const app = "deulli://app/episode/7";
+const androidIntent = (url) =>
+  `intent:${url.slice("deulli:".length)}#Intent;scheme=deulli;package=com.deulli.app;S.browser_fallback_url=${encodeURIComponent(site.stores.googlePlay)};end`;
 const run = (options) =>
   runShareRedirect(code, { stores: site.stores, ...options });
 
@@ -30,9 +33,25 @@ test("iPhone, iPod and iPad mobile UAs navigate to the existing App Store URL", 
   }
 });
 
-test("Android phone and tablet UAs navigate to the existing Google Play URL", () => {
+test("Android phone and tablet UAs try the app immediately without waiting for load", () => {
   for (const userAgent of [android, android.replace(" Mobile", "")]) {
-    assert.deepEqual(run({ userAgent }).destinations, [site.stores.googlePlay]);
+    const browser = run({ userAgent, readyState: "loading" });
+    assert.deepEqual(browser.destinations, [app]);
+    assert.equal(browser.appLink.href, androidIntent(app));
+    assert.equal(browser.listenerCount(), 0);
+    browser.dispatch("pageshow");
+    browser.frame();
+    assert.deepEqual(browser.destinations, [app]);
+  }
+});
+
+test("all Android content routes keep Play fallback on the explicit app link only", () => {
+  for (const kind of ["episode", "shorts", "channel", "series"]) {
+    const appUrl = `deulli://app/${kind}/8349`;
+    const browser = run({ userAgent: `${android} KAKAOTALK/26.8`, appUrl });
+    assert.deepEqual(browser.destinations, [appUrl]);
+    assert.equal(browser.appLink.href, androidIntent(appUrl));
+    assert.ok(!browser.destinations.includes(site.stores.googlePlay));
   }
 });
 
@@ -107,7 +126,7 @@ test("known preview crawlers cannot redirect even with Android, iOS or desktop i
   // Kakao's interactive in-app browser is distinct from its preview crawler.
   assert.deepEqual(
     run({ userAgent: `${android} KAKAOTALK/11.0` }).destinations,
-    [site.stores.googlePlay],
+    [app],
   );
 });
 
@@ -119,7 +138,7 @@ test("background documents wait for visibility and navigate only once", () => {
   browser.document.visibilityState = "visible";
   browser.dispatch("visibilitychange");
   browser.dispatch("prerenderingchange");
-  assert.deepEqual(browser.destinations, [site.stores.googlePlay]);
+  assert.deepEqual(browser.destinations, [app]);
   assert.equal(browser.listenerCount(), 0);
 });
 
@@ -180,11 +199,45 @@ test("blocked navigation is caught without retrying on return to the page", () =
   assert.deepEqual(browser.history, ["https://deulli.com/share/episode/7"]);
 });
 
-test("store navigation retains the fallback in history and Back cannot redirect it again", () => {
-  for (const [userAgent, store] of [
-    [ios, site.stores.appStore],
-    [android, site.stores.googlePlay],
+test("blocked Android app opening retains the page and manual intent without a store redirect", () => {
+  const browser = run({ userAgent: android, blockNavigation: true });
+  assert.deepEqual(browser.destinations, [app]);
+  assert.equal(browser.appLink.href, androidIntent(app));
+  assert.deepEqual(browser.history, ["https://deulli.com/share/episode/7"]);
+  browser.document.visibilityState = "hidden";
+  browser.dispatch("visibilitychange");
+  browser.document.visibilityState = "visible";
+  browser.dispatch("visibilitychange");
+  browser.dispatch("pageshow");
+  browser.frame();
+  assert.deepEqual(browser.destinations, [app]);
+  assert.equal(browser.listenerCount(), 0);
+});
+
+test("Android history returns preserve the manual intent without automatically opening again", () => {
+  const browser = run({ userAgent: android, navigationType: "back_forward" });
+  assert.deepEqual(browser.destinations, []);
+  assert.equal(browser.appLink.href, androidIntent(app));
+  assert.equal(browser.listenerCount(), 0);
+});
+
+test("Android does not launch a missing or malformed app destination", () => {
+  for (const options of [
+    { hasAppLink: false },
+    { appUrl: null },
+    { appUrl: "" },
+    { appUrl: "https://example.com" },
+    { appUrl: "deulli://app/episode/0" },
+    { appUrl: "deulli://app/episode/7#Intent;package=other;end" },
   ]) {
+    const browser = run({ userAgent: android, ...options });
+    assert.deepEqual(browser.destinations, []);
+    assert.equal(browser.listenerCount(), 0);
+  }
+});
+
+test("store navigation retains the fallback in history and Back cannot redirect it again", () => {
+  for (const [userAgent, store] of [[ios, site.stores.appStore]]) {
     const share = "https://deulli.com/share/shorts/7";
     const previous = "https://example.com/message";
     const browser = run({ userAgent, history: [previous, share] });

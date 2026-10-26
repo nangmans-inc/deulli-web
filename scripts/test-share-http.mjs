@@ -316,16 +316,12 @@ try {
     assert.ok(!html.includes("Key-Pair-Id="));
     assert.ok(html.includes(`href="${site.stores.appStore}"`));
     assert.ok(html.includes(`href="${site.stores.googlePlay}"`));
-    const { code, stores } = shareRedirectFromHtml(html);
+    const { code, stores, appUrl } = shareRedirectFromHtml(html);
     assert.deepEqual(stores, site.stores);
+    assert.equal(appUrl, `deulli://app/${kind}/7`);
     for (const [userAgent, platform, maxTouchPoints, expected] of [
       ["Mozilla/5.0 (iPhone) Mobile Safari", "iPhone", 5, stores.appStore],
-      [
-        "Mozilla/5.0 (Android 14) Mobile Chrome",
-        "Linux armv8l",
-        5,
-        stores.googlePlay,
-      ],
+      ["Mozilla/5.0 (Android 14) Mobile Chrome", "Linux armv8l", 5, appUrl],
       ["Mozilla/5.0 (Macintosh) Safari", "MacIntel", 5, stores.appStore],
       ["Mozilla/5.0 (Macintosh) Safari", "MacIntel", 0, null],
       ["Unknown", "", 0, null],
@@ -337,9 +333,19 @@ try {
         platform,
         maxTouchPoints,
         stores,
+        appUrl,
         history: [`https://deulli.com/share/${kind}/7`],
       });
       assert.deepEqual(browser.destinations, expected ? [expected] : []);
+      if (/Android/.test(userAgent) && expected) {
+        assert.match(browser.appLink.href, /^intent:\/\/app\//);
+        assert.ok(browser.appLink.href.includes("package=com.deulli.app;"));
+        assert.ok(
+          browser.appLink.href.includes(
+            `S.browser_fallback_url=${encodeURIComponent(stores.googlePlay)};`,
+          ),
+        );
+      }
       assert.deepEqual(
         browser.history,
         expected
