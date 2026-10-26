@@ -5,11 +5,29 @@ import { once } from "node:events";
 import { readFile } from "node:fs/promises";
 import { site } from "../src/data/site.ts";
 import {
+  imageHost,
+  signedImage,
+} from "../tests/helpers/share-image-fixture.mjs";
+import {
   runShareRedirect,
   shareRedirectFromHtml,
 } from "../tests/helpers/share-browser.mjs";
 
 const built = process.argv.includes("--built");
+const kinds = ["episode", "shorts", "channel", "series"];
+const labels = {
+  episode: "에피소드",
+  shorts: "쇼츠",
+  channel: "채널",
+  series: "시리즈",
+};
+const descriptions = {
+  episode: "Episode description",
+  shorts: "Shorts summary",
+  channel: "Channel description",
+  series: "Series description",
+};
+const aasaPath = "/.well-known/apple-app-site-association";
 const assetlinksPath = "/.well-known/assetlinks.json";
 const fingerprints = [
   "34:70:39:F3:3D:0B:5D:D4:C8:DA:03:EB:48:A4:7F:B0:78:69:70:68:52:0C:78:B1:5F:62:7C:24:25:FC:01:FE",
@@ -35,18 +53,52 @@ const assetlinksBody = await readFile(
   `${built ? ".vercel/output/static" : "public"}${assetlinksPath}`,
   "utf8",
 );
+const aasaBody = await readFile(
+  `${built ? ".vercel/output/static" : "public"}${aasaPath}`,
+  "utf8",
+);
+const aasaHeaders = Object.fromEntries(
+  hosting.headers
+    .find((rule) => rule.source === aasaPath)
+    .headers.map(({ key, value }) => [key.toLowerCase(), value]),
+);
+assert.deepEqual(aasaHeaders, {
+  "content-type": "application/json",
+  "cache-control": "public, max-age=3600",
+});
 
 // Exercise Astro's real SSR renderer and HTML escaping, with no production API mutation.
 const calls = [];
 const attack = 'A "quote" & <script id="injected">alert(1)</script>';
+let signature = 0;
 const backend = createServer((req, res) => {
   calls.push(req.url);
   res.setHeader("Content-Type", "application/json");
-  const id = req.url.match(/\/(\d+)(?:\/share)?$/)?.[1];
+  const match = req.url.match(
+    /^\/(podcasts|shorts|channels|series)\/(\d+)(\/share)?$/,
+  );
+  if (!match || (match[1] === "podcasts" ? !!match[3] : !match[3])) {
+    res.writeHead(404).end("{}");
+    return;
+  }
+  const id = match[2];
   if (id === "404" || id === "403") {
     res.writeHead(Number(id)).end("{}");
   } else if (id === "503") {
     res.writeHead(503).end("{}");
+  } else if (match[1] === "channels" || match[1] === "series") {
+    const kind = match[1] === "channels" ? "channel" : "series";
+    res.end(
+      JSON.stringify({
+        id: Number(id),
+        [kind === "channel" ? "name" : "title"]: attack,
+        description: id === "8" ? null : `${descriptions[kind]} ${attack}`,
+        cover_url:
+          id === "8"
+            ? null
+            : `https://${imageHost}/share-fixture/${kind}.jpg?Signature=fixture-${++signature}&Key-Pair-Id=fixture-key`,
+      }),
+    );
   } else if (req.url.startsWith("/shorts/")) {
     res.end(
       JSON.stringify({
@@ -88,6 +140,10 @@ if (built) {
       res.writeHead(200, assetlinksHeaders).end(assetlinksBody);
       return;
     }
+    if (req.url === aasaPath) {
+      res.writeHead(200, aasaHeaders).end(aasaBody);
+      return;
+    }
     void handler(req, res).catch((error) => {
       console.error(error);
       res.writeHead(500).end();
@@ -99,6 +155,8 @@ if (built) {
   child = spawn(
     process.execPath,
     [
+      "--import",
+      new URL("../tests/helpers/share-image-fixture.mjs", import.meta.url).href,
       "node_modules/astro/astro.js",
       "dev",
       "--host",
@@ -189,9 +247,10 @@ try {
   for (const fingerprint of assetlinks[0].target.sha256_cert_fingerprints) {
     assert.match(fingerprint, /^(?:[0-9A-F]{2}:){31}[0-9A-F]{2}$/);
   }
-  for (const kind of ["episode", "shorts"]) {
+  for (const kind of kinds) {
     const response = await fetch(
       `${base}/share/${kind}/7?image=http://127.0.0.1/private`,
+      { headers: { "User-Agent": "Twitterbot/1.0" } },
     );
     assert.equal(response.status, 200);
     assert.equal(response.headers.get("location"), null);
@@ -211,14 +270,12 @@ try {
     );
     assert.match(
       html,
-      new RegExp(
-        `<p class="eyebrow"[^>]*>함께 듣는 들리 ${kind === "shorts" ? "쇼츠" : "에피소드"}</p>`,
-      ),
+      new RegExp(`<p class="eyebrow"[^>]*>함께 듣는 들리 ${labels[kind]}</p>`),
     );
     assert.match(
       html,
       new RegExp(
-        `<p class="description"[^>]*>${kind === "shorts" ? "Shorts summary" : "Episode description"} A &quot;quote&quot; &amp; &lt;script`,
+        `<p class="description"[^>]*>${descriptions[kind]} A &quot;quote&quot; &amp; &lt;script`,
       ),
     );
     assert.equal(/<p class="podcast"/.test(html), kind === "shorts");
@@ -254,6 +311,9 @@ try {
     assert.ok(html.includes("&lt;script"));
     assert.ok(!html.includes('<script id="injected">'));
     assert.ok(!html.includes('http-equiv="refresh"'));
+    assert.ok(!html.includes(imageHost));
+    assert.ok(!html.includes("Signature="));
+    assert.ok(!html.includes("Key-Pair-Id="));
     assert.ok(html.includes(`href="${site.stores.appStore}"`));
     assert.ok(html.includes(`href="${site.stores.googlePlay}"`));
     const { code, stores } = shareRedirectFromHtml(html);
@@ -277,13 +337,14 @@ try {
         platform,
         maxTouchPoints,
         stores,
+        history: [`https://deulli.com/share/${kind}/7`],
       });
       assert.deepEqual(browser.destinations, expected ? [expected] : []);
       assert.deepEqual(
         browser.history,
         expected
-          ? ["https://deulli.com/share/episode/7", expected]
-          : ["https://deulli.com/share/episode/7"],
+          ? [`https://deulli.com/share/${kind}/7`, expected]
+          : [`https://deulli.com/share/${kind}/7`],
       );
     }
     const returned = runShareRedirect(code, {
@@ -325,19 +386,51 @@ try {
     const image = await fetch(`${base}/share/og/${kind}/7`);
     assert.equal(image.status, 200);
     assert.equal(image.headers.get("location"), null);
-    assert.equal(image.headers.get("content-type"), "image/png");
+    const hasCover = kind === "channel" || kind === "series";
+    assert.equal(
+      image.headers.get("content-type"),
+      hasCover ? "image/jpeg" : "image/png",
+    );
+    assert.ok(!JSON.stringify([...image.headers]).includes("Signature="));
     assert.deepEqual(
       Buffer.from(await image.arrayBuffer()),
-      await readFile("public/og-image.png"),
+      hasCover
+        ? Buffer.from(signedImage)
+        : await readFile("public/og-image.png"),
     );
+    if (hasCover) {
+      const nullable = await fetch(`${base}/share/${kind}/8`);
+      assert.equal(nullable.status, 200);
+      const nullableHtml = await nullable.text();
+      checkBrandAndStores(nullableHtml);
+      assert.ok(
+        nullableHtml.includes(
+          `들리에서 이 ${labels[kind]}의 이야기를 듣고 영어를 공부해 보세요.`,
+        ),
+      );
+      assert.ok(nullableHtml.includes(`href="deulli://app/${kind}/8"`));
+      const fallback = await fetch(`${base}/share/og/${kind}/8`);
+      assert.equal(fallback.status, 200);
+      assert.equal(fallback.headers.get("content-type"), "image/png");
+      assert.deepEqual(
+        Buffer.from(await fallback.arrayBuffer()),
+        await readFile("public/og-image.png"),
+      );
+    }
   }
   const previousCalls = calls.length;
   for (const path of [
     "episode/0",
     "episode/01",
     "shorts/-1",
+    "channel/01",
+    "series/9007199254740992",
+    "channels/7",
     "other/7",
     "og/episode/0",
+    "og/channel/0",
+    "og/series/1e3",
+    "og/other/7",
   ]) {
     const response = await fetch(`${base}/share/${path}`);
     assert.equal(response.status, 404);
@@ -348,14 +441,14 @@ try {
       checkBrandAndStores(html);
       assert.ok(!html.includes("data-share-redirect"));
       assert.ok(!html.includes('http-equiv="refresh"'));
-      assert.ok(html.includes("공유한 콘텐츠를 찾을 수 없어요"));
+      assert.ok(html.includes("찾을 수 없어요"));
       assert.ok(html.includes("들리 홈으로"));
       assert.ok(!html.includes("다시 시도하기"));
       assert.ok(!html.includes("deulli://"));
     }
   }
   assert.equal(calls.length, previousCalls);
-  for (const kind of ["episode", "shorts"]) {
+  for (const kind of kinds) {
     for (const id of ["403", "404", "503"]) {
       for (const prefix of ["", "og/"]) {
         const response = await fetch(`${base}/share/${prefix}${kind}/${id}`);
@@ -373,7 +466,7 @@ try {
             html.includes(
               id === "503"
                 ? "잠시 후 다시 열어 주세요"
-                : "공유한 콘텐츠를 찾을 수 없어요",
+                : `공유한 ${kind === "channel" ? "채널을" : kind === "series" ? "시리즈를" : "콘텐츠를"} 찾을 수 없어요`,
             ),
           );
           assert.equal(html.includes("다시 시도하기"), id === "503");
@@ -385,24 +478,46 @@ try {
       }
     }
   }
-  const association = built
-    ? JSON.parse(
-        await readFile(
-          ".vercel/output/static/.well-known/apple-app-site-association",
-          "utf8",
-        ),
-      )
-    : await (
-        await fetch(`${base}/.well-known/apple-app-site-association`)
-      ).json();
-  assert.equal(
-    association.applinks.details[0].appID,
-    "GT75SU9T79.com.deulli.app",
-  );
+  const associationResponse = await fetch(`${base}${aasaPath}`, {
+    redirect: "manual",
+  });
+  assert.equal(associationResponse.status, 200);
+  assert.equal(associationResponse.headers.get("location"), null);
+  // Astro dev does not apply Vercel headers to this extensionless static file.
+  if (built) {
+    assert.match(
+      associationResponse.headers.get("content-type"),
+      /^application\/json(?:\s*;|$)/i,
+    );
+    assert.equal(
+      associationResponse.headers.get("cache-control"),
+      "public, max-age=3600",
+    );
+  }
+  assert.equal(await associationResponse.text(), aasaBody);
+  assert.deepEqual(JSON.parse(aasaBody), {
+    applinks: {
+      apps: [],
+      details: [
+        {
+          appID: "GT75SU9T79.com.deulli.app",
+          paths: kinds.map((kind) => `/share/${kind}/*`),
+        },
+      ],
+    },
+  });
+  for (const kind of kinds) {
+    const upstream =
+      kind === "episode"
+        ? "/podcasts/7"
+        : `/${kind === "channel" ? "channels" : kind}/7/share`;
+    assert.ok(calls.includes(upstream), `missing upstream ${upstream}`);
+  }
   if (built) {
     const home = await readFile(".vercel/output/static/index.html", "utf8");
     assert.ok(home.includes("https://deulli.com/og-image.png"));
     assert.ok(!home.includes("함께 듣는 들리"));
+    assert.equal(aasaBody, await readFile(`public${aasaPath}`, "utf8"));
     const config = JSON.parse(
       await readFile(".vercel/output/config.json", "utf8"),
     );
@@ -410,17 +525,19 @@ try {
       (route) => route.handle === "filesystem",
     );
     assert.ok(filesystemIndex >= 0);
-    assert.ok(
-      config.routes
-        .slice(0, filesystemIndex)
-        .every(
-          (route) =>
-            !route.src ||
-            !new RegExp(route.src).test(assetlinksPath) ||
-            (!route.dest && !route.status),
-        ),
-      "assetlinks must reach the static filesystem without redirects or rewrites",
-    );
+    for (const path of [assetlinksPath, aasaPath]) {
+      assert.ok(
+        config.routes
+          .slice(0, filesystemIndex)
+          .every(
+            (route) =>
+              !route.src ||
+              !new RegExp(route.src).test(path) ||
+              (!route.dest && !route.status),
+          ),
+        `${path} must reach the static filesystem without redirects or rewrites`,
+      );
+    }
     assert.ok(
       config.routes.some(
         (route) => route.src?.includes("share/og/") && route.dest === "_render",
@@ -428,7 +545,7 @@ try {
     );
   }
   console.log(
-    `${built ? "Built Vercel" : "Astro dev"} SSR/static HTTP checks passed: episode/shorts full fallback content/artwork/app/store links, OG, escaping, canonical, shipped redirect behavior, local PNG, ID/status/cache/retry, AASA and assetlinks JSON/package/relation/three Play SHA-256 fingerprints/hosting headers.`,
+    `${built ? "Built Vercel" : "Astro dev"} SSR/static HTTP checks passed: episode/shorts/channel/series full fallback content/artwork/app/store links, OG/Twitter, escaping, canonical, shipped redirect behavior, signed cover byte proxy without URL exposure, nullable metadata/local PNG, ID/status/cache/retry, AASA four exact paths and unchanged assetlinks three Play SHA-256 fingerprints.`,
   );
 } catch (error) {
   console.error(output);

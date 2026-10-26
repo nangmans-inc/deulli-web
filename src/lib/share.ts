@@ -1,4 +1,11 @@
-export type ShareKind = "episode" | "shorts";
+export type ShareKind = "episode" | "shorts" | "channel" | "series";
+
+export const SHARE_LABELS: Record<ShareKind, string> = {
+  episode: "에피소드",
+  shorts: "쇼츠",
+  channel: "채널",
+  series: "시리즈",
+};
 
 export interface ShareMetadata {
   title: string;
@@ -25,7 +32,12 @@ const CACHE_MAX_BYTES = 16 * 1024 * 1024;
 const CACHE_MAX_ENTRIES = 32;
 
 export function isShareKind(value: unknown): value is ShareKind {
-  return value === "episode" || value === "shorts";
+  return (
+    value === "episode" ||
+    value === "shorts" ||
+    value === "channel" ||
+    value === "series"
+  );
 }
 
 export function isPositiveId(value: unknown): value is string {
@@ -81,13 +93,28 @@ export function parseMetadata(
   id: string,
   data: unknown,
 ): ShareMetadata | null {
-  if (
-    !record(data) ||
-    data.id !== Number(id) ||
-    !nullableString(data.thumbnail_url)
-  ) {
+  if (!record(data) || data.id !== Number(id)) {
     return null;
   }
+  if (kind === "channel" || kind === "series") {
+    const title = kind === "channel" ? data.name : data.title;
+    if (
+      typeof title !== "string" ||
+      !title.trim() ||
+      !nullableString(data.description) ||
+      !nullableString(data.cover_url)
+    ) {
+      return null;
+    }
+    return {
+      title: text(title, 240),
+      description:
+        text(data.description ?? "", 400) ||
+        `들리에서 이 ${SHARE_LABELS[kind]}의 이야기를 듣고 영어를 공부해 보세요.`,
+      thumbnailUrl: data.cover_url,
+    };
+  }
+  if (!nullableString(data.thumbnail_url)) return null;
   if (kind === "episode") {
     if (
       typeof data.name !== "string" ||
@@ -268,7 +295,13 @@ export function createShareService(options: ServiceOptions) {
       ) {
         return { status: "unavailable" };
       }
-      const path = kind === "episode" ? `podcasts/${id}` : `shorts/${id}/share`;
+      const paths: Record<ShareKind, string> = {
+        episode: `podcasts/${id}`,
+        shorts: `shorts/${id}/share`,
+        channel: `channels/${id}/share`,
+        series: `series/${id}/share`,
+      };
+      const path = paths[kind];
       const url = `${base.href.replace(/\/$/, "")}/${path}`;
       const { response, bytes } = await request(
         url,
@@ -409,17 +442,23 @@ export async function sharePage(
       urls: shareUrls(kind, id),
     };
   }
+  const content =
+    kind === "channel"
+      ? { object: "채널을", subject: "채널이에요" }
+      : kind === "series"
+        ? { object: "시리즈를", subject: "시리즈예요" }
+        : { object: "콘텐츠를", subject: "콘텐츠예요" };
   return {
     status: result.status === "missing" ? 404 : 503,
     cacheControl: NO_STORE,
     title:
       result.status === "missing"
-        ? "공유한 콘텐츠를 찾을 수 없어요 | 들리"
+        ? `공유한 ${content.object} 찾을 수 없어요 | 들리`
         : "잠시 후 다시 열어 주세요 | 들리",
     description:
       result.status === "missing"
-        ? "삭제되었거나 공개되지 않은 콘텐츠예요. 들리에서 다른 이야기를 만나 보세요."
-        : "지금은 콘텐츠를 불러올 수 없어요. 잠시 후 다시 시도해 주세요.",
+        ? `삭제되었거나 공개되지 않은 ${content.subject}. 들리에서 다른 이야기를 만나 보세요.`
+        : `지금은 ${content.object} 불러올 수 없어요. 잠시 후 다시 시도해 주세요.`,
     metadata: null,
     urls: null,
   };

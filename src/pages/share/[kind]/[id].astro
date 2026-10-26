@@ -2,7 +2,7 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import StoreLinks from "../../../components/StoreLinks.astro";
 import { site } from "../../../data/site";
-import { sharePage } from "../../../lib/share";
+import { isShareKind, SHARE_LABELS, sharePage } from "../../../lib/share";
 import { shareService } from "../../../lib/share-service";
 import shareRedirectScript from "../../../scripts/share-redirect.js?raw";
 
@@ -12,7 +12,9 @@ const page = await sharePage(shareService, Astro.params.kind, Astro.params.id);
 Astro.response.status = page.status;
 Astro.response.headers.set("Cache-Control", page.cacheControl);
 if (page.status === 503) Astro.response.headers.set("Retry-After", "30");
-const label = Astro.params.kind === "shorts" ? "쇼츠" : "에피소드";
+const label = isShareKind(Astro.params.kind)
+  ? SHARE_LABELS[Astro.params.kind]
+  : "콘텐츠";
 ---
 
 <BaseLayout

@@ -4,6 +4,7 @@ import test from "node:test";
 import {
   createShareService,
   isPositiveId,
+  isShareKind,
   parseMetadata,
   sharePage,
   shareUrls,
@@ -30,6 +31,19 @@ const shorts = {
   podcast_name: "Podcast",
   thumbnail_url: null,
 };
+const channel = {
+  id: 7,
+  name: "Channel title",
+  description: "Channel description",
+  cover_url: thumbnail,
+};
+const series = {
+  id: 7,
+  title: "Series title",
+  description: "Series description",
+  cover_url: thumbnail,
+};
+const fixtures = { episode, shorts, channel, series };
 const json = (data, status = 200) =>
   new Response(JSON.stringify(data), {
     status,
@@ -70,12 +84,132 @@ test("positive IDs are canonical safe integers", () => {
 });
 
 test("public URLs have fixed HTTPS origin, stable image paths and explicit app scheme", () => {
-  assert.deepEqual(shareUrls("shorts", "7"), {
-    canonical: "https://deulli.com/share/shorts/7",
-    image: "https://deulli.com/share/og/shorts/7",
-    app: "deulli://app/shorts/7",
-  });
+  for (const kind of Object.keys(fixtures)) {
+    assert.equal(isShareKind(kind), true);
+    assert.deepEqual(shareUrls(kind, "7"), {
+      canonical: `https://deulli.com/share/${kind}/7`,
+      image: `https://deulli.com/share/og/${kind}/7`,
+      app: `deulli://app/${kind}/7`,
+    });
+  }
+  for (const kind of [undefined, null, "channels", "Series", "og", "other"])
+    assert.equal(isShareKind(kind), false);
 });
+
+for (const [kind, data, titleField, label] of [
+  ["channel", channel, "name", "채널"],
+  ["series", series, "title", "시리즈"],
+]) {
+  test(`${kind} accepts the lightweight share contract, nullable cover/description and sanitizes text`, () => {
+    assert.deepEqual(parseMetadata(kind, "7", data), {
+      title: data[titleField],
+      description: data.description,
+      thumbnailUrl: thumbnail,
+    });
+    for (const description of [null, "", " \n "]) {
+      const metadata = parseMetadata(kind, "7", {
+        ...data,
+        description,
+        cover_url: null,
+        private_field: "ignored",
+      });
+      assert.ok(metadata.description.includes(label));
+      assert.equal(metadata.thumbnailUrl, null);
+    }
+    const metadata = parseMetadata(kind, "7", {
+      ...data,
+      [titleField]: `  ${"a".repeat(250)}\n\t`,
+      description: ` \n${"b".repeat(450)}`,
+    });
+    assert.equal(metadata.title, "a".repeat(240));
+    assert.equal(metadata.description, "b".repeat(400));
+    for (const invalid of [
+      null,
+      [],
+      { ...data, id: 8 },
+      { ...data, id: "7" },
+      { ...data, [titleField]: null },
+      { ...data, [titleField]: 3 },
+      { ...data, [titleField]: " \n" },
+      { ...data, description: undefined },
+      { ...data, description: {} },
+      { ...data, cover_url: undefined },
+      { ...data, cover_url: 3 },
+    ]) {
+      assert.equal(parseMetadata(kind, "7", invalid), null);
+    }
+  });
+
+  test(`${kind} proxies fresh signed cover bytes and never follows an upstream redirect`, async () => {
+    let signature = 0;
+    let redirect = false;
+    const seen = [];
+    const api = service(async (url, init) => {
+      seen.push({ url, init });
+      if (url.includes("/share"))
+        return json({ ...data, cover_url: `${thumbnail}${++signature}` });
+      return redirect
+        ? new Response(null, { status: 302, headers: { Location: thumbnail } })
+        : jpeg();
+    });
+    for (let index = 0; index < 2; index++) {
+      const response = await api.image(kind, "7");
+      assert.equal(response.status, 200);
+      assert.equal(response.headers.get("location"), null);
+      assert.equal(response.headers.get("content-type"), "image/jpeg");
+      assert.deepEqual(new Uint8Array(await response.arrayBuffer()), image);
+    }
+    assert.ok(seen[1].url.endsWith("first1"));
+    assert.ok(seen[3].url.endsWith("first2"));
+    redirect = true;
+    const response = await api.image(kind, "7");
+    assert.equal(seen.length, 6);
+    assert.equal(response.headers.get("cache-control"), "no-store");
+    assert.equal(response.headers.get("location"), null);
+    for (const { init } of seen) {
+      assert.equal(init.redirect, "manual");
+      assert.equal(init.credentials, "omit");
+    }
+  });
+
+  test(`${kind} handles null/untrusted covers and uncached missing/unavailable metadata`, async () => {
+    for (const cover_url of [null, "http://169.254.169.254/private"]) {
+      let calls = 0;
+      const response = await service(async () => {
+        calls++;
+        return json({ ...data, cover_url });
+      }).image(kind, "7");
+      assert.equal(calls, 1);
+      assert.equal(response.status, 200);
+      assert.deepEqual(new Uint8Array(await response.arrayBuffer()), fallback);
+    }
+    for (const [upstream, expected] of [
+      [401, 404],
+      [403, 404],
+      [404, 404],
+      [410, 404],
+      [302, 503],
+      [503, 503],
+    ]) {
+      const api = service(async () => json({}, upstream));
+      const page = await sharePage(api, kind, "7");
+      assert.equal(page.status, expected);
+      assert.equal(page.cacheControl, "no-store");
+      assert.ok(page.description.includes(label));
+      assert.equal(page.urls, null);
+      const response = await api.image(kind, "7");
+      assert.equal(response.status, expected);
+      assert.equal(response.headers.get("cache-control"), "no-store");
+      assert.deepEqual(new Uint8Array(await response.arrayBuffer()), fallback);
+    }
+    const page = await sharePage(
+      service(async () => json({ ...data, id: 8 })),
+      kind,
+      "7",
+    );
+    assert.equal(page.status, 503);
+  });
+}
 
 test("parses exact episode/shorts contracts, nullable summaries/images and ignores extra fields", () => {
   assert.equal(parseMetadata("episode", "7", episode).title, episode.name);
@@ -115,15 +249,22 @@ test("anonymous requests use agreed backend routes, no cookies/auth or redirects
   const seen = [];
   const api = service(async (url, init) => {
     seen.push({ url, init });
-    return json(url.includes("/shorts/") ? shorts : episode);
+    const kind = Object.keys(fixtures).find((kind) =>
+      url.includes(
+        `/${kind === "episode" ? "podcasts" : kind === "channel" ? "channels" : kind}/`,
+      ),
+    );
+    return json(fixtures[kind]);
   });
-  assert.equal((await api.metadata("episode", "7")).status, "ok");
-  assert.equal((await api.metadata("shorts", "7")).status, "ok");
+  for (const kind of Object.keys(fixtures))
+    assert.equal((await api.metadata(kind, "7")).status, "ok");
   assert.deepEqual(
     seen.map(({ url }) => url),
     [
       "https://api.deulli.nangmans.com/podcasts/7",
       "https://api.deulli.nangmans.com/shorts/7/share",
+      "https://api.deulli.nangmans.com/channels/7/share",
+      "https://api.deulli.nangmans.com/series/7/share",
     ],
   );
   for (const { init } of seen) {
@@ -167,6 +308,8 @@ test("malformed public IDs/kinds return 404 without backend calls", async () => 
   for (const [kind, id] of [
     ["episode", "0"],
     ["shorts", "01"],
+    ["channel", "0"],
+    ["series", "9007199254740992"],
     ["other", "7"],
   ]) {
     const page = await sharePage(api, kind, id);
