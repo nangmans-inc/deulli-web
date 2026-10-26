@@ -3,6 +3,11 @@ import { spawn } from "node:child_process";
 import { createServer } from "node:http";
 import { once } from "node:events";
 import { readFile } from "node:fs/promises";
+import { site } from "../src/data/site.ts";
+import {
+  runShareRedirect,
+  shareRedirectFromHtml,
+} from "../tests/helpers/share-browser.mjs";
 
 // Exercise Astro's real SSR renderer and HTML escaping, with no production API mutation.
 const calls = [];
@@ -105,10 +110,12 @@ try {
       `${base}/share/${kind}/7?image=http://127.0.0.1/private`,
     );
     assert.equal(response.status, 200);
+    assert.equal(response.headers.get("location"), null);
     const html = await response.text();
     assert.ok(html.includes(`href="https://deulli.com/share/${kind}/7"`));
     assert.ok(html.includes(`content="https://deulli.com/share/og/${kind}/7"`));
-    assert.ok(html.includes(`src="/share/og/${kind}/7"`));
+    assert.ok(!html.includes(`src="/share/og/${kind}/7"`));
+    assert.ok(!/<main\b[^>]*>[\s\S]*?<img\b/.test(html));
     assert.ok(html.includes(`href="deulli://app/${kind}/7"`));
     for (const tag of [
       "og:type",
@@ -133,12 +140,45 @@ try {
     assert.ok(html.includes("&lt;script"));
     assert.ok(!html.includes('<script id="injected">'));
     assert.ok(!html.includes('http-equiv="refresh"'));
-    assert.ok(html.includes("https://apps.apple.com/kr/app/id6798545609"));
-    assert.ok(
-      html.includes(
-        "https://play.google.com/store/apps/details?id=com.deulli.app",
-      ),
-    );
+    assert.ok(html.includes(`href="${site.stores.appStore}"`));
+    assert.ok(html.includes(`href="${site.stores.googlePlay}"`));
+    const { code, stores } = shareRedirectFromHtml(html);
+    assert.deepEqual(stores, site.stores);
+    for (const [userAgent, platform, maxTouchPoints, expected] of [
+      ["Mozilla/5.0 (iPhone) Mobile Safari", "iPhone", 5, stores.appStore],
+      [
+        "Mozilla/5.0 (Android 14) Mobile Chrome",
+        "Linux armv8l",
+        5,
+        stores.googlePlay,
+      ],
+      ["Mozilla/5.0 (Macintosh) Safari", "MacIntel", 5, stores.appStore],
+      ["Mozilla/5.0 (Macintosh) Safari", "MacIntel", 0, null],
+      ["Unknown", "", 0, null],
+      ["Mozilla/5.0 (Android 14) Googlebot", "Linux armv8l", 5, null],
+      ["Mozilla/5.0 (iPhone) facebookexternalhit/1.1", "iPhone", 5, null],
+    ]) {
+      const browser = runShareRedirect(code, {
+        userAgent,
+        platform,
+        maxTouchPoints,
+        stores,
+      });
+      assert.deepEqual(browser.destinations, expected ? [expected] : []);
+    }
+    const background = runShareRedirect(code, {
+      userAgent: "iPhone",
+      stores,
+      visibilityState: "hidden",
+      prerendering: true,
+    });
+    assert.deepEqual(background.destinations, []);
+    background.document.visibilityState = "visible";
+    background.dispatch("visibilitychange");
+    assert.deepEqual(background.destinations, []);
+    background.document.prerendering = false;
+    background.dispatch("prerenderingchange");
+    assert.deepEqual(background.destinations, [stores.appStore]);
     const image = await fetch(`${base}/share/og/${kind}/7`);
     assert.equal(image.status, 200);
     assert.equal(image.headers.get("location"), null);
@@ -159,14 +199,38 @@ try {
     const response = await fetch(`${base}/share/${path}`);
     assert.equal(response.status, 404);
     assert.equal(response.headers.get("cache-control"), "no-store");
+    assert.equal(response.headers.get("location"), null);
+    if (!path.startsWith("og/")) {
+      const html = await response.text();
+      assert.ok(!html.includes("data-share-redirect"));
+      assert.ok(!html.includes('http-equiv="refresh"'));
+      assert.ok(html.includes("공유한 콘텐츠를 찾을 수 없어요"));
+    }
   }
   assert.equal(calls.length, previousCalls);
-  for (const id of ["403", "404", "503"]) {
-    for (const prefix of ["", "og/"]) {
-      const response = await fetch(`${base}/share/${prefix}episode/${id}`);
-      assert.equal(response.status, id === "503" ? 503 : 404);
-      assert.equal(response.headers.get("cache-control"), "no-store");
-      if (id === "503") assert.equal(response.headers.get("retry-after"), "30");
+  for (const kind of ["episode", "shorts"]) {
+    for (const id of ["403", "404", "503"]) {
+      for (const prefix of ["", "og/"]) {
+        const response = await fetch(`${base}/share/${prefix}${kind}/${id}`);
+        assert.equal(response.status, id === "503" ? 503 : 404);
+        assert.equal(response.headers.get("cache-control"), "no-store");
+        assert.equal(response.headers.get("location"), null);
+        if (id === "503")
+          assert.equal(response.headers.get("retry-after"), "30");
+        if (!prefix) {
+          const html = await response.text();
+          assert.ok(!html.includes("data-share-redirect"));
+          assert.ok(!html.includes('http-equiv="refresh"'));
+          assert.ok(
+            html.includes(
+              id === "503"
+                ? "잠시 후 다시 열어 주세요"
+                : "공유한 콘텐츠를 찾을 수 없어요",
+            ),
+          );
+          assert.equal(html.includes("다시 시도하기"), id === "503");
+        }
+      }
     }
   }
   const association = built
@@ -197,7 +261,7 @@ try {
     );
   }
   console.log(
-    `${built ? "Built Vercel" : "Astro dev"} SSR HTTP checks passed: episode/shorts OG, escaping, canonical, app/store links, local PNG, ID/status/cache and AASA.`,
+    `${built ? "Built Vercel" : "Astro dev"} SSR HTTP checks passed: episode/shorts OG, escaping, canonical, manual links, shipped redirect behavior, local PNG, ID/status/cache and AASA.`,
   );
 } catch (error) {
   console.error(output);

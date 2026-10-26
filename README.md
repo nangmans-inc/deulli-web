@@ -13,7 +13,7 @@
 pnpm install
 pnpm dev          # http://localhost:4321
 pnpm build        # Vercel 정적 홈 + 공유 SSR 함수 (.vercel/output/)
-pnpm test         # Node 22.18+ 계약·보안·캐시 단위 테스트
+pnpm test         # Node 22.18+ 계약·보안·캐시·브라우저 이동 테스트
 pnpm test:http    # 로컬 mock API + 실제 Astro SSR HTTP 검증
 pnpm test:http --built # build 후 Vercel 함수 직접 실행 + 정적 홈 산출물 검증
 pnpm lint         # astro check + eslint
@@ -85,6 +85,7 @@ src/
   pages/share/og/[kind]/[id].ts   최신 서명 이미지 바이트 프록시
   lib/share.ts               익명 API 계약·ID 검증·이미지 보안·제한 캐시
   lib/share-service.ts       서버 환경 변수·로컬 폴백 이미지 연결
+  scripts/share-redirect.js   공유 HTML에 포함되는 모바일 스토어 자동 이동
   layouts/BaseLayout.astro    <head> 메타·JSON-LD·스크롤 리빌
   components/
     Hero.astro                슬로건·마스코트·스크린샷·다운로드 버튼
@@ -143,9 +144,9 @@ public/
 
 - `https://deulli.com/share/episode/{id}` → 익명 `GET {API_BASE}/podcasts/{id}`.
   응답의 `id`, `name`, `description`, `thumbnail_url`을 사용한다.
-- `https://deulli.com/share/shorts/{id}` → 새 익명 `GET {API_BASE}/shorts/{id}/share`.
+- `https://deulli.com/share/shorts/{id}` → 익명 `GET {API_BASE}/shorts/{id}/share`.
   응답은 `id`, `title`, `summary`, `podcast_id`, `podcast_name`, `thumbnail_url`이며
-  `summary`·`thumbnail_url`은 `null`을 허용한다. **백엔드 공개 계약 배포가 선행되어야 한다.**
+  `summary`·`thumbnail_url`은 `null`을 허용한다.
 
 ID는 선행 0 없는 양의 JavaScript safe integer다. 잘못된 경로·없는/비공개 콘텐츠는 404,
 타임아웃·5xx·잘못된 응답은 503이며 오류 응답은 모두 `Cache-Control: no-store`다.
@@ -154,8 +155,20 @@ ID는 선행 0 없는 양의 JavaScript safe integer다. 잘못된 경로·없�
 
 OG/Twitter 태그는 JavaScript 실행 전 HTML에 포함되고 canonical은 요청 호스트·쿼리와
 관계없이 `https://deulli.com/share/...`다. 동적 콘텐츠는 Astro의 기본 escaping으로 출력한다.
-페이지는 자동 이동하지 않으며 사용자가 `deulli://app/episode/{id}` 또는
-`deulli://app/shorts/{id}` 버튼을 누르거나 기존 스토어 링크를 선택한다.
+설치 앱은 OS의 Universal/App Links 연결이 유효할 때 웹에 도달하기 전에 열린다.
+정상 공유 HTML을 모바일 브라우저에서 열면 iOS는 App Store, Android는 Google Play로
+`location.replace`한다. 스토어 주소는 `src/data/site.ts`의 기존 `stores`를 사용하며,
+iPad의 데스크톱 UA도 `MacIntel`·멀티터치로 판별한다. 설치 여부를 추측하는 타이머나
+자동 커스텀 scheme 호출은 사용하지 않는다. Android의 verified App Links는 아래 전제가
+아직 충족되지 않아 동작이 검증되지 않았다.
+
+큰 아트워크·콘텐츠 소개 화면은 제거하고 `deulli://app/episode/{id}` 또는
+`deulli://app/shorts/{id}`의 수동 앱 열기와 두 스토어의 작은 텍스트 링크만 남긴다.
+자동 이동이 차단되거나 JavaScript가 꺼져 있어도 이 링크를 사용할 수 있다.
+데스크톱·알 수 없는 플랫폼·알려진 봇/미리보기 crawler는 자동 이동하지 않는다.
+백그라운드/사전 렌더링 문서는 활성화되고 화면에 보일 때 한 번만 이동을 시도하며,
+404/503 오류 페이지에는 자동 이동 코드를 포함하지 않는다. 서버 302나 meta refresh를
+사용하지 않으므로 최초 응답의 OG/Twitter HTML은 유지된다.
 
 공유 이미지 주소는 `/share/og/episode/{id}`·`/share/og/shorts/{id}`로 고정된다.
 서명 URL은 HTML·리다이렉트·응답 헤더에 노출하지 않는다. 프록시는 매 요청마다 공개
@@ -212,7 +225,12 @@ Android는 **Play App Signing SHA-256 인증서 지문이 아직 확인되지 �
 패키지 `com.deulli.app`에 대한 `delegate_permission/common.handle_all_urls` association을
 `/.well-known/assetlinks.json`에 추가하고 앱의 HTTPS intent filter·autoVerify와 실기기
 검증을 완료해야 한다. 업로드 키·디버그 키 지문으로 대신하지 않는다.
-웹 배포, iOS/Android OS 연결, 실제 메신저 미리보기 재수집 검증은 별도 운영 절차다.
+
+2026-10-26 인계된 검증 기록 기준 웹 PR #6 (`c7e004a`)와 백엔드 운영 PR #382의
+배포 실행 `40205745549`는 성공했다. iOS 17 시뮬레이터에서 Universal Link의 warm/cold
+실행과 네이티브 Share의 Copy(쇼츠 `8349`·에피소드 `105948`)를 확인했다.
+이 자동 이동 변경은 아직 배포하지 않았고, 실기기·실제 메신저 미리보기·Android verified
+association은 미검증이다. 상세 검증 범위는 [docs/share-verification.md](docs/share-verification.md)에 기록한다.
 
 ## 측정
 
