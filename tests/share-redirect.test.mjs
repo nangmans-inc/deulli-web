@@ -19,14 +19,15 @@ const androidIntent = (url) =>
 const run = (options) =>
   runShareRedirect(code, { stores: site.stores, ...options });
 
-test("iPhone, iPod and iPad mobile UAs navigate to the existing App Store URL", () => {
+test("iPhone, iPod and iPad mobile UAs try the app and keep its manual link", () => {
   for (const userAgent of [
     ios,
     ios.replace("iPhone", "iPod"),
     "Mozilla/5.0 (iPad)",
   ]) {
     const browser = run({ userAgent });
-    assert.deepEqual(browser.destinations, [site.stores.appStore]);
+    assert.deepEqual(browser.destinations, [app]);
+    assert.equal(browser.appLink.href, app);
     assert.equal(browser.listenerCount(), 0);
     browser.dispatch("visibilitychange");
     assert.equal(browser.destinations.length, 1);
@@ -59,7 +60,7 @@ test("desktop-mode iPad uses MacIntel and multiple touch points without redirect
   assert.deepEqual(
     run({ userAgent: mac, platform: "MacIntel", maxTouchPoints: 5 })
       .destinations,
-    [site.stores.appStore],
+    [app],
   );
   for (const maxTouchPoints of [0, 1]) {
     assert.deepEqual(
@@ -142,23 +143,17 @@ test("background documents wait for visibility and navigate only once", () => {
   assert.equal(browser.listenerCount(), 0);
 });
 
-test("initial parsing waits until the frame after pageshow so the fallback can enter history", () => {
-  const browser = run({ userAgent: ios, readyState: "loading" });
-  assert.deepEqual(browser.destinations, []);
-  browser.document.readyState = "interactive";
-  browser.dispatch("visibilitychange");
-  browser.dispatch("prerenderingchange");
-  assert.deepEqual(browser.destinations, []);
-  browser.document.readyState = "complete";
-  browser.dispatch("pageshow");
-  browser.dispatch("visibilitychange");
-  assert.deepEqual(browser.destinations, []);
-  browser.frame();
-  assert.deepEqual(browser.destinations, [site.stores.appStore]);
-  browser.dispatch("pageshow");
-  browser.frame();
-  assert.equal(browser.destinations.length, 1);
-  assert.equal(browser.listenerCount(), 0);
+test("mobile app opening does not wait for images, pageshow or a timer", () => {
+  for (const userAgent of [ios, android]) {
+    const browser = run({ userAgent, readyState: "loading" });
+    assert.deepEqual(browser.destinations, [app]);
+    browser.document.readyState = "complete";
+    browser.dispatch("pageshow");
+    browser.frame();
+    browser.dispatch("visibilitychange");
+    assert.deepEqual(browser.destinations, [app]);
+    assert.equal(browser.listenerCount(), 0);
+  }
 });
 
 test("prerendered documents require activation and visibility in either event order", () => {
@@ -179,7 +174,7 @@ test("prerendered documents require activation and visibility in either event or
     (activationFirst ? activate : show)();
     assert.deepEqual(browser.destinations, []);
     (activationFirst ? show : activate)();
-    assert.deepEqual(browser.destinations, [site.stores.appStore]);
+    assert.deepEqual(browser.destinations, [app]);
   }
 });
 
@@ -188,13 +183,13 @@ test("browsers without the prerender API still navigate while visible", () => {
   delete browser.document.prerendering;
   browser.document.visibilityState = "visible";
   browser.dispatch("visibilitychange");
-  assert.deepEqual(browser.destinations, [site.stores.appStore]);
+  assert.deepEqual(browser.destinations, [app]);
 });
 
 test("blocked navigation is caught without retrying on return to the page", () => {
   const browser = run({ userAgent: ios, blockNavigation: true });
   browser.dispatch("visibilitychange");
-  assert.deepEqual(browser.destinations, [site.stores.appStore]);
+  assert.deepEqual(browser.destinations, [app]);
   assert.equal(browser.listenerCount(), 0);
   assert.deepEqual(browser.history, ["https://deulli.com/share/episode/7"]);
 });
@@ -221,7 +216,7 @@ test("Android history returns preserve the manual intent without automatically o
   assert.equal(browser.listenerCount(), 0);
 });
 
-test("Android does not launch a missing or malformed app destination", () => {
+test("mobile platforms do not launch a missing or malformed app destination", () => {
   for (const options of [
     { hasAppLink: false },
     { appUrl: null },
@@ -230,27 +225,29 @@ test("Android does not launch a missing or malformed app destination", () => {
     { appUrl: "deulli://app/episode/0" },
     { appUrl: "deulli://app/episode/7#Intent;package=other;end" },
   ]) {
-    const browser = run({ userAgent: android, ...options });
-    assert.deepEqual(browser.destinations, []);
-    assert.equal(browser.listenerCount(), 0);
+    for (const userAgent of [ios, android]) {
+      const browser = run({ userAgent, ...options });
+      assert.deepEqual(browser.destinations, []);
+      assert.equal(browser.listenerCount(), 0);
+    }
   }
 });
 
-test("store navigation retains the fallback in history and Back cannot redirect it again", () => {
-  for (const [userAgent, store] of [[ios, site.stores.appStore]]) {
+test("mobile app returns and history traversals cannot open the app again", () => {
+  for (const userAgent of [ios, android]) {
     const share = "https://deulli.com/share/shorts/7";
     const previous = "https://example.com/message";
     const browser = run({ userAgent, history: [previous, share] });
-    assert.deepEqual(browser.history, [previous, share, store]);
-    assert.equal(browser.back(), share);
     // A restored bfcache document keeps the original single-attempt guard.
     browser.dispatch("visibilitychange");
-    assert.deepEqual(browser.destinations, [store]);
+    browser.dispatch("pageshow");
+    browser.frame();
+    assert.deepEqual(browser.destinations, [app]);
     // Without the bfcache, history traversal creates a new document instead.
     const restored = run({
       userAgent,
       navigationType: "back_forward",
-      history: browser.history,
+      history: [previous, share],
     });
     restored.dispatch("visibilitychange");
     restored.dispatch("prerenderingchange");
@@ -263,7 +260,7 @@ test("store navigation retains the fallback in history and Back cannot redirect 
 test("missing Navigation Timing support does not disable mobile routing", () => {
   assert.deepEqual(
     run({ userAgent: ios, hasNavigationTiming: false }).destinations,
-    [site.stores.appStore],
+    [app],
   );
 });
 

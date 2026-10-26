@@ -320,9 +320,9 @@ try {
     assert.deepEqual(stores, site.stores);
     assert.equal(appUrl, `deulli://app/${kind}/7`);
     for (const [userAgent, platform, maxTouchPoints, expected] of [
-      ["Mozilla/5.0 (iPhone) Mobile Safari", "iPhone", 5, stores.appStore],
+      ["Mozilla/5.0 (iPhone) Mobile Safari", "iPhone", 5, appUrl],
       ["Mozilla/5.0 (Android 14) Mobile Chrome", "Linux armv8l", 5, appUrl],
-      ["Mozilla/5.0 (Macintosh) Safari", "MacIntel", 5, stores.appStore],
+      ["Mozilla/5.0 (Macintosh) Safari", "MacIntel", 5, appUrl],
       ["Mozilla/5.0 (Macintosh) Safari", "MacIntel", 0, null],
       ["Unknown", "", 0, null],
       ["Mozilla/5.0 (Android 14) Googlebot", "Linux armv8l", 5, null],
@@ -356,6 +356,7 @@ try {
     const returned = runShareRedirect(code, {
       userAgent: "iPhone",
       stores,
+      appUrl,
       navigationType: "back_forward",
     });
     returned.dispatch("visibilitychange");
@@ -364,21 +365,23 @@ try {
     const loading = runShareRedirect(code, {
       userAgent: "iPhone",
       stores,
+      appUrl,
       readyState: "loading",
     });
-    assert.deepEqual(loading.destinations, []);
+    assert.deepEqual(loading.destinations, [appUrl]);
     loading.document.readyState = "complete";
     loading.dispatch("pageshow");
     loading.dispatch("visibilitychange");
-    assert.deepEqual(loading.destinations, []);
+    assert.deepEqual(loading.destinations, [appUrl]);
     loading.frame();
     loading.dispatch("pageshow");
     loading.dispatch("visibilitychange");
-    assert.deepEqual(loading.destinations, [stores.appStore]);
+    assert.deepEqual(loading.destinations, [appUrl]);
     assert.equal(loading.listenerCount(), 0);
     const background = runShareRedirect(code, {
       userAgent: "iPhone",
       stores,
+      appUrl,
       visibilityState: "hidden",
       prerendering: true,
     });
@@ -388,7 +391,7 @@ try {
     assert.deepEqual(background.destinations, []);
     background.document.prerendering = false;
     background.dispatch("prerenderingchange");
-    assert.deepEqual(background.destinations, [stores.appStore]);
+    assert.deepEqual(background.destinations, [appUrl]);
     const image = await fetch(`${base}/share/og/${kind}/7`);
     assert.equal(image.status, 200);
     assert.equal(image.headers.get("location"), null);
