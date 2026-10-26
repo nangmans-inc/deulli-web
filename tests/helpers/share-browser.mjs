@@ -10,6 +10,8 @@ export function runShareRedirect(
     readyState = "complete",
     prerendering = false,
     stores = {},
+    appUrl = "deulli://app/episode/7",
+    hasAppLink = true,
     hasLinks = true,
     blockNavigation = false,
     navigationType = "navigate",
@@ -21,25 +23,30 @@ export function runShareRedirect(
   const entries = [...history];
   const frames = [];
   const listeners = new Map();
+  const addListener = (type, listener) => {
+    if (!listeners.has(type)) listeners.set(type, new Set());
+    listeners.get(type).add(listener);
+  };
+  const removeListener = (type, listener) =>
+    listeners.get(type)?.delete(listener);
+  const appLink = { href: appUrl };
+  const links = {
+    dataset: {
+      appUrl,
+      appStore: stores.appStore,
+      googlePlay: stores.googlePlay,
+    },
+    querySelector: (selector) =>
+      hasAppLink && selector === "[data-open-app]" ? appLink : null,
+  };
   const document = {
     visibilityState,
     readyState,
     prerendering,
     querySelector: (selector) =>
-      hasLinks && selector === "[data-share-redirect]"
-        ? {
-            dataset: {
-              appStore: stores.appStore,
-              googlePlay: stores.googlePlay,
-            },
-          }
-        : null,
-    addEventListener: (type, listener) => {
-      if (!listeners.has(type)) listeners.set(type, new Set());
-      listeners.get(type).add(listener);
-    },
-    removeEventListener: (type, listener) =>
-      listeners.get(type)?.delete(listener),
+      hasLinks && selector === "[data-share-redirect]" ? links : null,
+    addEventListener: addListener,
+    removeEventListener: removeListener,
   };
   runInNewContext(code, {
     document,
@@ -67,6 +74,7 @@ export function runShareRedirect(
   });
   return {
     destinations,
+    appLink,
     history: entries,
     back: () => {
       if (entries.length > 1) entries.pop();
@@ -94,6 +102,7 @@ export function shareRedirectFromHtml(html) {
     nav.match(new RegExp(`data-${name}="([^"]+)"`))?.[1].replace(/&amp;/g, "&");
   return {
     code,
+    appUrl: attribute("app-url"),
     stores: {
       appStore: attribute("app-store"),
       googlePlay: attribute("google-play"),
