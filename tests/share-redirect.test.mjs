@@ -16,7 +16,7 @@ const mac = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) Version/17 Safari";
 const run = (options) =>
   runShareRedirect(code, { stores: site.stores, ...options });
 
-test("iPhone, iPod and iPad mobile UAs replace the page with the existing App Store URL", () => {
+test("iPhone, iPod and iPad mobile UAs navigate to the existing App Store URL", () => {
   for (const userAgent of [
     ios,
     ios.replace("iPhone", "iPod"),
@@ -30,7 +30,7 @@ test("iPhone, iPod and iPad mobile UAs replace the page with the existing App St
   }
 });
 
-test("Android phone and tablet UAs replace the page with the existing Google Play URL", () => {
+test("Android phone and tablet UAs navigate to the existing Google Play URL", () => {
   for (const userAgent of [android, android.replace(" Mobile", "")]) {
     assert.deepEqual(run({ userAgent }).destinations, [site.stores.googlePlay]);
   }
@@ -123,6 +123,25 @@ test("background documents wait for visibility and navigate only once", () => {
   assert.equal(browser.listenerCount(), 0);
 });
 
+test("initial parsing waits until the frame after pageshow so the fallback can enter history", () => {
+  const browser = run({ userAgent: ios, readyState: "loading" });
+  assert.deepEqual(browser.destinations, []);
+  browser.document.readyState = "interactive";
+  browser.dispatch("visibilitychange");
+  browser.dispatch("prerenderingchange");
+  assert.deepEqual(browser.destinations, []);
+  browser.document.readyState = "complete";
+  browser.dispatch("pageshow");
+  browser.dispatch("visibilitychange");
+  assert.deepEqual(browser.destinations, []);
+  browser.frame();
+  assert.deepEqual(browser.destinations, [site.stores.appStore]);
+  browser.dispatch("pageshow");
+  browser.frame();
+  assert.equal(browser.destinations.length, 1);
+  assert.equal(browser.listenerCount(), 0);
+});
+
 test("prerendered documents require activation and visibility in either event order", () => {
   for (const activationFirst of [true, false]) {
     const browser = run({
@@ -158,6 +177,41 @@ test("blocked navigation is caught without retrying on return to the page", () =
   browser.dispatch("visibilitychange");
   assert.deepEqual(browser.destinations, [site.stores.appStore]);
   assert.equal(browser.listenerCount(), 0);
+  assert.deepEqual(browser.history, ["https://deulli.com/share/episode/7"]);
+});
+
+test("store navigation retains the fallback in history and Back cannot redirect it again", () => {
+  for (const [userAgent, store] of [
+    [ios, site.stores.appStore],
+    [android, site.stores.googlePlay],
+  ]) {
+    const share = "https://deulli.com/share/shorts/7";
+    const previous = "https://example.com/message";
+    const browser = run({ userAgent, history: [previous, share] });
+    assert.deepEqual(browser.history, [previous, share, store]);
+    assert.equal(browser.back(), share);
+    // A restored bfcache document keeps the original single-attempt guard.
+    browser.dispatch("visibilitychange");
+    assert.deepEqual(browser.destinations, [store]);
+    // Without the bfcache, history traversal creates a new document instead.
+    const restored = run({
+      userAgent,
+      navigationType: "back_forward",
+      history: browser.history,
+    });
+    restored.dispatch("visibilitychange");
+    restored.dispatch("prerenderingchange");
+    assert.deepEqual(restored.destinations, []);
+    assert.deepEqual(restored.history, [previous, share]);
+    assert.equal(restored.listenerCount(), 0);
+  }
+});
+
+test("missing Navigation Timing support does not disable mobile routing", () => {
+  assert.deepEqual(
+    run({ userAgent: ios, hasNavigationTiming: false }).destinations,
+    [site.stores.appStore],
+  );
 });
 
 test("error pages and missing store destinations never navigate", () => {

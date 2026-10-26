@@ -155,17 +155,24 @@ ID는 선행 0 없는 양의 JavaScript safe integer다. 잘못된 경로·없�
 
 OG/Twitter 태그는 JavaScript 실행 전 HTML에 포함되고 canonical은 요청 호스트·쿼리와
 관계없이 `https://deulli.com/share/...`다. 동적 콘텐츠는 Astro의 기본 escaping으로 출력한다.
-설치 앱은 OS의 Universal/App Links 연결이 유효할 때 웹에 도달하기 전에 열린다.
+외부 공유 링크는 OS의 Universal/App Links 연결이 유효할 때 앱에서 열릴 수 있다.
+Safari 주소창 입력이나 사용자의 브라우저 열기 선택 등으로 앱이 설치되어 있어도 웹에
+도달할 수 있으므로, 웹에 도달했다는 이유로 앱 미설치를 판단하지 않는다.
 정상 공유 HTML을 모바일 브라우저에서 열면 iOS는 App Store, Android는 Google Play로
-`location.replace`한다. 스토어 주소는 `src/data/site.ts`의 기존 `stores`를 사용하며,
+`location.assign`한다. 스토어 주소는 `src/data/site.ts`의 기존 `stores`를 사용하며,
 iPad의 데스크톱 UA도 `MacIntel`·멀티터치로 판별한다. 설치 여부를 추측하는 타이머나
 자동 커스텀 scheme 호출은 사용하지 않는다. Android의 verified App Links는 아래 전제가
 아직 충족되지 않아 동작이 검증되지 않았다.
 
-큰 아트워크·콘텐츠 소개 화면은 제거하고 `deulli://app/episode/{id}` 또는
-`deulli://app/shorts/{id}`의 수동 앱 열기와 두 스토어의 작은 텍스트 링크만 남긴다.
-자동 이동이 차단되거나 JavaScript가 꺼져 있어도 이 링크를 사용할 수 있다.
+공유 페이지는 `/share/og/{kind}/{id}` 아트워크, 콘텐츠 종류·팟캐스트명(쇼츠)·제목·요약,
+`deulli://app/{kind}/{id}`의 수동 앱 열기, App Store·Google Play 배지와 브랜드 헤더·푸터를
+유지한다. 자동 이동이 차단되거나 JavaScript가 꺼져 있어도 전체 랜딩을 사용할 수 있다.
+`replace`로 페이지를 방문 기록에서 지우지 않으며, 뒤로/앞으로 돌아온 문서는 자동 이동을
+반복하지 않는다. BFCache 복귀는 기존 일회성 상태, 새 문서로 복귀한 경우는 Navigation
+Timing의 `back_forward`로 처리한다. 해당 API가 없는 브라우저는 새 문서 복귀 판별이 제한된다.
 데스크톱·알 수 없는 플랫폼·알려진 봇/미리보기 crawler는 자동 이동하지 않는다.
+최초 `pageshow` 다음 프레임까지 기다려 fallback 이미지 로드와 로드 태스크가 끝난 뒤
+이동한다. 로드 중 `assign`도 방문 기록을 덮어쓸 수 있어 이 순서를 지킨다.
 백그라운드/사전 렌더링 문서는 활성화되고 화면에 보일 때 한 번만 이동을 시도하며,
 404/503 오류 페이지에는 자동 이동 코드를 포함하지 않는다. 서버 302나 meta refresh를
 사용하지 않으므로 최초 응답의 OG/Twitter HTML은 유지된다.
@@ -229,8 +236,12 @@ Android는 **Play App Signing SHA-256 인증서 지문이 아직 확인되지 �
 2026-10-26 인계된 검증 기록 기준 웹 PR #6 (`c7e004a`)와 백엔드 운영 PR #382의
 배포 실행 `40205745549`는 성공했다. iOS 17 시뮬레이터에서 Universal Link의 warm/cold
 실행과 네이티브 Share의 Copy(쇼츠 `8349`·에피소드 `105948`)를 확인했다.
-이 자동 이동 변경은 아직 배포하지 않았고, 실기기·실제 메신저 미리보기·Android verified
-association은 미검증이다. 상세 검증 범위는 [docs/share-verification.md](docs/share-verification.md)에 기록한다.
+이번 fallback 복원은 배포하지 않았다. iPhone 17 / iOS 26.5 시뮬레이터의 실제 Safari에서는
+자동 이동과 수동 App Store 링크 모두 잘못된 주소 알림을 재현했고, 같은 시뮬레이터에
+`com.apple.AppStore`가 없음을 확인했다. 이 환경의 스토어 앱 전환 실패와 실제 기기의
+스토어 이동은 구분해야 한다. 실기기·실제 메신저 미리보기·Android verified association은
+미검증이다. Node VM 및 Chromium에서 모바일 UA만 바꾼 검증으로 Safari나 네이티브 앱
+전환을 검증했다고 보지 않는다. 상세 범위는 [docs/share-verification.md](docs/share-verification.md)에 기록한다.
 
 ## 측정
 

@@ -25,9 +25,9 @@ const backend = createServer((req, res) => {
       JSON.stringify({
         id: Number(id),
         title: attack,
-        summary: null,
+        summary: `Shorts summary ${attack}`,
         podcast_id: 9,
-        podcast_name: "Podcast",
+        podcast_name: `Podcast ${attack}`,
         thumbnail_url: null,
       }),
     );
@@ -36,7 +36,7 @@ const backend = createServer((req, res) => {
       JSON.stringify({
         id: Number(id),
         name: attack,
-        description: attack,
+        description: `Episode description ${attack}`,
         thumbnail_url: null,
       }),
     );
@@ -92,6 +92,23 @@ child?.stderr.on("data", (chunk) => {
   output += chunk;
 });
 const base = `http://127.0.0.1:${port}`;
+
+function checkBrandAndStores(html) {
+  assert.match(html, /<header\b[\s\S]*?aria-label="들리 홈"/);
+  assert.match(html, /<footer\b[^>]*>듣다 보면 들리니까, 들리<\/footer>/);
+  for (const [store, label, badge] of [
+    [site.stores.appStore, "App Store", "/badges/app-store-ko.svg"],
+    [site.stores.googlePlay, "Google Play", "/badges/google-play-ko.png"],
+  ]) {
+    assert.match(
+      html,
+      new RegExp(
+        `<a\\b[^>]*href="${store.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"[^>]*aria-label="${label}에서 들리 다운로드 \\(새 창\\)"[^>]*>[\\s\\S]*?<img\\b[^>]*src="${badge}"`,
+      ),
+    );
+  }
+}
+
 try {
   let ready = false;
   for (let attempt = 0; attempt < 150; attempt++) {
@@ -114,9 +131,39 @@ try {
     const html = await response.text();
     assert.ok(html.includes(`href="https://deulli.com/share/${kind}/7"`));
     assert.ok(html.includes(`content="https://deulli.com/share/og/${kind}/7"`));
-    assert.ok(!html.includes(`src="/share/og/${kind}/7"`));
-    assert.ok(!/<main\b[^>]*>[\s\S]*?<img\b/.test(html));
-    assert.ok(html.includes(`href="deulli://app/${kind}/7"`));
+    checkBrandAndStores(html);
+    assert.match(
+      html,
+      new RegExp(
+        `<div class="artwork"[^>]*>\\s*<img[^>]*src="/share/og/${kind}/7"[^>]*width="630"[^>]*height="630"`,
+      ),
+    );
+    assert.match(
+      html,
+      /<h1 id="share-title"[^>]*>A &quot;quote&quot; &amp; &lt;script/,
+    );
+    assert.match(
+      html,
+      new RegExp(
+        `<p class="eyebrow"[^>]*>함께 듣는 들리 ${kind === "shorts" ? "쇼츠" : "에피소드"}</p>`,
+      ),
+    );
+    assert.match(
+      html,
+      new RegExp(
+        `<p class="description"[^>]*>${kind === "shorts" ? "Shorts summary" : "Episode description"} A &quot;quote&quot; &amp; &lt;script`,
+      ),
+    );
+    assert.equal(/<p class="podcast"/.test(html), kind === "shorts");
+    if (kind === "shorts")
+      assert.match(html, /<p class="podcast"[^>]*>Podcast A &quot;quote&quot;/);
+    assert.match(
+      html,
+      new RegExp(
+        `<a class="open-app" href="deulli://app/${kind}/7"[^>]*>\\s*들리 앱에서 듣기\\s*</a>`,
+      ),
+    );
+    assert.ok(html.includes("앱이 없다면 지금 들리를 다운로드하세요."));
     for (const tag of [
       "og:type",
       "og:site_name",
@@ -165,7 +212,36 @@ try {
         stores,
       });
       assert.deepEqual(browser.destinations, expected ? [expected] : []);
+      assert.deepEqual(
+        browser.history,
+        expected
+          ? ["https://deulli.com/share/episode/7", expected]
+          : ["https://deulli.com/share/episode/7"],
+      );
     }
+    const returned = runShareRedirect(code, {
+      userAgent: "iPhone",
+      stores,
+      navigationType: "back_forward",
+    });
+    returned.dispatch("visibilitychange");
+    assert.deepEqual(returned.destinations, []);
+    assert.equal(returned.listenerCount(), 0);
+    const loading = runShareRedirect(code, {
+      userAgent: "iPhone",
+      stores,
+      readyState: "loading",
+    });
+    assert.deepEqual(loading.destinations, []);
+    loading.document.readyState = "complete";
+    loading.dispatch("pageshow");
+    loading.dispatch("visibilitychange");
+    assert.deepEqual(loading.destinations, []);
+    loading.frame();
+    loading.dispatch("pageshow");
+    loading.dispatch("visibilitychange");
+    assert.deepEqual(loading.destinations, [stores.appStore]);
+    assert.equal(loading.listenerCount(), 0);
     const background = runShareRedirect(code, {
       userAgent: "iPhone",
       stores,
@@ -202,9 +278,13 @@ try {
     assert.equal(response.headers.get("location"), null);
     if (!path.startsWith("og/")) {
       const html = await response.text();
+      checkBrandAndStores(html);
       assert.ok(!html.includes("data-share-redirect"));
       assert.ok(!html.includes('http-equiv="refresh"'));
       assert.ok(html.includes("공유한 콘텐츠를 찾을 수 없어요"));
+      assert.ok(html.includes("들리 홈으로"));
+      assert.ok(!html.includes("다시 시도하기"));
+      assert.ok(!html.includes("deulli://"));
     }
   }
   assert.equal(calls.length, previousCalls);
@@ -219,6 +299,7 @@ try {
           assert.equal(response.headers.get("retry-after"), "30");
         if (!prefix) {
           const html = await response.text();
+          checkBrandAndStores(html);
           assert.ok(!html.includes("data-share-redirect"));
           assert.ok(!html.includes('http-equiv="refresh"'));
           assert.ok(
@@ -229,6 +310,10 @@ try {
             ),
           );
           assert.equal(html.includes("다시 시도하기"), id === "503");
+          assert.ok(html.includes("들리 홈으로"));
+          assert.ok(!html.includes("deulli://"));
+          if (id === "503")
+            assert.ok(html.includes(`href="/share/${kind}/503"`));
         }
       }
     }
@@ -261,7 +346,7 @@ try {
     );
   }
   console.log(
-    `${built ? "Built Vercel" : "Astro dev"} SSR HTTP checks passed: episode/shorts OG, escaping, canonical, manual links, shipped redirect behavior, local PNG, ID/status/cache and AASA.`,
+    `${built ? "Built Vercel" : "Astro dev"} SSR HTTP checks passed: episode/shorts full fallback content/artwork/app/store links, OG, escaping, canonical, shipped redirect behavior, local PNG, ID/status/cache/retry and AASA.`,
   );
 } catch (error) {
   console.error(output);
