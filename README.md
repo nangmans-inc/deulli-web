@@ -4,6 +4,9 @@
 
 배포 주소: **https://deulli.com**
 
+들리에서는 영어 팟캐스트를 들으며 영어 스크립트와 한국어 번역을 확인하고, 놓친 문장부터 다시 들을 수 있다.
+[앱 소개](https://deulli.com/about/) · [팟캐스트 학습 가이드](https://deulli.com/guides/podcast-listening/) · [학습 앱 선택 기준](https://deulli.com/guides/choosing-a-podcast-app/)
+
 앱 소개·스토어 다운로드를 제공하는 정적 홈과 에피소드·쇼츠·채널·시리즈의 서버 렌더링 공유 페이지다.
 
 빌드는 Astro, 스타일은 Tailwind v4. `dionomy-landing`과 같은 구성이라 그쪽에서 만든
