@@ -44,6 +44,8 @@ relatedTitle: 영어 팟캐스트가 잘 안 들릴 때, 한 문장씩 확인하
 
 네. 아이폰용 들리는 [App Store](https://apps.apple.com/kr/app/id6798545609), 안드로이드용 들리는 [Google Play](https://play.google.com/store/apps/details?id=com.deulli.app)에서 확인할 수 있습니다. 지원 기기, 최신 가격과 구독 조건은 각 스토어와 앱 결제 안내를 확인해주세요.
 
+영어공부를 어디서 시작할지 고민된다면 [영어공부 시작하는 법과 목적별 앱 선택 가이드](/guides/starting-english-study/)를 읽어보세요.
+
 ## 제품 정보의 기준
 
 이 안내는 들리의 공식 제품 소개입니다. 플랫폼별 최신 지원 내용은 각 스토어의 제품 설명과 앱 안내를 기준으로 확인해주세요. 이용 중 문의는 [들리 고객지원](https://deulli.policy.nangmans.com/support)을 이용해주세요.
