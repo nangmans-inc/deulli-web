@@ -1,0 +1,319 @@
+{
+  "observed_at": "2026-11-05T18:06:06.183154+00:00",
+  "method": "Public HTTP audit; not indexing or AI recommendation measurement",
+  "pages": [
+    {
+      "requested_url": "https://deulli.com/",
+      "status": 200,
+      "final_url": "https://deulli.com/",
+      "content_type": "text/html; charset=utf-8",
+      "x_robots_tag": null,
+      "sha256": "2f3e20f46547308ed2e5d5acc040bbb321b15b21d004a6b1b73a16579e471a59",
+      "visible_text": "들리 듣다 보면 들리니까, 듣다보면 들리니까 들리 팟캐스트로 하는 최고의 영어 공부 © 2026 Deulli. All Rights Reserved. 팟캐스트로 영어를 듣고, 놓친 문장을 확인하세요. 들리(deulli)는 팟캐스트로 영어를 공부하는 앱입니다. 듣다가 놓친 문장은 화면에서 영어와 한국어로 바로 확인하고, 그 문장부터 다시 들으면 됩니다. 들리에서는 어떻게 영어를 공부하나요? 영어 팟캐스트를 듣고, 재생되는 내용에 맞춰 영문 스크립트와 한국어\n          번역을 확인합니다. 놓친 부분은 해당 문장부터 다시 들으며 소리와 뜻을\n          함께 짚어볼 수 있습니다. 어떤 영어 공부에 사용할 수 있나요? 영어 팟캐스트를 듣다가 문장을 놓치거나 뜻을 확인하고 싶을 때 사용할 수\n          있습니다. 듣기와 스크립트 확인을 오가며 공부하려는 분을 위한 앱입니다. 들리 공식 팟캐스트와 생성 기능은 무엇인가요? 들리 공식 채널에서는 진행자별로 한국어와 영어를 선택해 들을 수 있는\n          콘텐츠를 제공합니다. 원하는 주제로 팟캐스트를 만드는 생성 기능도\n          있으며, 이용할 수 있는 범위와 조건은 앱의 안내에서 확인할 수 있습니다. 아이폰과 안드로이드에서 사용할 수 있나요? 들리는 iOS와 Android 앱으로 제공됩니다. 이 페이지의 App Store와 Google\n          Play 링크에서 기기별 지원 버전과 최신 앱 정보를 확인할 수 있습니다. 이용 요금은 어디서 확인하나요? 현재 이용 요금과 구독 조건은 앱의 결제 안내에서 확인해주세요. 기기별\n          스토어에서도 인앱 구매 정보를 확인할 수 있습니다. 들리 앱 자세히 보기 들리 공식 팟캐스트 둘러보기 팟캐스트 듣기 학습 가이드 들리 고객지원 개인정보 처리방침 이용약관",
+      "canonical": [
+        "https://deulli.com/"
+      ],
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1"
+      ],
+      "json_ld": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "@id": "https://deulli.com/#organization",
+          "name": "deulli",
+          "alternateName": "들리",
+          "legalName": "손기령",
+          "url": "https://deulli.com",
+          "logo": "https://deulli.com/logo.svg",
+          "description": "들리(deulli)는 팟캐스트로 영어를 공부하는 앱입니다. 듣다가 놓친 문장은 화면에서 영어와 한국어로 바로 확인하고, 그 문장부터 다시 들으면 됩니다.",
+          "email": "contact@nangmans.com",
+          "slogan": "듣다 보면 들리니까, 들리"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "MobileApplication",
+          "@id": "https://deulli.com/#app",
+          "name": "들리 (deulli)",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "iOS, Android",
+          "url": "https://deulli.com",
+          "description": "들리(deulli)는 팟캐스트로 영어를 공부하는 앱입니다. 듣다가 놓친 문장은 화면에서 영어와 한국어로 바로 확인하고, 그 문장부터 다시 들으면 됩니다.",
+          "inLanguage": "ko",
+          "publisher": {
+            "@id": "https://deulli.com/#organization"
+          },
+          "installUrl": [
+            "https://apps.apple.com/kr/app/id6798545609",
+            "https://play.google.com/store/apps/details?id=com.deulli.app"
+          ],
+          "sameAs": [
+            "https://apps.apple.com/kr/app/id6798545609",
+            "https://play.google.com/store/apps/details?id=com.deulli.app"
+          ],
+          "featureList": [
+            "영어 팟캐스트 듣기",
+            "영어 스크립트와 한국어 번역 확인",
+            "놓친 문장부터 다시 듣기",
+            "지원되는 공식 콘텐츠에서 진행자별 음성 언어 선택",
+            "원하는 주제로 팟캐스트 생성"
+          ]
+        }
+      ]
+    },
+    {
+      "requested_url": "https://deulli.com/about/",
+      "status": 200,
+      "final_url": "https://deulli.com/about/",
+      "content_type": "text/html; charset=utf-8",
+      "x_robots_tag": null,
+      "sha256": "e91748cd16ef761f09ea74119d138c36c63507cb967ddd494f501d17a60de879",
+      "visible_text": "들리 들리(deulli)는 어떤 앱인가요? 들리(deulli)는 영어 팟캐스트를 들으며 공부하는 모바일 앱입니다. 영어 스크립트와 한국어 번역을 확인하고, 놓친 문장부터 다시 들으며 내용을 짚어볼 수 있습니다. iOS와 Android에서 사용할 수 있습니다. 듣다가 내용을 놓쳤을 때 먼저 팟캐스트를 들어보세요. 놓친 부분은 영어 스크립트에서 확인하고, 뜻이 헷갈리면 한국어 번역을 함께 살펴보세요. 그 문장부터 다시 들으며 글에서 확인한 표현이 어떻게 들리는지 비교할 수 있습니다. 영어 스크립트와 한국어 번역을 볼 수 있나요? 네. 들리에서는 재생되는 내용을 영어 스크립트와 한국어 번역으로 확인할 수 있습니다. 화면에서 글과 뜻을 확인하는 기능이며, 아래에서 설명하는 공식 채널의 진행자별 음성 언어 선택과는 별개의 기능입니다. 어떤 학습 도구가 있나요? 들리의 학습 플레이어는 자막, 이전·다음 대화 이동과 배속 기능을 제공합니다. 단어장, 쉐도잉, 퀴즈도 지원합니다. 기능별 제공 범위와 이용 조건은 최신 앱 안내를 확인해주세요. 외부 팟캐스트와 들리 공식 콘텐츠는 어떻게 다른가요? 들리에는 외부 팟캐스트와 들리가 직접 만든 공식 채널 콘텐츠가 있습니다. 들리 공식 채널의 에피소드에서는 진행자별로 언어를 바꿔 들을 수 있습니다. 영어로만 듣기 어렵다면 한국어와 영어가 함께 나오는 방식으로 내용을 확인해보세요. 이 언어 선택 기능을 모든 외부 팟캐스트에 동일하게 제공하는 것은 아닙니다. 들리 공식 팟캐스트 둘러보기 에서 공개 에피소드 몇 개를 확인할 수 있습니다. 듣던 콘텐츠를 다시 찾을 수 있나요? 앱의 라이브러리에서 청취 기록, 구독 채널, 좋아요한 에피소드를 모아볼 수 있습니다. 다시 듣고 싶은 내용을 찾아 앞서 확인한 문장부터 학습을 이어가세요. 원하는 주제로 팟캐스트를 만들 수도 있나요? 네. 들리 앱의 생성 기능으로 듣고 싶은 주제의 팟캐스트를 만들 수 있습니다. 앱의 학습 메뉴에서 생성 기능을 확인해주세요. 이용할 수 있는 범위와 조건은 앱의 최신 안내를 확인해주세요. 어떤 분에게 맞나요? 팟캐스트를 듣는 중 영어 원문과 한국어 뜻을 함께 확인하고 싶은 분, 놓친 문장을 찾아 다시 듣고 싶은 분이 사용할 수 있습니다. 직접 대화하는 수업이나 시험별 커리큘럼이 필요한 경우에는 해당 조건도 별도로 확인해주세요. 어떤 기능이 필요한지 아직 정하지 못했다면 영어 팟캐스트 학습 앱을 고를 때 확인할 기능 도 함께 읽어보세요. 아이폰과 안드로이드 모두 사용할 수 있나요? 네. 아이폰용 들리는 App Store , 안드로이드용 들리는 Google Play 에서 확인할 수 있습니다. 지원 기기, 최신 가격과 구독 조건은 각 스토어와 앱 결제 안내를 확인해주세요. 제품 정보의 기준 이 안내는 들리의 공식 제품 소개입니다. 플랫폼별 최신 지원 내용은 각 스토어의 제품 설명과 앱 안내를 기준으로 확인해주세요. 이용 중 문의는 들리 고객지원 을 이용해주세요. 함께 읽기 영어 팟캐스트가 잘 안 들릴 때, 한 문장씩 확인하는 방법 들리에서 팟캐스트로 공부해보세요. 기기별 지원 버전과 최신 이용 조건은 스토어와 앱에서 확인해주세요. 들리 홈 고객지원 개인정보 처리방침 이용약관",
+      "canonical": [
+        "https://deulli.com/about/"
+      ],
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1"
+      ],
+      "json_ld": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "@id": "https://deulli.com/#organization",
+          "name": "deulli",
+          "alternateName": "들리",
+          "legalName": "손기령",
+          "url": "https://deulli.com",
+          "logo": "https://deulli.com/logo.svg",
+          "description": "들리(deulli)는 팟캐스트로 영어를 공부하는 앱입니다. 듣다가 놓친 문장은 화면에서 영어와 한국어로 바로 확인하고, 그 문장부터 다시 들으면 됩니다.",
+          "email": "contact@nangmans.com",
+          "slogan": "듣다 보면 들리니까, 들리"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "MobileApplication",
+          "@id": "https://deulli.com/#app",
+          "name": "들리 (deulli)",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "iOS, Android",
+          "url": "https://deulli.com",
+          "description": "들리(deulli)는 팟캐스트로 영어를 공부하는 앱입니다. 듣다가 놓친 문장은 화면에서 영어와 한국어로 바로 확인하고, 그 문장부터 다시 들으면 됩니다.",
+          "inLanguage": "ko",
+          "publisher": {
+            "@id": "https://deulli.com/#organization"
+          },
+          "installUrl": [
+            "https://apps.apple.com/kr/app/id6798545609",
+            "https://play.google.com/store/apps/details?id=com.deulli.app"
+          ],
+          "sameAs": [
+            "https://apps.apple.com/kr/app/id6798545609",
+            "https://play.google.com/store/apps/details?id=com.deulli.app"
+          ],
+          "featureList": [
+            "영어 팟캐스트 듣기",
+            "영어 스크립트와 한국어 번역 확인",
+            "놓친 문장부터 다시 듣기",
+            "지원되는 공식 콘텐츠에서 진행자별 음성 언어 선택",
+            "원하는 주제로 팟캐스트 생성"
+          ]
+        }
+      ]
+    },
+    {
+      "requested_url": "https://deulli.com/guides/podcast-listening/",
+      "status": 200,
+      "final_url": "https://deulli.com/guides/podcast-listening/",
+      "content_type": "text/html; charset=utf-8",
+      "x_robots_tag": null,
+      "sha256": "3beb7b9a3a6450633c82aab8dad159442228fc94fbc3eaee3e66966a89b10f62",
+      "visible_text": "들리 영어 팟캐스트가 잘 안 들릴 때, 한 문장씩 확인하는 방법 팟캐스트를 들으며 공부하려는데 내용을 계속 놓친다면, 에피소드 전체를 끝내는 대신 짧은 대화 하나를 골라보세요. 소리, 영어 스크립트, 한국어 뜻을 차례로 확인하는 연습을 제안합니다. 먼저 짧게 들어보세요 관심 있는 주제를 고르고 짧은 부분을 들어보세요. 어떤 상황인지, 알아들은 표현이 있는지 확인합니다. 한 문장도 구분하기 어렵다면 더 짧거나 쉬운 자료로 바꿔보세요. 놓친 문장을 영어로 확인하세요 스크립트에서 놓친 문장을 찾아보세요. 모르는 단어 때문에 이해하지 못했는지, 아는 단어인데 소리를 구분하지 못했는지 나눠볼 수 있습니다. 처음부터 모든 단어를 정리하기보다 다시 듣고 싶은 문장에 집중해보세요. 뜻을 확인하고 다시 들으세요 영어 문장만으로 뜻이 분명하지 않으면 한국어 번역을 참고하세요. 그다음 번역에서 눈을 떼고 같은 문장을 다시 들어보세요. 글로 알게 된 내용을 소리에서도 찾을 수 있는지 확인합니다. 따라 말하고 싶다면 한 문장부터 문장을 이해한 뒤 짧게 따라 말해보세요. 처음부터 진행자와 같은 속도로 에피소드 전체를 따라갈 필요는 없습니다. 듣기 확인과 말하기 연습은 자신의 목적에 맞게 나눠 진행해보세요. 들리에서는 어떻게 하나요? 들리에서는 영어 팟캐스트를 들으며 영어 스크립트와 한국어 번역을 확인하고, 놓친 문장부터 다시 들을 수 있습니다. 학습 플레이어의 배속과 대화 이동 기능도 활용해보세요. 앱의 학습 도구와 지원 기기는 들리 소개 에서 확인할 수 있습니다. 이 글은 들리가 제안하는 학습 루틴으로, 특정 기간의 실력 향상을 보장하는 방법은 아닙니다. 함께 읽기 들리(deulli)는 어떤 앱인가요? 들리에서 팟캐스트로 공부해보세요. 기기별 지원 버전과 최신 이용 조건은 스토어와 앱에서 확인해주세요. 들리 홈 고객지원 개인정보 처리방침 이용약관",
+      "canonical": [
+        "https://deulli.com/guides/podcast-listening/"
+      ],
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1"
+      ],
+      "json_ld": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "@id": "https://deulli.com/#organization",
+          "name": "deulli",
+          "alternateName": "들리",
+          "legalName": "손기령",
+          "url": "https://deulli.com",
+          "logo": "https://deulli.com/logo.svg",
+          "description": "들리(deulli)는 팟캐스트로 영어를 공부하는 앱입니다. 듣다가 놓친 문장은 화면에서 영어와 한국어로 바로 확인하고, 그 문장부터 다시 들으면 됩니다.",
+          "email": "contact@nangmans.com",
+          "slogan": "듣다 보면 들리니까, 들리"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "MobileApplication",
+          "@id": "https://deulli.com/#app",
+          "name": "들리 (deulli)",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "iOS, Android",
+          "url": "https://deulli.com",
+          "description": "들리(deulli)는 팟캐스트로 영어를 공부하는 앱입니다. 듣다가 놓친 문장은 화면에서 영어와 한국어로 바로 확인하고, 그 문장부터 다시 들으면 됩니다.",
+          "inLanguage": "ko",
+          "publisher": {
+            "@id": "https://deulli.com/#organization"
+          },
+          "installUrl": [
+            "https://apps.apple.com/kr/app/id6798545609",
+            "https://play.google.com/store/apps/details?id=com.deulli.app"
+          ],
+          "sameAs": [
+            "https://apps.apple.com/kr/app/id6798545609",
+            "https://play.google.com/store/apps/details?id=com.deulli.app"
+          ],
+          "featureList": [
+            "영어 팟캐스트 듣기",
+            "영어 스크립트와 한국어 번역 확인",
+            "놓친 문장부터 다시 듣기",
+            "지원되는 공식 콘텐츠에서 진행자별 음성 언어 선택",
+            "원하는 주제로 팟캐스트 생성"
+          ]
+        }
+      ]
+    },
+    {
+      "requested_url": "https://deulli.com/guides/choosing-a-podcast-app/",
+      "status": 200,
+      "final_url": "https://deulli.com/guides/choosing-a-podcast-app/",
+      "content_type": "text/html; charset=utf-8",
+      "x_robots_tag": null,
+      "sha256": "3ade05a07a4c1485b0fc52bb12f9138049ec1ed769181ca3b8bf58e626dd9544",
+      "visible_text": "들리 영어 팟캐스트 학습 앱을 고를 때 확인할 기능 영어 팟캐스트 학습 앱을 고를 때는 먼저 듣고 싶은 프로그램과 공부하려는 방식을 정해보세요. 영어 대본이 필요한지, 한국어 뜻도 함께 보고 싶은지, 놓친 문장을 찾아 다시 들으려는지에 따라 확인할 기능이 달라집니다. 대본이 있다는 것만으로는 충분하지 않아요 일반 팟캐스트 플레이어에도 대본 기능이 있을 수 있습니다. 예를 들어 Apple Podcasts는 지원되는 에피소드의 대본을 읽고 검색하거나, 글을 눌러 해당 부분부터 재생하는 기능을 안내합니다. 앱의 종류보다 실제로 듣고 싶은 에피소드에서 필요한 기능을 쓸 수 있는지 확인해보세요. Apple의 대본 기능 안내 에서 지원 조건을 확인할 수 있습니다. 원하는 에피소드에서 직접 확인해보세요 확인할 것 살펴볼 내용 콘텐츠 듣고 싶은 프로그램이나 관심 있는 주제가 있는지 확인하세요. 영어 대본과 한국어 번역 원문만 제공되는지, 한국어 뜻도 함께 확인할 수 있는지 살펴보세요. 문장 이동과 재생 놓친 문장을 찾아 다시 듣기 쉬운지, 필요한 배속을 선택할 수 있는지 확인하세요. 복습 단어 저장, 쉐도잉, 퀴즈 중 내가 사용할 도구가 있는지 살펴보세요. 기기와 이용 조건 사용하는 기기를 지원하는지, 필요한 기능의 요금과 구독 조건이 무엇인지 확인하세요. 문장부터 다시 듣기와 반복 재생은 구분해서 보세요 글에서 문장을 골라 그 지점부터 듣는 기능과, 특정 구간을 계속 반복하는 기능은 이용 방식이 다릅니다. 따라 말할 간격이나 녹음 기능이 필요한 경우에는 그 조건도 앱에서 직접 확인해보세요. 기능 이름이 비슷하더라도 원하는 연습 방식과 맞는지 살펴보는 것이 좋습니다. 들리는 어떤 방식인가요? 들리(deulli)는 영어 팟캐스트를 들으며 영어 스크립트와 한국어 번역을 확인하고, 놓친 문장부터 다시 들을 수 있는 앱입니다. 학습 플레이어의 배속·대화 이동과 단어장·쉐도잉·퀴즈를 제공합니다. 들리 공식 채널 콘텐츠에서는 진행자별 언어 선택도 지원합니다. 기능별 제공 범위와 최신 이용 조건은 앱과 스토어에서 확인해주세요. 들리 소개 에서 학습 방식과 다운로드 링크를 확인할 수 있습니다. 함께 읽기 영어 팟캐스트가 잘 안 들릴 때, 한 문장씩 확인하는 방법 들리에서 팟캐스트로 공부해보세요. 기기별 지원 버전과 최신 이용 조건은 스토어와 앱에서 확인해주세요. 들리 홈 고객지원 개인정보 처리방침 이용약관",
+      "canonical": [
+        "https://deulli.com/guides/choosing-a-podcast-app/"
+      ],
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1"
+      ],
+      "json_ld": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "@id": "https://deulli.com/#organization",
+          "name": "deulli",
+          "alternateName": "들리",
+          "legalName": "손기령",
+          "url": "https://deulli.com",
+          "logo": "https://deulli.com/logo.svg",
+          "description": "들리(deulli)는 팟캐스트로 영어를 공부하는 앱입니다. 듣다가 놓친 문장은 화면에서 영어와 한국어로 바로 확인하고, 그 문장부터 다시 들으면 됩니다.",
+          "email": "contact@nangmans.com",
+          "slogan": "듣다 보면 들리니까, 들리"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "MobileApplication",
+          "@id": "https://deulli.com/#app",
+          "name": "들리 (deulli)",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "iOS, Android",
+          "url": "https://deulli.com",
+          "description": "들리(deulli)는 팟캐스트로 영어를 공부하는 앱입니다. 듣다가 놓친 문장은 화면에서 영어와 한국어로 바로 확인하고, 그 문장부터 다시 들으면 됩니다.",
+          "inLanguage": "ko",
+          "publisher": {
+            "@id": "https://deulli.com/#organization"
+          },
+          "installUrl": [
+            "https://apps.apple.com/kr/app/id6798545609",
+            "https://play.google.com/store/apps/details?id=com.deulli.app"
+          ],
+          "sameAs": [
+            "https://apps.apple.com/kr/app/id6798545609",
+            "https://play.google.com/store/apps/details?id=com.deulli.app"
+          ],
+          "featureList": [
+            "영어 팟캐스트 듣기",
+            "영어 스크립트와 한국어 번역 확인",
+            "놓친 문장부터 다시 듣기",
+            "지원되는 공식 콘텐츠에서 진행자별 음성 언어 선택",
+            "원하는 주제로 팟캐스트 생성"
+          ]
+        }
+      ]
+    },
+    {
+      "requested_url": "https://deulli.com/podcasts/",
+      "status": 200,
+      "final_url": "https://deulli.com/podcasts/",
+      "content_type": "text/html; charset=utf-8",
+      "x_robots_tag": null,
+      "sha256": "cd00208a0599b9ff0e35ef38dd24f979712021fc81196cd7efd530f1bc7b04f6",
+      "visible_text": "들리 들리 공식 팟캐스트 둘러보기 어떤 이야기를 들으며 공부할지 고민된다면 들리 공식 채널의 에피소드부터\n    살펴보세요. 영어 듣기 연습, 역사, 일상 속 과학을 다루는 공개 에피소드 몇\n    개를 골랐습니다. 영어 듣기 연습 민호의 Part 2 미니 모의고사 역사 이야기 수메르: 문자는 왜 이야기보다 장부에서 먼저 필요했을까 일상 속 과학 왜 내 손으로는 나를 간지럽힐 수 없을까 에피소드는 어디서 들을 수 있나요? 제목을 누르면 에피소드 공유 페이지에서 콘텐츠 정보와 앱 열기 링크를 확인할\n    수 있습니다. 팟캐스트 듣기와 학습은 들리 앱에서 이용해주세요. 한국어와 영어로 함께 들을 수 있나요? 들리 공식 채널에서는 진행자별 음성 언어를 선택할 수 있는 콘텐츠를\n    제공합니다. 영어 스크립트와 한국어 번역을 화면에서 확인하는 기능도 있습니다.\n    에피소드별로 제공되는 재생 언어와 이용 조건은 앱에서 확인해주세요. 한 문장씩 확인하는 팟캐스트 학습 방법 도 함께 읽어보세요. 이 페이지는 2026년 11월 6일 공개 상태를 확인한 일부 에피소드를 소개합니다.\n    전체 목록과 최신 공개 상태는 앱에서 확인할 수 있습니다. 함께 읽기 들리(deulli)는 어떤 앱인가요? 들리에서 팟캐스트로 공부해보세요. 기기별 지원 버전과 최신 이용 조건은 스토어와 앱에서 확인해주세요. 들리 홈 고객지원 개인정보 처리방침 이용약관",
+      "canonical": [
+        "https://deulli.com/podcasts/"
+      ],
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1"
+      ],
+      "json_ld": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "@id": "https://deulli.com/#organization",
+          "name": "deulli",
+          "alternateName": "들리",
+          "legalName": "손기령",
+          "url": "https://deulli.com",
+          "logo": "https://deulli.com/logo.svg",
+          "description": "들리(deulli)는 팟캐스트로 영어를 공부하는 앱입니다. 듣다가 놓친 문장은 화면에서 영어와 한국어로 바로 확인하고, 그 문장부터 다시 들으면 됩니다.",
+          "email": "contact@nangmans.com",
+          "slogan": "듣다 보면 들리니까, 들리"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "MobileApplication",
+          "@id": "https://deulli.com/#app",
+          "name": "들리 (deulli)",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "iOS, Android",
+          "url": "https://deulli.com",
+          "description": "들리(deulli)는 팟캐스트로 영어를 공부하는 앱입니다. 듣다가 놓친 문장은 화면에서 영어와 한국어로 바로 확인하고, 그 문장부터 다시 들으면 됩니다.",
+          "inLanguage": "ko",
+          "publisher": {
+            "@id": "https://deulli.com/#organization"
+          },
+          "installUrl": [
+            "https://apps.apple.com/kr/app/id6798545609",
+            "https://play.google.com/store/apps/details?id=com.deulli.app"
+          ],
+          "sameAs": [
+            "https://apps.apple.com/kr/app/id6798545609",
+            "https://play.google.com/store/apps/details?id=com.deulli.app"
+          ],
+          "featureList": [
+            "영어 팟캐스트 듣기",
+            "영어 스크립트와 한국어 번역 확인",
+            "놓친 문장부터 다시 듣기",
+            "지원되는 공식 콘텐츠에서 진행자별 음성 언어 선택",
+            "원하는 주제로 팟캐스트 생성"
+          ]
+        }
+      ]
+    },
+    {
+      "requested_url": "https://deulli.com/robots.txt",
+      "status": 200,
+      "final_url": "https://deulli.com/robots.txt",
+      "content_type": "text/plain; charset=utf-8",
+      "x_robots_tag": null,
+      "sha256": "51d8d30fe9c208e46d4d9cd969863dc2a5a8aef6b9abfd1d2be97b105065764d",
+      "body": "User-agent: *\nAllow: /\n\nSitemap: https://deulli.com/sitemap-index.xml\n"
+    },
+    {
+      "requested_url": "https://deulli.com/sitemap-index.xml",
+      "status": 200,
+      "final_url": "https://deulli.com/sitemap-index.xml",
+      "content_type": "application/xml",
+      "x_robots_tag": null,
+      "sha256": "771db974b2e1b087dc5652704b72f5e224138787dfaedf1ee14bb0687e10fa3e",
+      "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><sitemap><loc>https://deulli.com/sitemap-0.xml</loc></sitemap></sitemapindex>"
+    }
+  ]
+}

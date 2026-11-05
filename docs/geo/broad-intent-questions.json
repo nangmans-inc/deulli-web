@@ -1,0 +1,56 @@
+[
+  {
+    "id": "G01",
+    "category": "broad_intent",
+    "prompt": "영어공부 어플 추천해줘.",
+    "brand_prompted": false
+  },
+  {
+    "id": "G02",
+    "category": "broad_intent",
+    "prompt": "영어공부하는 법 알려줘.",
+    "brand_prompted": false
+  },
+  {
+    "id": "G03",
+    "category": "broad_intent",
+    "prompt": "팟캐스트 영어공부 추천해줘.",
+    "brand_prompted": false
+  },
+  {
+    "id": "G04",
+    "category": "broad_intent",
+    "prompt": "혼자 영어 공부할 때 쓸 앱 추천해줘.",
+    "brand_prompted": false
+  },
+  {
+    "id": "G05",
+    "category": "broad_intent",
+    "prompt": "영어 초보인데 어떻게 공부하면 좋을까?",
+    "brand_prompted": false
+  },
+  {
+    "id": "G06",
+    "category": "broad_intent",
+    "prompt": "직장인이 매일 영어 공부하는 방법 알려줘.",
+    "brand_prompted": false
+  },
+  {
+    "id": "G07",
+    "category": "broad_intent",
+    "prompt": "영어 리스닝 공부 앱 추천해줘.",
+    "brand_prompted": false
+  },
+  {
+    "id": "G08",
+    "category": "broad_intent",
+    "prompt": "영어 쉐도잉 공부 방법 알려줘.",
+    "brand_prompted": false
+  },
+  {
+    "id": "G09",
+    "category": "broad_intent",
+    "prompt": "출퇴근하면서 영어 공부할 방법 추천해줘.",
+    "brand_prompted": false
+  }
+]

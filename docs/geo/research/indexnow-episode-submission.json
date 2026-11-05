@@ -1,0 +1,17 @@
+{
+  "submitted_at": "2026-11-05T17:23:18.688805+00:00",
+  "endpoint": "https://api.indexnow.org/indexnow",
+  "urls": [
+    "https://deulli.com/",
+    "https://deulli.com/about/",
+    "https://deulli.com/guides/podcast-listening/",
+    "https://deulli.com/guides/choosing-a-podcast-app/",
+    "https://deulli.com/podcasts/",
+    "https://deulli.com/share/episode/105972",
+    "https://deulli.com/share/episode/80",
+    "https://deulli.com/share/episode/57"
+  ],
+  "status": 200,
+  "response": "",
+  "meaning": "Submission receipt only; not proof of crawling, indexing, or AI citation"
+}

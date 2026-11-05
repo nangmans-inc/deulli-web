@@ -31,7 +31,7 @@ def main():
                 records.append(record)
     groups = defaultdict(list)
     for record in records:
-        groups[(record['requested_model'], record.get('measurement_type', 'discovery'), record['brand_prompted'])].append(record)
+        groups[(record['requested_model'], ('broad_intent' if record.get('category') == 'broad_intent' else record.get('measurement_type', 'discovery')), record['brand_prompted'])].append(record)
     lines = ['# API 답변 관측 집계', '',
              '검색을 사용한 독립 API 요청이다. 소비자용 ChatGPT 결과나 GEO 작업의 인과 효과를 뜻하지 않는다.', '',
              '브랜드명 후보 출현은 추천 여부나 올바른 제품 식별과 다르다. 공식 스토어 인용과 공식 도메인 인용도 따로 센다.', '',
@@ -41,7 +41,12 @@ def main():
         valid = [r for r in rows if r['status'] == 'completed' and r.get('answer')]
         search = [r for r in valid if any(c.get('status') == 'completed' for c in r.get('search_calls', []))]
         store = sum(any(is_store(c['url']) for c in r.get('citations', [])) for r in valid)
-        label = 'URL 지정 진단' if measurement_type == 'direct_url_retrieval' else ('브랜드 포함' if branded else '비브랜드')
+        label = {'direct_url_retrieval': 'URL 지정 진단',
+                 'brand_site_discovery': '공식 홈페이지 찾기',
+                 'brand_context': '제품명·분야 명시',
+                 'feature_derived': '제품 기능 기반 탐색',
+                 'broad_intent': '넓은 영어공부 의도'}.get(
+                     measurement_type, '브랜드 포함' if branded else '비브랜드')
         lines.append(f'| {model} | {label} | {len(rows)} | {len(valid)} | {len(search)} | '
                      f'{sum(r.get("brand_mention_candidate", False) for r in valid)} | '
                      f'{sum(r.get("official_domain_cited", False) for r in valid)} | {store} |')

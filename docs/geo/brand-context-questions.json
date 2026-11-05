@@ -1,0 +1,30 @@
+[
+  {
+    "id": "B01",
+    "category": "brand_context",
+    "measurement_type": "brand_context",
+    "brand_prompted": true,
+    "prompt": "들리(deulli)라는 영어 팟캐스트 학습 앱은 어떤 서비스인가요?"
+  },
+  {
+    "id": "B02",
+    "category": "brand_context",
+    "measurement_type": "brand_context",
+    "brand_prompted": true,
+    "prompt": "들리(deulli) 영어 팟캐스트 학습 앱은 아이폰과 안드로이드에서 모두 사용할 수 있나요?"
+  },
+  {
+    "id": "B03",
+    "category": "brand_context",
+    "measurement_type": "brand_context",
+    "brand_prompted": true,
+    "prompt": "들리(deulli) 영어 팟캐스트 학습 앱에서 영어 스크립트와 한국어 번역을 함께 확인할 수 있나요?"
+  },
+  {
+    "id": "B04",
+    "category": "brand_context",
+    "measurement_type": "brand_context",
+    "brand_prompted": true,
+    "prompt": "들리(deulli)에서 직접 만든 팟캐스트와 기존 RSS 팟캐스트는 어떻게 다른가요?"
+  }
+]

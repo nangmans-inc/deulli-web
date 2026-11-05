@@ -1,0 +1,86 @@
+[
+  {
+    "id": "F01",
+    "category": "feature_derived",
+    "measurement_type": "feature_derived",
+    "brand_prompted": false,
+    "prompt": "한국어 진행자와 영어 진행자가 함께 이야기하는 팟캐스트로 공부할 수 있는 앱이 있나요?"
+  },
+  {
+    "id": "F02",
+    "category": "feature_derived",
+    "measurement_type": "feature_derived",
+    "brand_prompted": false,
+    "prompt": "팟캐스트 진행자별로 한국어와 영어를 선택해서 들을 수 있는 영어 학습 앱을 찾고 있어요."
+  },
+  {
+    "id": "F03",
+    "category": "feature_derived",
+    "measurement_type": "feature_derived",
+    "brand_prompted": false,
+    "prompt": "영어로만 듣기 어려워서 한국어 설명과 영어 대화를 섞어 들을 수 있는 팟캐스트 앱이 있나요?"
+  },
+  {
+    "id": "F04",
+    "category": "feature_derived",
+    "measurement_type": "feature_derived",
+    "brand_prompted": false,
+    "prompt": "내가 원하는 주제로 영어 공부용 팟캐스트를 만들고 들을 수 있는 앱이 있나요?"
+  },
+  {
+    "id": "F05",
+    "category": "feature_derived",
+    "measurement_type": "feature_derived",
+    "brand_prompted": false,
+    "prompt": "팟캐스트를 듣다가 모르는 단어를 저장하고 퀴즈로 복습할 수 있는 앱을 추천해주세요."
+  },
+  {
+    "id": "F06",
+    "category": "feature_derived",
+    "measurement_type": "feature_derived",
+    "brand_prompted": false,
+    "prompt": "아이폰 잠금화면에서도 영어 자막을 확인할 수 있는 팟캐스트 학습 앱이 있나요?"
+  },
+  {
+    "id": "F07",
+    "category": "feature_derived",
+    "measurement_type": "feature_derived",
+    "brand_prompted": false,
+    "prompt": "잠금화면에서 이전 문장과 다음 문장으로 이동할 수 있는 영어 팟캐스트 앱을 찾고 있어요."
+  },
+  {
+    "id": "F08",
+    "category": "feature_derived",
+    "measurement_type": "feature_derived",
+    "brand_prompted": false,
+    "prompt": "영어 팟캐스트 듣기와 단어장, 쉐도잉, 퀴즈를 함께 제공하는 앱이 있나요?"
+  },
+  {
+    "id": "F09",
+    "category": "feature_derived",
+    "measurement_type": "feature_derived",
+    "brand_prompted": false,
+    "prompt": "한국어로 맥락을 설명해주는 진행자가 있는 영어 팟캐스트 학습 앱을 추천해주세요."
+  },
+  {
+    "id": "F10",
+    "category": "feature_derived",
+    "measurement_type": "feature_derived",
+    "brand_prompted": false,
+    "prompt": "한국에서 만든 영어 팟캐스트 학습 앱 중 아이폰과 안드로이드에서 쓸 수 있는 앱이 있나요?"
+  },
+  {
+    "id": "F11",
+    "category": "feature_derived",
+    "measurement_type": "feature_derived",
+    "brand_prompted": false,
+    "prompt": "내 관심사에 맞는 팟캐스트를 생성해서 영어 듣기를 연습하고 싶어요. 어떤 앱이 있나요?"
+  },
+  {
+    "id": "F12",
+    "category": "feature_derived",
+    "measurement_type": "feature_derived",
+    "brand_prompted": false,
+    "prompt": "영어와 한국어가 함께 나오는 팟캐스트를 듣고 쉐도잉도 할 수 있는 앱이 있나요?"
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "observed_on": "2026-11-06 (Asia/Seoul)",
+  "sources": [
+    "https://itunes.apple.com/lookup?id=6798545609&country=kr",
+    "https://apps.apple.com/kr/app/id6798545609"
+  ],
+  "app_version": "1.5.1",
+  "generation_navigation_in_current_description": "학습 메뉴를 펼친 뒤 생성",
+  "official_content_speaker_language_selection_described": true,
+  "lock_screen_subtitles_described": true,
+  "dictation_and_word_quizzes_described": true,
+  "developer_website_label_found_in_visible_store_text": false,
+  "iap_display_name": "들리 프리미엄",
+  "iap_display_price": "KRW 14900",
+  "iap_billing_period_verified_from_price_card": false,
+  "notes": [
+    "The current description differs from the older text returned by some search-grounded answers.",
+    "The IAP amount is visible on the current public store page, but the price card alone does not establish billing period or all subscription conditions.",
+    "No store metadata was edited during this check."
+  ]
+}
