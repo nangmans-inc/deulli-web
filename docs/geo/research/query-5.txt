@@ -1,0 +1,65 @@
+Query: 출퇴근 영어 듣기 팟캐스트 앱
+Observed: 2026-11-06
+Method: web search, not AI answer measurement
+
+Source response SHA256: 234718b0b50fb4cbcd5b207738957839bf62e970d7837a02456ee138a0c4970f
+Only returned source titles and URLs retained; snippets omitted.
+
+[
+  {
+    "title": "‎ListenWell: 영어 듣기 앱 - App Store",
+    "url": "https://apps.apple.com/kr/app/listenwell-%EC%98%81%EC%96%B4-%EB%93%A3%EA%B8%B0/id6761603268?platform=vision"
+  },
+  {
+    "title": "ListenLeap - 오디오·영상 영어 학습 - Google Play 앱",
+    "url": "https://play.google.com/store/apps/details?hl=ko&id=com.listenLeap.app"
+  },
+  {
+    "title": "모바일 영어학습 앱 | British Council",
+    "url": "https://www.britishcouncil.kr/english-courses/online/apps"
+  },
+  {
+    "title": "영어 팟캐스트 vs 1:1 전화영어, 출퇴근길을 듣기와 말하기로 나눠 쓰는 주간표",
+    "url": "https://guide.pweng.net/english-podcast-vs-phone-english-commute-split/"
+  },
+  {
+    "title": "‎Glisten - 언어 팟캐스트 앱 - App Store",
+    "url": "https://apps.apple.com/kr/app/glisten-%EC%96%B8%EC%96%B4-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8/id6447008785"
+  },
+  {
+    "title": "StoryCast – English Listening - Google Play 앱",
+    "url": "https://play.google.com/store/apps/details?hl=ko&id=com.softuniverse.storycast"
+  },
+  {
+    "title": "‎Glisten - 언어 팟캐스트 앱 - App Store",
+    "url": "https://apps.apple.com/kr/app/glisten-%EC%96%B8%EC%96%B4-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8/id6447008785?platform=vision"
+  },
+  {
+    "title": "‎Onde – 팟캐스트 앱 - App Store",
+    "url": "https://apps.apple.com/kr/app/onde-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8/id6821139331"
+  },
+  {
+    "title": "링고마루: 영어 매일 듣기, VOA 뉴스, 팟캐스트 - Google Play 앱",
+    "url": "https://play.google.com/store/apps/details?hl=ko&id=com.devmaru.lingo"
+  },
+  {
+    "title": "운전 중 영어 공부 방법, 추천 앱 정리.",
+    "url": "https://story-kpop.tistory.com/entry/%EC%9A%B4%EC%A0%84-%EC%A4%91-%EC%98%81%EC%96%B4-%EA%B3%B5%EB%B6%80-%EB%B0%A9%EB%B2%95-%EC%B6%94%EC%B2%9C-%EC%95%B1-%EC%A0%95%EB%A6%AC"
+  },
+  {
+    "title": "직장인 영어 공부법｜출퇴근길부터 주말까지, 현실적인 영어 학습 방법",
+    "url": "https://myview4024.tistory.com/entry/%EC%A7%81%EC%9E%A5%EC%9D%B8-%EC%98%81%EC%96%B4-%EA%B3%B5%EB%B6%80%EB%B2%95%EF%BD%9C%EC%B6%9C%ED%87%B4%EA%B7%BC%EA%B8%B8%EB%B6%80%ED%84%B0-%EC%A3%BC%EB%A7%90%EA%B9%8C%EC%A7%80-%ED%98%84%EC%8B%A4%EC%A0%81%EC%9D%B8-%EC%98%81%EC%96%B4-%ED%95%99%EC%8A%B5-%EB%B0%A9%EB%B2%95"
+  },
+  {
+    "title": "📚 직장인 출퇴근길 영어 루틴 무료로 시작하는 영어 공부 앱 추천 5",
+    "url": "https://ella-im51.tistory.com/entry/%F0%9F%93%9A-%EC%A7%81%EC%9E%A5%EC%9D%B8-%EC%B6%9C%ED%87%B4%EA%B7%BC%EA%B8%B8-%EC%98%81%EC%96%B4-%EB%A3%A8%ED%8B%B4-%EB%AC%B4%EB%A3%8C%EB%A1%9C-%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94-%EC%98%81%EC%96%B4-%EA%B3%B5%EB%B6%80-%EC%95%B1-%EC%B6%94%EC%B2%9C-5"
+  },
+  {
+    "title": "TV와 셋톱박스",
+    "url": "https://www.nugu.co.kr/assets/Btv_NUGU_AndroidTV_instruction_book.pdf"
+  },
+  {
+    "title": "<C7D1B1B9B9E6BCDBB0F8BBE72D3230323420BBE7BEF7B3E2B5B520B0E6BFB5C6F2B0A1BAB8B0EDBCAD2DB3BBC1F62833C2F7295FC0CEBCE22E687770>",
+    "url": "https://www.kmcc.go.kr/download.do?fileSeq=62504"
+  }
+]

@@ -1,0 +1,73 @@
+Query: 영어 팟캐스트 한국어 번역 앱 추천
+Observed: 2026-11-06
+Method: web search, not AI answer measurement
+
+Source response SHA256: a0dce32dd2df6876b61e11e2ca9306d8e13140bc10734e831125ea5542872100
+Only returned source titles and URLs retained; snippets omitted.
+
+[
+  {
+    "title": "한국인을 위한 필수 영어 학습 앱 추천",
+    "url": "https://kr.appisfree.com/editorDetail/english-learning-apps"
+  },
+  {
+    "title": "‎청취 상자 앱 - App Store",
+    "url": "https://apps.apple.com/kr/app/%EC%B2%AD%EC%B7%A8-%EC%83%81%EC%9E%90/id6739975159?platform=vision"
+  },
+  {
+    "title": "ListenLeap - 오디오·영상 영어 학습 - Google Play 앱",
+    "url": "https://play.google.com/store/apps/details?hl=ko&id=com.listenLeap.app"
+  },
+  {
+    "title": "돈 한 푼 안 쓰는 무료 영어공부! 유튜브·팟캐스트·앱 추천 리스트 10선 완벽 가이드 - TILNOTE",
+    "url": "https://tilnote.io/pages/68b7aa65823692c440c3e0fa"
+  },
+  {
+    "title": "영어에서 타갈로그어로 최고의 번역기 – 주요 도구 비교 (2026) | Subeasy.ai",
+    "url": "https://www.subeasy.ai/ko-KR/blog/english-to-tagalog-best-translator"
+  },
+  {
+    "title": "‎Glisten - 언어 팟캐스트 앱 - App Store",
+    "url": "https://apps.apple.com/kr/app/glisten-%EC%96%B8%EC%96%B4-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8/id6447008785"
+  },
+  {
+    "title": "GenieTalk Go!",
+    "url": "https://cdn.hancom.com/link/docs/%5B%EC%A7%80%EB%8B%88%ED%86%A1_%EA%B3%A02%5D_%EC%82%AC%EC%9A%A9%EC%84%A4%EB%AA%85%EC%84%9C.pdf"
+  },
+  {
+    "title": "CaptionGo — 맥 실시간 자막 번역 앱, 라이브 영어 콘텐츠용 | CaptionGo",
+    "url": "https://captiongo.mac-neo.app/ko"
+  },
+  {
+    "title": "<C7D1B1B9B9E6BCDBB0F8BBE72D3230323420BBE7BEF7B3E2B5B520B0E6BFB5C6F2B0A1BAB8B0EDBCAD2DB3BBC1F62833C2F7295FC0CEBCE22E687770>",
+    "url": "https://www.kmcc.go.kr/download.do?fileSeq=62504"
+  },
+  {
+    "title": "한국어-영어 번역기 - Google Play 앱",
+    "url": "https://play.google.com/store/apps/details?hl=ko&id=com.suvorov.ko_en"
+  },
+  {
+    "title": "iFLYTEK_AINOTE_Air2_User_Manual_korea",
+    "url": "https://www.iflytek.com/en/Public/Uploads/uploadfile/files/20250609/iFLYTEKAINOTEAir2UserManualkorea-709.pdf"
+  },
+  {
+    "title": "Bayt - Google Play 앱",
+    "url": "https://play.google.com/store/apps/details?hl=ko&id=com.caiwenshuo.AIPodcast"
+  },
+  {
+    "title": "‎매일 일본어 듣기: 학습·뉴스·팟캐스트·JLPT 앱 - App Store",
+    "url": "https://apps.apple.com/kr/app/%EB%A7%A4%EC%9D%BC-%EC%9D%BC%EB%B3%B8%EC%96%B4-%EB%93%A3%EA%B8%B0-%ED%95%99%EC%8A%B5-%EB%89%B4%EC%8A%A4-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8-jlpt/id6747541132?platform=ipad"
+  },
+  {
+    "title": "외국어 중국어 일본어 영어 번역 어플 앱 :: 통통정보",
+    "url": "https://gold.appsos.kr/48"
+  },
+  {
+    "title": "Robocar Poli | English Theme Song - YouTube",
+    "url": "https://www.youtube.com/watch?v=I_JAqDSVv0g"
+  },
+  {
+    "title": "Robocar Poli Dance - YouTube",
+    "url": "https://www.youtube.com/watch?v=7owVSXFOl7o"
+  }
+]

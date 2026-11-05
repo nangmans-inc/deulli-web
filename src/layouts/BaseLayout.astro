@@ -30,6 +30,7 @@ const keywords = site.keywords.join(", ");
 const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": `${site.url}/#organization`,
   name: site.name,
   alternateName: site.nameKo, // "들리" — 한글 브랜드명 검색 매칭
   legalName: site.legalName,
@@ -44,14 +45,21 @@ const orgJsonLd = {
 const appJsonLd = {
   "@context": "https://schema.org",
   "@type": "MobileApplication",
+  "@id": `${site.url}/#app`,
   name: `${site.nameKo} (${site.name})`,
   applicationCategory: "EducationalApplication",
   operatingSystem: "iOS, Android",
   url: site.url,
   description: site.description,
   inLanguage: "ko",
-  author: { "@type": "Organization", name: site.name, url: site.url },
-  offers: { "@type": "Offer", price: "0", priceCurrency: "KRW" },
+  publisher: { "@id": `${site.url}/#organization` },
+  installUrl: [site.stores.appStore, site.stores.googlePlay],
+  sameAs: [site.stores.appStore, site.stores.googlePlay],
+  featureList: [
+    "영어 팟캐스트 듣기",
+    "영어 스크립트와 한국어 번역 확인",
+    "놓친 문장부터 다시 듣기",
+  ],
 };
 ---
 

@@ -1,0 +1,73 @@
+Query: 들리 deulli 영어 팟캐스트 앱
+Observed: 2026-11-06
+Method: web search, not AI answer measurement
+
+Source response SHA256: 8cec500037cfff6503e18e5f50c8fdc7293bce96deeaf3fd5b747eb92e13c274
+Only returned source titles and URLs retained; snippets omitted.
+
+[
+  {
+    "title": "NAVIGATION & INFOTAINMENT SYSTEM",
+    "url": "https://toyota.co.kr/files/manual/2025-07-01-14-48-36-6666.pdf?bt_code=hc_2025_23_testdrive_google_pmax_1"
+  },
+  {
+    "title": "[딜로이트 2026 첨단기술·미디어 통신 산업 전망] 11장 -  영상 팟캐스트, 위협적인 글로벌 미디어·광고 플랫폼으로 진화",
+    "url": "https://www.deloitte.com/content/dam/assets-zone1/kr/ko/docs/industries/technology-media-telecommunications/2026/tmt-prediction-2026-11.pdf"
+  },
+  {
+    "title": "NAVIGATION & INFOTAINMENT SYSTEM",
+    "url": "https://toyota.co.kr/files/manual/2025-07-01-14-42-05-7813.pdf?bt_code=sns_kakao_post_quiz_Jan"
+  },
+  {
+    "title": "<C7D1B1B9B9E6BCDBB0F8BBE72D3230323420BBE7BEF7B3E2B5B520B0E6BFB5C6F2B0A1BAB8B0EDBCAD2DB3BBC1F62833C2F7295FC0CEBCE22E687770>",
+    "url": "https://www.kmcc.go.kr/download.do?fileSeq=62504"
+  },
+  {
+    "title": "디어리랜드",
+    "url": "https://dearreland.cafe24.com/"
+  },
+  {
+    "title": "디델리 이대점 방문 후기",
+    "url": "https://190414.tistory.com/34"
+  },
+  {
+    "title": "둥우리 예약 | 수성구, 대구광역시 | 돈카츠",
+    "url": "https://autoreserve.com/ko/restaurants/AhKPgEJfK1B3FjT4jtXg"
+  },
+  {
+    "title": "카페 딜리 | 경기도 의왕시 내손동 | 카페 | 당근 동네 업체",
+    "url": "https://www.daangn.com/kr/local-profile/%EB%94%9C%EB%A6%AC-ziqde338gre2/"
+  },
+  {
+    "title": "디델리 이대점 - 테이블링",
+    "url": "https://www.tabling.co.kr/place/677cc73966de5f0698744cc6"
+  },
+  {
+    "title": "달서구 두류동 카페 | 클라리오 플레이스",
+    "url": "https://place.clariosync.com/region/%EB%8C%80%EA%B5%AC%EA%B4%91%EC%97%AD%EC%8B%9C/%EB%8B%AC%EC%84%9C%EA%B5%AC/%EB%91%90%EB%A5%98%EB%8F%99/%EC%B9%B4%ED%8E%98"
+  },
+  {
+    "title": "파스쿠찌, 대학로에 샌드위치 파는 델리(Deli)커피숍 오픈 | 뉴데일리",
+    "url": "https://www.newdaily.co.kr/site/data/html/2012/12/28/2012122800104.html"
+  },
+  {
+    "title": "이랜드리테일 ’델리 바이 애슐리’, 대구 첫 입점… 오픈 1시간 만 1000개 판매｜동아일보",
+    "url": "https://www.donga.com/news/Economy/article/all/20250124/130930228/1"
+  },
+  {
+    "title": "이랜드",
+    "url": "https://ethic.elandretail.com/news/viewNews?cate=P&cateIdx=673"
+  },
+  {
+    "title": "팬시피스트 쁘띠 딜라이트 연어 50g - 이마트몰",
+    "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000644305089&salestrNo=2037&siteNo=6001"
+  },
+  {
+    "title": "- 루이까스텔몰",
+    "url": "https://vlco.cafe24.com/store/list.html"
+  },
+  {
+    "title": "디델리 부산대점 - 테이블링",
+    "url": "https://www.tabling.co.kr/place/677cc8b466de5f069877726e"
+  }
+]

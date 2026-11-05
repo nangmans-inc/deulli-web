@@ -1,0 +1,212 @@
+[
+  {
+    "id": "Q01",
+    "category": "brand",
+    "prompt": "들리 앱은 어떤 앱인가요?",
+    "brand_prompted": true,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q02",
+    "category": "brand",
+    "prompt": "deulli는 영어 공부에 어떻게 쓰나요?",
+    "brand_prompted": true,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q03",
+    "category": "brand",
+    "prompt": "들리 앱은 아이폰과 안드로이드에서 사용할 수 있나요?",
+    "brand_prompted": true,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q04",
+    "category": "brand",
+    "prompt": "들리에서 영어 스크립트와 한국어 번역을 볼 수 있나요?",
+    "brand_prompted": true,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q05",
+    "category": "brand",
+    "prompt": "들리 앱 가격과 구독 조건은 어디서 확인하나요?",
+    "brand_prompted": true,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q06",
+    "category": "category",
+    "prompt": "영어 팟캐스트로 공부할 수 있는 앱을 추천해주세요.",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q07",
+    "category": "category",
+    "prompt": "한국어 번역을 보면서 영어 팟캐스트를 듣는 앱을 찾고 있어요.",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q08",
+    "category": "category",
+    "prompt": "영어 스크립트가 있는 팟캐스트 학습 앱을 추천해주세요.",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q09",
+    "category": "category",
+    "prompt": "영어 팟캐스트를 문장별로 다시 들을 수 있는 앱이 있나요?",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q10",
+    "category": "category",
+    "prompt": "팟캐스트로 리스닝과 쉐도잉을 함께 할 수 있는 앱이 있나요?",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q11",
+    "category": "situation",
+    "prompt": "출퇴근길에 영어 팟캐스트로 공부할 앱을 찾고 있어요.",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q12",
+    "category": "situation",
+    "prompt": "영어 팟캐스트를 듣다가 놓친 문장을 쉽게 찾고 싶어요.",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q13",
+    "category": "situation",
+    "prompt": "영어 팟캐스트를 듣는데 뜻을 잘 모르겠어요. 한국어 도움을 받을 앱이 있나요?",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q14",
+    "category": "situation",
+    "prompt": "영어 원문을 읽을 수 있는데 소리가 안 들릴 때 쓸 앱이 있나요?",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q15",
+    "category": "situation",
+    "prompt": "짧은 시간 동안 영어 팟캐스트 한 문장씩 공부할 앱을 추천해주세요.",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q16",
+    "category": "comparison",
+    "prompt": "일반 팟캐스트 앱과 영어 학습용 팟캐스트 앱은 어떻게 다른가요?",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q17",
+    "category": "comparison",
+    "prompt": "영어 팟캐스트 학습 앱을 고를 때 어떤 기능을 비교해야 하나요?",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q18",
+    "category": "comparison",
+    "prompt": "ListenLeap과 비슷한 영어 팟캐스트 학습 앱이 있나요?",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q19",
+    "category": "comparison",
+    "prompt": "Podling 외에 한국어 번역을 지원하는 팟캐스트 학습 앱이 있나요?",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q20",
+    "category": "comparison",
+    "prompt": "영어 팟캐스트 학습 앱의 무료 기능과 구독 조건은 어떻게 확인하나요?",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q21",
+    "category": "learning",
+    "prompt": "영어 팟캐스트가 잘 안 들릴 때 스크립트를 어떻게 활용하나요?",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q22",
+    "category": "learning",
+    "prompt": "팟캐스트로 영어 공부를 처음 시작하는 방법을 알려주세요.",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q23",
+    "category": "learning",
+    "prompt": "팟캐스트 쉐도잉을 한 문장씩 연습하는 방법이 궁금해요.",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q24",
+    "category": "learning",
+    "prompt": "영어 듣기를 공부할 때 한국어 번역은 언제 확인하는 게 좋을까요?",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q25",
+    "category": "learning",
+    "prompt": "영어 팟캐스트 듣기와 단어 복습을 함께 하는 방법이 있나요?",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q26",
+    "category": "platform",
+    "prompt": "아이폰에서 쓸 영어 팟캐스트 학습 앱을 추천해주세요.",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q27",
+    "category": "platform",
+    "prompt": "안드로이드에서 쓸 영어 팟캐스트 학습 앱을 추천해주세요.",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q28",
+    "category": "platform",
+    "prompt": "iOS와 Android를 모두 지원하는 영어 팟캐스트 학습 앱이 있나요?",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q29",
+    "category": "platform",
+    "prompt": "영어 자막과 한국어 번역이 있는 한국인용 리스닝 앱이 있나요?",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  },
+  {
+    "id": "Q30",
+    "category": "platform",
+    "prompt": "문장 이동과 배속을 지원하는 영어 팟캐스트 앱을 찾고 있어요.",
+    "brand_prompted": false,
+    "measurement_status": "not_measured"
+  }
+]
