@@ -10,7 +10,7 @@ import urllib.parse
 
 def is_store(url):
     parts = urllib.parse.urlsplit(url)
-    return (parts.hostname == 'apps.apple.com' and '/id6798545609' in parts.path) or (
+    return (parts.hostname == 'apps.apple.com' and bool(re.search(r'/id6798545609(?:/|$)', parts.path))) or (
         parts.hostname == 'play.google.com' and
         urllib.parse.parse_qs(parts.query).get('id') == ['com.deulli.app'])
 
@@ -27,6 +27,9 @@ def main():
                 record = json.loads(line)
                 record['brand_mention_candidate'] = bool(re.search(
                     r'deulli|(?<![가-힣])들리(?![가-힣])', record.get('answer', ''), re.I))
+                record['official_domain_cited'] = any(
+                    urllib.parse.urlsplit(c['url']).hostname in ('deulli.com', 'www.deulli.com')
+                    for c in record.get('citations', []))
                 record['run_file'] = name
                 records.append(record)
     groups = defaultdict(list)

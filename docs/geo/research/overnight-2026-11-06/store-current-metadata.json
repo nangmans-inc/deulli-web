@@ -1,0 +1,13 @@
+{
+  "observed_at": "2026-11-05T18:42:06.479106+00:00",
+  "source": "https://itunes.apple.com/lookup?id=6798545609&country=kr",
+  "version": "1.5.1",
+  "currentVersionReleaseDate": "2026-11-05T04:06:36Z",
+  "sellerUrl": null,
+  "description_sha256": "dc2f78ed2d677d4ae6363540c191fa2e34d118f3411fae287f58632c48c9c85b",
+  "description_contains_80_minutes": false,
+  "description_contains_monthly_price": false,
+  "description_contains_generation_tab": false,
+  "description_contains_learning_menu": true,
+  "description_contains_https_email": true
+}

@@ -1,0 +1,30 @@
+{
+  "observed_at": "2026-11-05T19:36:24.262893+00:00",
+  "method": "Public URL consolidation observation, not search index measurement",
+  "urls": [
+    {
+      "requested_url": "http://deulli.com/",
+      "status": 308,
+      "location": "https://deulli.com/",
+      "note": "urllib in this Python version does not follow 308 automatically; a redirect is not a failed destination."
+    },
+    {
+      "requested_url": "https://deulli.com/",
+      "status": 200,
+      "response_url": "https://deulli.com/",
+      "location": null
+    },
+    {
+      "requested_url": "http://www.deulli.com/",
+      "status": 308,
+      "location": "https://www.deulli.com/",
+      "note": "urllib in this Python version does not follow 308 automatically; a redirect is not a failed destination."
+    },
+    {
+      "requested_url": "https://www.deulli.com/",
+      "status": 308,
+      "location": "https://deulli.com/",
+      "note": "urllib in this Python version does not follow 308 automatically; a redirect is not a failed destination."
+    }
+  ]
+}

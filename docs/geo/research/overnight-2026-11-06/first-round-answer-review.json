@@ -1,0 +1,168 @@
+{
+  "status": "AI-audited; human verification pending",
+  "answers": [
+    {
+      "file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "observed_at": "2026-11-05T18:30:00.076569+00:00",
+      "answer_role": "app",
+      "explicit_recommendation_targets": [
+        "Speak",
+        "Duolingo",
+        "ELSA Speak"
+      ],
+      "deulli_recommended": false,
+      "deulli_official_website_cited": false,
+      "review_method": "Agent read the complete recorded answer; recommendation targets are separate from method-only answers and source publishers."
+    },
+    {
+      "file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-luna",
+      "observed_at": "2026-11-05T18:30:08.663362+00:00",
+      "answer_role": "method",
+      "explicit_recommendation_targets": [],
+      "deulli_recommended": false,
+      "deulli_official_website_cited": false,
+      "review_method": "Agent read the complete recorded answer; recommendation targets are separate from method-only answers and source publishers."
+    },
+    {
+      "file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-luna",
+      "observed_at": "2026-11-05T18:30:17.225141+00:00",
+      "answer_role": "content",
+      "explicit_recommendation_targets": [
+        "VOA Learning English",
+        "BBC 6 Minute English",
+        "All Ears English"
+      ],
+      "deulli_recommended": false,
+      "deulli_official_website_cited": false,
+      "review_method": "Agent read the complete recorded answer; recommendation targets are separate from method-only answers and source publishers."
+    },
+    {
+      "file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-luna",
+      "observed_at": "2026-11-05T18:30:26.157998+00:00",
+      "answer_role": "app/provider",
+      "explicit_recommendation_targets": [
+        "BBC Learning English",
+        "LingQ",
+        "ELSA Speak"
+      ],
+      "deulli_recommended": false,
+      "deulli_official_website_cited": false,
+      "review_method": "Agent read the complete recorded answer; recommendation targets are separate from method-only answers and source publishers."
+    },
+    {
+      "file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-luna",
+      "observed_at": "2026-11-05T18:30:33.999645+00:00",
+      "answer_role": "method",
+      "explicit_recommendation_targets": [],
+      "deulli_recommended": false,
+      "deulli_official_website_cited": false,
+      "review_method": "Agent read the complete recorded answer; recommendation targets are separate from method-only answers and source publishers."
+    },
+    {
+      "file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-luna",
+      "observed_at": "2026-11-05T18:30:42.927605+00:00",
+      "answer_role": "content/method",
+      "explicit_recommendation_targets": [
+        "British Council LearnEnglish Podcasts",
+        "VOA Learning English"
+      ],
+      "deulli_recommended": false,
+      "deulli_official_website_cited": false,
+      "review_method": "Agent read the complete recorded answer; recommendation targets are separate from method-only answers and source publishers."
+    },
+    {
+      "file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "observed_at": "2026-11-05T18:30:53.992002+00:00",
+      "answer_role": "app",
+      "explicit_recommendation_targets": [
+        "Duolingo",
+        "Speak",
+        "ELSA Speak",
+        "Quizlet"
+      ],
+      "deulli_recommended": false,
+      "deulli_official_website_cited": false,
+      "review_method": "Agent read the complete recorded answer; recommendation targets are separate from method-only answers and source publishers."
+    },
+    {
+      "file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-sol",
+      "observed_at": "2026-11-05T18:31:04.541871+00:00",
+      "answer_role": "method",
+      "explicit_recommendation_targets": [],
+      "deulli_recommended": false,
+      "deulli_official_website_cited": false,
+      "review_method": "Agent read the complete recorded answer; recommendation targets are separate from method-only answers and source publishers."
+    },
+    {
+      "file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "observed_at": "2026-11-05T18:31:12.789571+00:00",
+      "answer_role": "content",
+      "explicit_recommendation_targets": [
+        "British Council LearnEnglish Podcasts",
+        "VOA Learning English",
+        "BBC 6 Minute English",
+        "ESLPod"
+      ],
+      "deulli_recommended": false,
+      "deulli_official_website_cited": false,
+      "review_method": "Agent read the complete recorded answer; recommendation targets are separate from method-only answers and source publishers."
+    },
+    {
+      "file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "observed_at": "2026-11-05T18:31:23.492368+00:00",
+      "answer_role": "app",
+      "explicit_recommendation_targets": [
+        "VoiceTube",
+        "LingQ",
+        "ELSA Speak"
+      ],
+      "deulli_recommended": false,
+      "deulli_official_website_cited": false,
+      "review_method": "Agent read the complete recorded answer; recommendation targets are separate from method-only answers and source publishers."
+    },
+    {
+      "file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-sol",
+      "observed_at": "2026-11-05T18:31:31.806452+00:00",
+      "answer_role": "method",
+      "explicit_recommendation_targets": [],
+      "deulli_recommended": false,
+      "deulli_official_website_cited": false,
+      "review_method": "Agent read the complete recorded answer; recommendation targets are separate from method-only answers and source publishers."
+    },
+    {
+      "file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-sol",
+      "observed_at": "2026-11-05T18:31:40.543892+00:00",
+      "answer_role": "content/method",
+      "explicit_recommendation_targets": [
+        "British Council LearnEnglish Podcasts"
+      ],
+      "deulli_recommended": false,
+      "deulli_official_website_cited": false,
+      "review_method": "Agent read the complete recorded answer; recommendation targets are separate from method-only answers and source publishers."
+    }
+  ]
+}

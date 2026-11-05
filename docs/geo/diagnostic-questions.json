@@ -33,5 +33,12 @@
     "measurement_type": "direct_url_retrieval",
     "brand_prompted": true,
     "prompt": "https://deulli.com/podcasts/ 페이지를 읽고 소개된 에피소드와 들을 수 있는 방법을 알려주세요. 해당 페이지를 실제로 열지 못했다면 접근하지 못했다고 명확히 말해주세요."
+  },
+  {
+    "id": "D06",
+    "category": "direct_store_url_retrieval",
+    "measurement_type": "direct_url_retrieval",
+    "brand_prompted": true,
+    "prompt": "https://play.google.com/store/apps/details?id=com.deulli.app&hl=ko&gl=KR 페이지를 실제로 열어 들리(deulli)가 어떤 앱인지, Android 앱으로 안내되어 있는지 확인해주세요. 실제로 접근하지 못했다면 접근하지 못했다고 명확히 말해주세요."
   }
 ]

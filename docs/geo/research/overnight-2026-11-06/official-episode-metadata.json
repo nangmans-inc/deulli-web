@@ -1,0 +1,80 @@
+{
+  "method": "Selected known official IDs from the existing local catalog; no catalog listing request, no signed media URLs retained.",
+  "episodes": [
+    {
+      "id": 105972,
+      "name": "민호의 Part 2 미니 모의고사",
+      "level": "B1",
+      "english_levels": {
+        "ko-en": "B1",
+        "en-ko": "B1",
+        "en-en": "B1"
+      },
+      "total_length": 620065,
+      "audio_languages": [
+        "en",
+        "ko"
+      ],
+      "subtitle_languages": [
+        "en",
+        "ko"
+      ],
+      "is_free": true,
+      "description": null,
+      "category": "language_learning",
+      "channel_id": 3,
+      "source": "https://api.deulli.nangmans.com/podcasts/105972",
+      "observed_at": "2026-11-05T19:03:45.125757+00:00"
+    },
+    {
+      "id": 80,
+      "name": "수메르 — 문자는 왜 이야기보다 장부에서 먼저 필요했을까",
+      "level": "A2",
+      "english_levels": {
+        "ko-en": "A2",
+        "en-ko": "A2",
+        "en-en": "A2"
+      },
+      "total_length": 627476,
+      "audio_languages": [
+        "en",
+        "ko"
+      ],
+      "subtitle_languages": [
+        "en",
+        "ko"
+      ],
+      "is_free": true,
+      "description": null,
+      "category": "history",
+      "channel_id": 3,
+      "source": "https://api.deulli.nangmans.com/podcasts/80",
+      "observed_at": "2026-11-05T19:03:46.201951+00:00"
+    },
+    {
+      "id": 57,
+      "name": "왜 내 손으로는 나를 간지럽힐 수 없을까",
+      "level": "B2",
+      "english_levels": {
+        "ko-en": "B2",
+        "en-ko": "B2",
+        "en-en": "B2"
+      },
+      "total_length": 824632,
+      "audio_languages": [
+        "en",
+        "ko"
+      ],
+      "subtitle_languages": [
+        "en",
+        "ko"
+      ],
+      "is_free": true,
+      "description": null,
+      "category": "science",
+      "channel_id": 3,
+      "source": "https://api.deulli.nangmans.com/podcasts/57",
+      "observed_at": "2026-11-05T19:03:47.282849+00:00"
+    }
+  ]
+}

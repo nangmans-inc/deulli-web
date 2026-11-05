@@ -1,0 +1,10 @@
+{
+  "submitted_at": "2026-11-05T19:32:27.237294+00:00",
+  "endpoint": "https://api.indexnow.org/indexnow",
+  "urls": [
+    "https://deulli.com/guides/starting-english-study/"
+  ],
+  "status": 200,
+  "response": "",
+  "meaning": "Submission receipt only; not proof of crawling, indexing, or AI citation"
+}

@@ -78,7 +78,7 @@ def main():
                                             if item.get('type') == 'web_search_call'],
                               brand_mention_candidate=bool(re.search(
                                   r'deulli|(?<![가-힣])들리(?![가-힣])', answer, re.I)),
-                              official_domain_cited=any(urllib.parse.urlsplit(a['url']).hostname == 'deulli.com'
+                              official_domain_cited=any(urllib.parse.urlsplit(a['url']).hostname in ('deulli.com', 'www.deulli.com')
                                                         for a in citations))
             except urllib.error.HTTPError as error:
                 # Do not persist arbitrary upstream bodies or headers containing credentials.

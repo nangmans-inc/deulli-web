@@ -19,17 +19,20 @@ def main():
     parser.add_argument('--last-run-utc', required=True)
     parser.add_argument('--interval-minutes', type=int, default=30)
     parser.add_argument('--output-dir', required=True)
+    parser.add_argument('--questions', default='docs/geo/questions.json')
+    parser.add_argument('--ids', default='Q02,Q03,Q04,Q06,Q07,Q08')
     parser.add_argument('--run', action='store_true')
     args = parser.parse_args()
     first, last = timestamp(args.first_run_utc), timestamp(args.last_run_utc)
-    if not 15 <= args.interval_minutes <= 60 or not 0 <= last - first <= 3 * 3600:
-        raise ValueError('Expected 15-60 minute intervals and at most a 3-hour schedule')
+    if not 15 <= args.interval_minutes <= 60 or not 0 <= last - first <= 12 * 3600:
+        raise ValueError('Expected 15-60 minute intervals and at most a 12-hour schedule')
     schedule = []
     current = first
     while current <= last:
         schedule.append(current)
         current += args.interval_minutes * 60
-    print(f'Plan: {len(schedule)} rounds, 6 questions × 2 models per round = {len(schedule)*12} requests', flush=True)
+    count = len(args.ids.split(','))
+    print(f'Plan: {len(schedule)} rounds, {count} questions × 2 models per round = {len(schedule)*count*2} requests', flush=True)
     if not args.run:
         return
     destination = Path(args.output_dir)
@@ -52,7 +55,7 @@ def main():
                 raise ValueError(f'Observation file already exists: {target}')
             print(f'Starting observation {label}, {model}', flush=True)
             result = subprocess.run([sys.executable, 'scripts/geo-measure.py', '--env-file', args.env_file,
-                                     '--ids', 'Q02,Q03,Q04,Q06,Q07,Q08', '--model', model,
+                                     '--questions', args.questions, '--ids', args.ids, '--model', model,
                                      '--output', str(target), '--run'], check=False)
             if result.returncode:
                 raise SystemExit('Measurement stopped; inspect the recorded error before retrying')

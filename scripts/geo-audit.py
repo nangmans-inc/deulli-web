@@ -61,6 +61,8 @@ def capture(path):
                                   body, re.S | re.I)])
             else:
                 result['body'] = body
+    except urllib.error.HTTPError as error:
+        result.update(status=error.code, final_url=error.url, error=str(error))
     except (urllib.error.URLError, TimeoutError, ValueError) as error:
         result['error'] = str(error)
     return result
@@ -74,6 +76,8 @@ def main():
               'method': 'Public HTTP audit; not indexing or AI recommendation measurement',
               'pages': [capture(p) for p in ('/', '/about/', '/guides/podcast-listening/',
                                             '/guides/choosing-a-podcast-app/', '/podcasts/',
+                                            '/guides/starting-english-study/',
+                                            '/guides/english-study-apps/',
                                             '/robots.txt', '/sitemap-index.xml')]}
     target = Path(args.output)
     target.parent.mkdir(parents=True, exist_ok=True)
