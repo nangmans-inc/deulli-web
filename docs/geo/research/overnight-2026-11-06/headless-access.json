@@ -35,7 +35,7 @@
     },
     {
       "service": "Bing public brand search",
-      "outcome": "Navigation shell observed; result extraction incomplete; not counted as index evidence."
+      "outcome": "Two bounded follow-up loads produced unrelated or incomplete result blocks. Requested Korean query was present in input; no reliable brand indexing conclusion. Raw tracking links remain private."
     }
   ],
   "privacy": "No network IP, challenge token, user account data, personal chat URL or profile export is included.",
