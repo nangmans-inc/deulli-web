@@ -115,6 +115,25 @@ const { frontmatter } = Astro.props;
   article :global(ol) {
     list-style: decimal;
   }
+  article :global(table) {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    color: var(--color-fg-muted);
+    line-height: 1.8;
+  }
+  article :global(th),
+  article :global(td) {
+    padding: 0.875rem 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+    vertical-align: top;
+  }
+  article :global(th:first-child),
+  article :global(td:first-child) {
+    width: 32%;
+  }
   a,
   article :global(a) {
     color: var(--color-brand);
