@@ -1,0 +1,73 @@
+Query: 영어 팟캐스트 스크립트 앱 추천
+Observed: 2026-11-06
+Method: web search, not AI answer measurement
+
+Source response SHA256: 68de9121c23515eeca2952a351dc7952e055ea37a23664f2f79e92e2f8f9cf7a
+Only returned source titles and URLs retained; snippets omitted.
+
+[
+  {
+    "title": "Podling 소개 — 보도 자료 | Podling",
+    "url": "https://trypodling.com/ko/press/"
+  },
+  {
+    "title": "영어 팟캐스트와 오디오 콘텐츠 활용 학습법 — 귀로 뚫는 영어의 모든 것",
+    "url": "https://www.jaenung.net/tree/46539"
+  },
+  {
+    "title": "영어 팟캐스트 추천 TOP 12 – 듣기만 해도 영어실력이 느는 채널 - 코리안앱스 | 필수 앱 추천 및 스마트폰 활용법",
+    "url": "https://korean-apps.com/?p=190"
+  },
+  {
+    "title": "‎Castflow AI 팟캐스트 스크립트 앱 - App Store",
+    "url": "https://apps.apple.com/kr/app/castflow-ai-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/id1572179241?platform=mac"
+  },
+  {
+    "title": "링고마루: 영어 매일 듣기, VOA 뉴스, 팟캐스트 - Google Play 앱",
+    "url": "https://play.google.com/store/apps/details?hl=ko&id=com.devmaru.lingo"
+  },
+  {
+    "title": "‎Castflow AI 팟캐스트 스크립트 앱 - App Store",
+    "url": "https://apps.apple.com/kr/app/castflow-ai-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/id1572179241?platform=vision"
+  },
+  {
+    "title": "Podling — 좋아하는 프로그램으로 언어를 배우는 팟캐스트 앱",
+    "url": "https://trypodling.com/ko/"
+  },
+  {
+    "title": "‎GilloCast: 팟캐스트 플레이어 앱 - App Store",
+    "url": "https://apps.apple.com/kr/app/gillocast-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8-%ED%94%8C%EB%A0%88%EC%9D%B4%EC%96%B4/id6766321321"
+  },
+  {
+    "title": "돈 한 푼 안 쓰는 무료 영어공부! 유튜브·팟캐스트·앱 추천 리스트 10선 완벽 가이드 - TILNOTE",
+    "url": "https://tilnote.io/pages/68b7aa65823692c440c3e0fa"
+  },
+  {
+    "title": "영어 팟캐스트 추천 레벨별 가이드 | 매일11시 블로그",
+    "url": "https://maeil11.com/blog/english-podcast-recommend"
+  },
+  {
+    "title": "[자기계발 팁] 무료 팟캐스트로 영어 회화 공부하는 방법 — SpaceQuokka",
+    "url": "https://moonmonoon.tistory.com/entry/%EC%9E%90%EA%B8%B0%EA%B3%84%EB%B0%9C-%ED%8C%81-%EB%AC%B4%EB%A3%8C-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8%EB%A1%9C-%EC%98%81%EC%96%B4-%ED%9A%8C%ED%99%94-%EA%B3%B5%EB%B6%80%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95"
+  },
+  {
+    "title": "무료 영어 회화 팟캐스트 7가지 실전 활용법 - HowToListen",
+    "url": "https://howtolisten.co.kr/%EB%AC%B4%EB%A3%8C-%EC%98%81%EC%96%B4-%ED%9A%8C%ED%99%94-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8-7%EA%B0%80%EC%A7%80-%EC%8B%A4%EC%A0%84-%ED%99%9C%EC%9A%A9%EB%B2%95/"
+  },
+  {
+    "title": "AI Cheat Sheet — 이럴 땐 이거 쓰세요 · 2026년 3월 · v2.0.1",
+    "url": "https://hohyon.com/assets/docs/ai-cheatsheet-content-creator-2.0.1.pdf"
+  },
+  {
+    "title": "(Ž—2) 22_24D \u00110x%´\u0001Ä“_m˝)¡PX¬è.hwp",
+    "url": "https://img.arirang.com/v1/AUTH_d52449c16d3b4bbca17d4fffd9fc44af/public/disclosure/202304/1925525597988061774_%EC%A4%91%EA%B8%B0%EC%9D%B8%EB%A0%A5%EC%9A%B4%EC%9A%A9_%EA%B3%84%ED%9A%8D%282022%29.pdf"
+  },
+  {
+    "title": "TV와 셋톱박스",
+    "url": "https://www.nugu.co.kr/assets/Btv_NUGU_AndroidTV_instruction_book.pdf"
+  },
+  {
+    "title": "[패스트캠퍼스] 교육과정소개서_AI 튜터 영어 앱 서비스 구현 with OpenAI API",
+    "url": "https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202401/122447-1154/-%ED%8C%A8%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4--%EA%B5%90%EC%9C%A1%EA%B3%BC%EC%A0%95%EC%86%8C%EA%B0%9C%EC%84%9C-ai-%ED%8A%9C%ED%84%B0-%EC%98%81%EC%96%B4-%EC%95%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-%EA%B5%AC%ED%98%84-with-openai-api.pdf"
+  }
+]

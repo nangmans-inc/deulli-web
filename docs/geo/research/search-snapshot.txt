@@ -1,0 +1,87 @@
+
+
+Source response SHA256: f3ab7a41aed59b3381f1595ee84d2008627dfc4e38475e7c8e55ee79ed3369f8
+Only returned source titles and URLs retained; snippets omitted.
+
+[
+  {
+    "title": "‎들리 - 팟캐스트로 하는 영어공부, 리스닝, 쉐도잉 앱 - App Store",
+    "url": "https://apps.apple.com/kr/app/%EB%93%A4%EB%A6%AC-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8%EB%A1%9C-%ED%95%98%EB%8A%94-%EC%98%81%EC%96%B4%EA%B3%B5%EB%B6%80-%EB%A6%AC%EC%8A%A4%EB%8B%9D-%EC%89%90%EB%8F%84%EC%9E%89/id6798545609"
+  },
+  {
+    "title": "영어 팟캐스트와 오디오 콘텐츠 활용 학습법 — 귀로 뚫는 영어의 모든 것",
+    "url": "https://www.jaenung.net/tree/46539"
+  },
+  {
+    "title": "영어 팟캐스트 추천 TOP 12 – 듣기만 해도 영어실력이 느는 채널 - 코리안앱스 | 필수 앱 추천 및 스마트폰 활용법",
+    "url": "https://korean-apps.com/?p=190"
+  },
+  {
+    "title": "한국인을 위한 필수 영어 학습 앱 추천",
+    "url": "https://kr.appisfree.com/editorDetail/english-learning-apps"
+  },
+  {
+    "title": "‎청취 상자 앱 - App Store",
+    "url": "https://apps.apple.com/kr/app/%EC%B2%AD%EC%B7%A8-%EC%83%81%EC%9E%90/id6739975159?platform=vision"
+  },
+  {
+    "title": "Podling — 좋아하는 프로그램으로 언어를 배우는 팟캐스트 앱",
+    "url": "https://trypodling.com/ko/"
+  },
+  {
+    "title": "돈 한 푼 안 쓰는 무료 영어공부! 유튜브·팟캐스트·앱 추천 리스트 10선 완벽 가이드 - TILNOTE",
+    "url": "https://tilnote.io/pages/68b7aa65823692c440c3e0fa"
+  },
+  {
+    "title": "영어 팟캐스트 추천 레벨별 가이드 | 매일11시 블로그",
+    "url": "https://maeil11.com/blog/english-podcast-recommend"
+  },
+  {
+    "title": "영어 공부에 효과적인 5 가지 팟캐스트 비교 특징 효과적인 학습 방법",
+    "url": "https://investyssey.tistory.com/50"
+  },
+  {
+    "title": "🎧 러시아어 듣기 능력 향상을 위한팟캐스트 완전 정복 가이드",
+    "url": "https://www.jaenung.net/tree/51566"
+  },
+  {
+    "title": "영어 뉴스 & 팟캐스트 활용법",
+    "url": "https://taylorstory.tistory.com/161"
+  },
+  {
+    "title": "한국어-영어 번역기 - Google Play 앱",
+    "url": "https://play.google.com/store/apps/details?hl=ko&id=com.suvorov.ko_en"
+  },
+  {
+    "title": "iFLYTEK_AINOTE_Air2_User_Manual_korea",
+    "url": "https://www.iflytek.com/en/Public/Uploads/uploadfile/files/20250609/iFLYTEKAINOTEAir2UserManualkorea-709.pdf"
+  },
+  {
+    "title": "AI Cheat Sheet — 이럴 땐 이거 쓰세요 · 2026년 3월 · v2.0.1",
+    "url": "https://hohyon.com/assets/docs/ai-cheatsheet-content-creator-2.0.1.pdf"
+  },
+  {
+    "title": "영어영문학과는 영어와 한국어 의사소통 능력을 기르고,",
+    "url": "https://www.swu.ac.kr/www/pdf/major/major_2025.pdf"
+  },
+  {
+    "title": "주최·주관",
+    "url": "https://goartist.kawfartist.kr/common/downloadFromWebPath.ws?originalFileName=%5B%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC%EB%B6%81%5D+2018_%EC%98%88%EC%88%A0%EC%9D%B8+%ED%8C%8C%EA%B2%AC%EC%A7%80%EC%9B%90+%EC%82%AC%EC%97%85_%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC%EB%B6%81%28%EC%B5%9C%EC%A2%85%29.pdf&savedPathAndFileName=%2Fftpdata2%2Fkawf_goartist%2Ffile_upload%2Fboard%2F20190410%2F0d7a3c6a-2856-4ba2-af4e-7deb7f127b46_%5B%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC%EB%B6%81%5D+2018_%EC%98%88%EC%88%A0%EC%9D%B8+%ED%8C%8C%EA%B2%AC%EC%A7%80%EC%9B%90+%EC%82%AC%EC%97%85_%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC%EB%B6%81%28%EC%B5%9C%EC%A2%85%29.pdf"
+  },
+  {
+    "title": "- 말레이시아 아스트로 라디오 앱 <SYOK>을 통한 영어 가요 프로그램, 엔터테인먼트 및 관광 콘텐츠 제공 (영/중)",
+    "url": "https://padmin.static.kbs.co.kr/nbroad/2025/5/30/1748567935268_nbroad.pdf"
+  },
+  {
+    "title": "1:1 Coaching Program",
+    "url": "https://fli.yonsei.ac.kr/upload_file/etc/2016-7-8-brochure.pdf"
+  },
+  {
+    "title": "Robocar Poli | English Theme Song - YouTube",
+    "url": "https://www.youtube.com/watch?v=I_JAqDSVv0g"
+  },
+  {
+    "title": "Robocar Poli Dance - YouTube",
+    "url": "https://www.youtube.com/watch?v=7owVSXFOl7o"
+  }
+]

@@ -1,0 +1,73 @@
+{
+  "observed_at": "2026-11-05T16:00:28.270208+00:00",
+  "method": "Public HTTP audit; not indexing or AI recommendation measurement",
+  "pages": [
+    {
+      "requested_url": "https://deulli.com/",
+      "status": 200,
+      "final_url": "https://deulli.com/",
+      "content_type": "text/html; charset=utf-8",
+      "x_robots_tag": null,
+      "sha256": "0442202ea0f7b835cb188fdba22983f5801852a9a28e4869b248566955a3b9cc",
+      "visible_text": "들리 듣다 보면 들리니까, 듣다보면 들리니까 들리 팟캐스트로 하는 최고의 영어 공부 © 2026 Deulli. All Rights Reserved.",
+      "canonical": [
+        "https://deulli.com/"
+      ],
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1"
+      ],
+      "json_ld": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "deulli",
+          "alternateName": "들리",
+          "legalName": "손기령",
+          "url": "https://deulli.com",
+          "logo": "https://deulli.com/logo.svg",
+          "description": "들리(deulli)는 팟캐스트로 영어를 공부하는 앱입니다. 듣다가 놓친 문장은 화면에서 영어와 한국어로 바로 확인하고, 그 문장부터 다시 들으면 됩니다.",
+          "email": "contact@nangmans.com",
+          "slogan": "듣다 보면 들리니까, 들리"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "MobileApplication",
+          "name": "들리 (deulli)",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "iOS, Android",
+          "url": "https://deulli.com",
+          "description": "들리(deulli)는 팟캐스트로 영어를 공부하는 앱입니다. 듣다가 놓친 문장은 화면에서 영어와 한국어로 바로 확인하고, 그 문장부터 다시 들으면 됩니다.",
+          "inLanguage": "ko",
+          "author": {
+            "@type": "Organization",
+            "name": "deulli",
+            "url": "https://deulli.com"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "KRW"
+          }
+        }
+      ]
+    },
+    {
+      "requested_url": "https://deulli.com/robots.txt",
+      "status": 200,
+      "final_url": "https://deulli.com/robots.txt",
+      "content_type": "text/plain; charset=utf-8",
+      "x_robots_tag": null,
+      "sha256": "51d8d30fe9c208e46d4d9cd969863dc2a5a8aef6b9abfd1d2be97b105065764d",
+      "body": "User-agent: *\nAllow: /\n\nSitemap: https://deulli.com/sitemap-index.xml\n"
+    },
+    {
+      "requested_url": "https://deulli.com/sitemap-index.xml",
+      "status": 200,
+      "final_url": "https://deulli.com/sitemap-index.xml",
+      "content_type": "application/xml",
+      "x_robots_tag": null,
+      "sha256": "771db974b2e1b087dc5652704b72f5e224138787dfaedf1ee14bb0687e10fa3e",
+      "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><sitemap><loc>https://deulli.com/sitemap-0.xml</loc></sitemap></sitemapindex>"
+    }
+  ]
+}

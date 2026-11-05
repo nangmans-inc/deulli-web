@@ -1,0 +1,8 @@
+Query: site:deulli.com
+Observed: 2026-11-06
+Method: web search, not AI answer measurement
+
+Source response SHA256: a4edbb4bdf28331da0f35c6889a1514eeef7f4eb7638e106febf18d02d6696af
+Only returned source titles and URLs retained; snippets omitted.
+
+[]

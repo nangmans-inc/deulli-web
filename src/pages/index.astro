@@ -1,33 +1,37 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
 ---
 
 <BaseLayout>
   <main>
-    {
-      /* 히어로 그라데이션 백드롭.
+    <div class="hero-scene">
+      {
+        /* 히어로 그라데이션 백드롭.
         Hero 안이 아니라 <main> 상단에 두는 이유는 히어로의 높이·overflow에 잘리지
         않게 하기 위해서다. */
-    }
-    <div class="backdrop" aria-hidden="true">
-      <div class="cluster">
-        <span class="blob wash"></span>
-        <span class="blob core float"></span>
-        <span class="blob deep float-slow"></span>
-        <span class="blob lift"></span>
-        <span class="blob spill float-slow"></span>
-        <span class="blob hotspot"></span>
+      }
+      <div class="backdrop" aria-hidden="true">
+        <div class="cluster">
+          <span class="blob wash"></span>
+          <span class="blob core float"></span>
+          <span class="blob deep float-slow"></span>
+          <span class="blob lift"></span>
+          <span class="blob spill float-slow"></span>
+          <span class="blob hotspot"></span>
+        </div>
+
+        {/* 옅은 격자. 목업 쪽으로만 마스크해 슬로건 옆을 어지럽히지 않는다. */}
+        <div class="mesh"></div>
+
+        {/* 가독성 가드 — 카피가 놓이는 면을 깨끗한 흰색으로 되돌린다 */}
+        <div class="guard"></div>
       </div>
 
-      {/* 옅은 격자. 목업 쪽으로만 마스크해 슬로건 옆을 어지럽히지 않는다. */}
-      <div class="mesh"></div>
-
-      {/* 가독성 가드 — 카피가 놓이는 면을 깨끗한 흰색으로 되돌린다 */}
-      <div class="guard"></div>
+      <Hero />
     </div>
-
-    <Hero />
+    <About />
   </main>
 </BaseLayout>
 
@@ -42,7 +46,7 @@ import Hero from "../components/Hero.astro";
     pointer-events: none;
   }
 
-  main {
+  .hero-scene {
     position: relative;
   }
 

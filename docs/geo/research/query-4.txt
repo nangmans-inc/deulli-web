@@ -1,0 +1,49 @@
+Query: 영어 팟캐스트 문장 반복 앱
+Observed: 2026-11-06
+Method: web search, not AI answer measurement
+
+Source response SHA256: 89d49e511172d8a3d2c800755942fa73bef63bc60f3359680a26ea2aa52c3e06
+Only returned source titles and URLs retained; snippets omitted.
+
+[
+  {
+    "title": "‎EchoNative 앱 - App Store",
+    "url": "https://apps.apple.com/kr/app/echonative/id6764449002"
+  },
+  {
+    "title": "PeachTok — 영어 문장 학습 & 간격 반복 복습",
+    "url": "https://www.peachtok.app/"
+  },
+  {
+    "title": "‎매일 일본어 듣기: 뉴스·팟캐스트와 JLPT 시험 대비 앱 - App Store",
+    "url": "https://apps.apple.com/kr/app/%EB%A7%A4%EC%9D%BC-%EC%9D%BC%EB%B3%B8%EC%96%B4-%EB%93%A3%EA%B8%B0-%EB%89%B4%EC%8A%A4-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8%EC%99%80-jlpt-%EC%8B%9C%ED%97%98-%EB%8C%80%EB%B9%84/id6747541132?platform=vision"
+  },
+  {
+    "title": "ListenLeap - 오디오·영상 영어 학습 - Google Play 앱",
+    "url": "https://play.google.com/store/apps/details?hl=ko&id=com.listenLeap.app"
+  },
+  {
+    "title": "‎Phrabbit - 쉐도잉·받아쓰기·구간반복 앱 - App Store",
+    "url": "https://apps.apple.com/kr/app/phrabbit-%EC%89%90%EB%8F%84%EC%9E%89-%EB%B0%9B%EC%95%84%EC%93%B0%EA%B8%B0-%EA%B5%AC%EA%B0%84%EB%B0%98%EB%B3%B5/id6772523674?platform=mac"
+  },
+  {
+    "title": "모바일 앱 업데이트 내역 | SentiaRead",
+    "url": "https://sentiaread.com/ko/changelog/mobile"
+  },
+  {
+    "title": "‎Phrabbit - 쉐도잉·구간반복 앱 - App Store",
+    "url": "https://apps.apple.com/kr/app/phrabbit-%EC%89%90%EB%8F%84%EC%9E%89-%EA%B5%AC%EA%B0%84%EB%B0%98%EB%B3%B5/id6772523674"
+  },
+  {
+    "title": "영어 문장 스피킹 퍼즐 게임:SpeakBuild - Google Play 앱",
+    "url": "https://play.google.com/store/apps/details?hl=ko&id=com.speakbuild.app"
+  },
+  {
+    "title": "링고마루: 영어 매일 듣기, VOA 뉴스, 팟캐스트 - Google Play 앱",
+    "url": "https://play.google.com/store/apps/details?hl=ko&id=com.devmaru.lingo"
+  },
+  {
+    "title": "‎매일 일본어 듣기: 학습·뉴스·팟캐스트·JLPT 앱 - App Store",
+    "url": "https://apps.apple.com/kr/app/%EB%A7%A4%EC%9D%BC-%EC%9D%BC%EB%B3%B8%EC%96%B4-%EB%93%A3%EA%B8%B0-%ED%95%99%EC%8A%B5-%EB%89%B4%EC%8A%A4-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8-jlpt/id6747541132?platform=ipad"
+  }
+]
