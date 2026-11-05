@@ -13,7 +13,7 @@
 
 ## 결정에 사용한 원문
 
-**Hui & Godfroid (2026; online first 2025), [Listening, Reading, or Both?](https://doi.org/10.1111/lang.12721)**, Language Learning 76, 311–351. 등록 보고서. 중국어 모어 영어 학습자, 분석 자료 최종 86명; 주요 내용 이해 모형의 유효 N은 70명. 소설 발췌문을 읽기, 읽으며 듣기, 듣기 조건으로 제시한 직후 과제. Results의 RQ3/Table 8–9에서 읽으며 듣기의 내용 이해 점수가 듣기보다 높았다. RQ4/Table 10–11에서 분절 과제의 사전 계획 분석은 유의한 이점이 없고 민감도 분석은 서로 달랐다. 지연 검사와 한국어 번역 앱의 효과는 측정하지 않았다. 유효 N 차이의 완전한 재분석은 하지 않았다. 가이드에는 수치나 전체 모집단 효과를 싣지 않았다.
+**Hui & Godfroid (2026), [Listening, Reading, or Both?](https://doi.org/10.1111/lang.12721)**. 직후 이해와 분절의 결과를 구분한다. 표본·유효 N·측정 과제·결과·한계는 동반 JSON의 S1 카드에 보존했다. 가이드에는 수치나 전체 모집단 효과를 싣지 않았다.
 
 **Kurokawa, Hein & Uchihara (2025; online first 2024), [Incidental Vocabulary Acquisition Through Captioned Viewing](https://doi.org/10.1111/lang.12697)**, Language Learning 75, 939–987. 동일한 외국어의 자막이 있는 영상과 없는 영상의 우연적 어휘 학습을 비교한 49개 실험, 89개 효과 크기. Results/Overall Effectiveness에서 g=0.56, 95% CI [0.38, 0.73]. 이질성이 있고 일부 하위 집단은 불확실하다. Conclusion은 선택 기준을 충족한 지연 검사 연구가 8개뿐이어서 장기 유지에 답하지 못한다고 명시한다. 오디오만 있는 팟캐스트나 한국어 번역·들리의 효과를 입증하는 자료로 사용하지 않았다.
 

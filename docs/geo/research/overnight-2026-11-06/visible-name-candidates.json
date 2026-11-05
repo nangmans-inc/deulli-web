@@ -535,6 +535,30 @@
     {
       "cohort": "initial-and-two-hour",
       "model": "gpt-6-luna",
+      "type": "app",
+      "name": "ListenLeap",
+      "candidate_answers": 0,
+      "eligible_answers": 58,
+      "evidence": []
+    },
+    {
+      "cohort": "initial-and-two-hour",
+      "model": "gpt-6-luna",
+      "type": "app",
+      "name": "LangPod",
+      "candidate_answers": 1,
+      "eligible_answers": 58,
+      "evidence": [
+        {
+          "file": "docs/geo/research/api-features-gpt-6-luna.jsonl",
+          "question_id": "F06",
+          "observed_at": "2026-11-05T16:44:52.879774+00:00"
+        }
+      ]
+    },
+    {
+      "cohort": "initial-and-two-hour",
+      "model": "gpt-6-luna",
       "type": "player",
       "name": "Apple Podcasts",
       "candidate_answers": 4,
@@ -716,6 +740,33 @@
           "observed_at": "2026-11-05T18:09:15.709634+00:00"
         }
       ]
+    },
+    {
+      "cohort": "initial-and-two-hour",
+      "model": "gpt-6-luna",
+      "type": "content/provider",
+      "name": "TED",
+      "candidate_answers": 0,
+      "eligible_answers": 58,
+      "evidence": []
+    },
+    {
+      "cohort": "initial-and-two-hour",
+      "model": "gpt-6-luna",
+      "type": "content/provider",
+      "name": "EBS",
+      "candidate_answers": 0,
+      "eligible_answers": 58,
+      "evidence": []
+    },
+    {
+      "cohort": "initial-and-two-hour",
+      "model": "gpt-6-luna",
+      "type": "content/provider",
+      "name": "SBS",
+      "candidate_answers": 0,
+      "eligible_answers": 58,
+      "evidence": []
     },
     {
       "cohort": "initial-and-two-hour",
@@ -1061,6 +1112,30 @@
     {
       "cohort": "initial-and-two-hour",
       "model": "gpt-6-sol",
+      "type": "app",
+      "name": "ListenLeap",
+      "candidate_answers": 1,
+      "eligible_answers": 38,
+      "evidence": [
+        {
+          "file": "docs/geo/research/api-sol-round-1.jsonl",
+          "question_id": "Q10",
+          "observed_at": "2026-11-05T16:21:00.366873+00:00"
+        }
+      ]
+    },
+    {
+      "cohort": "initial-and-two-hour",
+      "model": "gpt-6-sol",
+      "type": "app",
+      "name": "LangPod",
+      "candidate_answers": 0,
+      "eligible_answers": 38,
+      "evidence": []
+    },
+    {
+      "cohort": "initial-and-two-hour",
+      "model": "gpt-6-sol",
       "type": "player",
       "name": "Apple Podcasts",
       "candidate_answers": 9,
@@ -1274,12 +1349,62 @@
       ]
     },
     {
+      "cohort": "initial-and-two-hour",
+      "model": "gpt-6-sol",
+      "type": "content/provider",
+      "name": "TED",
+      "candidate_answers": 1,
+      "eligible_answers": 38,
+      "evidence": [
+        {
+          "file": "docs/geo/research/api-broad-intent-gpt-6-sol.jsonl",
+          "question_id": "G07",
+          "observed_at": "2026-11-05T18:08:26.208237+00:00"
+        }
+      ]
+    },
+    {
+      "cohort": "initial-and-two-hour",
+      "model": "gpt-6-sol",
+      "type": "content/provider",
+      "name": "EBS",
+      "candidate_answers": 2,
+      "eligible_answers": 38,
+      "evidence": [
+        {
+          "file": "docs/geo/research/api-features-gpt-6-sol.jsonl",
+          "question_id": "F01",
+          "observed_at": "2026-11-05T16:44:00.057989+00:00"
+        },
+        {
+          "file": "docs/geo/research/api-features-gpt-6-sol.jsonl",
+          "question_id": "F09",
+          "observed_at": "2026-11-05T16:45:30.884710+00:00"
+        }
+      ]
+    },
+    {
+      "cohort": "initial-and-two-hour",
+      "model": "gpt-6-sol",
+      "type": "content/provider",
+      "name": "SBS",
+      "candidate_answers": 1,
+      "eligible_answers": 38,
+      "evidence": [
+        {
+          "file": "docs/geo/research/api-features-gpt-6-sol.jsonl",
+          "question_id": "F09",
+          "observed_at": "2026-11-05T16:45:30.884710+00:00"
+        }
+      ]
+    },
+    {
       "cohort": "overnight",
       "model": "gpt-6-luna",
       "type": "app",
       "name": "deulli",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1287,13 +1412,18 @@
       "model": "gpt-6-luna",
       "type": "app",
       "name": "Speak",
-      "candidate_answers": 1,
-      "eligible_answers": 6,
+      "candidate_answers": 2,
+      "eligible_answers": 12,
       "evidence": [
         {
           "file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-luna.jsonl",
           "question_id": "G01",
           "observed_at": "2026-11-05T18:30:00.076569+00:00"
+        },
+        {
+          "file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-luna.jsonl",
+          "question_id": "G01",
+          "observed_at": "2026-11-05T19:30:00.069882+00:00"
         }
       ]
     },
@@ -1302,8 +1432,8 @@
       "model": "gpt-6-luna",
       "type": "app",
       "name": "ELSA Speak",
-      "candidate_answers": 2,
-      "eligible_answers": 6,
+      "candidate_answers": 3,
+      "eligible_answers": 12,
       "evidence": [
         {
           "file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-luna.jsonl",
@@ -1314,6 +1444,11 @@
           "file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-luna.jsonl",
           "question_id": "G07",
           "observed_at": "2026-11-05T18:30:26.157998+00:00"
+        },
+        {
+          "file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-luna.jsonl",
+          "question_id": "G01",
+          "observed_at": "2026-11-05T19:30:00.069882+00:00"
         }
       ]
     },
@@ -1323,7 +1458,7 @@
       "type": "app",
       "name": "Duolingo",
       "candidate_answers": 1,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": [
         {
           "file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-luna.jsonl",
@@ -1338,7 +1473,7 @@
       "type": "app",
       "name": "LingQ",
       "candidate_answers": 1,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": [
         {
           "file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-luna.jsonl",
@@ -1353,7 +1488,7 @@
       "type": "app",
       "name": "VoiceTube",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1361,9 +1496,20 @@
       "model": "gpt-6-luna",
       "type": "app",
       "name": "Cake",
-      "candidate_answers": 0,
-      "eligible_answers": 6,
-      "evidence": []
+      "candidate_answers": 2,
+      "eligible_answers": 12,
+      "evidence": [
+        {
+          "file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-luna.jsonl",
+          "question_id": "G01",
+          "observed_at": "2026-11-05T19:30:00.069882+00:00"
+        },
+        {
+          "file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-luna.jsonl",
+          "question_id": "G07",
+          "observed_at": "2026-11-05T19:30:24.943086+00:00"
+        }
+      ]
     },
     {
       "cohort": "overnight",
@@ -1371,7 +1517,7 @@
       "type": "app",
       "name": "HelloTalk",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1380,7 +1526,7 @@
       "type": "app",
       "name": "Quizlet",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1389,7 +1535,7 @@
       "type": "app",
       "name": "Anki",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1398,7 +1544,7 @@
       "type": "app",
       "name": "Podling",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1407,7 +1553,7 @@
       "type": "app",
       "name": "Lingoreel",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1416,7 +1562,7 @@
       "type": "app",
       "name": "PlayLingo",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1425,7 +1571,7 @@
       "type": "app",
       "name": "Parroto Podcast",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1434,7 +1580,7 @@
       "type": "app",
       "name": "Rehear",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1443,7 +1589,7 @@
       "type": "app",
       "name": "Unpack",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1452,7 +1598,7 @@
       "type": "app",
       "name": "Huh Understand Podcasts",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1461,7 +1607,7 @@
       "type": "app",
       "name": "AcrossCast",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1470,7 +1616,7 @@
       "type": "app",
       "name": "LemonCast",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1479,7 +1625,7 @@
       "type": "app",
       "name": "NotebookLM",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1488,7 +1634,25 @@
       "type": "app",
       "name": "ElevenReader",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
+      "evidence": []
+    },
+    {
+      "cohort": "overnight",
+      "model": "gpt-6-luna",
+      "type": "app",
+      "name": "ListenLeap",
+      "candidate_answers": 0,
+      "eligible_answers": 12,
+      "evidence": []
+    },
+    {
+      "cohort": "overnight",
+      "model": "gpt-6-luna",
+      "type": "app",
+      "name": "LangPod",
+      "candidate_answers": 0,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1497,7 +1661,7 @@
       "type": "player",
       "name": "Apple Podcasts",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1506,7 +1670,7 @@
       "type": "player",
       "name": "Spotify",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1514,8 +1678,8 @@
       "model": "gpt-6-luna",
       "type": "content/provider",
       "name": "BBC",
-      "candidate_answers": 2,
-      "eligible_answers": 6,
+      "candidate_answers": 4,
+      "eligible_answers": 12,
       "evidence": [
         {
           "file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-luna.jsonl",
@@ -1526,6 +1690,16 @@
           "file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-luna.jsonl",
           "question_id": "G07",
           "observed_at": "2026-11-05T18:30:26.157998+00:00"
+        },
+        {
+          "file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-luna.jsonl",
+          "question_id": "G03",
+          "observed_at": "2026-11-05T19:30:17.132315+00:00"
+        },
+        {
+          "file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-luna.jsonl",
+          "question_id": "G07",
+          "observed_at": "2026-11-05T19:30:24.943086+00:00"
         }
       ]
     },
@@ -1534,8 +1708,8 @@
       "model": "gpt-6-luna",
       "type": "content/provider",
       "name": "British Council",
-      "candidate_answers": 3,
-      "eligible_answers": 6,
+      "candidate_answers": 5,
+      "eligible_answers": 12,
       "evidence": [
         {
           "file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-luna.jsonl",
@@ -1551,6 +1725,16 @@
           "file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-luna.jsonl",
           "question_id": "G09",
           "observed_at": "2026-11-05T18:30:42.927605+00:00"
+        },
+        {
+          "file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-luna.jsonl",
+          "question_id": "G07",
+          "observed_at": "2026-11-05T19:30:24.943086+00:00"
+        },
+        {
+          "file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-luna.jsonl",
+          "question_id": "G09",
+          "observed_at": "2026-11-05T19:30:42.000703+00:00"
         }
       ]
     },
@@ -1559,8 +1743,8 @@
       "model": "gpt-6-luna",
       "type": "content/provider",
       "name": "VOA",
-      "candidate_answers": 2,
-      "eligible_answers": 6,
+      "candidate_answers": 4,
+      "eligible_answers": 12,
       "evidence": [
         {
           "file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-luna.jsonl",
@@ -1571,6 +1755,16 @@
           "file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-luna.jsonl",
           "question_id": "G09",
           "observed_at": "2026-11-05T18:30:42.927605+00:00"
+        },
+        {
+          "file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-luna.jsonl",
+          "question_id": "G03",
+          "observed_at": "2026-11-05T19:30:17.132315+00:00"
+        },
+        {
+          "file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-luna.jsonl",
+          "question_id": "G09",
+          "observed_at": "2026-11-05T19:30:42.000703+00:00"
         }
       ]
     },
@@ -1579,15 +1773,47 @@
       "model": "gpt-6-luna",
       "type": "content/provider",
       "name": "All Ears English",
-      "candidate_answers": 1,
-      "eligible_answers": 6,
+      "candidate_answers": 2,
+      "eligible_answers": 12,
       "evidence": [
         {
           "file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-luna.jsonl",
           "question_id": "G03",
           "observed_at": "2026-11-05T18:30:17.225141+00:00"
+        },
+        {
+          "file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-luna.jsonl",
+          "question_id": "G03",
+          "observed_at": "2026-11-05T19:30:17.132315+00:00"
         }
       ]
+    },
+    {
+      "cohort": "overnight",
+      "model": "gpt-6-luna",
+      "type": "content/provider",
+      "name": "TED",
+      "candidate_answers": 0,
+      "eligible_answers": 12,
+      "evidence": []
+    },
+    {
+      "cohort": "overnight",
+      "model": "gpt-6-luna",
+      "type": "content/provider",
+      "name": "EBS",
+      "candidate_answers": 0,
+      "eligible_answers": 12,
+      "evidence": []
+    },
+    {
+      "cohort": "overnight",
+      "model": "gpt-6-luna",
+      "type": "content/provider",
+      "name": "SBS",
+      "candidate_answers": 0,
+      "eligible_answers": 12,
+      "evidence": []
     },
     {
       "cohort": "overnight",
@@ -1595,7 +1821,7 @@
       "type": "app",
       "name": "deulli",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1603,13 +1829,18 @@
       "model": "gpt-6-sol",
       "type": "app",
       "name": "Speak",
-      "candidate_answers": 1,
-      "eligible_answers": 6,
+      "candidate_answers": 2,
+      "eligible_answers": 12,
       "evidence": [
         {
           "file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-sol.jsonl",
           "question_id": "G01",
           "observed_at": "2026-11-05T18:30:53.992002+00:00"
+        },
+        {
+          "file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-sol.jsonl",
+          "question_id": "G01",
+          "observed_at": "2026-11-05T19:30:49.892799+00:00"
         }
       ]
     },
@@ -1618,8 +1849,8 @@
       "model": "gpt-6-sol",
       "type": "app",
       "name": "ELSA Speak",
-      "candidate_answers": 2,
-      "eligible_answers": 6,
+      "candidate_answers": 4,
+      "eligible_answers": 12,
       "evidence": [
         {
           "file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-sol.jsonl",
@@ -1630,6 +1861,16 @@
           "file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-sol.jsonl",
           "question_id": "G07",
           "observed_at": "2026-11-05T18:31:23.492368+00:00"
+        },
+        {
+          "file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-sol.jsonl",
+          "question_id": "G01",
+          "observed_at": "2026-11-05T19:30:49.892799+00:00"
+        },
+        {
+          "file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-sol.jsonl",
+          "question_id": "G07",
+          "observed_at": "2026-11-05T19:31:14.266201+00:00"
         }
       ]
     },
@@ -1638,13 +1879,18 @@
       "model": "gpt-6-sol",
       "type": "app",
       "name": "Duolingo",
-      "candidate_answers": 1,
-      "eligible_answers": 6,
+      "candidate_answers": 2,
+      "eligible_answers": 12,
       "evidence": [
         {
           "file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-sol.jsonl",
           "question_id": "G01",
           "observed_at": "2026-11-05T18:30:53.992002+00:00"
+        },
+        {
+          "file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-sol.jsonl",
+          "question_id": "G01",
+          "observed_at": "2026-11-05T19:30:49.892799+00:00"
         }
       ]
     },
@@ -1654,7 +1900,7 @@
       "type": "app",
       "name": "LingQ",
       "candidate_answers": 1,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": [
         {
           "file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-sol.jsonl",
@@ -1669,7 +1915,7 @@
       "type": "app",
       "name": "VoiceTube",
       "candidate_answers": 1,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": [
         {
           "file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-sol.jsonl",
@@ -1684,7 +1930,7 @@
       "type": "app",
       "name": "Cake",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1693,7 +1939,7 @@
       "type": "app",
       "name": "HelloTalk",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1702,7 +1948,7 @@
       "type": "app",
       "name": "Quizlet",
       "candidate_answers": 1,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": [
         {
           "file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-sol.jsonl",
@@ -1717,7 +1963,7 @@
       "type": "app",
       "name": "Anki",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1726,7 +1972,7 @@
       "type": "app",
       "name": "Podling",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1735,7 +1981,7 @@
       "type": "app",
       "name": "Lingoreel",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1744,7 +1990,7 @@
       "type": "app",
       "name": "PlayLingo",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1753,7 +1999,7 @@
       "type": "app",
       "name": "Parroto Podcast",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1762,7 +2008,7 @@
       "type": "app",
       "name": "Rehear",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1771,7 +2017,7 @@
       "type": "app",
       "name": "Unpack",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1780,7 +2026,7 @@
       "type": "app",
       "name": "Huh Understand Podcasts",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1789,7 +2035,7 @@
       "type": "app",
       "name": "AcrossCast",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1798,7 +2044,7 @@
       "type": "app",
       "name": "LemonCast",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1807,7 +2053,7 @@
       "type": "app",
       "name": "NotebookLM",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1816,7 +2062,25 @@
       "type": "app",
       "name": "ElevenReader",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
+      "evidence": []
+    },
+    {
+      "cohort": "overnight",
+      "model": "gpt-6-sol",
+      "type": "app",
+      "name": "ListenLeap",
+      "candidate_answers": 0,
+      "eligible_answers": 12,
+      "evidence": []
+    },
+    {
+      "cohort": "overnight",
+      "model": "gpt-6-sol",
+      "type": "app",
+      "name": "LangPod",
+      "candidate_answers": 0,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1825,7 +2089,7 @@
       "type": "player",
       "name": "Apple Podcasts",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1834,7 +2098,7 @@
       "type": "player",
       "name": "Spotify",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
       "evidence": []
     },
     {
@@ -1842,13 +2106,23 @@
       "model": "gpt-6-sol",
       "type": "content/provider",
       "name": "BBC",
-      "candidate_answers": 1,
-      "eligible_answers": 6,
+      "candidate_answers": 3,
+      "eligible_answers": 12,
       "evidence": [
         {
           "file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-sol.jsonl",
           "question_id": "G03",
           "observed_at": "2026-11-05T18:31:12.789571+00:00"
+        },
+        {
+          "file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-sol.jsonl",
+          "question_id": "G03",
+          "observed_at": "2026-11-05T19:31:05.869282+00:00"
+        },
+        {
+          "file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-sol.jsonl",
+          "question_id": "G07",
+          "observed_at": "2026-11-05T19:31:14.266201+00:00"
         }
       ]
     },
@@ -1857,8 +2131,8 @@
       "model": "gpt-6-sol",
       "type": "content/provider",
       "name": "British Council",
-      "candidate_answers": 2,
-      "eligible_answers": 6,
+      "candidate_answers": 3,
+      "eligible_answers": 12,
       "evidence": [
         {
           "file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-sol.jsonl",
@@ -1869,6 +2143,11 @@
           "file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-sol.jsonl",
           "question_id": "G09",
           "observed_at": "2026-11-05T18:31:40.543892+00:00"
+        },
+        {
+          "file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-sol.jsonl",
+          "question_id": "G09",
+          "observed_at": "2026-11-05T19:31:33.697632+00:00"
         }
       ]
     },
@@ -1877,13 +2156,18 @@
       "model": "gpt-6-sol",
       "type": "content/provider",
       "name": "VOA",
-      "candidate_answers": 1,
-      "eligible_answers": 6,
+      "candidate_answers": 2,
+      "eligible_answers": 12,
       "evidence": [
         {
           "file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-sol.jsonl",
           "question_id": "G03",
           "observed_at": "2026-11-05T18:31:12.789571+00:00"
+        },
+        {
+          "file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-sol.jsonl",
+          "question_id": "G03",
+          "observed_at": "2026-11-05T19:31:05.869282+00:00"
         }
       ]
     },
@@ -1893,7 +2177,40 @@
       "type": "content/provider",
       "name": "All Ears English",
       "candidate_answers": 0,
-      "eligible_answers": 6,
+      "eligible_answers": 12,
+      "evidence": []
+    },
+    {
+      "cohort": "overnight",
+      "model": "gpt-6-sol",
+      "type": "content/provider",
+      "name": "TED",
+      "candidate_answers": 1,
+      "eligible_answers": 12,
+      "evidence": [
+        {
+          "file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-sol.jsonl",
+          "question_id": "G07",
+          "observed_at": "2026-11-05T19:31:14.266201+00:00"
+        }
+      ]
+    },
+    {
+      "cohort": "overnight",
+      "model": "gpt-6-sol",
+      "type": "content/provider",
+      "name": "EBS",
+      "candidate_answers": 0,
+      "eligible_answers": 12,
+      "evidence": []
+    },
+    {
+      "cohort": "overnight",
+      "model": "gpt-6-sol",
+      "type": "content/provider",
+      "name": "SBS",
+      "candidate_answers": 0,
+      "eligible_answers": 12,
       "evidence": []
     }
   ]

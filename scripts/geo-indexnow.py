@@ -24,8 +24,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--submit', action='store_true', help='Send one POST after live validation')
     parser.add_argument('--output', default='docs/geo/research/indexnow-submission.json')
+    parser.add_argument('--payload', default='docs/geo/indexnow.json')
     args = parser.parse_args()
-    payload = json.loads(Path('docs/geo/indexnow.json').read_text())
+    payload = json.loads(Path(args.payload).read_text())
     if payload['host'] != 'deulli.com' or not 1 <= len(payload['urlList']) <= 10:
         raise ValueError('Expected deulli.com and at most 10 URLs')
     for url in [payload['keyLocation'], *payload['urlList']]:

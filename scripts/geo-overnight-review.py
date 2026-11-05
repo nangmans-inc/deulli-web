@@ -51,6 +51,8 @@ def review(destination, deadline, finished=False):
         baseline = sorted(destination.parent.glob('api-*.jsonl')) + sorted((destination.parent/'watch').glob('api-*.jsonl'))
         subprocess.run([sys.executable, 'scripts/geo-mentions.py', *map(str, baseline+paths),
                         '--output', str(destination/'visible-name-candidates.md')], check=True)
+        subprocess.run([sys.executable, 'scripts/geo-retrieval.py', *map(str, baseline+paths),
+                        '--output', str(destination/'retrieval-observations.md')], check=True)
     print(f'Review {now}: {len(complete)}/{len(rows)} completed, brand candidates={len(mentions)}, official={len(official)}', flush=True)
 
 

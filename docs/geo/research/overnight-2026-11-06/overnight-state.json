@@ -1,15 +1,17 @@
 {
-  "updated_at": "2026-11-05T18:58:37.228826+00:00",
+  "updated_at": "2026-11-05T19:41:24.887358+00:00",
   "deadline_utc": "2026-11-06T02:00:00Z",
   "status": "running",
-  "recorded": 12,
-  "completed": 12,
+  "recorded": 24,
+  "completed": 24,
   "errors": 0,
   "brand_candidates": 0,
   "official_website_citations": 0,
   "expected_observations": 96,
   "observed_files": [
     "api-watch-1830-gpt-6-luna.jsonl",
-    "api-watch-1830-gpt-6-sol.jsonl"
+    "api-watch-1830-gpt-6-sol.jsonl",
+    "api-watch-1930-gpt-6-luna.jsonl",
+    "api-watch-1930-gpt-6-sol.jsonl"
   ]
 }

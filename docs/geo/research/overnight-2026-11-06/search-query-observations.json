@@ -1,0 +1,1043 @@
+{
+  "observed_at": "2026-11-05T19:38:55.067973+00:00",
+  "scope": "G01-G09 broad-intent baseline plus first two overnight rounds; only exposed search actions",
+  "query_counts": {
+    "contains_hangul": 13,
+    "without_hangul": 120
+  },
+  "general_app_first_search_batches": [
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "queries": [
+        "영어 공부 앱 공식 Cake ELSA Speak Duolingo 기능",
+        "Korea English learning apps Speak app official English speaking",
+        "Duolingo English learning official app features"
+      ],
+      "review": "All queries in this first exposed batch include a named product or provider/site restriction. Agent reviewed; not a human review."
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G04",
+      "model": "gpt-6-luna",
+      "queries": [
+        "official Duolingo English learning app features speaking practice",
+        "official ELSA Speak app English pronunciation AI",
+        "official Cake app English learning real-life videos",
+        "official BBC Learning English app"
+      ],
+      "review": "All queries in this first exposed batch include a named product or provider/site restriction. Agent reviewed; not a human review."
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "queries": [
+        "site:duolingo.com learn english app free lessons official",
+        "site:elsaspeak.com pronunciation app AI feedback official",
+        "site:hellotalk.com language exchange app official English",
+        "site:quizlet.com flashcards learn languages official"
+      ],
+      "review": "All queries in this first exposed batch include a named product or provider/site restriction. Agent reviewed; not a human review."
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G04",
+      "model": "gpt-6-sol",
+      "queries": [
+        "site:duolingo.com learn English app free lessons official",
+        "site:elsaspeak.com ELSA Speak pronunciation AI official",
+        "site:bbc.co.uk/learningenglish app BBC Learning English official",
+        "site:ankiweb.net Anki spaced repetition official"
+      ],
+      "review": "All queries in this first exposed batch include a named product or provider/site restriction. Agent reviewed; not a human review."
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "queries": [
+        "영어 공부 앱 공식 Cake 영어 학습 앱 기능",
+        "Duolingo English learning app official features",
+        "Speak 영어 회화 앱 공식 AI 튜터 기능",
+        "ELSA Speak official pronunciation app"
+      ],
+      "review": "All queries in this first exposed batch include a named product or provider/site restriction. Agent reviewed; not a human review."
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "queries": [
+        "site:duolingo.com 영어 학습 무료 앱 듀오링고",
+        "site:speak.com/ko 영어 회화 AI 스픽 앱",
+        "site:elsaspeak.com/ko 영어 발음 피드백 앱",
+        "site:quizlet.com/ko 영어 단어 플래시카드 앱"
+      ],
+      "review": "All queries in this first exposed batch include a named product or provider/site restriction. Agent reviewed; not a human review."
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "queries": [
+        "2026 영어 회화 공부 앱 추천 공식 Cake ELSA Speak Speak Duolingo features Korea",
+        "Speak English app official AI conversation features",
+        "ELSA Speak official pronunciation app features",
+        "Cake app English learning official features"
+      ],
+      "review": "All queries in this first exposed batch include a named product or provider/site restriction. Agent reviewed; not a human review."
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "queries": [
+        "site:duolingo.com English learning app free lessons official",
+        "site:elsaspeak.com pronunciation app AI official",
+        "site:speak.com/ko 영어 회화 앱 AI 공식",
+        "site:quizlet.com flashcards learn languages official"
+      ],
+      "review": "All queries in this first exposed batch include a named product or provider/site restriction. Agent reviewed; not a human review."
+    }
+  ],
+  "queries": [
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "query": "영어 공부 앱 공식 Cake ELSA Speak Duolingo 기능",
+      "contains_hangul": true
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "query": "Korea English learning apps Speak app official English speaking",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "query": "Duolingo English learning official app features",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-luna",
+      "query": "site:britishcouncil.org learn English tips practice listening speaking vocabulary",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-luna",
+      "query": "site:cambridgeenglish.org learning English study tips regular practice",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-luna",
+      "query": "best English learning podcasts official BBC Learning English 6 Minute English VOA Learning English podcast",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-luna",
+      "query": "official podcast All Ears English English learning podcast",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-luna",
+      "query": "official Luke's English Podcast learn English",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G04",
+      "model": "gpt-6-luna",
+      "query": "official Duolingo English learning app features speaking practice",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G04",
+      "model": "gpt-6-luna",
+      "query": "official ELSA Speak app English pronunciation AI",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G04",
+      "model": "gpt-6-luna",
+      "query": "official Cake app English learning real-life videos",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G04",
+      "model": "gpt-6-luna",
+      "query": "official BBC Learning English app",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G05",
+      "model": "gpt-6-luna",
+      "query": "British Council LearnEnglish beginner English study tips daily practice speaking listening vocabulary",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G06",
+      "model": "gpt-6-luna",
+      "query": "site:learnenglish.britishcouncil.org English learning daily practice adults listening speaking vocabulary",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G06",
+      "model": "gpt-6-luna",
+      "query": "site:learningenglish.voanews.com English learning daily practice pronunciation listening",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-luna",
+      "query": "영어 리스닝 공부 앱 공식 Cake 영어 앱 기능",
+      "contains_hangul": true
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-luna",
+      "query": "BBC Learning English app official listening app",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-luna",
+      "query": "ELSA Speak app official listening English learning features",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-luna",
+      "query": "English shadowing language learning study method pronunciation research shadowing listening speaking",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-luna",
+      "query": "British Council shadowing English pronunciation practice",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-luna",
+      "query": "British Council LearnEnglish podcasts official listening practice",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-luna",
+      "query": "BBC Learning English app official podcasts commute English learning",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-luna",
+      "query": "Duolingo official podcast English learning",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "query": "site:duolingo.com learn english app free lessons official",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "query": "site:elsaspeak.com pronunciation app AI feedback official",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "query": "site:hellotalk.com language exchange app official English",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "query": "site:quizlet.com flashcards learn languages official",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "query": "site:elsaspeak.com/en ELSA Speak pronunciation feedback app",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "query": "site:quizlet.com features flashcards learn official",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-sol",
+      "query": "site:britishcouncil.org learn english tips practice listening speaking reading writing daily",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-sol",
+      "query": "site:cambridge.org language learning spaced repetition vocabulary retrieval practice research",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "query": "site:bbc.co.uk/learningenglish english we speak 6 minute english podcast",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "query": "site:learningenglish.voanews.com podcast learning english slow",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "query": "site:alleng.org OR site:eslpod.com English learning podcast transcript",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "query": "site:podcasts.apple.com/us/podcast/ all ears english podcast English learning",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G04",
+      "model": "gpt-6-sol",
+      "query": "site:duolingo.com learn English app free lessons official",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G04",
+      "model": "gpt-6-sol",
+      "query": "site:elsaspeak.com ELSA Speak pronunciation AI official",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G04",
+      "model": "gpt-6-sol",
+      "query": "site:bbc.co.uk/learningenglish app BBC Learning English official",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G04",
+      "model": "gpt-6-sol",
+      "query": "site:ankiweb.net Anki spaced repetition official",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G05",
+      "model": "gpt-6-sol",
+      "query": "site:britishcouncil.org learn english beginner practice listening speaking reading daily tips",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G05",
+      "model": "gpt-6-sol",
+      "query": "site:cambridgeenglish.org learning English beginner practice little and often",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G06",
+      "model": "gpt-6-sol",
+      "query": "site:britishcouncil.org learnenglish daily practice busy adults English listening speaking",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G06",
+      "model": "gpt-6-sol",
+      "query": "site:cambridgeenglish.org learning English little and often practice daily",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "query": "site:bbc.co.uk/learningenglish app BBC Learning English audio transcripts",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "query": "site:elsaspeak.com ELSA Speak listening pronunciation app",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "query": "site:lingq.com learn english listening import transcripts app",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "query": "site:ted.com app TED talks subtitles transcripts offline",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-sol",
+      "query": "site:britishcouncil.org shadowing English pronunciation practice listen repeat",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-sol",
+      "query": "shadowing second language pronunciation study research speech fluency primary paper",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-sol",
+      "query": "site:britishcouncil.org learnenglish podcasts listening practice English commuting",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-sol",
+      "query": "site:cambridgeenglish.org learning English short daily practice listening speaking",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "query": "영어 공부 앱 공식 Cake 영어 학습 앱 기능",
+      "contains_hangul": true
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "query": "Duolingo English learning app official features",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "query": "Speak 영어 회화 앱 공식 AI 튜터 기능",
+      "contains_hangul": true
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "query": "ELSA Speak official pronunciation app",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-luna",
+      "query": "site:learnenglish.britishcouncil.org English learning practice listening speaking vocabulary",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-luna",
+      "query": "site:learningenglish.voanews.com learn English practice beginner",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-luna",
+      "query": "best English learning podcasts official BBC Learning English 6 Minute English podcast",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-luna",
+      "query": "VOA Learning English podcast official Let's Learn English podcast",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-luna",
+      "query": "All Ears English podcast official English learners episodes",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-luna",
+      "query": "영어 리스닝 학습 앱 공식 Cake 영어 앱 기능",
+      "contains_hangul": true
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-luna",
+      "query": "ELSA Speak official listening practice app features",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-luna",
+      "query": "BBC Learning English app official listening lessons",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-luna",
+      "query": "LingQ official app listening transcript audio",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-luna",
+      "query": "shadowing technique second language pronunciation study research shadowing listening speaking",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-luna",
+      "query": "British Council improve pronunciation shadowing English practice listening speaking",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-luna",
+      "query": "site:learnenglish.britishcouncil.org listening podcasts English learning official",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-luna",
+      "query": "site:learningenglish.voanews.com English learning podcast official",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-luna",
+      "query": "site:bbc.co.uk/learningenglish English learning podcast official",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "query": "site:duolingo.com 영어 학습 무료 앱 듀오링고",
+      "contains_hangul": true
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "query": "site:speak.com/ko 영어 회화 AI 스픽 앱",
+      "contains_hangul": true
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "query": "site:elsaspeak.com/ko 영어 발음 피드백 앱",
+      "contains_hangul": true
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "query": "site:quizlet.com/ko 영어 단어 플래시카드 앱",
+      "contains_hangul": true
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "query": "site:elsaspeak.com ELSA Speak pronunciation feedback app",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "query": "site:quizlet.com/ko features flashcards learn words",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "query": "site:bbc.co.uk/learningenglish app BBC Learning English listening",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-sol",
+      "query": "site:cambridge.org language learning spaced practice retrieval vocabulary research",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-sol",
+      "query": "site:britishcouncil.org learnenglish tips practice listening speaking reading writing daily",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "query": "site:bbc.co.uk/learningenglish 6 Minute English podcast transcript",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "query": "site:learningenglish.voanews.com podcast learning English slow news",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "query": "site:eslpod.com English Cafe podcast ESLPod",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "query": "site:alllanguageresources.com podcast English learning intermediate",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "query": "site:learnenglish.britishcouncil.org general english audio series podcasts elementary podcasts transcript",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "query": "site:learningenglish.voanews.com about learning english slower than normal speed vocabulary",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "query": "site:bbc.co.uk/learningenglish app BBC Learning English app listening",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "query": "site:elsaspeak.com ELSA Speak listening app",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "query": "site:lingq.com learn english listening import lessons app",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "query": "site:voicetube.com english listening app subtitles",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-sol",
+      "query": "shadowing technique language learning listen repeat transcript study pronunciation research paper",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-sol",
+      "query": "British Council shadowing technique English learning how to practice",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-sol",
+      "query": "site:learnenglish.britishcouncil.org listening podcasts learn english commuting transcripts",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-sol",
+      "query": "site:bbc.co.uk/learningenglish 6 minute english transcript podcast",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-sol",
+      "query": "site:cdc.gov distracted driving headphones listening driving safety",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "query": "2026 영어 회화 공부 앱 추천 공식 Cake ELSA Speak Speak Duolingo features Korea",
+      "contains_hangul": true
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "query": "Speak English app official AI conversation features",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "query": "ELSA Speak official pronunciation app features",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "query": "Cake app English learning official features",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-luna",
+      "query": "British Council learn English study tips regular practice listening speaking vocabulary",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-luna",
+      "query": "Cambridge English learning English study tips practice skills",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-luna",
+      "query": "official podcast English learning BBC Learning English 6 Minute English podcast",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-luna",
+      "query": "official VOA Learning English podcast English learning",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-luna",
+      "query": "official podcast All Ears English learn English podcast",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-luna",
+      "query": "영어 리스닝 학습 앱 공식 Cake ELSA Speak BBC Learning English app 기능",
+      "contains_hangul": true
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-luna",
+      "query": "Cake 영어 앱 공식 듣기 학습 기능",
+      "contains_hangul": true
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-luna",
+      "query": "BBC Learning English app official listening features",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-luna",
+      "query": "Speechling app official listening English learning",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-luna",
+      "query": "shadowing technique second language pronunciation study research listening repeat speech",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-luna",
+      "query": "British Council improve pronunciation shadowing English learning practice",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-luna",
+      "query": "British Council LearnEnglish podcasts listening practice official",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-luna",
+      "query": "VOA Learning English official podcast English learning",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-luna",
+      "query": "AnkiDroid official spaced repetition flashcards",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "query": "site:duolingo.com English learning app free lessons official",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "query": "site:elsaspeak.com pronunciation app AI official",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "query": "site:speak.com/ko 영어 회화 앱 AI 공식",
+      "contains_hangul": true
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "query": "site:quizlet.com flashcards learn languages official",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-sol",
+      "query": "site:britishcouncil.org learn english tips practice listening speaking reading writing daily",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-sol",
+      "query": "site:cambridge.org spaced retrieval practice language learning vocabulary research",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "query": "site:bbc.co.uk/learningenglish english we speak podcast 6 minute english",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "query": "site:learningenglish.voanews.com podcast learning english",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "query": "site:elt.oup.com all ears english podcast english learners official",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "query": "site:easyenglish.fm podcast transcripts English learners",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "query": "site:elsaspeak.com ELSA Speak listening practice app pronunciation",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "query": "site:bbc.co.uk learningenglish app 6 minute english listening",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "query": "site:duolingo.com podcast listening English app",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "query": "site:ted.com app TED talks subtitles transcripts offline",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "query": "site:learningenglish.voanews.com mobile app slower English audio transcript",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "query": "site:bbc.co.uk/learningenglish BBC Learning English app 6 Minute English transcript",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "query": "site:help.lingq.com import audio transcript app listening",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "query": "site:elllo.org English listening lessons transcripts quizzes app",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-sol",
+      "query": "site:britishcouncil.org shadowing technique English pronunciation listening practice",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-sol",
+      "query": "site:cambridge.org language learning shadowing pronunciation study repetition transcript",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-sol",
+      "query": "site:learnenglish.britishcouncil.org listening podcasts learn English audio transcripts",
+      "contains_hangul": false
+    },
+    {
+      "source_file": "api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-sol",
+      "query": "site:bbc.co.uk/learningenglish 6 minute english transcript audio",
+      "contains_hangul": false
+    }
+  ],
+  "limits": [
+    "Search queries within an answer overlap and are not independent.",
+    "Without Hangul is a script observation, not language detection.",
+    "Named-brand searches do not reveal internal candidate selection or prove causality."
+  ]
+}

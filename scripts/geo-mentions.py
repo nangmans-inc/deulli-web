@@ -28,12 +28,19 @@ ENTITIES = {
     'LemonCast': ('app', r'\bLemonCast\b|레몬캐스트'),
     'NotebookLM': ('app', r'\bNotebookLM\b|노트북\s*엘엠'),
     'ElevenReader': ('app', r'\bElevenReader\b'),
+    'ListenLeap': ('app', r'\bListenLeap\b|리슨리프'),
+    'LangPod': ('app', r'\bLangPod\b'),
+    'SpeakCove': ('app', r'\bSpeakCove\b'),
+    'Phrabbit': ('app', r'\bPhrabbit\b|프라빗'),
     'Apple Podcasts': ('player', r'Apple (?:Podcasts|팟캐스트)|애플\s*팟캐스트'),
     'Spotify': ('player', r'\bSpotify\b|스포티파이'),
     'BBC': ('content/provider', r'\bBBC\b'),
     'British Council': ('content/provider', r'British Council|브리티시\s*카운슬|영국문화원'),
     'VOA': ('content/provider', r'\bVOA\b'),
     'All Ears English': ('content/provider', r'All Ears English|올\s*이어스\s*잉글리시'),
+    'TED': ('content/provider', r'\bTED\b'),
+    'EBS': ('content/provider', r'\bEBS\b'),
+    'SBS': ('content/provider', r'\bSBS\b'),
 }
 
 

@@ -1,0 +1,2244 @@
+{
+  "updated_at": "2026-11-05T19:41:25.065598+00:00",
+  "method": "Only URLs exposed in recorded tool actions/sources are observable; absence is not proof of absence from the provider index or hidden retrieval.",
+  "groups": [
+    {
+      "cohort": "brand prompted",
+      "completed": 44,
+      "exposed_website": 1,
+      "exposed_store": 29,
+      "exposed_policy": 0,
+      "cited_website": 0,
+      "name_candidates": 39
+    },
+    {
+      "cohort": "direct URL diagnostic",
+      "completed": 6,
+      "exposed_website": 4,
+      "exposed_store": 2,
+      "exposed_policy": 0,
+      "cited_website": 4,
+      "name_candidates": 4
+    },
+    {
+      "cohort": "non-brand discovery",
+      "completed": 120,
+      "exposed_website": 0,
+      "exposed_store": 0,
+      "exposed_policy": 0,
+      "cited_website": 0,
+      "name_candidates": 0
+    }
+  ],
+  "records": [
+    {
+      "source_file": "docs/geo/research/api-brand-context-gpt-6-luna.jsonl",
+      "question_id": "B01",
+      "model": "gpt-6-luna",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/api-brand-context-gpt-6-luna.jsonl",
+      "question_id": "B02",
+      "model": "gpt-6-luna",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/api-brand-context-gpt-6-luna.jsonl",
+      "question_id": "B03",
+      "model": "gpt-6-luna",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/api-brand-context-gpt-6-luna.jsonl",
+      "question_id": "B04",
+      "model": "gpt-6-luna",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/api-brand-context-gpt-6-sol.jsonl",
+      "question_id": "B01",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/api-brand-context-gpt-6-sol.jsonl",
+      "question_id": "B02",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/api-brand-context-gpt-6-sol.jsonl",
+      "question_id": "B03",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-brand-context-gpt-6-sol.jsonl",
+      "question_id": "B04",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G04",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G05",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G06",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-broad-intent-gpt-6-luna.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G04",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G05",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G06",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-broad-intent-gpt-6-sol.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-direct-url.jsonl",
+      "question_id": "D01",
+      "model": "gpt-6-sol",
+      "cohort": "direct URL diagnostic",
+      "exposed_own_url_kinds": [
+        "official website"
+      ],
+      "cited_own_url_kinds": [
+        "official website"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/api-direct-url.jsonl",
+      "question_id": "D02",
+      "model": "gpt-6-sol",
+      "cohort": "direct URL diagnostic",
+      "exposed_own_url_kinds": [
+        "official website"
+      ],
+      "cited_own_url_kinds": [
+        "official website"
+      ],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-episodes-url.jsonl",
+      "question_id": "D05",
+      "model": "gpt-6-sol",
+      "cohort": "direct URL diagnostic",
+      "exposed_own_url_kinds": [
+        "official website"
+      ],
+      "cited_own_url_kinds": [
+        "official website"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-luna.jsonl",
+      "question_id": "F01",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-luna.jsonl",
+      "question_id": "F02",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-luna.jsonl",
+      "question_id": "F03",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-luna.jsonl",
+      "question_id": "F04",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-luna.jsonl",
+      "question_id": "F05",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-luna.jsonl",
+      "question_id": "F06",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-luna.jsonl",
+      "question_id": "F07",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-luna.jsonl",
+      "question_id": "F08",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-luna.jsonl",
+      "question_id": "F09",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-luna.jsonl",
+      "question_id": "F10",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-luna.jsonl",
+      "question_id": "F11",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-luna.jsonl",
+      "question_id": "F12",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-sol.jsonl",
+      "question_id": "F01",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-sol.jsonl",
+      "question_id": "F02",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-sol.jsonl",
+      "question_id": "F03",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-sol.jsonl",
+      "question_id": "F04",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-sol.jsonl",
+      "question_id": "F05",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-sol.jsonl",
+      "question_id": "F06",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-sol.jsonl",
+      "question_id": "F07",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-sol.jsonl",
+      "question_id": "F08",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-sol.jsonl",
+      "question_id": "F09",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-sol.jsonl",
+      "question_id": "F10",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-sol.jsonl",
+      "question_id": "F11",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-features-gpt-6-sol.jsonl",
+      "question_id": "F12",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q01",
+      "model": "gpt-6-luna",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q02",
+      "model": "gpt-6-luna",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q03",
+      "model": "gpt-6-luna",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q04",
+      "model": "gpt-6-luna",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q05",
+      "model": "gpt-6-luna",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q06",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q07",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q08",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q09",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q10",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q11",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q12",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q13",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q14",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q15",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q16",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q17",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q18",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q19",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q20",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q21",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q22",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q23",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q24",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q25",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q26",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q27",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q28",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q29",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-round-1.jsonl",
+      "question_id": "Q30",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-selection-url.jsonl",
+      "question_id": "D03",
+      "model": "gpt-6-sol",
+      "cohort": "direct URL diagnostic",
+      "exposed_own_url_kinds": [
+        "official website"
+      ],
+      "cited_own_url_kinds": [
+        "official website"
+      ],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-site-discovery-early.jsonl",
+      "question_id": "D04",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/api-site-discovery-final.jsonl",
+      "question_id": "D04",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing",
+        "official website"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/api-sol-round-1.jsonl",
+      "question_id": "Q01",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-sol-round-1.jsonl",
+      "question_id": "Q02",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/api-sol-round-1.jsonl",
+      "question_id": "Q03",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/api-sol-round-1.jsonl",
+      "question_id": "Q04",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-sol-round-1.jsonl",
+      "question_id": "Q05",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/api-sol-round-1.jsonl",
+      "question_id": "Q06",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-sol-round-1.jsonl",
+      "question_id": "Q07",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-sol-round-1.jsonl",
+      "question_id": "Q08",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-sol-round-1.jsonl",
+      "question_id": "Q09",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-sol-round-1.jsonl",
+      "question_id": "Q10",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-store-diagnostic-gpt-6-luna.jsonl",
+      "question_id": "D06",
+      "model": "gpt-6-luna",
+      "cohort": "direct URL diagnostic",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/api-store-diagnostic-gpt-6-sol.jsonl",
+      "question_id": "D06",
+      "model": "gpt-6-sol",
+      "cohort": "direct URL diagnostic",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1634-gpt-6-luna.jsonl",
+      "question_id": "Q02",
+      "model": "gpt-6-luna",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1634-gpt-6-luna.jsonl",
+      "question_id": "Q03",
+      "model": "gpt-6-luna",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1634-gpt-6-luna.jsonl",
+      "question_id": "Q04",
+      "model": "gpt-6-luna",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1634-gpt-6-luna.jsonl",
+      "question_id": "Q06",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1634-gpt-6-luna.jsonl",
+      "question_id": "Q07",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1634-gpt-6-luna.jsonl",
+      "question_id": "Q08",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1634-gpt-6-sol.jsonl",
+      "question_id": "Q02",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1634-gpt-6-sol.jsonl",
+      "question_id": "Q03",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1634-gpt-6-sol.jsonl",
+      "question_id": "Q04",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1634-gpt-6-sol.jsonl",
+      "question_id": "Q06",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1634-gpt-6-sol.jsonl",
+      "question_id": "Q07",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1634-gpt-6-sol.jsonl",
+      "question_id": "Q08",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1704-gpt-6-luna.jsonl",
+      "question_id": "Q02",
+      "model": "gpt-6-luna",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1704-gpt-6-luna.jsonl",
+      "question_id": "Q03",
+      "model": "gpt-6-luna",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1704-gpt-6-luna.jsonl",
+      "question_id": "Q04",
+      "model": "gpt-6-luna",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1704-gpt-6-luna.jsonl",
+      "question_id": "Q06",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1704-gpt-6-luna.jsonl",
+      "question_id": "Q07",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1704-gpt-6-luna.jsonl",
+      "question_id": "Q08",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1704-gpt-6-sol.jsonl",
+      "question_id": "Q02",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1704-gpt-6-sol.jsonl",
+      "question_id": "Q03",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1704-gpt-6-sol.jsonl",
+      "question_id": "Q04",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1704-gpt-6-sol.jsonl",
+      "question_id": "Q06",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1704-gpt-6-sol.jsonl",
+      "question_id": "Q07",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1704-gpt-6-sol.jsonl",
+      "question_id": "Q08",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1734-gpt-6-luna.jsonl",
+      "question_id": "Q02",
+      "model": "gpt-6-luna",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1734-gpt-6-luna.jsonl",
+      "question_id": "Q03",
+      "model": "gpt-6-luna",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1734-gpt-6-luna.jsonl",
+      "question_id": "Q04",
+      "model": "gpt-6-luna",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1734-gpt-6-luna.jsonl",
+      "question_id": "Q06",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1734-gpt-6-luna.jsonl",
+      "question_id": "Q07",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1734-gpt-6-luna.jsonl",
+      "question_id": "Q08",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1734-gpt-6-sol.jsonl",
+      "question_id": "Q02",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1734-gpt-6-sol.jsonl",
+      "question_id": "Q03",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1734-gpt-6-sol.jsonl",
+      "question_id": "Q04",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1734-gpt-6-sol.jsonl",
+      "question_id": "Q06",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1734-gpt-6-sol.jsonl",
+      "question_id": "Q07",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1734-gpt-6-sol.jsonl",
+      "question_id": "Q08",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1804-gpt-6-luna.jsonl",
+      "question_id": "Q02",
+      "model": "gpt-6-luna",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1804-gpt-6-luna.jsonl",
+      "question_id": "Q03",
+      "model": "gpt-6-luna",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1804-gpt-6-luna.jsonl",
+      "question_id": "Q04",
+      "model": "gpt-6-luna",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1804-gpt-6-luna.jsonl",
+      "question_id": "Q06",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1804-gpt-6-luna.jsonl",
+      "question_id": "Q07",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1804-gpt-6-luna.jsonl",
+      "question_id": "Q08",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1804-gpt-6-sol.jsonl",
+      "question_id": "Q02",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1804-gpt-6-sol.jsonl",
+      "question_id": "Q03",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1804-gpt-6-sol.jsonl",
+      "question_id": "Q04",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1804-gpt-6-sol.jsonl",
+      "question_id": "Q06",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1804-gpt-6-sol.jsonl",
+      "question_id": "Q07",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/watch/api-watch-1804-gpt-6-sol.jsonl",
+      "question_id": "Q08",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-luna.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-sol.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-luna.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1930-gpt-6-sol.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    }
+  ],
+  "citation_sources": [
+    {
+      "cohort": "brand prompted",
+      "category": "brand",
+      "urls": [
+        [
+          "https://apps.apple.com/kr/app/%EB%93%A4%EB%A6%AC-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8%EB%A1%9C-%ED%95%98%EB%8A%94-%EC%98%81%EC%96%B4%EA%B3%B5%EB%B6%80-%EB%A6%AC%EC%8A%A4%EB%8B%9D-%EC%89%90%EB%8F%84%EC%9E%89/id6798545609",
+          22
+        ],
+        [
+          "https://deulli.de/",
+          4
+        ],
+        [
+          "https://zdnet.co.kr/view/?no=20240628152255",
+          1
+        ],
+        [
+          "https://dayli.live/?lang=ko",
+          1
+        ],
+        [
+          "https://www.definify.com/word/%EB%93%A4%EB%A6%AC%EB%8B%A4",
+          1
+        ]
+      ]
+    },
+    {
+      "cohort": "brand prompted",
+      "category": "brand_context",
+      "urls": [
+        [
+          "https://apps.apple.com/kr/app/%EB%93%A4%EB%A6%AC-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8%EB%A1%9C-%ED%95%98%EB%8A%94-%EC%98%81%EC%96%B4%EA%B3%B5%EB%B6%80-%EB%A6%AC%EC%8A%A4%EB%8B%9D-%EC%89%90%EB%8F%84%EC%9E%89/id6798545609",
+          5
+        ],
+        [
+          "https://globee.tistory.com/346",
+          1
+        ],
+        [
+          "https://podcasters.apple.com/ko-kr/support/3993-subscribe-podcasts",
+          1
+        ],
+        [
+          "https://learn.rss.com/publish/publish-episodes/publish-your-first-episode/",
+          1
+        ]
+      ]
+    },
+    {
+      "cohort": "brand prompted",
+      "category": "brand_site_discovery",
+      "urls": [
+        [
+          "https://apps.apple.com/kr/app/%EB%93%A4%EB%A6%AC-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8%EB%A1%9C-%ED%95%98%EB%8A%94-%EC%98%81%EC%96%B4%EA%B3%B5%EB%B6%80-%EB%A6%AC%EC%8A%A4%EB%8B%9D-%EC%89%90%EB%8F%84%EC%9E%89/id6798545609",
+          2
+        ]
+      ]
+    },
+    {
+      "cohort": "direct URL diagnostic",
+      "category": "direct_store_url_retrieval",
+      "urls": [
+        [
+          "https://play.google.com/store/apps/details?gl=KR&hl=ko&id=com.deulli.app",
+          2
+        ]
+      ]
+    },
+    {
+      "cohort": "direct URL diagnostic",
+      "category": "direct_url_retrieval",
+      "urls": [
+        [
+          "https://deulli.com/about/",
+          1
+        ],
+        [
+          "https://deulli.com/guides/podcast-listening/",
+          1
+        ],
+        [
+          "https://deulli.com/podcasts/",
+          1
+        ],
+        [
+          "https://deulli.com/guides/choosing-a-podcast-app/",
+          1
+        ]
+      ]
+    },
+    {
+      "cohort": "non-brand discovery",
+      "category": "broad_intent",
+      "urls": [
+        [
+          "https://learnenglish.britishcouncil.org/getting-started",
+          6
+        ],
+        [
+          "https://learningenglish.voanews.com/podcasts",
+          6
+        ],
+        [
+          "https://learnenglish.britishcouncil.org/english-levels/improve-your-english-level/five-tips-busy-learners-listening-speaking",
+          5
+        ],
+        [
+          "https://blog.elsaspeak.com/en/discover-the-new-elsa-speak-experience/",
+          5
+        ],
+        [
+          "https://learnenglish.britishcouncil.org/general-english/audio-series/podcasts",
+          5
+        ],
+        [
+          "https://www.duolingo.com/learn",
+          4
+        ],
+        [
+          "https://podcasts.apple.com/us/podcast/all-ears-english-podcast/id751574016",
+          4
+        ],
+        [
+          "https://learnenglish.britishcouncil.org/comment/206115",
+          4
+        ],
+        [
+          "https://learnenglish.britishcouncil.org/level/improve-your-english-level/how-can-i-improve-my-english-pronunciation",
+          4
+        ],
+        [
+          "https://www.britishcouncil.org/english/learn-online/resources-apps",
+          3
+        ],
+        [
+          "https://africa.teachingenglish.org.uk/classroom/pronunciation/shadowing",
+          3
+        ],
+        [
+          "https://www.speak.com/?lang=en",
+          2
+        ],
+        [
+          "https://learnenglish.britishcouncil.org/free-resources/general",
+          2
+        ],
+        [
+          "https://doi.org/10.1080/29984475.2025.2546827",
+          2
+        ],
+        [
+          "https://elsaspeak.com/en/faqs/how-does-elsas-pronunciation-feedback-work",
+          2
+        ],
+        [
+          "https://ko.duolingo.com/nojs/splash",
+          2
+        ],
+        [
+          "https://help.ted.com/hc/en-us/articles/360018572954-How-do-I-find-transcripts-for-TED-and-TEDx-talks",
+          2
+        ],
+        [
+          "https://takeielts.britishcouncil.org/blog/how-to-improve-english-pronunciation-ielts-speaking",
+          2
+        ],
+        [
+          "https://www.speak.com/ko/technology",
+          2
+        ],
+        [
+          "https://feeds.bbci.co.uk/learningenglish",
+          2
+        ]
+      ]
+    },
+    {
+      "cohort": "non-brand discovery",
+      "category": "category",
+      "urls": [
+        [
+          "https://playlingo.app/podcast-app-with-transcript",
+          10
+        ],
+        [
+          "https://www.lingoreel.com/en/support",
+          10
+        ],
+        [
+          "https://trypodling.com/en/",
+          8
+        ],
+        [
+          "https://podcast.parroto.app/",
+          5
+        ],
+        [
+          "https://www.lingoreel.com/ko",
+          5
+        ],
+        [
+          "https://trypodling.com/ko/",
+          4
+        ],
+        [
+          "https://support.pocketcasts.com/knowledge-base/episode-transcripts/",
+          4
+        ],
+        [
+          "https://www.britishcouncil.kr/english-courses/online/apps",
+          3
+        ],
+        [
+          "https://learningenglish.voanews.com/podcasts",
+          3
+        ],
+        [
+          "https://podcasts.apple.com/ky/multi-room/6476948598",
+          3
+        ],
+        [
+          "https://support.spotify.com/us/creators/article/managing-episode-transcripts-on-spotify/",
+          3
+        ],
+        [
+          "https://rehearapp.com/",
+          2
+        ],
+        [
+          "https://www.britishcouncil.org/english/business/apps/learnenglish-podcasts",
+          2
+        ],
+        [
+          "https://www.britishcouncil.kr/english/adults/apps/elementary-podcasts",
+          2
+        ],
+        [
+          "https://support.spotify.com/kr-ko/creators/article/managing-episode-transcripts-on-spotify/",
+          2
+        ],
+        [
+          "https://apps.apple.com/hk/app/huh-understand-podcasts/id6812777694",
+          2
+        ],
+        [
+          "https://downloads.bbc.co.uk/learningenglish/features/6min/260514_6_minute_english_how_reading_shapes_your_brain_transcript_.pdf",
+          2
+        ],
+        [
+          "https://support.apple.com/ko-kr/127831",
+          2
+        ],
+        [
+          "https://flaudio.app/",
+          1
+        ],
+        [
+          "https://learnenglish.britishcouncil.org/apps/learnenglish-podcasts",
+          1
+        ]
+      ]
+    },
+    {
+      "cohort": "non-brand discovery",
+      "category": "comparison",
+      "urls": [
+        [
+          "https://learnenglish.britishcouncil.org/apps/learnenglish-podcasts",
+          2
+        ],
+        [
+          "https://www.apple.com/newsroom/2024/03/apple-introduces-transcripts-for-apple-podcasts/",
+          1
+        ],
+        [
+          "https://podcast.parroto.app/",
+          1
+        ],
+        [
+          "https://englishleap.app/",
+          1
+        ],
+        [
+          "https://www.unpack.fm/",
+          1
+        ],
+        [
+          "https://trypodling.com/en/",
+          1
+        ],
+        [
+          "https://plateaukao.github.io/nerlan-android/",
+          1
+        ],
+        [
+          "https://debuts.app/apps/huh-understand-podcasts",
+          1
+        ],
+        [
+          "https://playlingo.app/podcast-app-with-transcript",
+          1
+        ],
+        [
+          "https://www.lingoreel.com/ko",
+          1
+        ],
+        [
+          "https://play.google.com/store/apps/details/Cake_Learn_English_Korean?hl=ko&id=me.mycake",
+          1
+        ]
+      ]
+    },
+    {
+      "cohort": "non-brand discovery",
+      "category": "feature_derived",
+      "urls": [
+        [
+          "https://trypodling.com/en/",
+          5
+        ],
+        [
+          "https://www.lingoreel.com/ko",
+          2
+        ],
+        [
+          "https://trypodling.com/ko/press/",
+          2
+        ],
+        [
+          "https://www.unpack.fm/",
+          2
+        ],
+        [
+          "https://apps.apple.com/us/app/langpod-learn-with-podcasts/id6821649753",
+          2
+        ],
+        [
+          "https://preply.com/en/blog/best-podcasts-to-learn-korean/",
+          1
+        ],
+        [
+          "https://debuts.app/apps/huh-understand-podcasts",
+          1
+        ],
+        [
+          "https://www.genspark.ai/helpcenter/ai-pods",
+          1
+        ],
+        [
+          "https://support.google.com/gemininotebook/answer/16212820?hl=en-KY",
+          1
+        ],
+        [
+          "https://oown.app/",
+          1
+        ],
+        [
+          "https://glotcast.com/",
+          1
+        ],
+        [
+          "https://support.apple.com/guide/iphone/view-podcast-transcripts-iph9426049e9/27/ios/27",
+          1
+        ],
+        [
+          "https://apps.apple.com/kr/app/lingoreel/id6821362337",
+          1
+        ],
+        [
+          "https://speakcove.com/features/lock-screen",
+          1
+        ],
+        [
+          "https://www.lingoreel.com/en/support",
+          1
+        ],
+        [
+          "https://howdyenglish.app/",
+          1
+        ],
+        [
+          "https://trypodling.com/ko/",
+          1
+        ],
+        [
+          "https://apps.apple.com/kr/iphone/story/id1500359155",
+          1
+        ],
+        [
+          "https://www.talkit.com/en/podcast",
+          1
+        ],
+        [
+          "https://services.google.com/fh/files/misc/notebooklm_gfe_one_pager.pdf",
+          1
+        ]
+      ]
+    },
+    {
+      "cohort": "non-brand discovery",
+      "category": "learning",
+      "urls": [
+        [
+          "https://www.dliflc.edu/ojs/dialog/article/view/82",
+          1
+        ],
+        [
+          "https://www.britishcouncil.kr/english/adults/apps/elementary-podcasts",
+          1
+        ],
+        [
+          "https://link.springer.com/article/10.1186/s40862-017-0039-6",
+          1
+        ],
+        [
+          "https://tlooto.com/paper/150273473312",
+          1
+        ],
+        [
+          "https://lang.nursing.tma.uz/wp-content/uploads/2021/03/Nurmukhamedov__Sharakhimov_2021_Corpus_based_vocabulary_analysis.pdf",
+          1
+        ],
+        [
+          "https://www.sciencedirect.com/science/article/pii/S0360131518301623",
+          1
+        ]
+      ]
+    },
+    {
+      "cohort": "non-brand discovery",
+      "category": "platform",
+      "urls": [
+        [
+          "https://trypodling.com/en/",
+          3
+        ],
+        [
+          "https://support.apple.com/en-gb/127831",
+          1
+        ],
+        [
+          "https://www.lingoreel.com/en/support",
+          1
+        ],
+        [
+          "https://play.google.com/store/apps/details?hl=en&id=me.mycake",
+          1
+        ],
+        [
+          "https://play.google.com/store/apps/details?hl=en-US&id=com.puhustudios.lispora",
+          1
+        ],
+        [
+          "https://www.britishcouncil.org/english/learn-online/resources-apps",
+          1
+        ],
+        [
+          "https://www.lingosive.com/ko/about",
+          1
+        ],
+        [
+          "https://langxel.io/",
+          1
+        ],
+        [
+          "https://support.google.com/youtube/answer/4792576?hl=ko-SN",
+          1
+        ],
+        [
+          "https://podknow.eu/en/",
+          1
+        ],
+        [
+          "https://rehearapp.com/",
+          1
+        ],
+        [
+          "https://trypodling.com/en/features/",
+          1
+        ]
+      ]
+    },
+    {
+      "cohort": "non-brand discovery",
+      "category": "situation",
+      "urls": [
+        [
+          "https://www.lingoreel.com/ko",
+          2
+        ],
+        [
+          "https://apps.apple.com/kr/app/castlingo-%EC%98%81%EC%96%B4-%EB%A6%AC%EC%8A%A4%EB%8B%9D-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8/id6762072277",
+          1
+        ],
+        [
+          "https://www.britishcouncil.kr/english/adults/apps/elementary-podcasts",
+          1
+        ],
+        [
+          "https://podtext.ai/",
+          1
+        ],
+        [
+          "https://apps.apple.com/kr/app/polycast-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8-%EB%B2%88%EC%97%AD/id6793951095",
+          1
+        ],
+        [
+          "https://www.apple.com/kr/newsroom/2024/03/apple-introduces-transcripts-for-apple-podcasts/",
+          1
+        ],
+        [
+          "https://support.google.com/accessibility/android/answer/7349565?hl=en_vg",
+          1
+        ],
+        [
+          "https://support.apple.com/en-asia/guide/iphone/iph96b214f0/27/ios/27",
+          1
+        ],
+        [
+          "https://explore.microsoft.com/ko-kr/edge/features/read-aloud?form=MT0160&msockid=0155edfb2563633c2449fbb224106246",
+          1
+        ],
+        [
+          "https://learnenglish.britishcouncil.org/apps/learnenglish-podcasts",
+          1
+        ],
+        [
+          "https://rehearapp.com/",
+          1
+        ],
+        [
+          "https://www.lingoreel.com/en",
+          1
+        ]
+      ]
+    }
+  ]
+}
