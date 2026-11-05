@@ -21,7 +21,17 @@ HTTP 검사는 공개 URL 세 개만 순서대로 요청한다. API·DB·개발 
 
 AI 답변 측정은 `questions.json`의 같은 질문을 독립된 새 대화에서 실행하고 서비스·모델·검색 모드·일시·지역·답변 원문·인용 URL을 기록한다. 추천 질문에 들리를 미리 넣지 않는다. 브랜드 질문과 비브랜드 질문을 분리하고, 서비스별 각 질문 3회 이상을 권장한다. API 결과와 소비자 앱 결과도 별도로 집계한다.
 
-현재 여러 AI 서비스의 API 자격증명이 없어 실제 AI 추천률은 **미측정**이다. 검색 결과에 없는 것을 AI 추천률 0%로 보고하지 않는다. 이 대화에서 만든 답변 또한 독립된 측정 표본이 아니다.
+OpenAI API 연결을 확인한 뒤 GPT-6 Luna와 GPT-6 Sol의 검색 기반 답변을 독립 요청으로 측정했다. 결과는 `research/api-*.jsonl`, 집계는 `research/api-summary.md`에 남긴다. 소비자용 ChatGPT·Gemini·Perplexity 화면의 결과는 별도로 측정하지 않았다. 이 대화의 답변은 독립 표본에 포함하지 않는다.
+
+URL을 직접 제시한 진단은 `diagnostic-questions.json`과 `research/api-direct-url.jsonl`로 구분한다. GPT-6 Sol이 새 공개 페이지 두 개를 실제 `open_page`로 열고 인용한 것을 확인했다. 이는 URL 지정 시 읽기 가능하다는 증거이며, 비브랜드 추천에서 자연스럽게 발견됐다는 뜻은 아니다.
+
+```sh
+python3 scripts/geo-measure.py --ids Q01,Q06,Q07 --output /tmp/deulli-observations.jsonl
+# 위 명령은 계획만 출력한다. 실제 호출은 OPENAI_API_KEY 환경 변수와 --run이 필요하다.
+python3 scripts/geo-report.py research.jsonl --output /tmp/deulli-summary.md
+```
+
+`--env-file`로 로컬 설정에서 키 하나만 읽을 수도 있다. 키·인증 헤더는 결과나 저장소에 남기지 않는다. 실행 시 API 비용이 발생한다. 각 요청은 검색 호출 최대 3회와 출력 최대 2,400토큰으로 제한하며, 인증·요청 형식·요청 한도 오류에서 중단한다.
 
 ## 반영 상태
 

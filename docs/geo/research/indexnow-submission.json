@@ -1,0 +1,12 @@
+{
+  "submitted_at": "2026-11-05T16:15:48.808238+00:00",
+  "endpoint": "https://api.indexnow.org/indexnow",
+  "urls": [
+    "https://deulli.com/",
+    "https://deulli.com/about/",
+    "https://deulli.com/guides/podcast-listening/"
+  ],
+  "status": 202,
+  "response": "",
+  "meaning": "Submission receipt only; not proof of crawling, indexing, or AI citation"
+}

@@ -51,7 +51,7 @@ def capture(path):
                           content_type=response.headers.get('Content-Type'),
                           x_robots_tag=response.headers.get('X-Robots-Tag'),
                           sha256=hashlib.sha256(raw).hexdigest())
-            if path == '/':
+            if 'text/html' in (response.headers.get('Content-Type') or ''):
                 page = Page()
                 page.feed(body)
                 result.update(visible_text=' '.join(page.text), canonical=page.canonical,
@@ -72,7 +72,9 @@ def main():
     args = parser.parse_args()
     report = {'observed_at': datetime.datetime.now(datetime.timezone.utc).isoformat(),
               'method': 'Public HTTP audit; not indexing or AI recommendation measurement',
-              'pages': [capture(p) for p in ('/', '/robots.txt', '/sitemap-index.xml')]}
+              'pages': [capture(p) for p in ('/', '/about/', '/guides/podcast-listening/',
+                                            '/guides/choosing-a-podcast-app/',
+                                            '/robots.txt', '/sitemap-index.xml')]}
     target = Path(args.output)
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
