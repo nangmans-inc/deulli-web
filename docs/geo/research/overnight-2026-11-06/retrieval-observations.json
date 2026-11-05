@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05T19:41:25.065598+00:00",
+  "updated_at": "2026-11-05T20:32:38.956731+00:00",
   "method": "Only URLs exposed in recorded tool actions/sources are observable; absence is not proof of absence from the provider index or hidden retrieval.",
   "groups": [
     {
@@ -13,16 +13,16 @@
     },
     {
       "cohort": "direct URL diagnostic",
-      "completed": 6,
-      "exposed_website": 4,
+      "completed": 7,
+      "exposed_website": 5,
       "exposed_store": 2,
       "exposed_policy": 0,
-      "cited_website": 4,
-      "name_candidates": 4
+      "cited_website": 5,
+      "name_candidates": 5
     },
     {
       "cohort": "non-brand discovery",
-      "completed": 120,
+      "completed": 132,
       "exposed_website": 0,
       "exposed_store": 0,
       "exposed_policy": 0,
@@ -284,6 +284,19 @@
       "exposed_own_url_kinds": [],
       "cited_own_url_kinds": [],
       "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/api-comparison-url.jsonl",
+      "question_id": "D07",
+      "model": "gpt-6-sol",
+      "cohort": "direct URL diagnostic",
+      "exposed_own_url_kinds": [
+        "official website"
+      ],
+      "cited_own_url_kinds": [
+        "official website"
+      ],
+      "name_candidate": true
     },
     {
       "source_file": "docs/geo/research/api-direct-url.jsonl",
@@ -1701,6 +1714,114 @@
       "exposed_own_url_kinds": [],
       "cited_own_url_kinds": [],
       "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2030-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2030-gpt-6-luna.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2030-gpt-6-luna.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2030-gpt-6-luna.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2030-gpt-6-luna.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2030-gpt-6-luna.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2030-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2030-gpt-6-sol.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2030-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2030-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2030-gpt-6-sol.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2030-gpt-6-sol.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
     }
   ],
   "citation_sources": [
@@ -1777,6 +1898,10 @@
       "category": "direct_url_retrieval",
       "urls": [
         [
+          "https://deulli.com/guides/english-study-apps/",
+          1
+        ],
+        [
           "https://deulli.com/about/",
           1
         ],
@@ -1799,83 +1924,83 @@
       "category": "broad_intent",
       "urls": [
         [
+          "https://learnenglish.britishcouncil.org/english-levels/improve-your-english-level/five-tips-busy-learners-listening-speaking",
+          7
+        ],
+        [
+          "https://blog.elsaspeak.com/en/discover-the-new-elsa-speak-experience/",
+          7
+        ],
+        [
+          "https://learningenglish.voanews.com/podcasts",
+          7
+        ],
+        [
           "https://learnenglish.britishcouncil.org/getting-started",
           6
         ],
         [
-          "https://learningenglish.voanews.com/podcasts",
+          "https://learnenglish.britishcouncil.org/general-english/audio-series/podcasts",
           6
         ],
         [
-          "https://learnenglish.britishcouncil.org/english-levels/improve-your-english-level/five-tips-busy-learners-listening-speaking",
-          5
-        ],
-        [
-          "https://blog.elsaspeak.com/en/discover-the-new-elsa-speak-experience/",
-          5
-        ],
-        [
-          "https://learnenglish.britishcouncil.org/general-english/audio-series/podcasts",
-          5
-        ],
-        [
           "https://www.duolingo.com/learn",
-          4
+          5
+        ],
+        [
+          "https://learnenglish.britishcouncil.org/comment/206115",
+          5
+        ],
+        [
+          "https://learnenglish.britishcouncil.org/level/improve-your-english-level/how-can-i-improve-my-english-pronunciation",
+          5
         ],
         [
           "https://podcasts.apple.com/us/podcast/all-ears-english-podcast/id751574016",
           4
         ],
         [
-          "https://learnenglish.britishcouncil.org/comment/206115",
-          4
-        ],
-        [
-          "https://learnenglish.britishcouncil.org/level/improve-your-english-level/how-can-i-improve-my-english-pronunciation",
-          4
-        ],
-        [
           "https://www.britishcouncil.org/english/learn-online/resources-apps",
-          3
+          4
         ],
         [
           "https://africa.teachingenglish.org.uk/classroom/pronunciation/shadowing",
+          4
+        ],
+        [
+          "https://www.bbclearningenglish.org/",
           3
+        ],
+        [
+          "https://ko.duolingo.com/nojs/splash",
+          3
+        ],
+        [
+          "https://help.ted.com/hc/en-us/articles/360018572954-How-do-I-find-transcripts-for-TED-and-TEDx-talks",
+          3
+        ],
+        [
+          "https://takeielts.britishcouncil.org/blog/how-to-improve-english-pronunciation-ielts-speaking",
+          3
+        ],
+        [
+          "https://learnenglish.britishcouncil.org/free-resources/listening",
+          3
+        ],
+        [
+          "https://cakecorp.com/ko/",
+          2
         ],
         [
           "https://www.speak.com/?lang=en",
           2
         ],
         [
+          "https://cake.day/",
+          2
+        ],
+        [
           "https://learnenglish.britishcouncil.org/free-resources/general",
-          2
-        ],
-        [
-          "https://doi.org/10.1080/29984475.2025.2546827",
-          2
-        ],
-        [
-          "https://elsaspeak.com/en/faqs/how-does-elsas-pronunciation-feedback-work",
-          2
-        ],
-        [
-          "https://ko.duolingo.com/nojs/splash",
-          2
-        ],
-        [
-          "https://help.ted.com/hc/en-us/articles/360018572954-How-do-I-find-transcripts-for-TED-and-TEDx-talks",
-          2
-        ],
-        [
-          "https://takeielts.britishcouncil.org/blog/how-to-improve-english-pronunciation-ielts-speaking",
-          2
-        ],
-        [
-          "https://www.speak.com/ko/technology",
-          2
-        ],
-        [
-          "https://feeds.bbci.co.uk/learningenglish",
           2
         ]
       ]
@@ -1885,11 +2010,11 @@
       "category": "category",
       "urls": [
         [
-          "https://playlingo.app/podcast-app-with-transcript",
+          "https://www.lingoreel.com/en/support",
           10
         ],
         [
-          "https://www.lingoreel.com/en/support",
+          "https://playlingo.app/podcast-app-with-transcript",
           10
         ],
         [
@@ -1979,7 +2104,11 @@
           1
         ],
         [
-          "https://podcast.parroto.app/",
+          "https://www.unpack.fm/",
+          1
+        ],
+        [
+          "https://trypodling.com/en/",
           1
         ],
         [
@@ -1987,11 +2116,7 @@
           1
         ],
         [
-          "https://www.unpack.fm/",
-          1
-        ],
-        [
-          "https://trypodling.com/en/",
+          "https://podcast.parroto.app/",
           1
         ],
         [
@@ -2003,11 +2128,11 @@
           1
         ],
         [
-          "https://playlingo.app/podcast-app-with-transcript",
+          "https://www.lingoreel.com/ko",
           1
         ],
         [
-          "https://www.lingoreel.com/ko",
+          "https://playlingo.app/podcast-app-with-transcript",
           1
         ],
         [
@@ -2057,11 +2182,11 @@
           1
         ],
         [
-          "https://oown.app/",
+          "https://glotcast.com/",
           1
         ],
         [
-          "https://glotcast.com/",
+          "https://oown.app/",
           1
         ],
         [
@@ -2093,11 +2218,11 @@
           1
         ],
         [
-          "https://www.talkit.com/en/podcast",
+          "https://services.google.com/fh/files/misc/notebooklm_gfe_one_pager.pdf",
           1
         ],
         [
-          "https://services.google.com/fh/files/misc/notebooklm_gfe_one_pager.pdf",
+          "https://support.spotify.com/us/article/personal-podcasts/",
           1
         ]
       ]
@@ -2141,11 +2266,11 @@
           3
         ],
         [
-          "https://support.apple.com/en-gb/127831",
+          "https://www.lingoreel.com/en/support",
           1
         ],
         [
-          "https://www.lingoreel.com/en/support",
+          "https://support.apple.com/en-gb/127831",
           1
         ],
         [
@@ -2153,15 +2278,11 @@
           1
         ],
         [
-          "https://play.google.com/store/apps/details?hl=en-US&id=com.puhustudios.lispora",
-          1
-        ],
-        [
           "https://www.britishcouncil.org/english/learn-online/resources-apps",
           1
         ],
         [
-          "https://www.lingosive.com/ko/about",
+          "https://play.google.com/store/apps/details?hl=en-US&id=com.puhustudios.lispora",
           1
         ],
         [
@@ -2173,15 +2294,19 @@
           1
         ],
         [
+          "https://www.lingosive.com/ko/about",
+          1
+        ],
+        [
           "https://podknow.eu/en/",
           1
         ],
         [
-          "https://rehearapp.com/",
+          "https://trypodling.com/en/features/",
           1
         ],
         [
-          "https://trypodling.com/en/features/",
+          "https://rehearapp.com/",
           1
         ]
       ]
@@ -2195,11 +2320,11 @@
           2
         ],
         [
-          "https://apps.apple.com/kr/app/castlingo-%EC%98%81%EC%96%B4-%EB%A6%AC%EC%8A%A4%EB%8B%9D-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8/id6762072277",
+          "https://www.britishcouncil.kr/english/adults/apps/elementary-podcasts",
           1
         ],
         [
-          "https://www.britishcouncil.kr/english/adults/apps/elementary-podcasts",
+          "https://apps.apple.com/kr/app/castlingo-%EC%98%81%EC%96%B4-%EB%A6%AC%EC%8A%A4%EB%8B%9D-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8/id6762072277",
           1
         ],
         [
@@ -2207,11 +2332,15 @@
           1
         ],
         [
+          "https://www.apple.com/kr/newsroom/2024/03/apple-introduces-transcripts-for-apple-podcasts/",
+          1
+        ],
+        [
           "https://apps.apple.com/kr/app/polycast-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8-%EB%B2%88%EC%97%AD/id6793951095",
           1
         ],
         [
-          "https://www.apple.com/kr/newsroom/2024/03/apple-introduces-transcripts-for-apple-podcasts/",
+          "https://explore.microsoft.com/ko-kr/edge/features/read-aloud?form=MT0160&msockid=0155edfb2563633c2449fbb224106246",
           1
         ],
         [
@@ -2223,7 +2352,7 @@
           1
         ],
         [
-          "https://explore.microsoft.com/ko-kr/edge/features/read-aloud?form=MT0160&msockid=0155edfb2563633c2449fbb224106246",
+          "https://www.lingoreel.com/en",
           1
         ],
         [
@@ -2232,10 +2361,6 @@
         ],
         [
           "https://rehearapp.com/",
-          1
-        ],
-        [
-          "https://www.lingoreel.com/en",
           1
         ]
       ]

@@ -1,0 +1,38 @@
+{
+  "observed_at": "2026-11-05T19:45:39.629374+00:00",
+  "method": "Read-only production HTTP and exact content marker checks; not a deployment action",
+  "pages": [
+    {
+      "url": "https://deulli.com/guides/english-study-apps/",
+      "status": 200,
+      "new_content_found": true,
+      "sha256": "9dab4f533f397cc6e03873307e4e4c5a8ad423bba5867f1d8dd51254e49bd992",
+      "checked_local_sha256": "9dab4f533f397cc6e03873307e4e4c5a8ad423bba5867f1d8dd51254e49bd992",
+      "matches_checked_local_html": true
+    },
+    {
+      "url": "https://deulli.com/about/",
+      "status": 200,
+      "new_content_found": true,
+      "sha256": "efc4bf0bfec482150a8dac4ddfb487d0ecb1aa62845ca15ff6f9ef24ac9f49f3",
+      "checked_local_sha256": "efc4bf0bfec482150a8dac4ddfb487d0ecb1aa62845ca15ff6f9ef24ac9f49f3",
+      "matches_checked_local_html": true
+    },
+    {
+      "url": "https://deulli.com/podcasts/",
+      "status": 200,
+      "new_content_found": true,
+      "sha256": "9237500b8056411a5f808ee23e60832e1874fcfff0cc63ba17c912cd590b7290",
+      "checked_local_sha256": "9237500b8056411a5f808ee23e60832e1874fcfff0cc63ba17c912cd590b7290",
+      "matches_checked_local_html": true
+    },
+    {
+      "url": "https://deulli.com/guides/podcast-listening/",
+      "status": 200,
+      "new_content_found": true,
+      "sha256": "2ff0eaec3437ed5605223236f873e9bb70f951f6bfdd475286375846e1f2eeb4",
+      "checked_local_sha256": "2ff0eaec3437ed5605223236f873e9bb70f951f6bfdd475286375846e1f2eeb4",
+      "matches_checked_local_html": true
+    }
+  ]
+}

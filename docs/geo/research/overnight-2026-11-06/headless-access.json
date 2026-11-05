@@ -1,0 +1,43 @@
+{
+  "observed_at": "2026-11-05T20:14:12.654446+00:00",
+  "mode": "Isolated headless Chrome; no existing browser profile or cookies imported",
+  "checks": [
+    {
+      "service": "Local GEO monitor",
+      "http_status": 200,
+      "outcome": "Accessible; separate rendered-count and layout QA passed"
+    },
+    {
+      "service": "Google public brand search",
+      "http_status": 200,
+      "outcome": "Human/robot verification page, not search results",
+      "counted_as_index_measurement": false,
+      "challenge_solved": false
+    },
+    {
+      "service": "ChatGPT anonymous website",
+      "http_status": 403,
+      "outcome": "No answer; access cause not established",
+      "counted_as_answer": false
+    },
+    {
+      "service": "Gemini anonymous website",
+      "http_status": 200,
+      "outcome": "Flash-Lite anonymous: G01 and G02 refusals; G03 normal answer. Separate actual records; pilot extraction failures excluded."
+    },
+    {
+      "service": "Perplexity anonymous website",
+      "outcome": "G01 G02 G03 completed in separate fresh headless contexts. G02 and G03 each exposed 10 source URLs; G01 source URL extraction incomplete. No Deulli recommendation."
+    },
+    {
+      "service": "Microsoft Copilot anonymous website",
+      "outcome": "Sign-in landing observed; no query textbox measured; not counted as an answer."
+    },
+    {
+      "service": "Bing public brand search",
+      "outcome": "Navigation shell observed; result extraction incomplete; not counted as index evidence."
+    }
+  ],
+  "privacy": "No network IP, challenge token, user account data, personal chat URL or profile export is included.",
+  "updated_at": "2026-11-05T20:40:00Z"
+}
