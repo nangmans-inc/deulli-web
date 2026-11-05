@@ -1,0 +1,27 @@
+{
+  "observed_at": "2026-11-05T17:16:37.859786+00:00",
+  "selection": "Three existing official-channel episode IDs from the saved catalog; no catalog endpoint called",
+  "episodes": [
+    {
+      "id": 105972,
+      "name": "민호의 Part 2 미니 모의고사",
+      "description": null,
+      "source": "https://api.deulli.nangmans.com/podcasts/105972",
+      "status": 200
+    },
+    {
+      "id": 80,
+      "name": "수메르 — 문자는 왜 이야기보다 장부에서 먼저 필요했을까",
+      "description": null,
+      "source": "https://api.deulli.nangmans.com/podcasts/80",
+      "status": 200
+    },
+    {
+      "id": 57,
+      "name": "왜 내 손으로는 나를 간지럽힐 수 없을까",
+      "description": null,
+      "source": "https://api.deulli.nangmans.com/podcasts/57",
+      "status": 200
+    }
+  ]
+}

@@ -73,7 +73,7 @@ def main():
     report = {'observed_at': datetime.datetime.now(datetime.timezone.utc).isoformat(),
               'method': 'Public HTTP audit; not indexing or AI recommendation measurement',
               'pages': [capture(p) for p in ('/', '/about/', '/guides/podcast-listening/',
-                                            '/guides/choosing-a-podcast-app/',
+                                            '/guides/choosing-a-podcast-app/', '/podcasts/',
                                             '/robots.txt', '/sitemap-index.xml')]}
     target = Path(args.output)
     target.parent.mkdir(parents=True, exist_ok=True)
