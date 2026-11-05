@@ -1,0 +1,50 @@
+---
+import GuideLayout from "../layouts/GuideLayout.astro";
+import { featuredEpisodes } from "../data/featured-episodes";
+
+const frontmatter = {
+  title: "들리 공식 팟캐스트 둘러보기",
+  description:
+    "영어 듣기 연습부터 역사와 일상 과학까지, 들리 공식 채널의 공개 에피소드를 살펴보세요.",
+  relatedPath: "/about/",
+  relatedTitle: "들리(deulli)는 어떤 앱인가요?",
+};
+---
+
+<GuideLayout frontmatter={frontmatter}>
+  <p>
+    어떤 이야기를 들으며 공부할지 고민된다면 들리 공식 채널의 에피소드부터
+    살펴보세요. 영어 듣기 연습, 역사, 일상 속 과학을 다루는 공개 에피소드 몇
+    개를 골랐습니다.
+  </p>
+  {
+    featuredEpisodes.map((episode) => (
+      <section>
+        <h2>{episode.topic}</h2>
+        <p>
+          <a href={`/share/episode/${episode.id}`}>{episode.title}</a>
+        </p>
+      </section>
+    ))
+  }
+  <h2>에피소드는 어디서 들을 수 있나요?</h2>
+  <p>
+    제목을 누르면 에피소드 공유 페이지에서 콘텐츠 정보와 앱 열기 링크를 확인할
+    수 있습니다. 팟캐스트 듣기와 학습은 들리 앱에서 이용해주세요.
+  </p>
+  <h2>한국어와 영어로 함께 들을 수 있나요?</h2>
+  <p>
+    들리 공식 채널에서는 진행자별 음성 언어를 선택할 수 있는 콘텐츠를
+    제공합니다. 영어 스크립트와 한국어 번역을 화면에서 확인하는 기능도 있습니다.
+    에피소드별로 제공되는 재생 언어와 이용 조건은 앱에서 확인해주세요.
+  </p>
+  <p>
+    <a href="/guides/podcast-listening/"
+      >한 문장씩 확인하는 팟캐스트 학습 방법</a
+    >도 함께 읽어보세요.
+  </p>
+  <p>
+    이 페이지는 2026년 11월 6일 공개 상태를 확인한 일부 에피소드를 소개합니다.
+    전체 목록과 최신 공개 상태는 앱에서 확인할 수 있습니다.
+  </p>
+</GuideLayout>

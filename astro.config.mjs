@@ -3,6 +3,7 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
+import { featuredEpisodes } from "./src/data/featured-episodes.ts";
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,7 +11,13 @@ export default defineConfig({
   site: "https://deulli.com",
   output: "static",
   adapter: vercel(),
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      customPages: featuredEpisodes.map(
+        ({ id }) => `https://deulli.com/share/episode/${id}`,
+      ),
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },
