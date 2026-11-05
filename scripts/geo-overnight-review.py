@@ -47,6 +47,10 @@ def review(destination, deadline, finished=False):
     (destination/'overnight-results.md').write_text('\n'.join(lines)+'\n')
     if paths:
         subprocess.run([sys.executable, 'scripts/geo-report.py', *map(str, paths), '--output', str(destination/'api-summary.md')], check=True)
+    if paths:
+        baseline = sorted(destination.parent.glob('api-*.jsonl')) + sorted((destination.parent/'watch').glob('api-*.jsonl'))
+        subprocess.run([sys.executable, 'scripts/geo-mentions.py', *map(str, baseline+paths),
+                        '--output', str(destination/'visible-name-candidates.md')], check=True)
     print(f'Review {now}: {len(complete)}/{len(rows)} completed, brand candidates={len(mentions)}, official={len(official)}', flush=True)
 
 

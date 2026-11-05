@@ -1,0 +1,256 @@
+{
+  "claim": "Do the cited official pages substantiate product claims in the first overnight recommendation sample?",
+  "review_mode": "rapid",
+  "search_date": "2026-11-06",
+  "search_completeness": "Non-exhaustive check of four decision-relevant official pages from the first 12 overnight answers. No efficacy review.",
+  "atomic_claims": [
+    {
+      "id": "C1",
+      "text": "The cited British Council apps page supports the BBC product recommendation.",
+      "claim_type": "descriptive",
+      "verdict": "insufficient",
+      "decisive_source_ids": [
+        "S1"
+      ],
+      "rationale": "That page describes British Council apps; it does not substantiate the BBC product claim."
+    },
+    {
+      "id": "C2",
+      "text": "The British Council Podcasts page explicitly targets A2/B1 learners and offers transcripts and interactive exercises.",
+      "claim_type": "descriptive",
+      "verdict": "strongly-supported",
+      "decisive_source_ids": [
+        "S2"
+      ],
+      "rationale": "Explicit official-page description, not an independent learning-effect test."
+    },
+    {
+      "id": "C3",
+      "text": "The official LingQ iOS page lists audio transcripts, vocabulary saving and SRS review.",
+      "claim_type": "descriptive",
+      "verdict": "strongly-supported",
+      "decisive_source_ids": [
+        "S3"
+      ],
+      "rationale": "Confirmed as marketing-page descriptions, not independently tested app behavior."
+    },
+    {
+      "id": "C4",
+      "text": "The inspected VoiceTube page establishes Korean translation support.",
+      "claim_type": "descriptive",
+      "verdict": "insufficient",
+      "decisive_source_ids": [
+        "S4"
+      ],
+      "rationale": "English and Chinese are named; Korean support remains unverified, not disproved."
+    }
+  ],
+  "search_log": [
+    {
+      "lane": "primary",
+      "service": "web.run official page open",
+      "query": "https://www.britishcouncil.org/english/learn-online/resources-apps",
+      "date": "2026-11-06"
+    },
+    {
+      "lane": "primary",
+      "service": "web.run official page open",
+      "query": "https://learnenglish.britishcouncil.org/general-english/audio-series/podcasts",
+      "date": "2026-11-06"
+    },
+    {
+      "lane": "primary",
+      "service": "web.run official page open",
+      "query": "https://www.lingq.com/en/ios-app/",
+      "date": "2026-11-06"
+    },
+    {
+      "lane": "primary",
+      "service": "web.run official page open",
+      "query": "https://www.voicetube.com/app/",
+      "date": "2026-11-06"
+    },
+    {
+      "lane": "counterevidence",
+      "service": "web.run search, official-source preference",
+      "query": "site.britishcouncil.org \"LearnEnglish Podcasts\" \"discontinued\"",
+      "date": "2026-11-06"
+    },
+    {
+      "lane": "counterevidence",
+      "service": "web.run search, official-source preference",
+      "query": "site.lingq.com \"SRS\" \"removed\"",
+      "date": "2026-11-06"
+    },
+    {
+      "lane": "counterevidence",
+      "service": "web.run search, official-source preference",
+      "query": "site.voicetube.com \"Korean\" \"subtitles\"",
+      "date": "2026-11-06"
+    },
+    {
+      "lane": "status-check",
+      "service": "web.run search, official-source preference",
+      "query": "site.britishcouncil.org \"LearnEnglish Podcasts\" correction update",
+      "date": "2026-11-06"
+    },
+    {
+      "lane": "status-check",
+      "service": "web.run search, official-source preference",
+      "query": "site.lingq.com \"iOS\" \"transcript\" correction update",
+      "date": "2026-11-06"
+    },
+    {
+      "lane": "status-check",
+      "service": "web.run search, official-source preference",
+      "query": "site.voicetube.com \"app\" correction update languages",
+      "date": "2026-11-06"
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "title": "Online English learning resources",
+      "authors": "British Council",
+      "year": 2026,
+      "url": "https://www.britishcouncil.org/english/learn-online/resources-apps",
+      "publication_status": "official product website",
+      "access_status": "full",
+      "correction_status": "checked-clear",
+      "design": "Official-page descriptive inspection",
+      "sample": "Inspected public page",
+      "outcomes": "Explicit product descriptions",
+      "evidence": [
+        {
+          "claim_id": "C1",
+          "relation": "irrelevant",
+          "passage": "LearnEnglish Podcasts",
+          "location": "Apps for English listening",
+          "result": "That page describes British Council apps; it does not substantiate the BBC product claim.",
+          "limitations": "No independent usage or efficacy measurements"
+        }
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Podcasts",
+      "authors": "British Council",
+      "year": 2026,
+      "url": "https://learnenglish.britishcouncil.org/general-english/audio-series/podcasts",
+      "publication_status": "official product website",
+      "access_status": "full",
+      "correction_status": "checked-clear",
+      "design": "Official-page descriptive inspection",
+      "sample": "Inspected public page",
+      "outcomes": "Explicit product descriptions",
+      "evidence": [
+        {
+          "claim_id": "C2",
+          "relation": "supports",
+          "passage": "Each recording has a transcript and interactive exercises",
+          "location": "Introduction: A2/B1, transcript and exercises",
+          "result": "Explicit official-page description, not an independent learning-effect test.",
+          "limitations": "No independent usage or efficacy measurements"
+        }
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "LingQ iOS App",
+      "authors": "LingQ",
+      "year": 2026,
+      "url": "https://www.lingq.com/en/ios-app/",
+      "publication_status": "official product website",
+      "access_status": "full",
+      "correction_status": "checked-clear",
+      "design": "Official-page descriptive inspection",
+      "sample": "Inspected public page",
+      "outcomes": "Explicit product descriptions",
+      "evidence": [
+        {
+          "claim_id": "C3",
+          "relation": "supports",
+          "passage": "SRS review system",
+          "location": "See how it works; Integrated dictionary; SRS review system",
+          "result": "Confirmed as marketing-page descriptions, not independently tested app behavior.",
+          "limitations": "No independent usage or efficacy measurements"
+        }
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "VoiceTube speaking app",
+      "authors": "VoiceTube",
+      "year": 2026,
+      "url": "https://www.voicetube.com/app/",
+      "publication_status": "official product website",
+      "access_status": "full",
+      "correction_status": "checked-clear",
+      "design": "Official-page descriptive inspection",
+      "sample": "Inspected public page",
+      "outcomes": "Explicit product descriptions",
+      "evidence": [
+        {
+          "claim_id": "C4",
+          "relation": "partially-supports",
+          "passage": "English or Chinese subtitles",
+          "location": "Read This Before You Start: step 3",
+          "result": "English and Chinese are named; Korean support remains unverified, not disproved.",
+          "limitations": "No independent usage or efficacy measurements"
+        }
+      ]
+    }
+  ],
+  "audit": {
+    "counterevidence_searched": true,
+    "citation_identity_checked": true,
+    "corrections_retractions_checked": true,
+    "causal_overreach_checked": true,
+    "population_transfer_checked": true,
+    "outcome_transfer_checked": true,
+    "timeframe_transfer_checked": true,
+    "abstract_overreach_checked": true,
+    "duplicate_data_checked": true
+  },
+  "human_review_queue": [
+    {
+      "source_id": "S1",
+      "claim_ids": [
+        "C1"
+      ],
+      "location": "Apps for English listening",
+      "reason": "Confirm product identity and whether Korean support is explicitly stated."
+    },
+    {
+      "source_id": "S4",
+      "claim_ids": [
+        "C4"
+      ],
+      "location": "Read This Before You Start: step 3",
+      "reason": "Confirm product identity and whether Korean support is explicitly stated."
+    },
+    {
+      "source_id": "S2",
+      "claim_ids": [
+        "C2"
+      ],
+      "location": "Official-page feature description",
+      "reason": "Confirm that the wording describes the page, not independently measured product efficacy."
+    },
+    {
+      "source_id": "S3",
+      "claim_ids": [
+        "C3"
+      ],
+      "location": "Official-page feature description",
+      "reason": "Confirm that the wording describes the page, not independently measured product efficacy."
+    }
+  ],
+  "limitations": [
+    "Product descriptions only; no independent app tests or learning-effect comparisons.",
+    "Product-page changes and contrary support information were searched. Academic retraction checks are inapplicable; checked-clear only means no direct correction to the bounded official-page wording was found in this limited pass.",
+    "Failure to find Korean support does not establish its absence.",
+    "Current Android beta issue reports at forum.lingq.com were found. They do not establish the behavior of the iOS app; no cross-platform functionality guarantee is made."
+  ],
+  "status": "AI-audited; human verification pending"
+}

@@ -1,0 +1,97 @@
+{
+  "observed_at": "2026-11-05T18:46:09.541435+00:00",
+  "method": "Ordinary HTTP requests from this machine with varied User-Agent headers; NOT requests from verified crawler IPs.",
+  "robots_text": "User-agent: *\nAllow: /\n\nSitemap: https://deulli.com/sitemap-index.xml\n",
+  "results": [
+    {
+      "agent_label": "baseline",
+      "path": "/",
+      "status": 200,
+      "final_url": "https://deulli.com/",
+      "body_sha256": "2f3e20f46547308ed2e5d5acc040bbb321b15b21d004a6b1b73a16579e471a59",
+      "robots_allowed": true,
+      "x_robots_tag": null
+    },
+    {
+      "agent_label": "baseline",
+      "path": "/about/",
+      "status": 200,
+      "final_url": "https://deulli.com/about/",
+      "body_sha256": "e91748cd16ef761f09ea74119d138c36c63507cb967ddd494f501d17a60de879",
+      "robots_allowed": true,
+      "x_robots_tag": null
+    },
+    {
+      "agent_label": "OAI-SearchBot",
+      "path": "/",
+      "status": 200,
+      "final_url": "https://deulli.com/",
+      "body_sha256": "2f3e20f46547308ed2e5d5acc040bbb321b15b21d004a6b1b73a16579e471a59",
+      "robots_allowed": true,
+      "x_robots_tag": null
+    },
+    {
+      "agent_label": "OAI-SearchBot",
+      "path": "/about/",
+      "status": 200,
+      "final_url": "https://deulli.com/about/",
+      "body_sha256": "e91748cd16ef761f09ea74119d138c36c63507cb967ddd494f501d17a60de879",
+      "robots_allowed": true,
+      "x_robots_tag": null
+    },
+    {
+      "agent_label": "ChatGPT-User",
+      "path": "/",
+      "status": 200,
+      "final_url": "https://deulli.com/",
+      "body_sha256": "2f3e20f46547308ed2e5d5acc040bbb321b15b21d004a6b1b73a16579e471a59",
+      "robots_allowed": true,
+      "x_robots_tag": null
+    },
+    {
+      "agent_label": "ChatGPT-User",
+      "path": "/about/",
+      "status": 200,
+      "final_url": "https://deulli.com/about/",
+      "body_sha256": "e91748cd16ef761f09ea74119d138c36c63507cb967ddd494f501d17a60de879",
+      "robots_allowed": true,
+      "x_robots_tag": null
+    },
+    {
+      "agent_label": "GPTBot",
+      "path": "/",
+      "status": 200,
+      "final_url": "https://deulli.com/",
+      "body_sha256": "2f3e20f46547308ed2e5d5acc040bbb321b15b21d004a6b1b73a16579e471a59",
+      "robots_allowed": true,
+      "x_robots_tag": null
+    },
+    {
+      "agent_label": "GPTBot",
+      "path": "/about/",
+      "status": 200,
+      "final_url": "https://deulli.com/about/",
+      "body_sha256": "e91748cd16ef761f09ea74119d138c36c63507cb967ddd494f501d17a60de879",
+      "robots_allowed": true,
+      "x_robots_tag": null
+    },
+    {
+      "agent_label": "Googlebot",
+      "path": "/",
+      "status": 200,
+      "final_url": "https://deulli.com/",
+      "body_sha256": "2f3e20f46547308ed2e5d5acc040bbb321b15b21d004a6b1b73a16579e471a59",
+      "robots_allowed": true,
+      "x_robots_tag": null
+    },
+    {
+      "agent_label": "Googlebot",
+      "path": "/about/",
+      "status": 200,
+      "final_url": "https://deulli.com/about/",
+      "body_sha256": "e91748cd16ef761f09ea74119d138c36c63507cb967ddd494f501d17a60de879",
+      "robots_allowed": true,
+      "x_robots_tag": null
+    }
+  ]
+}
