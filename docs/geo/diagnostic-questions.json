@@ -12,5 +12,26 @@
     "measurement_type": "direct_url_retrieval",
     "brand_prompted": true,
     "prompt": "https://deulli.com/guides/podcast-listening/ 페이지에 제안된 영어 팟캐스트 학습 순서를 알려주세요. 해당 페이지에 실제로 접근할 수 없다면 접근하지 못했다고 명확히 말해주세요."
+  },
+  {
+    "id": "D03",
+    "category": "direct_url_retrieval",
+    "measurement_type": "direct_url_retrieval",
+    "brand_prompted": true,
+    "prompt": "https://deulli.com/guides/choosing-a-podcast-app/ 페이지를 읽고 영어 팟캐스트 학습 앱을 선택할 때 확인할 조건을 알려주세요. 실제 페이지를 열지 못했다면 접근하지 못했다고 명확히 말해주세요."
+  },
+  {
+    "id": "D04",
+    "category": "brand_site_discovery",
+    "measurement_type": "brand_site_discovery",
+    "brand_prompted": true,
+    "prompt": "영어 팟캐스트 학습 앱 들리(deulli)의 공식 홈페이지 주소를 찾아주세요. 스토어 링크와 공식 홈페이지 링크를 구분해서 알려주세요."
+  },
+  {
+    "id": "D05",
+    "category": "direct_url_retrieval",
+    "measurement_type": "direct_url_retrieval",
+    "brand_prompted": true,
+    "prompt": "https://deulli.com/podcasts/ 페이지를 읽고 소개된 에피소드와 들을 수 있는 방법을 알려주세요. 해당 페이지를 실제로 열지 못했다면 접근하지 못했다고 명확히 말해주세요."
   }
 ]

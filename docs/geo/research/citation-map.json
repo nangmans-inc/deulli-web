@@ -1,0 +1,486 @@
+[
+  {
+    "host": "www.lingoreel.com",
+    "answer_count": 10,
+    "question_ids": [
+      "Q06",
+      "Q07",
+      "Q08",
+      "Q09",
+      "Q11",
+      "Q13",
+      "Q15",
+      "Q19",
+      "Q26"
+    ],
+    "models": [
+      "gpt-6-luna",
+      "gpt-6-sol"
+    ],
+    "example_urls": [
+      "https://www.lingoreel.com/en/support",
+      "https://www.lingoreel.com/en/support?utm_source=openai",
+      "https://www.lingoreel.com/en?utm_source=openai"
+    ]
+  },
+  {
+    "host": "trypodling.com",
+    "answer_count": 8,
+    "question_ids": [
+      "Q08",
+      "Q09",
+      "Q10",
+      "Q18",
+      "Q26",
+      "Q27",
+      "Q28",
+      "Q30"
+    ],
+    "models": [
+      "gpt-6-luna"
+    ],
+    "example_urls": [
+      "https://trypodling.com/en/?utm_source=openai",
+      "https://trypodling.com/en/features/?utm_source=openai",
+      "https://trypodling.com/ko/?utm_source=openai"
+    ]
+  },
+  {
+    "host": "playlingo.app",
+    "answer_count": 5,
+    "question_ids": [
+      "Q07",
+      "Q09",
+      "Q19"
+    ],
+    "models": [
+      "gpt-6-luna",
+      "gpt-6-sol"
+    ],
+    "example_urls": [
+      "https://playlingo.app/podcast-app-with-transcript",
+      "https://playlingo.app/podcast-app-with-transcript?utm_source=openai"
+    ]
+  },
+  {
+    "host": "rehearapp.com",
+    "answer_count": 4,
+    "question_ids": [
+      "Q09",
+      "Q10",
+      "Q15",
+      "Q30"
+    ],
+    "models": [
+      "gpt-6-luna"
+    ],
+    "example_urls": [
+      "https://rehearapp.com/?utm_source=openai"
+    ]
+  },
+  {
+    "host": "learnenglish.britishcouncil.org",
+    "answer_count": 4,
+    "question_ids": [
+      "Q06",
+      "Q15",
+      "Q16",
+      "Q17"
+    ],
+    "models": [
+      "gpt-6-luna",
+      "gpt-6-sol"
+    ],
+    "example_urls": [
+      "https://learnenglish.britishcouncil.org/apps/learnenglish-podcasts?utm_source=openai"
+    ]
+  },
+  {
+    "host": "play.google.com",
+    "answer_count": 4,
+    "question_ids": [
+      "Q10",
+      "Q20",
+      "Q27",
+      "Q28"
+    ],
+    "models": [
+      "gpt-6-luna",
+      "gpt-6-sol"
+    ],
+    "example_urls": [
+      "https://play.google.com/store/apps/details/Cake_Learn_English_Korean?hl=ko&id=me.mycake&utm_source=openai",
+      "https://play.google.com/store/apps/details?hl=en&id=me.mycake&utm_source=openai",
+      "https://play.google.com/store/apps/details?hl=en-US&id=com.puhustudios.lispora&utm_source=openai"
+    ]
+  },
+  {
+    "host": "www.britishcouncil.kr",
+    "answer_count": 3,
+    "question_ids": [
+      "Q06",
+      "Q11",
+      "Q22"
+    ],
+    "models": [
+      "gpt-6-luna"
+    ],
+    "example_urls": [
+      "https://www.britishcouncil.kr/english-courses/online/apps?utm_source=openai",
+      "https://www.britishcouncil.kr/english/adults/apps/elementary-podcasts?utm_source=openai"
+    ]
+  },
+  {
+    "host": "podcast.parroto.app",
+    "answer_count": 3,
+    "question_ids": [
+      "Q06",
+      "Q08",
+      "Q18"
+    ],
+    "models": [
+      "gpt-6-luna"
+    ],
+    "example_urls": [
+      "https://podcast.parroto.app/?utm_source=openai"
+    ]
+  },
+  {
+    "host": "apps.apple.com",
+    "answer_count": 3,
+    "question_ids": [
+      "Q10",
+      "Q11",
+      "Q13"
+    ],
+    "models": [
+      "gpt-6-luna",
+      "gpt-6-sol"
+    ],
+    "example_urls": [
+      "https://apps.apple.com/kr/app/castlingo-%EC%98%81%EC%96%B4-%EB%A6%AC%EC%8A%A4%EB%8B%9D-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8/id6762072277?utm_source=openai",
+      "https://apps.apple.com/kr/app/lark-language-shadowing/id6817513150?utm_source=openai",
+      "https://apps.apple.com/kr/app/polycast-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8-%EB%B2%88%EC%97%AD/id6793951095?utm_source=openai"
+    ]
+  },
+  {
+    "host": "www.apple.com",
+    "answer_count": 2,
+    "question_ids": [
+      "Q13",
+      "Q16"
+    ],
+    "models": [
+      "gpt-6-luna"
+    ],
+    "example_urls": [
+      "https://www.apple.com/kr/newsroom/2024/03/apple-introduces-transcripts-for-apple-podcasts/?utm_source=openai",
+      "https://www.apple.com/newsroom/2024/03/apple-introduces-transcripts-for-apple-podcasts/?utm_source=openai"
+    ]
+  },
+  {
+    "host": "support.apple.com",
+    "answer_count": 2,
+    "question_ids": [
+      "Q14",
+      "Q26"
+    ],
+    "models": [
+      "gpt-6-luna"
+    ],
+    "example_urls": [
+      "https://support.apple.com/en-asia/guide/iphone/iph96b214f0/27/ios/27?utm_source=openai",
+      "https://support.apple.com/en-gb/127831?utm_source=openai"
+    ]
+  },
+  {
+    "host": "support.google.com",
+    "answer_count": 2,
+    "question_ids": [
+      "Q14",
+      "Q29"
+    ],
+    "models": [
+      "gpt-6-luna"
+    ],
+    "example_urls": [
+      "https://support.google.com/accessibility/android/answer/7349565?hl=en_vg&utm_source=openai",
+      "https://support.google.com/youtube/answer/4792576?hl=ko-SN&utm_source=openai"
+    ]
+  },
+  {
+    "host": "support.spotify.com",
+    "answer_count": 2,
+    "question_ids": [
+      "Q06",
+      "Q08"
+    ],
+    "models": [
+      "gpt-6-sol"
+    ],
+    "example_urls": [
+      "https://support.spotify.com/pg/creators/article/managing-episode-transcripts-on-spotify/?utm_source=openai",
+      "https://support.spotify.com/us/creators/article/managing-episode-transcripts-on-spotify/?utm_source=openai"
+    ]
+  },
+  {
+    "host": "flaudio.app",
+    "answer_count": 1,
+    "question_ids": [
+      "Q10"
+    ],
+    "models": [
+      "gpt-6-luna"
+    ],
+    "example_urls": [
+      "https://flaudio.app/?utm_source=openai"
+    ]
+  },
+  {
+    "host": "podtext.ai",
+    "answer_count": 1,
+    "question_ids": [
+      "Q12"
+    ],
+    "models": [
+      "gpt-6-luna"
+    ],
+    "example_urls": [
+      "https://podtext.ai/?utm_source=openai"
+    ]
+  },
+  {
+    "host": "explore.microsoft.com",
+    "answer_count": 1,
+    "question_ids": [
+      "Q14"
+    ],
+    "models": [
+      "gpt-6-luna"
+    ],
+    "example_urls": [
+      "https://explore.microsoft.com/ko-kr/edge/features/read-aloud?form=MT0160&msockid=0155edfb2563633c2449fbb224106246&utm_source=openai"
+    ]
+  },
+  {
+    "host": "www.unpack.fm",
+    "answer_count": 1,
+    "question_ids": [
+      "Q18"
+    ],
+    "models": [
+      "gpt-6-luna"
+    ],
+    "example_urls": [
+      "https://www.unpack.fm/?utm_source=openai"
+    ]
+  },
+  {
+    "host": "englishleap.app",
+    "answer_count": 1,
+    "question_ids": [
+      "Q18"
+    ],
+    "models": [
+      "gpt-6-luna"
+    ],
+    "example_urls": [
+      "https://englishleap.app/?utm_source=openai"
+    ]
+  },
+  {
+    "host": "plateaukao.github.io",
+    "answer_count": 1,
+    "question_ids": [
+      "Q19"
+    ],
+    "models": [
+      "gpt-6-luna"
+    ],
+    "example_urls": [
+      "https://plateaukao.github.io/nerlan-android/"
+    ]
+  },
+  {
+    "host": "debuts.app",
+    "answer_count": 1,
+    "question_ids": [
+      "Q19"
+    ],
+    "models": [
+      "gpt-6-luna"
+    ],
+    "example_urls": [
+      "https://debuts.app/apps/huh-understand-podcasts"
+    ]
+  },
+  {
+    "host": "www.dliflc.edu",
+    "answer_count": 1,
+    "question_ids": [
+      "Q21"
+    ],
+    "models": [
+      "gpt-6-luna"
+    ],
+    "example_urls": [
+      "https://www.dliflc.edu/ojs/dialog/article/view/82?utm_source=openai"
+    ]
+  },
+  {
+    "host": "link.springer.com",
+    "answer_count": 1,
+    "question_ids": [
+      "Q23"
+    ],
+    "models": [
+      "gpt-6-luna"
+    ],
+    "example_urls": [
+      "https://link.springer.com/article/10.1186/s40862-017-0039-6?utm_source=openai"
+    ]
+  },
+  {
+    "host": "tlooto.com",
+    "answer_count": 1,
+    "question_ids": [
+      "Q24"
+    ],
+    "models": [
+      "gpt-6-luna"
+    ],
+    "example_urls": [
+      "https://tlooto.com/paper/150273473312?utm_source=openai"
+    ]
+  },
+  {
+    "host": "lang.nursing.tma.uz",
+    "answer_count": 1,
+    "question_ids": [
+      "Q25"
+    ],
+    "models": [
+      "gpt-6-luna"
+    ],
+    "example_urls": [
+      "https://lang.nursing.tma.uz/wp-content/uploads/2021/03/Nurmukhamedov__Sharakhimov_2021_Corpus_based_vocabulary_analysis.pdf?utm_source=openai"
+    ]
+  },
+  {
+    "host": "www.sciencedirect.com",
+    "answer_count": 1,
+    "question_ids": [
+      "Q25"
+    ],
+    "models": [
+      "gpt-6-luna"
+    ],
+    "example_urls": [
+      "https://www.sciencedirect.com/science/article/pii/S0360131518301623?utm_source=openai"
+    ]
+  },
+  {
+    "host": "www.britishcouncil.org",
+    "answer_count": 1,
+    "question_ids": [
+      "Q28"
+    ],
+    "models": [
+      "gpt-6-luna"
+    ],
+    "example_urls": [
+      "https://www.britishcouncil.org/english/learn-online/resources-apps?utm_source=openai"
+    ]
+  },
+  {
+    "host": "langxel.io",
+    "answer_count": 1,
+    "question_ids": [
+      "Q29"
+    ],
+    "models": [
+      "gpt-6-luna"
+    ],
+    "example_urls": [
+      "https://langxel.io/?utm_source=openai"
+    ]
+  },
+  {
+    "host": "www.lingosive.com",
+    "answer_count": 1,
+    "question_ids": [
+      "Q29"
+    ],
+    "models": [
+      "gpt-6-luna"
+    ],
+    "example_urls": [
+      "https://www.lingosive.com/ko/about?utm_source=openai"
+    ]
+  },
+  {
+    "host": "podknow.eu",
+    "answer_count": 1,
+    "question_ids": [
+      "Q30"
+    ],
+    "models": [
+      "gpt-6-luna"
+    ],
+    "example_urls": [
+      "https://podknow.eu/en/?utm_source=openai"
+    ]
+  },
+  {
+    "host": "learningenglish.voanews.com",
+    "answer_count": 1,
+    "question_ids": [
+      "Q06"
+    ],
+    "models": [
+      "gpt-6-sol"
+    ],
+    "example_urls": [
+      "https://learningenglish.voanews.com/podcasts?utm_source=openai"
+    ]
+  },
+  {
+    "host": "podcasts.apple.com",
+    "answer_count": 1,
+    "question_ids": [
+      "Q08"
+    ],
+    "models": [
+      "gpt-6-sol"
+    ],
+    "example_urls": [
+      "https://podcasts.apple.com/ky/multi-room/6476948598?utm_source=openai"
+    ]
+  },
+  {
+    "host": "downloads.bbc.co.uk",
+    "answer_count": 1,
+    "question_ids": [
+      "Q08"
+    ],
+    "models": [
+      "gpt-6-sol"
+    ],
+    "example_urls": [
+      "https://downloads.bbc.co.uk/learningenglish/features/6min/260618_6_minute_english_limiting_screen_time_for_children_transcript_.pdf?utm_source=openai"
+    ]
+  },
+  {
+    "host": "fluentcast.app",
+    "answer_count": 1,
+    "question_ids": [
+      "Q09"
+    ],
+    "models": [
+      "gpt-6-sol"
+    ],
+    "example_urls": [
+      "https://fluentcast.app/?utm_source=openai"
+    ]
+  }
+]
