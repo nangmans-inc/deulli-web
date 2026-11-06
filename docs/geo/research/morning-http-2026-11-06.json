@@ -1,0 +1,36 @@
+{
+  "observed_at": "2026-11-06T03:01:06.313747+00:00",
+  "method": "Public HTTP availability, not indexing or recommendation proof",
+  "pages": [
+    {
+      "url": "https://deulli.com/",
+      "status": 200,
+      "bytes": 14591,
+      "sitemap_urls": null
+    },
+    {
+      "url": "https://deulli.com/about/",
+      "status": 200,
+      "bytes": 17464,
+      "sitemap_urls": null
+    },
+    {
+      "url": "https://deulli.com/guides/english-study-apps/",
+      "status": 200,
+      "bytes": 18138,
+      "sitemap_urls": null
+    },
+    {
+      "url": "https://deulli.com/guides/starting-english-study/",
+      "status": 200,
+      "bytes": 17503,
+      "sitemap_urls": null
+    },
+    {
+      "url": "https://deulli.com/sitemap-0.xml",
+      "status": 200,
+      "bytes": 922,
+      "sitemap_urls": 10
+    }
+  ]
+}

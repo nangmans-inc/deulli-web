@@ -40,5 +40,12 @@
     "measurement_type": "direct_url_retrieval",
     "brand_prompted": true,
     "prompt": "https://play.google.com/store/apps/details?id=com.deulli.app&hl=ko&gl=KR 페이지를 실제로 열어 들리(deulli)가 어떤 앱인지, Android 앱으로 안내되어 있는지 확인해주세요. 실제로 접근하지 못했다면 접근하지 못했다고 명확히 말해주세요."
+  },
+  {
+    "id": "D07",
+    "category": "direct_url_retrieval",
+    "measurement_type": "direct_url_retrieval",
+    "brand_prompted": true,
+    "prompt": "https://deulli.com/guides/english-study-apps/ 페이지를 실제로 읽고, 어떤 앱 또는 학습 자료를 어떤 목적에 맞춰 비교하는지 정리해주세요. 페이지에 접근하지 못했다면 접근하지 못했다고 명확히 말해주세요."
   }
 ]

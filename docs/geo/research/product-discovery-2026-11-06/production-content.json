@@ -1,0 +1,26 @@
+{
+  "observed_at": "2026-11-06T03:17:46.979560+00:00",
+  "pages": [
+    {
+      "url": "https://deulli.com/about/",
+      "status": 200,
+      "sha256": "da15baf740d608dc1014ab05b13ff2aa72fe8bd8047ca618472264cacc7409df",
+      "matches_checked_build": true,
+      "english_product_link": true
+    },
+    {
+      "url": "https://deulli.com/en/about/",
+      "status": 200,
+      "sha256": "8102b73d258513f53c1e6ae5c6ee3b9980ba27978137e2adfa4929537cf7b064",
+      "matches_checked_build": true,
+      "english_product_link": true
+    },
+    {
+      "url": "https://deulli.com/sitemap-0.xml",
+      "status": 200,
+      "sha256": "ec57d3f7e6dceede2f2a4e5b7774d48b174fbac16658c4f0d54161b46a7098fa",
+      "matches_checked_build": true,
+      "english_product_link": true
+    }
+  ]
+}

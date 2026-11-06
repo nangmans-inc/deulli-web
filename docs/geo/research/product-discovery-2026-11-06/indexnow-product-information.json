@@ -1,0 +1,11 @@
+{
+  "submitted_at": "2026-11-06T03:18:35.882863+00:00",
+  "endpoint": "https://api.indexnow.org/indexnow",
+  "urls": [
+    "https://deulli.com/about/",
+    "https://deulli.com/en/about/"
+  ],
+  "status": 200,
+  "response": "",
+  "meaning": "Submission receipt only; not proof of crawling, indexing, or AI citation"
+}

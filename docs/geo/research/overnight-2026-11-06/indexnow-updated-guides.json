@@ -1,0 +1,13 @@
+{
+  "submitted_at": "2026-11-05T19:46:11.120917+00:00",
+  "endpoint": "https://api.indexnow.org/indexnow",
+  "urls": [
+    "https://deulli.com/guides/english-study-apps/",
+    "https://deulli.com/about/",
+    "https://deulli.com/podcasts/",
+    "https://deulli.com/guides/podcast-listening/"
+  ],
+  "status": 200,
+  "response": "",
+  "meaning": "Submission receipt only; not proof of crawling, indexing, or AI citation"
+}
