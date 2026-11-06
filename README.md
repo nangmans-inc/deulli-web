@@ -12,6 +12,9 @@ follow English transcripts, check Korean text translations, and replay a dialogu
 The app is available on [iOS](https://apps.apple.com/kr/app/id6798545609) and
 [Android](https://play.google.com/store/apps/details?id=com.deulli.app).
 Product information and learning guides are published at [deulli.com](https://deulli.com/).
+The [official English product introduction](https://deulli.com/en/about/) describes
+transcripts, Korean text translations, dialogue replay, supported official bilingual
+content and the iPhone lock-screen player. [한국어 소개](https://deulli.com/about/).
 
 앱 소개·스토어 다운로드를 제공하는 정적 홈과 에피소드·쇼츠·채널·시리즈의 서버 렌더링 공유 페이지다.
 
