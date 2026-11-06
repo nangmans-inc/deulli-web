@@ -9,20 +9,29 @@ interface Props {
     description: string;
     relatedPath: string;
     relatedTitle: string;
+    lang?: "ko" | "en";
+    alternates?: { lang: "ko" | "en"; path: string }[];
   };
 }
 const { frontmatter } = Astro.props;
+const lang = frontmatter.lang ?? "ko";
+const english = lang === "en";
 ---
 
 <BaseLayout
   title={`${frontmatter.title} | 들리 deulli`}
   description={frontmatter.description}
+  lang={lang}
+  alternates={frontmatter.alternates}
+  imageAlt={english
+    ? "Deulli: learn English with podcasts, transcripts and Korean translations"
+    : undefined}
 >
   <div class="reading-page">
     <header>
-      <a href="/" aria-label="들리 홈">
+      <a href="/" aria-label={english ? "Deulli home (Korean)" : "들리 홈"}>
         <img src="/logo.svg" alt="" width="40" height="40" />
-        <span>들리</span>
+        <span>{english ? "Deulli" : "들리"}</span>
       </a>
     </header>
     <main id="main-content">
@@ -30,21 +39,37 @@ const { frontmatter } = Astro.props;
         <h1>{frontmatter.title}</h1>
         <slot />
       </article>
-      <aside aria-label="함께 읽기">
-        <p>함께 읽기</p>
+      <aside aria-label={english ? "Related reading" : "함께 읽기"}>
+        <p>{english ? "Related reading" : "함께 읽기"}</p>
         <a href={frontmatter.relatedPath}>{frontmatter.relatedTitle}</a>
       </aside>
       <section class="download" aria-labelledby="download-title">
-        <h2 id="download-title">들리에서 팟캐스트로 공부해보세요.</h2>
-        <p>기기별 지원 버전과 최신 이용 조건은 스토어와 앱에서 확인해주세요.</p>
-        <StoreLinks />
+        <h2 id="download-title">
+          {
+            english
+              ? "Listen and study with Deulli."
+              : "들리에서 팟캐스트로 공부해보세요."
+          }
+        </h2>
+        <p>
+          {
+            english
+              ? "Check the store listing and the app for device requirements, current pricing and availability. The app is designed for Korean-speaking English learners."
+              : "기기별 지원 버전과 최신 이용 조건은 스토어와 앱에서 확인해주세요."
+          }
+        </p>
+        <StoreLinks lang={lang} />
       </section>
     </main>
     <footer>
-      <a href="/">들리 홈</a>
-      <a href={site.policy.support}>고객지원</a>
-      <a href={site.policy.privacy}>개인정보 처리방침</a>
-      <a href={site.policy.terms}>이용약관</a>
+      <a href="/">{english ? "Deulli home (Korean)" : "들리 홈"}</a>
+      <a href={site.policy.support}
+        >{english ? "Support (Korean)" : "고객지원"}</a
+      >
+      <a href={site.policy.privacy}
+        >{english ? "Privacy (Korean)" : "개인정보 처리방침"}</a
+      >
+      <a href={site.policy.terms}>{english ? "Terms (Korean)" : "이용약관"}</a>
     </footer>
   </div>
 </BaseLayout>

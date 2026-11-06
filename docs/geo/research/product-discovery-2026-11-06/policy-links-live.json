@@ -1,0 +1,35 @@
+{
+  "observed_at": "2026-11-06T03:12:44.966099+00:00",
+  "pages": [
+    {
+      "url": "https://deulli.policy.nangmans.com/support",
+      "status": 200,
+      "official_home_link": true
+    },
+    {
+      "url": "https://deulli.policy.nangmans.com/terms",
+      "status": 200,
+      "official_home_link": true
+    },
+    {
+      "url": "https://deulli.policy.nangmans.com/privacy",
+      "status": 200,
+      "official_home_link": true
+    },
+    {
+      "url": "https://deulli.policy.nangmans.com/licenses",
+      "status": 200,
+      "official_home_link": true
+    },
+    {
+      "url": "https://deulli.policy.nangmans.com/refund",
+      "status": 200,
+      "official_home_link": true
+    },
+    {
+      "url": "https://deulli.policy.nangmans.com/account-deletion",
+      "status": 200,
+      "official_home_link": true
+    }
+  ]
+}

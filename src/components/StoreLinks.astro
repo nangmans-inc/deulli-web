@@ -1,29 +1,49 @@
 ---
 import { site } from "../data/site";
+interface Props {
+  lang?: "ko" | "en";
+}
+const { lang = "ko" } = Astro.props;
 ---
 
-<div class="store-links">
+<div class:list={["store-links", { "store-links--text": lang === "en" }]}>
   <a
     class="store-link"
     href={site.stores.appStore}
     target="_blank"
     rel="noopener"
-    aria-label="App Store에서 들리 다운로드 (새 창)"
+    aria-label={lang === "en"
+      ? "Get Deulli on the App Store (opens in a new tab)"
+      : "App Store에서 들리 다운로드 (새 창)"}
     data-ga-event="store_click"
     data-ga-label="app_store"
   >
-    <img src="/badges/app-store-ko.svg" alt="" width="130" height="40" />
+    {
+      lang === "en" ? (
+        <span>Get Deulli on the App Store</span>
+      ) : (
+        <img src="/badges/app-store-ko.svg" alt="" width="130" height="40" />
+      )
+    }
   </a>
   <a
     class="store-link store-link--google-play"
     href={site.stores.googlePlay}
     target="_blank"
     rel="noopener"
-    aria-label="Google Play에서 들리 다운로드 (새 창)"
+    aria-label={lang === "en"
+      ? "Get Deulli on Google Play (opens in a new tab)"
+      : "Google Play에서 들리 다운로드 (새 창)"}
     data-ga-event="store_click"
     data-ga-label="google_play"
   >
-    <img src="/badges/google-play-ko.png" alt="" width="646" height="250" />
+    {
+      lang === "en" ? (
+        <span>Get Deulli on Google Play</span>
+      ) : (
+        <img src="/badges/google-play-ko.png" alt="" width="646" height="250" />
+      )
+    }
   </a>
 </div>
 
@@ -47,6 +67,14 @@ import { site } from "../data/site";
     display: block;
     width: auto;
     height: 3rem;
+  }
+
+  .store-links--text .store-link {
+    height: auto;
+    min-height: 3rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-border);
+    font-weight: 600;
   }
 
   /* Google 원본의 투명 여백을 유지하면서 두 배지의 보이는 높이를 48px로 맞춘다.

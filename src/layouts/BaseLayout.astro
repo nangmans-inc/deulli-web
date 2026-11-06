@@ -11,6 +11,8 @@ interface Props {
   imageAlt?: string;
   canonicalPath?: string;
   noindex?: boolean;
+  lang?: "ko" | "en";
+  alternates?: { lang: "ko" | "en"; path: string }[];
 }
 
 const {
@@ -20,6 +22,8 @@ const {
   imageAlt = site.ogImageAlt,
   canonicalPath = Astro.url.pathname,
   noindex = false,
+  lang = "ko",
+  alternates = [],
 } = Astro.props;
 
 const canonical = new URL(canonicalPath, Astro.site ?? site.url).href;
@@ -66,7 +70,7 @@ const appJsonLd = {
 ---
 
 <!doctype html>
-<html lang="ko">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -86,6 +90,15 @@ const appJsonLd = {
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
     <link rel="canonical" href={canonical} />
+    {
+      alternates.map((alternate) => (
+        <link
+          rel="alternate"
+          hreflang={alternate.lang}
+          href={new URL(alternate.path, Astro.site ?? site.url).href}
+        />
+      ))
+    }
     <meta
       name="robots"
       content={noindex
@@ -103,7 +116,7 @@ const appJsonLd = {
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.nameKo} />
-    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:locale" content={lang === "en" ? "en_US" : "ko_KR"} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
