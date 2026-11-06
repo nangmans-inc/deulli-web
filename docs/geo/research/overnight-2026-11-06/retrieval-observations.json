@@ -1,15 +1,15 @@
 {
-  "updated_at": "2026-11-05T20:32:38.956731+00:00",
+  "updated_at": "2026-11-06T02:00:00.239752+00:00",
   "method": "Only URLs exposed in recorded tool actions/sources are observable; absence is not proof of absence from the provider index or hidden retrieval.",
   "groups": [
     {
       "cohort": "brand prompted",
-      "completed": 44,
+      "completed": 48,
       "exposed_website": 1,
-      "exposed_store": 29,
+      "exposed_store": 33,
       "exposed_policy": 0,
       "cited_website": 0,
-      "name_candidates": 39
+      "name_candidates": 43
     },
     {
       "cohort": "direct URL diagnostic",
@@ -22,7 +22,7 @@
     },
     {
       "cohort": "non-brand discovery",
-      "completed": 132,
+      "completed": 191,
       "exposed_website": 0,
       "exposed_store": 0,
       "exposed_policy": 0,
@@ -841,6 +841,58 @@
       "name_candidate": false
     },
     {
+      "source_file": "docs/geo/research/api-site-check-0145-gpt-6-luna.jsonl",
+      "question_id": "D04",
+      "model": "gpt-6-luna",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/api-site-check-0145-gpt-6-sol.jsonl",
+      "question_id": "D04",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/api-site-check-2145-gpt-6-luna.jsonl",
+      "question_id": "D04",
+      "model": "gpt-6-luna",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
+      "source_file": "docs/geo/research/api-site-check-2145-gpt-6-sol.jsonl",
+      "question_id": "D04",
+      "model": "gpt-6-sol",
+      "cohort": "brand prompted",
+      "exposed_own_url_kinds": [
+        "official store listing"
+      ],
+      "cited_own_url_kinds": [
+        "official store listing"
+      ],
+      "name_candidate": true
+    },
+    {
       "source_file": "docs/geo/research/api-site-discovery-early.jsonl",
       "question_id": "D04",
       "model": "gpt-6-sol",
@@ -1500,6 +1552,213 @@
       "name_candidate": false
     },
     {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-0030-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-0030-gpt-6-luna.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-0030-gpt-6-luna.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-0030-gpt-6-luna.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-0030-gpt-6-luna.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-0030-gpt-6-luna.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-0030-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-0030-gpt-6-sol.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-0030-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-0030-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-0030-gpt-6-sol.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-0030-gpt-6-sol.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-0130-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-0130-gpt-6-luna.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-0130-gpt-6-luna.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-0130-gpt-6-luna.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-0130-gpt-6-luna.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-0130-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-0130-gpt-6-sol.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-0130-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-0130-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-0130-gpt-6-sol.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-0130-gpt-6-sol.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
       "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-1830-gpt-6-luna.jsonl",
       "question_id": "G01",
       "model": "gpt-6-luna",
@@ -1816,6 +2075,330 @@
     },
     {
       "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2030-gpt-6-sol.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2130-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2130-gpt-6-luna.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2130-gpt-6-luna.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2130-gpt-6-luna.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2130-gpt-6-luna.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2130-gpt-6-luna.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2130-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2130-gpt-6-sol.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2130-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2130-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2130-gpt-6-sol.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2130-gpt-6-sol.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2230-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2230-gpt-6-luna.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2230-gpt-6-luna.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2230-gpt-6-luna.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2230-gpt-6-luna.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2230-gpt-6-luna.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2230-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2230-gpt-6-sol.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2230-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2230-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2230-gpt-6-sol.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2230-gpt-6-sol.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2330-gpt-6-luna.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2330-gpt-6-luna.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2330-gpt-6-luna.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2330-gpt-6-luna.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2330-gpt-6-luna.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2330-gpt-6-luna.jsonl",
+      "question_id": "G09",
+      "model": "gpt-6-luna",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2330-gpt-6-sol.jsonl",
+      "question_id": "G01",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2330-gpt-6-sol.jsonl",
+      "question_id": "G02",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2330-gpt-6-sol.jsonl",
+      "question_id": "G03",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2330-gpt-6-sol.jsonl",
+      "question_id": "G07",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2330-gpt-6-sol.jsonl",
+      "question_id": "G08",
+      "model": "gpt-6-sol",
+      "cohort": "non-brand discovery",
+      "exposed_own_url_kinds": [],
+      "cited_own_url_kinds": [],
+      "name_candidate": false
+    },
+    {
+      "source_file": "docs/geo/research/overnight-2026-11-06/api-watch-2330-gpt-6-sol.jsonl",
       "question_id": "G09",
       "model": "gpt-6-sol",
       "cohort": "non-brand discovery",
@@ -1879,7 +2462,11 @@
       "urls": [
         [
           "https://apps.apple.com/kr/app/%EB%93%A4%EB%A6%AC-%ED%8C%9F%EC%BA%90%EC%8A%A4%ED%8A%B8%EB%A1%9C-%ED%95%98%EB%8A%94-%EC%98%81%EC%96%B4%EA%B3%B5%EB%B6%80-%EB%A6%AC%EC%8A%A4%EB%8B%9D-%EC%89%90%EB%8F%84%EC%9E%89/id6798545609",
-          2
+          6
+        ],
+        [
+          "https://play.google.com/store/apps/details?id=com.deulli.app",
+          1
         ]
       ]
     },
@@ -1924,84 +2511,84 @@
       "category": "broad_intent",
       "urls": [
         [
-          "https://learnenglish.britishcouncil.org/english-levels/improve-your-english-level/five-tips-busy-learners-listening-speaking",
-          7
-        ],
-        [
-          "https://blog.elsaspeak.com/en/discover-the-new-elsa-speak-experience/",
-          7
-        ],
-        [
           "https://learningenglish.voanews.com/podcasts",
-          7
+          19
         ],
         [
           "https://learnenglish.britishcouncil.org/getting-started",
-          6
+          13
         ],
         [
-          "https://learnenglish.britishcouncil.org/general-english/audio-series/podcasts",
-          6
-        ],
-        [
-          "https://www.duolingo.com/learn",
-          5
-        ],
-        [
-          "https://learnenglish.britishcouncil.org/comment/206115",
-          5
-        ],
-        [
-          "https://learnenglish.britishcouncil.org/level/improve-your-english-level/how-can-i-improve-my-english-pronunciation",
-          5
+          "https://blog.elsaspeak.com/en/discover-the-new-elsa-speak-experience/",
+          13
         ],
         [
           "https://podcasts.apple.com/us/podcast/all-ears-english-podcast/id751574016",
-          4
+          11
         ],
         [
-          "https://www.britishcouncil.org/english/learn-online/resources-apps",
-          4
+          "https://learnenglish.britishcouncil.org/level/improve-your-english-level/how-can-i-improve-my-english-pronunciation",
+          11
+        ],
+        [
+          "https://learnenglish.britishcouncil.org/english-levels/improve-your-english-level/five-tips-busy-learners-listening-speaking",
+          10
         ],
         [
           "https://africa.teachingenglish.org.uk/classroom/pronunciation/shadowing",
-          4
+          10
         ],
         [
-          "https://www.bbclearningenglish.org/",
-          3
+          "https://learnenglish.britishcouncil.org/general-english/audio-series/podcasts",
+          10
         ],
         [
-          "https://ko.duolingo.com/nojs/splash",
-          3
-        ],
-        [
-          "https://help.ted.com/hc/en-us/articles/360018572954-How-do-I-find-transcripts-for-TED-and-TEDx-talks",
-          3
-        ],
-        [
-          "https://takeielts.britishcouncil.org/blog/how-to-improve-english-pronunciation-ielts-speaking",
-          3
+          "https://learnenglish.britishcouncil.org/comment/206115",
+          9
         ],
         [
           "https://learnenglish.britishcouncil.org/free-resources/listening",
-          3
+          8
+        ],
+        [
+          "https://www.duolingo.com/learn",
+          7
+        ],
+        [
+          "https://elsaspeak.com/en/faqs/what-is-elsa-speak",
+          7
+        ],
+        [
+          "https://takeielts.britishcouncil.org/blog/how-to-improve-english-pronunciation-ielts-speaking",
+          6
+        ],
+        [
+          "https://downloads.bbc.co.uk/learningenglish/features/6min/260319_6_minute_english_how_do_we_adapt_to_the_cold_transcript_.pdf",
+          6
+        ],
+        [
+          "https://www.britishcouncil.org/english/learn-online/resources-apps",
+          5
+        ],
+        [
+          "https://www.bbclearningenglish.org/",
+          5
         ],
         [
           "https://cakecorp.com/ko/",
-          2
-        ],
-        [
-          "https://www.speak.com/?lang=en",
-          2
+          4
         ],
         [
           "https://cake.day/",
-          2
+          4
         ],
         [
-          "https://learnenglish.britishcouncil.org/free-resources/general",
-          2
+          "https://ko.duolingo.com/nojs/splash",
+          4
+        ],
+        [
+          "https://play.google.com/store/apps/details/Cake_Learn_English_Korean?hl=ko&id=me.mycake",
+          4
         ]
       ]
     },
@@ -2022,11 +2609,11 @@
           8
         ],
         [
-          "https://podcast.parroto.app/",
+          "https://www.lingoreel.com/ko",
           5
         ],
         [
-          "https://www.lingoreel.com/ko",
+          "https://podcast.parroto.app/",
           5
         ],
         [
@@ -2112,15 +2699,11 @@
           1
         ],
         [
-          "https://englishleap.app/",
-          1
-        ],
-        [
           "https://podcast.parroto.app/",
           1
         ],
         [
-          "https://plateaukao.github.io/nerlan-android/",
+          "https://englishleap.app/",
           1
         ],
         [
@@ -2133,6 +2716,10 @@
         ],
         [
           "https://playlingo.app/podcast-app-with-transcript",
+          1
+        ],
+        [
+          "https://plateaukao.github.io/nerlan-android/",
           1
         ],
         [
@@ -2174,15 +2761,11 @@
           1
         ],
         [
-          "https://www.genspark.ai/helpcenter/ai-pods",
-          1
-        ],
-        [
           "https://support.google.com/gemininotebook/answer/16212820?hl=en-KY",
           1
         ],
         [
-          "https://glotcast.com/",
+          "https://www.genspark.ai/helpcenter/ai-pods",
           1
         ],
         [
@@ -2190,7 +2773,7 @@
           1
         ],
         [
-          "https://support.apple.com/guide/iphone/view-podcast-transcripts-iph9426049e9/27/ios/27",
+          "https://glotcast.com/",
           1
         ],
         [
@@ -2198,11 +2781,15 @@
           1
         ],
         [
-          "https://speakcove.com/features/lock-screen",
+          "https://support.apple.com/guide/iphone/view-podcast-transcripts-iph9426049e9/27/ios/27",
           1
         ],
         [
           "https://www.lingoreel.com/en/support",
+          1
+        ],
+        [
+          "https://speakcove.com/features/lock-screen",
           1
         ],
         [
@@ -2248,11 +2835,11 @@
           1
         ],
         [
-          "https://lang.nursing.tma.uz/wp-content/uploads/2021/03/Nurmukhamedov__Sharakhimov_2021_Corpus_based_vocabulary_analysis.pdf",
+          "https://www.sciencedirect.com/science/article/pii/S0360131518301623",
           1
         ],
         [
-          "https://www.sciencedirect.com/science/article/pii/S0360131518301623",
+          "https://lang.nursing.tma.uz/wp-content/uploads/2021/03/Nurmukhamedov__Sharakhimov_2021_Corpus_based_vocabulary_analysis.pdf",
           1
         ]
       ]
@@ -2286,10 +2873,6 @@
           1
         ],
         [
-          "https://langxel.io/",
-          1
-        ],
-        [
           "https://support.google.com/youtube/answer/4792576?hl=ko-SN",
           1
         ],
@@ -2298,11 +2881,15 @@
           1
         ],
         [
-          "https://podknow.eu/en/",
+          "https://langxel.io/",
           1
         ],
         [
           "https://trypodling.com/en/features/",
+          1
+        ],
+        [
+          "https://podknow.eu/en/",
           1
         ],
         [
@@ -2340,7 +2927,7 @@
           1
         ],
         [
-          "https://explore.microsoft.com/ko-kr/edge/features/read-aloud?form=MT0160&msockid=0155edfb2563633c2449fbb224106246",
+          "https://support.apple.com/en-asia/guide/iphone/iph96b214f0/27/ios/27",
           1
         ],
         [
@@ -2348,15 +2935,15 @@
           1
         ],
         [
-          "https://support.apple.com/en-asia/guide/iphone/iph96b214f0/27/ios/27",
-          1
-        ],
-        [
-          "https://www.lingoreel.com/en",
+          "https://explore.microsoft.com/ko-kr/edge/features/read-aloud?form=MT0160&msockid=0155edfb2563633c2449fbb224106246",
           1
         ],
         [
           "https://learnenglish.britishcouncil.org/apps/learnenglish-podcasts",
+          1
+        ],
+        [
+          "https://www.lingoreel.com/en",
           1
         ],
         [

@@ -1,19 +1,29 @@
 {
-  "updated_at": "2026-11-05T20:32:37.293050+00:00",
+  "updated_at": "2026-11-06T02:00:00.014044+00:00",
   "deadline_utc": "2026-11-06T02:00:00Z",
-  "status": "running",
-  "recorded": 36,
-  "completed": 36,
-  "errors": 0,
+  "status": "finished",
+  "recorded": 96,
+  "completed": 95,
+  "errors": 1,
   "brand_candidates": 0,
   "official_website_citations": 0,
   "expected_observations": 96,
   "observed_files": [
+    "api-watch-0030-gpt-6-luna.jsonl",
+    "api-watch-0030-gpt-6-sol.jsonl",
+    "api-watch-0130-gpt-6-luna.jsonl",
+    "api-watch-0130-gpt-6-sol.jsonl",
     "api-watch-1830-gpt-6-luna.jsonl",
     "api-watch-1830-gpt-6-sol.jsonl",
     "api-watch-1930-gpt-6-luna.jsonl",
     "api-watch-1930-gpt-6-sol.jsonl",
     "api-watch-2030-gpt-6-luna.jsonl",
-    "api-watch-2030-gpt-6-sol.jsonl"
+    "api-watch-2030-gpt-6-sol.jsonl",
+    "api-watch-2130-gpt-6-luna.jsonl",
+    "api-watch-2130-gpt-6-sol.jsonl",
+    "api-watch-2230-gpt-6-luna.jsonl",
+    "api-watch-2230-gpt-6-sol.jsonl",
+    "api-watch-2330-gpt-6-luna.jsonl",
+    "api-watch-2330-gpt-6-sol.jsonl"
   ]
 }
