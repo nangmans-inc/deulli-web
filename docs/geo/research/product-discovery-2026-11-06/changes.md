@@ -37,4 +37,10 @@ Google의 2026-07-10 문서는 Search Console의 Search generative AI 포함 설
 - Liveliness PASS: 기존 로고·타입 대비·문장 중심 구성으로 제품 정체성을 유지한다. 390px·1440px 전체 화면을 확인했고 선언한 읽기 리듬과 정적 동작에 맞는다.
 - Craftsmanship PASS: Astro·ESLint 오류/경고 0, 빌드 성공, 기존 테스트 53개 통과. HTML 언어·자체 canonical·양방향 hreflang·새 sitemap URL을 확인했다. Analytics/Meta 요청은 headless 검사에서 차단했다.
 
-이 Gate는 변경본의 품질 검증이며 검색 색인·추천 성공의 증거가 아니다. 운영 공개·제출 영수증은 공개 이후 별도로 기록한다.
+이 Gate는 변경본의 품질 검증이며 검색 색인·추천 성공의 증거가 아니다.
+
+## 운영 반영 확인
+
+[웹 PR #23](https://github.com/nangmans-inc/deulli-web/pull/23)은 12:17 KST에 병합됐다. 운영의 한국어 소개·영문 소개·사이트맵이 모두 200이며 검증한 로컬 빌드와 SHA-256이 일치한다. 사이트맵은 새 영문 소개를 포함한 11개 URL이다. 운영 headless에서도 한국어→영어→한국어 이동과 문서 언어·다운로드 링크를 확인했다. `production-content.json`에 HTTP/본문 영수증을 보존했다.
+
+운영 원문 확인 후 두 소개 URL의 IndexNow 제출이 HTTP 200으로 수락됐다. `indexnow-product-information.json`은 제출 영수증이며 색인·추천 완료가 아니다. 공개 GitHub 저장소 설명에도 검증된 영문 제품 요약을 추가했고 기존 홈페이지 주소와 주제는 유지했다. 타사 평가나 독립 추천으로 표현하지 않는다.
