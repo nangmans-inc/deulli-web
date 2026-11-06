@@ -4,9 +4,16 @@ title: 들리(deulli)는 어떤 앱인가요?
 description: 영어 팟캐스트를 듣고 영어 스크립트와 한국어 번역을 확인하는 들리의 학습 방식과 지원 기기를 소개합니다.
 relatedPath: /guides/podcast-listening/
 relatedTitle: 영어 팟캐스트가 잘 안 들릴 때, 한 문장씩 확인하는 방법
+alternates:
+  - lang: ko
+    path: /about/
+  - lang: en
+    path: /en/about/
 ---
 
 들리(deulli)는 영어 팟캐스트를 들으며 공부하는 모바일 앱입니다. 영어 스크립트와 한국어 번역을 확인하고, 놓친 문장부터 다시 들으며 내용을 짚어볼 수 있습니다. iOS와 Android에서 사용할 수 있습니다.
+
+[English product information](/en/about/)
 
 ## 듣다가 내용을 놓쳤을 때
 
