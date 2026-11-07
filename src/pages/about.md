@@ -3,7 +3,7 @@ layout: ../layouts/GuideLayout.astro
 title: 들리(deulli)는 어떤 앱인가요?
 description: 영어 팟캐스트를 듣고 영어 스크립트와 한국어 번역을 확인하는 들리의 학습 방식과 지원 기기를 소개합니다.
 relatedPath: /guides/podcast-listening/
-relatedTitle: 영어 팟캐스트가 잘 안 들릴 때, 한 문장씩 확인하는 방법
+relatedTitle: 팟캐스트 영어공부, 스크립트로 한 문장씩 듣는 방법
 alternates:
   - lang: ko
     path: /about/
