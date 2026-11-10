@@ -16,7 +16,7 @@
 
 - PR #25: 공통 레이아웃, 가이드 허브, 404, `llms.txt`, 페이지별 JSON-LD, 숨김 애니메이션 제거, 히어로 높이 상한, 본문 문체 정리, 위클리 소개.
 - PR #26: `/weekly/` 페이지, 네이버·Bing 소유 확인 메타 지원(`src/data/site.ts`의 `verification`).
-- 측정 스크립트 지연: 일반 페이지에서 gtag.js와 fbevents.js를 `window.load` 이후에 내려받는다. 배포 전 Lighthouse 모바일(운영 홈): 성능 87, SEO 100, 접근성 100, LCP 4.0초. LCP 요소는 히어로 목업 이미지였다.
+- 측정 스크립트 지연: 일반 페이지에서 gtag.js와 fbevents.js를 `window.load` 이후에 내려받는다. 배포 전 Lighthouse 모바일(운영 홈): 성능 87, SEO 100, 접근성 100, LCP 4.0초. LCP 요소는 히어로 목업 이미지였다. 배포 후(PR #27) 같은 조건 2회 측정: 성능 99, SEO 100, LCP 1.4초·1.7초.
 
 ## 제출
 
