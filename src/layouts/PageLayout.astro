@@ -16,7 +16,7 @@ const jsonLd = [
 ];
 ---
 
-<BaseLayout {...Astro.props} jsonLd={jsonLd}>
+<BaseLayout {...Astro.props} jsonLd={jsonLd} deferTracking>
   <a class="skip-link" href="#main"
     >{lang === "en" ? "Skip to content" : "본문으로 건너뛰기"}</a
   >

@@ -1,9 +1,11 @@
 ---
 interface Props {
   fallback?: boolean;
+  /** fbevents.js 내려받기를 window load 이후로 미룬다. 호출은 큐에 쌓였다가 전송된다. */
+  defer?: boolean;
 }
 
-const { fallback = false } = Astro.props;
+const { fallback = false, defer = false } = Astro.props;
 const pixelId = "1364197462562357";
 const enabled = import.meta.env.PROD;
 const pixelScript = `
@@ -11,9 +13,13 @@ const pixelScript = `
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
+  n.queue=[];
+  function l(){t=b.createElement(e);t.async=!0;
   t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  s.parentNode.insertBefore(t,s)}
+  if(!${defer}||b.readyState==='complete')l();
+  else f.addEventListener('load',function(){setTimeout(l,0)});
+  }(window, document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '${pixelId}');
   fbq('track', 'PageView');
