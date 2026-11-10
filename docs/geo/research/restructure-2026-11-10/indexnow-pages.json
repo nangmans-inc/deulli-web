@@ -1,0 +1,19 @@
+{
+  "submitted_at": "2026-11-10T06:48:44.839840+00:00",
+  "endpoint": "https://api.indexnow.org/indexnow",
+  "urls": [
+    "https://deulli.com/",
+    "https://deulli.com/about/",
+    "https://deulli.com/en/about/",
+    "https://deulli.com/guides/",
+    "https://deulli.com/guides/choosing-a-podcast-app/",
+    "https://deulli.com/guides/english-study-apps/",
+    "https://deulli.com/guides/podcast-listening/",
+    "https://deulli.com/guides/starting-english-study/",
+    "https://deulli.com/podcasts/",
+    "https://deulli.com/weekly/"
+  ],
+  "status": 200,
+  "response": "",
+  "meaning": "Submission receipt only; not proof of crawling, indexing, or AI citation"
+}

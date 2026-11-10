@@ -1,0 +1,12 @@
+{
+  "submitted_at": "2026-11-10T06:48:47.714322+00:00",
+  "endpoint": "https://api.indexnow.org/indexnow",
+  "urls": [
+    "https://deulli.com/share/episode/57",
+    "https://deulli.com/share/episode/80",
+    "https://deulli.com/share/episode/105972"
+  ],
+  "status": 200,
+  "response": "",
+  "meaning": "Submission receipt only; not proof of crawling, indexing, or AI citation"
+}

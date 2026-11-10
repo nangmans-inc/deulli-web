@@ -1,10 +1,28 @@
 ---
 // Google Analytics 4 — 프로덕션 빌드 + 측정 ID가 있을 때만 로드.
 // (dev 서버에서는 로드되지 않아 데이터가 오염되지 않음)
+//
+// defer: gtag.js 내려받기를 window load 이후로 미룬다. 이벤트는 dataLayer에 쌓였다가
+// 스크립트가 오면 전송되므로 빠지지 않는다. 첫 화면 이미지(LCP)와 대역폭을 다투지 않게 한다.
+// 공유 페이지는 load 직후 스토어로 이동하므로 미루지 않는다.
+interface Props {
+  defer?: boolean;
+}
+const { defer = false } = Astro.props;
 const gaId = import.meta.env.PUBLIC_GA_ID;
 const enabled = import.meta.env.PROD && !!gaId;
 
 const initScript = `
+(function () {
+  function load() {
+    var s = document.createElement("script");
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=${gaId}";
+    document.head.appendChild(s);
+  }
+  if (!${defer} || document.readyState === "complete") load();
+  else window.addEventListener("load", function () { setTimeout(load, 0); });
+})();
 window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag("js", new Date());
@@ -48,15 +66,4 @@ if (document.readyState === "loading") {
 `;
 ---
 
-{
-  enabled && (
-    <Fragment>
-      <script
-        is:inline
-        async
-        src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-      />
-      <script is:inline set:html={initScript} />
-    </Fragment>
-  )
-}
+{enabled && <script is:inline set:html={initScript} />}

@@ -25,6 +25,8 @@ export interface Props {
   updatedAt?: Date;
   /** 이 페이지의 schema.org 노드. lib/seo.ts의 빌더로 만든다. */
   jsonLd?: Record<string, unknown>[];
+  /** 측정 스크립트 내려받기를 load 이후로 미룬다. 로드 직후 이동하는 공유 페이지는 끈다. */
+  deferTracking?: boolean;
 }
 
 const {
@@ -40,6 +42,7 @@ const {
   publishedAt,
   updatedAt,
   jsonLd = [],
+  deferTracking = false,
 } = Astro.props;
 
 const origin = Astro.site ?? site.url;
@@ -145,8 +148,8 @@ const alternateLinks = alternates.map((alternate) => ({
       )
     }
 
-    <Analytics />
-    <MetaPixel />
+    <Analytics defer={deferTracking} />
+    <MetaPixel defer={deferTracking} />
   </head>
   <body>
     <MetaPixel fallback />
