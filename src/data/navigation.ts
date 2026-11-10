@@ -2,6 +2,7 @@ import { site } from "./site";
 
 /** 헤더·푸터·llms.txt가 함께 쓰는 사이트 구조. 페이지를 추가하면 여기에 등록한다. */
 export const primaryNav = [
+  { href: "/weekly/", label: "위클리" },
   { href: "/about/", label: "앱 소개" },
   { href: "/podcasts/", label: "공식 팟캐스트" },
   { href: "/guides/", label: "학습 가이드" },

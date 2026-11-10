@@ -25,6 +25,7 @@ import { weekly } from "../../data/site";
       }
     </ol>
     <p class="note">{weekly.note}</p>
+    <p class="more"><a href="/weekly/">위클리 일차별 순서 보기</a></p>
   </div>
 </section>
 
@@ -72,6 +73,12 @@ import { weekly } from "../../data/site";
     max-width: 44rem;
     margin-top: 2.5rem;
     font-size: 0.9375rem;
+  }
+  .more {
+    margin-top: 1.5rem;
+  }
+  .more a {
+    color: var(--color-on-brand);
   }
   @media (min-width: 768px) {
     ol {

@@ -94,6 +94,7 @@ src/
   content/
     guides/*.md               학습 가이드 본문 → /guides/{파일명}/
     pages/about.md, about-en.md  제품 소개 본문 → /about/, /en/about/
+    pages/weekly.md           위클리 소개 본문 → /weekly/
   data/
     site.ts                   도메인·브랜드 카피·스토어 주소·제품 기능·학습 단계
     navigation.ts             헤더·푸터 메뉴
@@ -115,6 +116,7 @@ src/
   pages/
     index.astro               홈
     about.astro, en/about.astro  제품 소개 (ko·en, hreflang 상호 연결)
+    weekly.astro              위클리 소개
     podcasts.astro            공식 팟캐스트 안내
     guides/index.astro        가이드 허브
     guides/[id].astro         가이드 글

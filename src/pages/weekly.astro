@@ -1,0 +1,19 @@
+---
+import { render } from "astro:content";
+import ArticleLayout from "../layouts/ArticleLayout.astro";
+import { getPage } from "../lib/content";
+
+const page = await getPage("weekly");
+const { Content } = await render(page);
+---
+
+<ArticleLayout
+  title={page.data.title}
+  description={page.data.description}
+  path="/weekly/"
+  crumbLabel="위클리"
+  publishedAt={page.data.publishedAt}
+  updatedAt={page.data.updatedAt}
+>
+  <Content />
+</ArticleLayout>
