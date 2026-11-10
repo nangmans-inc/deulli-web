@@ -82,6 +82,19 @@ const alternateLinks = alternates.map((alternate) => ({
         ? "noindex, nofollow"
         : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
     />
+    {
+      site.verification.naver && (
+        <meta
+          name="naver-site-verification"
+          content={site.verification.naver}
+        />
+      )
+    }
+    {
+      site.verification.bing && (
+        <meta name="msvalidate.01" content={site.verification.bing} />
+      )
+    }
     <meta name="theme-color" content="#ffffff" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

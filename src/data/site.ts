@@ -27,6 +27,15 @@ export const site = {
     googlePlay: "https://play.google.com/store/apps/details?id=com.deulli.app",
   },
 
+  /**
+   * 검색엔진 웹마스터 도구의 소유 확인 코드(메타 태그의 content 값). 비어 있으면 태그를 넣지 않는다.
+   * 네이버: searchadvisor.naver.com → 사이트 등록 → HTML 태그. Bing: bing.com/webmasters.
+   */
+  verification: {
+    naver: "",
+    bing: "",
+  },
+
   /** 정책 문서는 별도 정적 사이트(deulli-policy)에서 서비스한다. */
   policy: {
     privacy: "https://deulli.policy.nangmans.com/privacy",

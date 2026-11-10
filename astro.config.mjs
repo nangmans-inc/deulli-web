@@ -20,6 +20,7 @@ function updatedAt(file) {
 const lastmod = new Map([
   ["/about/", updatedAt("src/content/pages/about.md")],
   ["/en/about/", updatedAt("src/content/pages/about-en.md")],
+  ["/weekly/", updatedAt("src/content/pages/weekly.md")],
 ]);
 for (const name of readdirSync("src/content/guides")) {
   if (!name.endsWith(".md")) continue;

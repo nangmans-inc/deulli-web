@@ -13,6 +13,7 @@ export const GET: APIRoute = async () => {
   const guides = await getGuides();
   const about = await getPage("about");
   const aboutEn = await getPage("about-en");
+  const weeklyPage = await getPage("weekly");
 
   const body = `# 들리 (deulli)
 
@@ -33,6 +34,8 @@ ${weekly.lead}
 ${weekly.steps.map((step, index) => `${index + 1}. ${step.title}: ${step.body}`).join("\n")}
 
 ${weekly.note}
+
+- [${weeklyPage.data.title}](${abs("/weekly/")}): ${weeklyPage.data.description}
 
 ## 주요 기능
 

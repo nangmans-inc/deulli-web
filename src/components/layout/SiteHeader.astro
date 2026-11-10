@@ -10,6 +10,7 @@ const english = lang === "en";
 const nav = english
   ? [
       { href: "/en/about/", label: "About" },
+      { href: "/weekly/", label: "Weekly (KO)" },
       { href: "/podcasts/", label: "Podcasts (KO)" },
       { href: "/guides/", label: "Guides (KO)" },
     ]
@@ -80,15 +81,15 @@ const isCurrent = (href: string) =>
   ul {
     display: flex;
     gap: 0.25rem;
-    margin-inline: -0.625rem;
+    margin-inline: -0.5rem;
   }
   nav a {
     display: inline-flex;
     align-items: center;
     min-height: 3rem;
-    padding-inline: 0.625rem;
+    padding-inline: 0.5rem;
     color: var(--color-fg-muted);
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     font-weight: 600;
     white-space: nowrap;
   }
