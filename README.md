@@ -82,39 +82,75 @@ node -e "require('sharp')('src/assets/hero-mockup.png').ensureAlpha().raw()
 # 0 0  → 투명. 255면 회색 판이 붙어 있다.
 ```
 
-제품을 글머리표로 설명하지 않고 **실제 플레이어 화면을 그대로 보여준다.** 문장이 어떻게
-짚이는지는 기능 설명 세 줄보다 스크린샷 하나가 빠르다.
-
+히어로에서는 제품을 글머리표로 설명하지 않고 **실제 플레이어 화면을 그대로 보여준다.**
 700px 이상에서는 왼쪽에 브랜드 카피와 다운로드 버튼, 오른쪽에 재생 화면 목업을 배치한다.
-모바일에서는 슬로건 옆의 마스코트로 제품을 보여주고 다운로드 버튼을 첫 화면에 둔다.
+그 아래로 학습 순서 · 기능 · 공식 팟캐스트와 가이드 · 자주 묻는 질문 · 다운로드가 이어진다.
 
 ## 구조
 
 ```
 src/
-  pages/index.astro           앱 다운로드 페이지
-  pages/share/[kind]/[id].astro  에피소드·쇼츠·채널·시리즈 공유 SSR
-  pages/share/og/[kind]/[id].ts   최신 서명 이미지 바이트 프록시
-  lib/share.ts               익명 API 계약·ID 검증·이미지 보안·제한 캐시
-  lib/share-service.ts       서버 환경 변수·로컬 폴백 이미지 연결
-  scripts/share-redirect.js   공유 HTML에 포함되는 모바일 스토어 자동 이동
-  layouts/BaseLayout.astro    <head> 메타·JSON-LD·스크롤 리빌
-  components/
-    Hero.astro                슬로건·마스코트·스크린샷·다운로드 버튼
-    StoreLinks.astro          App Store·Google Play 다운로드 링크
-    Analytics.astro           GA4 (PROD + 측정 ID 있을 때만)
-    ui/                       Multiline
+  content.config.ts           콘텐츠 컬렉션 스키마 (guides, pages)
+  content/
+    guides/*.md               학습 가이드 본문 → /guides/{파일명}/
+    pages/about.md, about-en.md  제품 소개 본문 → /about/, /en/about/
   data/
-    site.ts                   도메인·브랜드 카피·스토어 주소·SEO 메타
-  assets/
-    mascot.png                마스코트 — astro:assets가 webp로 최적화
-    hero-mockup.png           Figma 2391:52의 iPhone 17 목업 (배경 투명)
-  styles/global.css           디자인 토큰 2계층 + base/components 레이어
+    site.ts                   도메인·브랜드 카피·스토어 주소·제품 기능·학습 단계
+    navigation.ts             헤더·푸터 메뉴
+    faq.ts                    홈 FAQ (화면과 FAQPage JSON-LD가 같은 배열)
+    featured-episodes.ts      공개 확인한 공식 에피소드
+  lib/
+    seo.ts                    schema.org JSON-LD 빌더, 날짜 표기
+    content.ts                컬렉션 조회 헬퍼
+    share.ts, share-service.ts  공유 페이지의 API 계약·이미지 보안·캐시
+  layouts/
+    BaseLayout.astro          <head> 메타·OG·JSON-LD·측정 스크립트
+    PageLayout.astro          Base + 공통 헤더·푸터 (일반 페이지)
+    ArticleLayout.astro       Page + 빵부스러기·수정일·다른 가이드·다운로드 (읽는 글)
+  components/
+    layout/                   SiteHeader, SiteFooter
+    home/                     Hero, HeroBackdrop, HowItWorks, Features, Explore, Faq
+    Breadcrumbs, GuideList, EpisodeList, DownloadCta, StoreLinks
+    Analytics, MetaPixel      GA4·Meta Pixel (PROD에서만)
+  pages/
+    index.astro               홈
+    about.astro, en/about.astro  제품 소개 (ko·en, hreflang 상호 연결)
+    podcasts.astro            공식 팟캐스트 안내
+    guides/index.astro        가이드 허브
+    guides/[id].astro         가이드 글
+    404.astro                 없는 주소 (noindex)
+    llms.txt.ts               AI 도구용 사이트 요약 (데이터에서 생성)
+    share/[kind]/[id].astro   에피소드·쇼츠·채널·시리즈 공유 SSR
+    share/og/[kind]/[id].ts   최신 서명 이미지 바이트 프록시
+  scripts/share-redirect.js   공유 HTML에 포함되는 모바일 스토어 자동 이동
+  assets/                     mascot.png, hero-mockup.png (astro:assets가 webp로 최적화)
+  styles/global.css           디자인 토큰 2계층 + base/components 레이어 (.prose 포함)
 public/
   logo.svg, favicon.svg       로고 (deulli-policy와 동일 파일)
+  apple-touch-icon.png, icon-512.png  logo.svg에서 만든 PNG (iOS 홈 화면·Organization logo)
   og-image.png                1200×630 공유 카드 — scripts/generate-og.mjs 산출물
   fonts/pretendard/           자체 호스팅 Pretendard (가변·동적 서브셋)
 ```
+
+### 페이지를 추가할 때
+
+- **가이드**: `src/content/guides/`에 `.md`를 추가한다. 프론트매터는 `title`, `description`,
+  `publishedAt`, `updatedAt`, `order`. 허브·홈·관련 글·사이트맵·`llms.txt`에 자동으로 들어간다.
+- **본문을 고쳤을 때**만 `updatedAt`을 올린다. 화면의 수정일, Article JSON-LD의
+  `dateModified`, 사이트맵 `lastmod`가 모두 이 값이다. 배포할 때마다 올리지 않는다.
+- **제품 기능·FAQ**: `data/site.ts`의 `features`, `data/faq.ts`를 고친다. 화면과 구조화
+  데이터가 같은 배열을 쓰므로 한쪽만 바뀌는 일이 없다. 소개 본문(`content/pages/`)도 함께 고친다.
+- **구조화 데이터**: 페이지는 자기 내용에 해당하는 노드만 `jsonLd` prop으로 넘긴다.
+  Organization·WebSite는 `PageLayout`이 항상 싣는다.
+
+### 검색·AI 크롤러를 위해 지키는 것
+
+- 본문은 JavaScript 없이 보여야 한다. 스크롤 등장 애니메이션처럼 내용을 `opacity: 0`으로
+  시작하게 하는 장치를 넣지 않는다.
+- 섹션 높이를 `100svh`에만 묶지 않는다. 검색 렌더러는 세로로 매우 긴 뷰포트를 쓰므로 상한이
+  없으면 히어로가 수천 px로 늘어나 본문이 밀린다. 히어로는 `min(100svh - 헤더, 44rem)`이다.
+- 한 페이지에 `<h1>`은 하나, 같은 문구를 화면 크기별로 중복해 넣지 않는다.
+- 기존 주소는 바꾸지 않는다. 바꿔야 하면 `vercel.json`에 301을 함께 추가한다.
 
 ### 색
 

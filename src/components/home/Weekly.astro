@@ -1,0 +1,81 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import { weekly } from "../../data/site";
+---
+
+<section class="section-y weekly" aria-labelledby="weekly-title">
+  <div class="container-content">
+    <p class="eyebrow">{weekly.name}</p>
+    <SectionHeading
+      id="weekly-title"
+      title={weekly.heading}
+      lead={weekly.lead}
+    />
+    <ol>
+      {
+        weekly.steps.map((step, index) => (
+          <li>
+            <span class="number" aria-hidden="true">
+              {index + 1}
+            </span>
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+    <p class="note">{weekly.note}</p>
+  </div>
+</section>
+
+<style>
+  .weekly {
+    background: var(--color-brand-deep);
+    color: var(--color-on-brand);
+  }
+  .eyebrow {
+    margin-bottom: 0.75rem;
+    color: var(--color-on-brand-faint);
+    font-weight: 700;
+  }
+  .weekly :global(.section-heading p) {
+    color: var(--color-on-brand-muted);
+  }
+  ol {
+    display: grid;
+    gap: 2rem;
+  }
+  li {
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--color-on-brand-faint);
+  }
+  .number {
+    color: var(--color-on-brand-faint);
+    font-size: 0.9375rem;
+    font-weight: 800;
+  }
+  h3 {
+    margin-top: 0.5rem;
+    font-size: var(--text-h3);
+    font-weight: 700;
+    line-height: 1.35;
+  }
+  li p,
+  .note {
+    color: var(--color-on-brand-muted);
+    line-height: 1.8;
+  }
+  li p {
+    margin-top: 0.75rem;
+  }
+  .note {
+    max-width: 44rem;
+    margin-top: 2.5rem;
+    font-size: 0.9375rem;
+  }
+  @media (min-width: 768px) {
+    ol {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

@@ -1,0 +1,46 @@
+---
+/** 사이트 공통 헤더·푸터를 두른 일반 페이지. 본문은 <main> 안에 들어간다. */
+import BaseLayout, { type Props as BaseProps } from "./BaseLayout.astro";
+import SiteHeader from "../components/layout/SiteHeader.astro";
+import SiteFooter from "../components/layout/SiteFooter.astro";
+import { organizationNode, websiteNode } from "../lib/seo";
+
+type Props = BaseProps;
+
+const lang = Astro.props.lang ?? "ko";
+// 발행자와 사이트는 모든 페이지가 @id로 참조하므로 정의를 항상 함께 싣는다.
+const jsonLd = [
+  organizationNode(),
+  websiteNode(),
+  ...(Astro.props.jsonLd ?? []),
+];
+---
+
+<BaseLayout {...Astro.props} jsonLd={jsonLd}>
+  <a class="skip-link" href="#main"
+    >{lang === "en" ? "Skip to content" : "본문으로 건너뛰기"}</a
+  >
+  <SiteHeader lang={lang} />
+  <main id="main">
+    <slot />
+  </main>
+  <SiteFooter lang={lang} />
+</BaseLayout>
+
+<style>
+  .skip-link {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 20;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    background: var(--color-bg);
+    color: var(--color-brand);
+    font-weight: 700;
+    transform: translateY(-200%);
+  }
+  .skip-link:focus {
+    transform: none;
+  }
+</style>

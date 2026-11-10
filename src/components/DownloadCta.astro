@@ -1,0 +1,44 @@
+---
+/** 페이지 하단의 다운로드 안내. 홈과 글 페이지가 함께 쓴다. */
+import StoreLinks from "./StoreLinks.astro";
+
+interface Props {
+  lang?: "ko" | "en";
+}
+const { lang = "ko" } = Astro.props;
+const english = lang === "en";
+---
+
+<section class="download" aria-labelledby="download-title">
+  <div class="container-content">
+    <h2 id="download-title">
+      {english ? "Get Deulli" : "들리 받기"}
+    </h2>
+    <p>
+      {
+        english
+          ? "Deulli runs on iOS and Android and is built for Korean-speaking English learners. Device requirements and prices are on each store listing."
+          : "iOS와 Android에서 씁니다. 지원 버전과 요금은 각 스토어에 나옵니다."
+      }
+    </p>
+    <StoreLinks lang={lang} />
+  </div>
+</section>
+
+<style>
+  .download {
+    padding-block: clamp(3rem, 7vw, 5rem);
+    border-top: 1px solid var(--color-border);
+  }
+  h2 {
+    font-size: var(--text-h3);
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  p {
+    max-width: 40rem;
+    margin-block: 0.75rem 1.5rem;
+    color: var(--color-fg-muted);
+    line-height: 1.8;
+  }
+</style>

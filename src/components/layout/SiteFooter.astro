@@ -1,0 +1,135 @@
+---
+import { primaryNav, supportNav } from "../../data/navigation";
+import { site } from "../../data/site";
+
+interface Props {
+  lang?: "ko" | "en";
+}
+const { lang = "ko" } = Astro.props;
+const english = lang === "en";
+const suffix = english ? " (Korean)" : "";
+---
+
+<footer class="site-footer">
+  <div class="container-content">
+    <div class="columns">
+      <div class="about">
+        <p class="name">{english ? "Deulli (들리)" : "들리 deulli"}</p>
+        <p>{english ? site.descriptionEn : site.slogan}</p>
+      </div>
+      <nav aria-label={english ? "Site" : "사이트"}>
+        <p class="heading">{english ? "Deulli" : "들리"}</p>
+        <ul>
+          {
+            english && (
+              <li>
+                <a href="/en/about/">About Deulli</a>
+              </li>
+            )
+          }
+          {
+            primaryNav.map((item) => (
+              <li>
+                <a href={item.href}>
+                  {item.label}
+                  {suffix}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <nav aria-label={english ? "Download" : "다운로드"}>
+        <p class="heading">{english ? "Download" : "다운로드"}</p>
+        <ul>
+          <li>
+            <a
+              href={site.stores.appStore}
+              data-ga-event="store_click"
+              data-ga-label="app_store">App Store</a
+            >
+          </li>
+          <li>
+            <a
+              href={site.stores.googlePlay}
+              data-ga-event="store_click"
+              data-ga-label="google_play">Google Play</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <nav aria-label={english ? "Support" : "지원"}>
+        <p class="heading">{english ? "Support" : "지원"}</p>
+        <ul>
+          {
+            supportNav.map((item) => (
+              <li>
+                <a href={item.href}>
+                  {item.label}
+                  {suffix}
+                </a>
+              </li>
+            ))
+          }
+          <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="copyright">
+      © {new Date().getFullYear()} Deulli. All Rights Reserved.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding-block: 3rem 2rem;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-bg-subtle);
+    color: var(--color-fg-muted);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+  }
+  .columns {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .about {
+    grid-column: 1 / -1;
+    max-width: 24rem;
+  }
+  .name,
+  .heading {
+    color: var(--color-fg);
+    font-weight: 700;
+  }
+  .heading {
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+  }
+  li a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    overflow-wrap: anywhere;
+  }
+  a:hover {
+    color: var(--color-brand);
+  }
+  .copyright {
+    margin-top: 2.5rem;
+    font-size: 0.8125rem;
+  }
+  @media (min-width: 768px) {
+    .columns {
+      grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 1fr));
+    }
+    .about {
+      grid-column: auto;
+    }
+    li a {
+      min-height: 2.25rem;
+    }
+  }
+</style>

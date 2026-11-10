@@ -1,50 +1,69 @@
 ---
-import GuideLayout from "../layouts/GuideLayout.astro";
-import { featuredEpisodes } from "../data/featured-episodes";
+import ArticleLayout from "../layouts/ArticleLayout.astro";
+import EpisodeList from "../components/EpisodeList.astro";
+import {
+  featuredEpisodes,
+  featuredEpisodesCheckedAt,
+} from "../data/featured-episodes";
+import { displayDate, itemListNode } from "../lib/seo";
 
-const frontmatter = {
-  title: "들리 공식 팟캐스트 둘러보기",
-  description:
-    "영어 듣기 연습부터 역사와 일상 과학까지, 들리 공식 채널의 공개 에피소드를 살펴보세요.",
-  relatedPath: "/about/",
-  relatedTitle: "들리(deulli)는 어떤 앱인가요?",
-};
+const title = "들리 공식 팟캐스트";
+const description =
+  "들리가 직접 만든 공식 채널의 공개 에피소드 세 편과 난이도, 듣는 방법입니다.";
+const checked = new Date(featuredEpisodesCheckedAt);
+const checkedAt = displayDate(checked);
 ---
 
-<GuideLayout frontmatter={frontmatter}>
+<ArticleLayout
+  title={title}
+  description={description}
+  path="/podcasts/"
+  crumbLabel="공식 팟캐스트"
+  publishedAt={checked}
+  updatedAt={new Date("2026-11-10")}
+  jsonLd={[
+    itemListNode(
+      "들리 공식 채널 공개 에피소드",
+      featuredEpisodes.map((episode) => ({
+        name: episode.title,
+        path: `/share/episode/${episode.id}`,
+      })),
+    ),
+  ]}
+>
   <p>
-    어떤 이야기를 들으며 공부할지 고민된다면 들리 공식 채널의 에피소드부터
-    살펴보세요. 영어 듣기 연습, 역사, 일상 속 과학을 다루는 공개 에피소드 몇
-    개를 골랐습니다. 앱에 표시된 난이도도 함께 확인할 수 있습니다.
+    들리 공식 채널은 들리가 직접 만든 팟캐스트입니다. 영어 듣기 연습, 역사, 일상
+    속 과학을 다루는 공개 에피소드 세 편을 골랐습니다. 난이도는 앱에 표시된
+    값입니다.
   </p>
-  {
-    featuredEpisodes.map((episode) => (
-      <section>
-        <h2>{episode.topic}</h2>
-        <p>{episode.level} · 앱에 표시된 난이도</p>
-        <p>
-          <a href={`/share/episode/${episode.id}`}>{episode.title}</a>
-        </p>
-      </section>
-    ))
-  }
+  <EpisodeList />
   <h2>어떤 난이도부터 고르면 좋을까요?</h2>
   <p>
-    A2·B1·B2는 들리 앱에 표시된 콘텐츠 분류입니다. 먼저 A2로 표시된 역사
-    에피소드나 관심 있는 주제의 짧은 부분을 들어보세요. 내용을 얼마나 따라갈 수
-    있는지 확인한 뒤 스크립트와 번역을 활용해 같은 부분을 다시 들어볼 수
-    있습니다.
+    A2·B1·B2는 들리 앱의 콘텐츠 분류입니다. A2인 역사 에피소드나 관심 있는
+    주제의 앞부분을 먼저 들어보세요. 따라가기 어려운 부분은 스크립트와 번역을
+    켜고 같은 자리를 다시 듣습니다.
   </p>
   <h2>에피소드는 어디서 들을 수 있나요?</h2>
   <p>
-    제목을 누르면 에피소드 공유 페이지에서 콘텐츠 정보와 앱 열기 링크를 확인할
-    수 있습니다. 팟캐스트 듣기와 학습은 들리 앱에서 이용해주세요.
+    제목을 누르면 에피소드 공유 페이지가 열리고, 거기서 앱으로 이어집니다.
+    듣기와 학습은 들리 앱에서 합니다.
+  </p>
+  <h2>한국어와 영어로 함께 들을 수 있나요?</h2>
+  <p>
+    공식 채널 에피소드는 진행자마다 한국어와 영어 중 하나를 골라 듣습니다.
+    화면에는 영어 스크립트와 한국어 번역이 나옵니다. 에피소드마다 고를 수 있는
+    조합이 다르고, 앱의 재생 언어 메뉴에 나옵니다.
+  </p>
+  <h2>내가 고른 주제로 듣고 싶다면</h2>
+  <p>
+    위클리에서는 듣고 싶은 이야기를 적으면 들리가 그 주제로 팟캐스트를 만들어
+    하루 한 미션으로 나눠 줍니다. <a href="/about/">들리 소개</a>에 순서를
+    적었습니다.
   </p>
   <h2>학습용 영어 팟캐스트도 찾고 있나요?</h2>
   <p>
-    무엇을 들을지 아직 정하지 않았다면 학습자를 위해 만든 외부 자료도
-    비교해보세요. 아래 링크는 각 제공자의 공식 사이트로 이동합니다. 들리 공식
-    에피소드 목록과는 별개이며, 들리 앱에서의 제공 여부를 뜻하지 않습니다.
+    학습자용으로 만든 외부 자료 두 곳입니다. 링크는 각 제공자의 공식 사이트로
+    갑니다. 들리 공식 에피소드와는 별개이고, 들리 앱에 있다는 뜻이 아닙니다.
   </p>
   <ul>
     <li>
@@ -52,30 +71,23 @@ const frontmatter = {
         href="https://learnenglish.britishcouncil.org/general-english/audio-series/podcasts"
       >
         British Council LearnEnglish Podcasts
-      </a>: 공식 안내에서 A2·B1 학습자용으로 소개합니다. 녹음별 대본과 상호작용
-      연습문제가 있어 듣고 내용을 확인할 자료를 찾을 때 살펴볼 수 있습니다.
+      </a>: 공식 안내가 A2·B1 학습자용으로 소개합니다. 녹음마다 대본과 상호작용
+      연습문제가 있습니다.
     </li>
     <li>
       <a href="https://learningenglish.voanews.com/podcasts">
         VOA Learning English 팟캐스트
-      </a>: Learning English 프로그램은 제한된 어휘와 짧은 문장, 다른 VOA 영어
-      방송보다 느린 낭독을 사용한다고 안내합니다. 목록에서 관심 있는 프로그램을
-      고르고 실제 속도와 주제가 자신에게 맞는지 확인해보세요.
+      </a>: 제한된 어휘와 짧은 문장을 쓰고, 다른 VOA 영어 방송보다 느리게
+      읽는다고 안내합니다.
     </li>
   </ul>
-  <h2>한국어와 영어로 함께 들을 수 있나요?</h2>
-  <p>
-    들리 공식 채널에서는 진행자별 음성 언어를 선택할 수 있는 콘텐츠를
-    제공합니다. 영어 스크립트와 한국어 번역을 화면에서 확인하는 기능도 있습니다.
-    에피소드별로 제공되는 재생 언어와 이용 조건은 앱에서 확인해주세요.
-  </p>
   <p>
     <a href="/guides/podcast-listening/"
       >한 문장씩 확인하는 팟캐스트 학습 방법</a
     >도 함께 읽어보세요.
   </p>
   <p>
-    이 페이지는 2026년 11월 6일 공개 상태를 확인한 일부 에피소드를 소개합니다.
-    전체 목록과 최신 공개 상태는 앱에서 확인할 수 있습니다.
+    이 세 편은 {checkedAt}에 공개 상태를 확인했습니다. 전체 목록은 앱에
+    있습니다.
   </p>
-</GuideLayout>
+</ArticleLayout>

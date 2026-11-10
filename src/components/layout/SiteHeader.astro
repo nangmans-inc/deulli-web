@@ -1,0 +1,107 @@
+---
+import { primaryNav } from "../../data/navigation";
+
+interface Props {
+  lang?: "ko" | "en";
+}
+const { lang = "ko" } = Astro.props;
+const english = lang === "en";
+
+const nav = english
+  ? [
+      { href: "/en/about/", label: "About" },
+      { href: "/podcasts/", label: "Podcasts (KO)" },
+      { href: "/guides/", label: "Guides (KO)" },
+    ]
+  : primaryNav;
+
+const current = Astro.url.pathname.replace(/\/?$/, "/");
+const isCurrent = (href: string) =>
+  current === href || (href !== "/" && current.startsWith(href));
+---
+
+<header class="site-header">
+  <div class="container-content bar">
+    <a
+      class="brand"
+      href="/"
+      aria-label={english ? "Deulli home (Korean)" : "들리 홈"}
+    >
+      <img src="/logo.svg" alt="" width="32" height="32" />
+      <span>{english ? "Deulli" : "들리"}</span>
+    </a>
+    <nav aria-label={english ? "Main" : "주요 메뉴"}>
+      <ul>
+        {
+          nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                aria-current={isCurrent(item.href) ? "page" : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: relative;
+    z-index: 1;
+  }
+  .bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0 1rem;
+    min-height: var(--header-height);
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-height: 3rem;
+    color: var(--color-neutral-900);
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+  }
+  .brand img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+  }
+  ul {
+    display: flex;
+    gap: 0.25rem;
+    margin-inline: -0.625rem;
+  }
+  nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 3rem;
+    padding-inline: 0.625rem;
+    color: var(--color-fg-muted);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  nav a:hover,
+  nav a[aria-current="page"] {
+    color: var(--color-brand);
+  }
+  @media (min-width: 700px) {
+    ul {
+      gap: 1rem;
+    }
+    nav a {
+      font-size: 1rem;
+    }
+  }
+</style>

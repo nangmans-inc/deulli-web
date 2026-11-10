@@ -137,6 +137,13 @@
 @layer base {
   :root {
     color-scheme: light;
+    /* 사이트 헤더 높이. 히어로가 첫 화면 높이와 배경 번짐을 이 값으로 맞춘다. */
+    --header-height: 4rem;
+  }
+  @media (min-width: 700px) {
+    :root {
+      --header-height: 4.5rem;
+    }
   }
 
   html {
@@ -200,27 +207,73 @@
     padding-block: clamp(4.5rem, 3rem + 7vw, 8rem);
   }
 
-  /* scroll-reveal — progressive enhancement.
-     Content is fully visible by default; the hidden→revealed animation only
-     applies when JS is active (html.js), so no-JS users never lose content. */
-  .js .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition:
-      opacity 0.7s var(--ease-out-soft),
-      transform 0.7s var(--ease-out-soft);
-    transition-delay: var(--reveal-delay, 0ms);
-    will-change: opacity, transform;
+  /* 본문 안의 이동 링크 */
+  .more > a {
+    color: var(--color-brand);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
   }
-  .js .reveal.is-visible {
-    opacity: 1;
-    transform: none;
+
+  /* 마크다운 본문. 콘텐츠 컬렉션의 글이 모두 이 규칙으로 읽힌다. */
+  .prose {
+    color: var(--color-fg-muted);
+    font-size: var(--text-lead);
+    line-height: 1.9;
   }
-  @media (prefers-reduced-motion: reduce) {
-    .js .reveal {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
+  .prose > * + * {
+    margin-top: 1.25rem;
+  }
+  .prose h2 {
+    margin-top: 2.75rem;
+    color: var(--color-fg);
+    font-size: var(--text-h3);
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  .prose ul,
+  .prose ol {
+    padding-left: 1.5rem;
+  }
+  .prose ul {
+    list-style: disc;
+  }
+  .prose ol {
+    list-style: decimal;
+  }
+  .prose li + li {
+    margin-top: 0.75rem;
+  }
+  .prose a {
+    color: var(--color-brand);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    overflow-wrap: anywhere;
+  }
+  .prose strong {
+    color: var(--color-fg);
+  }
+  .prose code {
+    font-size: 0.9em;
+  }
+  .prose table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    line-height: 1.8;
+  }
+  .prose th,
+  .prose td {
+    padding: 0.875rem 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+    vertical-align: top;
+  }
+  .prose th {
+    color: var(--color-fg);
+  }
+  .prose th:first-child,
+  .prose td:first-child {
+    width: 32%;
   }
 }

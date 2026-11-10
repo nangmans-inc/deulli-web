@@ -1,0 +1,44 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import EpisodeList from "../EpisodeList.astro";
+import GuideList from "../GuideList.astro";
+---
+
+<section class="section-y" aria-labelledby="podcasts-title">
+  <div class="container-content split">
+    <div>
+      <SectionHeading
+        id="podcasts-title"
+        title="들리 공식 팟캐스트"
+        lead="들리가 직접 만든 채널의 공개 에피소드 세 편입니다."
+      />
+      <EpisodeList />
+      <p class="more"><a href="/podcasts/">공식 팟캐스트 보기</a></p>
+    </div>
+    <div>
+      <SectionHeading
+        id="guides-title"
+        title="학습 가이드"
+        lead="팟캐스트로 영어를 공부하는 순서와 앱 고르는 기준을 적었습니다."
+      />
+      <GuideList />
+      <p class="more"><a href="/guides/">가이드 모두 보기</a></p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .split {
+    display: grid;
+    gap: 4rem;
+  }
+  .more {
+    margin-top: 1.5rem;
+  }
+  @media (min-width: 1024px) {
+    .split {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 4rem;
+    }
+  }
+</style>

@@ -1,0 +1,49 @@
+---
+/** 가이드 목록. 홈·가이드 허브·글 하단의 "다른 가이드"가 함께 쓴다. */
+import { getGuides, guidePath } from "../lib/content";
+
+interface Props {
+  /** 목록에서 뺄 가이드 id (현재 보고 있는 글). */
+  exclude?: string;
+  headingLevel?: "h2" | "h3";
+}
+const { exclude, headingLevel: Heading = "h3" } = Astro.props;
+const guides = (await getGuides()).filter((guide) => guide.id !== exclude);
+---
+
+<ul class="guide-list">
+  {
+    guides.map((guide) => (
+      <li>
+        <Heading>
+          <a href={guidePath(guide.id)}>{guide.data.title}</a>
+        </Heading>
+        <p>{guide.data.description}</p>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .guide-list {
+    border-top: 1px solid var(--color-border);
+  }
+  li {
+    padding-block: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  h2,
+  h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+  a:hover {
+    color: var(--color-brand);
+  }
+  p {
+    margin-top: 0.5rem;
+    color: var(--color-fg-muted);
+    line-height: 1.75;
+  }
+</style>
