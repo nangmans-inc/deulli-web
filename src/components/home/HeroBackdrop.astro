@@ -1,0 +1,258 @@
+---
+/** 히어로 뒤의 그라데이션 블롭·격자. 장식 전용이라 보조기술과 크롤러에는 보이지 않는다. */
+---
+
+<div class="backdrop" aria-hidden="true">
+  <div class="cluster">
+    <span class="blob wash"></span>
+    <span class="blob core float"></span>
+    <span class="blob deep float-slow"></span>
+    <span class="blob lift"></span>
+    <span class="blob spill float-slow"></span>
+    <span class="blob hotspot"></span>
+  </div>
+
+  {/* 옅은 격자. 목업 쪽으로만 마스크해 슬로건 옆을 어지럽히지 않는다. */}
+  <div class="mesh"></div>
+
+  {/* 가독성 가드 — 카피가 놓이는 면을 깨끗한 흰색으로 되돌린다 */}
+  <div class="guard"></div>
+</div>
+
+<style>
+  /* 위로는 헤더 뒤까지 올려 그라데이션이 헤더 경계에서 잘리지 않게 하고,
+     아래로는 마스크로 옅게 사라지게 해 다음 섹션과 선이 생기지 않게 한다. */
+  .backdrop {
+    position: absolute;
+    inset: calc(-1 * var(--header-height)) 0 0;
+    z-index: -10;
+    overflow: clip;
+    pointer-events: none;
+    mask-image: linear-gradient(
+      to bottom,
+      black calc(100% - 10rem),
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black calc(100% - 10rem),
+      transparent
+    );
+  }
+
+  /* 블롭을 한 덩어리로 묶어 둔다. 화면이 좁아지면 이 덩어리만 목업 쪽으로 옮기면
+     블롭 여섯 개를 따로 다시 잡을 필요가 없다. */
+  .cluster {
+    position: absolute;
+    inset: 0;
+  }
+
+  .blob {
+    position: absolute;
+    display: block;
+    border-radius: var(--radius-pill);
+  }
+
+  /* 오른쪽 위 전체를 덮는 옅은 물빛 */
+  .wash {
+    top: -22%;
+    right: -12%;
+    width: 55rem;
+    height: 55rem;
+    opacity: 0.92;
+    filter: blur(120px);
+    background: radial-gradient(
+      circle at center,
+      rgba(87, 151, 255, 0.55),
+      rgba(87, 151, 255, 0) 65%
+    );
+  }
+  /* 브랜드 블루 본체 */
+  .core {
+    top: 8%;
+    right: 2%;
+    width: 34rem;
+    height: 34rem;
+    opacity: 0.85;
+    filter: blur(90px);
+    background: radial-gradient(
+      circle at 40% 40%,
+      rgba(1, 80, 229, 0.62),
+      rgba(1, 80, 229, 0) 62%
+    );
+  }
+  /* 아래쪽 짙은 축 — 깊이를 만든다 */
+  .deep {
+    right: -6%;
+    bottom: -18%;
+    width: 30rem;
+    height: 30rem;
+    opacity: 0.72;
+    filter: blur(100px);
+    background: radial-gradient(
+      circle at center,
+      rgba(11, 55, 143, 0.5),
+      rgba(11, 55, 143, 0) 64%
+    );
+  }
+  /* 목업 바로 뒤를 들어 올리는 밝은 면 */
+  .lift {
+    top: 34%;
+    right: 20%;
+    width: 22rem;
+    height: 22rem;
+    opacity: 0.8;
+    filter: blur(80px);
+    background: radial-gradient(
+      circle at center,
+      rgba(187, 214, 255, 0.7),
+      rgba(187, 214, 255, 0) 60%
+    );
+  }
+  /* 위쪽 여백으로 번지는 빛 */
+  .spill {
+    top: -16%;
+    right: 28%;
+    width: 26rem;
+    height: 26rem;
+    opacity: 0.68;
+    filter: blur(90px);
+    background: radial-gradient(
+      circle at center,
+      rgba(141, 186, 255, 0.55),
+      rgba(141, 186, 255, 0) 62%
+    );
+  }
+  /* 목업 뒤 작은 하이라이트 */
+  .hotspot {
+    top: 26%;
+    right: 12%;
+    width: 15rem;
+    height: 15rem;
+    opacity: 0.7;
+    filter: blur(60px);
+    background: radial-gradient(
+      circle at center,
+      rgba(220, 234, 255, 0.65),
+      rgba(220, 234, 255, 0) 58%
+    );
+  }
+
+  .mesh {
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+    background-image:
+      linear-gradient(to right, rgba(8, 33, 66, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(8, 33, 66, 0.045) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(
+      ellipse 70% 70% at 80% 35%,
+      black,
+      transparent 72%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 70% 70% at 80% 35%,
+      black,
+      transparent 72%
+    );
+  }
+
+  .guard {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      100deg,
+      var(--color-bg) 12%,
+      rgba(255, 255, 255, 0.55) 38%,
+      transparent 62%
+    );
+  }
+
+  /* ── 1단 화면 ─────────────────────────────────────────── */
+  /* 목업이 오른쪽이 아니라 아래에 놓이므로 블롭 덩어리도 아래로 내리고,
+     가드는 가로가 아니라 세로로 돌린다. 그대로 두면 본문 오른쪽 끝이 파래진다. */
+  @media (max-width: 699px) {
+    /* 데스크톱 블롭은 rem 고정 크기(최대 55rem = 880px)로 오른쪽에 붙여 놨는데,
+       좁은 화면에서는 그 폭이 화면을 통째로 넘어서 중심이 왼쪽 밖으로 나간다.
+       그래서 파란 덩어리가 왼쪽 아래로 쏠려 보였다. 1단에서는 화면 폭에 비례하는
+       크기로 다시 잡고 가로 가운데에 세운다. */
+    .cluster {
+      top: 38%;
+    }
+    .deep,
+    .lift,
+    .spill {
+      display: none;
+    }
+    .wash,
+    .core,
+    .hotspot {
+      bottom: auto;
+      /* 모바일에서는 가운데 놓인 앱 목업 뒤에 브랜드 색을 모은다. */
+      right: auto;
+      left: 50%;
+      translate: -50% 0;
+    }
+    .wash {
+      top: 0;
+      width: min(85vw, 26rem);
+      height: min(85vw, 26rem);
+    }
+    .core {
+      top: 18%;
+      width: min(60vw, 18rem);
+      height: min(60vw, 18rem);
+    }
+    .hotspot {
+      top: 30%;
+      width: min(35vw, 10rem);
+      height: min(35vw, 10rem);
+    }
+
+    .mesh {
+      mask-image: radial-gradient(
+        ellipse 85% 42% at 50% 72%,
+        black,
+        transparent 74%
+      );
+      -webkit-mask-image: radial-gradient(
+        ellipse 85% 42% at 50% 72%,
+        black,
+        transparent 74%
+      );
+    }
+    /* 카피 뒤는 흰색으로 유지하고 목업 뒤에서만 배경색을 드러낸다. */
+    .guard {
+      background: linear-gradient(
+        180deg,
+        var(--color-bg) 24%,
+        rgba(255, 255, 255, 0.62) 42%,
+        transparent 65%
+      );
+    }
+  }
+
+  /* ── 부유 ─────────────────────────────────────────────── */
+  @keyframes heroFloat {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  .float {
+    animation: heroFloat 6s ease-in-out infinite;
+  }
+  .float-slow {
+    animation: heroFloat 7.5s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .float,
+    .float-slow {
+      animation: none;
+    }
+  }
+</style>

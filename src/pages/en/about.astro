@@ -1,0 +1,24 @@
+---
+import { render } from "astro:content";
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { getPage } from "../../lib/content";
+
+const page = await getPage("about-en");
+const { Content } = await render(page);
+---
+
+<ArticleLayout
+  title={page.data.title}
+  description={page.data.description}
+  path="/en/about/"
+  crumbLabel="About"
+  publishedAt={page.data.publishedAt}
+  updatedAt={page.data.updatedAt}
+  lang="en"
+  alternates={[
+    { lang: "ko", path: "/about/" },
+    { lang: "en", path: "/en/about/" },
+  ]}
+>
+  <Content />
+</ArticleLayout>

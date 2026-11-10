@@ -1,0 +1,52 @@
+---
+import type { Crumb } from "../lib/seo";
+
+interface Props {
+  /** 홈부터 현재 페이지까지. 마지막 항목이 현재 페이지다. */
+  crumbs: readonly Crumb[];
+  lang?: "ko" | "en";
+}
+const { crumbs, lang = "ko" } = Astro.props;
+---
+
+<nav
+  class="breadcrumbs"
+  aria-label={lang === "en" ? "Breadcrumb" : "현재 위치"}
+>
+  <ol>
+    {
+      crumbs.map((crumb, index) => (
+        <li>
+          {index < crumbs.length - 1 ? (
+            <a href={crumb.path}>{crumb.name}</a>
+          ) : (
+            <span aria-current="page">{crumb.name}</span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<style>
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
+    color: var(--color-fg-muted);
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+  li + li::before {
+    content: "/";
+    margin-right: 0.5rem;
+    color: var(--color-fg-faint);
+  }
+  a {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  a:hover {
+    color: var(--color-brand);
+  }
+</style>

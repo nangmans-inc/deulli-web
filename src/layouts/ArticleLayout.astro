@@ -1,0 +1,162 @@
+---
+/**
+ * 읽는 글 페이지(제품 소개·가이드·공식 팟캐스트 안내).
+ * 빵부스러기 → 제목·요약·수정일 → 본문 → 이어 읽을 글 → 다운로드 순서로 고정한다.
+ */
+import PageLayout from "./PageLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import DownloadCta from "../components/DownloadCta.astro";
+import GuideList from "../components/GuideList.astro";
+import { site } from "../data/site";
+import {
+  articleNode,
+  breadcrumbNode,
+  displayDate,
+  ids,
+  isoDate,
+  type Crumb,
+} from "../lib/seo";
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  /** 홈 다음부터 현재 페이지 앞까지의 경로. 홈과 현재 페이지는 자동으로 붙는다. */
+  parents?: readonly Crumb[];
+  crumbLabel?: string;
+  publishedAt: Date;
+  updatedAt: Date;
+  lang?: "ko" | "en";
+  alternates?: { lang: "ko" | "en"; path: string }[];
+  /** 이 글 외에 페이지가 추가로 싣는 schema.org 노드. */
+  jsonLd?: Record<string, unknown>[];
+  /** 하단 "다른 가이드"에서 뺄 가이드 id. */
+  currentGuide?: string;
+}
+
+const {
+  title,
+  description,
+  path,
+  parents = [],
+  crumbLabel,
+  publishedAt,
+  updatedAt,
+  lang = "ko",
+  alternates,
+  jsonLd = [],
+  currentGuide,
+} = Astro.props;
+const english = lang === "en";
+
+const crumbs: Crumb[] = [
+  { name: english ? "Deulli" : "들리 홈", path: "/" },
+  ...parents,
+  { name: crumbLabel ?? title, path },
+];
+const otherLanguage = alternates?.find((alternate) => alternate.lang !== lang);
+---
+
+<PageLayout
+  title={`${title} | ${english ? "Deulli" : "들리"}`}
+  description={description}
+  canonicalPath={path}
+  lang={lang}
+  alternates={alternates}
+  ogType="article"
+  publishedAt={publishedAt}
+  updatedAt={updatedAt}
+  imageAlt={english
+    ? "Deulli: learn English with podcasts, transcripts and Korean translations"
+    : undefined}
+  jsonLd={[
+    articleNode({
+      path,
+      title,
+      description,
+      publishedAt,
+      updatedAt,
+      lang,
+      about: ids.app,
+    }),
+    breadcrumbNode(crumbs),
+    ...jsonLd,
+  ]}
+>
+  <div class="container-content">
+    <article class="article">
+      <header>
+        <Breadcrumbs crumbs={crumbs} lang={lang} />
+        <h1>{title}</h1>
+        <p class="byline">
+          {english ? "By Deulli · Updated " : `${site.nameKo} 작성 · 수정 `}
+          <time datetime={isoDate(updatedAt)}
+            >{displayDate(updatedAt, lang)}</time
+          >
+          {
+            otherLanguage && (
+              <>
+                {" · "}
+                <a href={otherLanguage.path} hreflang={otherLanguage.lang}>
+                  {otherLanguage.lang === "en" ? "English" : "한국어"}
+                </a>
+              </>
+            )
+          }
+        </p>
+      </header>
+      <div class="prose">
+        <slot />
+      </div>
+    </article>
+    {
+      !english && (
+        <aside class="related" aria-labelledby="related-title">
+          <h2 id="related-title">
+            {currentGuide ? "다른 학습 가이드" : "학습 가이드"}
+          </h2>
+          <GuideList exclude={currentGuide} />
+        </aside>
+      )
+    }
+  </div>
+  <DownloadCta lang={lang} />
+</PageLayout>
+
+<style>
+  .article,
+  .related {
+    max-width: 46rem;
+  }
+  .article {
+    padding-block: clamp(1.5rem, 4vw, 3rem) clamp(3rem, 7vw, 5rem);
+  }
+  h1 {
+    margin-top: 1.5rem;
+    font-size: var(--text-h2);
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+  }
+  .byline {
+    margin-top: 1rem;
+    color: var(--color-fg-muted);
+    font-size: 0.9375rem;
+  }
+  .byline a {
+    color: var(--color-brand);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .prose {
+    margin-top: 2rem;
+  }
+  .related {
+    padding-bottom: clamp(3rem, 7vw, 5rem);
+  }
+  .related h2 {
+    margin-bottom: 1.5rem;
+    font-size: var(--text-h3);
+    font-weight: 700;
+  }
+</style>

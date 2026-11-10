@@ -35,7 +35,7 @@ python3 scripts/geo-report.py research.jsonl --output /tmp/deulli-summary.md
 
 ## 반영 상태
 
-제품 소개는 `src/pages/about.md`, 학습 가이드는 `src/pages/guides/podcast-listening.md`로 구현했다. 홈에서 두 페이지를 연결하고 가이드끼리도 상호 연결했다. 기존 브랜드 토큰과 다운로드 배지를 사용하는 공통 읽기 레이아웃을 추가했다. 스토어 배지에는 기존 GA4 위임 로직이 수집할 `store_click` 이벤트와 스토어별 label을 연결했다. 배포·검색엔진 제출 상태는 후속 실행 기록에 남긴다.
+제품 소개는 `src/content/pages/about.md`, 학습 가이드는 `src/content/guides/podcast-listening.md`로 구현했다(2026-11-10 구조 개편으로 `src/pages`에서 이동, 공개 주소는 동일). 홈에서 두 페이지를 연결하고 가이드끼리도 상호 연결했다. 기존 브랜드 토큰과 다운로드 배지를 사용하는 공통 읽기 레이아웃을 추가했다. 스토어 배지에는 기존 GA4 위임 로직이 수집할 `store_click` 이벤트와 스토어별 label을 연결했다. 배포·검색엔진 제출 상태는 후속 실행 기록에 남긴다.
 
 앱 선택 가이드와 공식 팟캐스트 소개도 공개했다. 공식 에피소드 세 개는 기존 표본의 ID로 익명 공개 상태를 확인한 뒤 링크했고, 동일한 데이터에서 SSR 공유 경로 세 개를 사이트맵에 추가했다. 초기 운영 사이트맵은 8개 URL이며, 넓은 영어공부 가이드를 포함한 최신 소스는 9개 URL이다. 실제 동작 검증과 배포·제출 시각은 `research/execution-log.md`, 읽기 쉬운 AI 응답 증거는 `research/ai-answer-evidence.md`에 기록한다.
 

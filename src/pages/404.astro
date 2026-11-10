@@ -1,0 +1,58 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import { primaryNav } from "../data/navigation";
+---
+
+<PageLayout
+  title="페이지를 찾을 수 없어요 | 들리"
+  description="주소가 바뀌었거나 없는 페이지입니다."
+  noindex
+>
+  <div class="container-content">
+    <div class="not-found">
+      <h1>페이지를 찾을 수 없어요</h1>
+      <p>주소가 바뀌었거나 없는 페이지입니다.</p>
+      <ul>
+        <li><a href="/">들리 홈</a></li>
+        {
+          primaryNav.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</PageLayout>
+
+<style>
+  .not-found {
+    max-width: 40rem;
+    padding-block: clamp(3rem, 10vw, 7rem);
+  }
+  h1 {
+    font-size: var(--text-h2);
+    font-weight: 800;
+    line-height: 1.3;
+  }
+  p {
+    margin-top: 1rem;
+    color: var(--color-fg-muted);
+    font-size: var(--text-lead);
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin-top: 2rem;
+  }
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    color: var(--color-brand);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+</style>

@@ -1,0 +1,59 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import { steps } from "../../data/site";
+---
+
+<section class="section-y" aria-labelledby="how-title">
+  <div class="container-content">
+    <SectionHeading
+      id="how-title"
+      title="안 들린 문장은 그 자리에서 다시"
+      lead="어느 팟캐스트를 듣든 플레이어는 같은 순서로 씁니다."
+    />
+    <ol>
+      {
+        steps.map((step, index) => (
+          <li>
+            <span class="number" aria-hidden="true">
+              {index + 1}
+            </span>
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  ol {
+    display: grid;
+    gap: 2rem;
+  }
+  li {
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--color-fg);
+  }
+  .number {
+    color: var(--color-brand);
+    font-size: 0.9375rem;
+    font-weight: 800;
+  }
+  h3 {
+    margin-top: 0.5rem;
+    font-size: var(--text-h3);
+    font-weight: 700;
+    line-height: 1.35;
+  }
+  p {
+    margin-top: 0.75rem;
+    color: var(--color-fg-muted);
+    line-height: 1.8;
+  }
+  @media (min-width: 768px) {
+    ol {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

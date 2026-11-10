@@ -1,10 +1,16 @@
 ---
+/**
+ * 문서 껍데기: <head>의 메타·OG·구조화 데이터와 측정 스크립트만 맡는다.
+ * 헤더·푸터가 있는 일반 페이지는 PageLayout을 쓴다. 공유 페이지처럼 자체 화면 구성이
+ * 필요한 경우에만 이 레이아웃을 직접 쓴다.
+ */
 import "../styles/global.css";
 import { site } from "../data/site";
+import { isoDate, jsonLdGraph } from "../lib/seo";
 import Analytics from "../components/Analytics.astro";
 import MetaPixel from "../components/MetaPixel.astro";
 
-interface Props {
+export interface Props {
   title?: string;
   description?: string;
   image?: string;
@@ -12,7 +18,13 @@ interface Props {
   canonicalPath?: string;
   noindex?: boolean;
   lang?: "ko" | "en";
+  /** 같은 문서의 언어별 주소. 첫 항목이 x-default가 된다. */
   alternates?: { lang: "ko" | "en"; path: string }[];
+  ogType?: "website" | "article";
+  publishedAt?: Date;
+  updatedAt?: Date;
+  /** 이 페이지의 schema.org 노드. lib/seo.ts의 빌더로 만든다. */
+  jsonLd?: Record<string, unknown>[];
 }
 
 const {
@@ -24,49 +36,19 @@ const {
   noindex = false,
   lang = "ko",
   alternates = [],
+  ogType = "website",
+  publishedAt,
+  updatedAt,
+  jsonLd = [],
 } = Astro.props;
 
-const canonical = new URL(canonicalPath, Astro.site ?? site.url).href;
-const ogImage = new URL(image ?? site.ogImage, Astro.site ?? site.url).href;
-
-const keywords = site.keywords.join(", ");
-
-const orgJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": `${site.url}/#organization`,
-  name: site.name,
-  alternateName: site.nameKo, // "들리" — 한글 브랜드명 검색 매칭
-  legalName: site.legalName,
-  url: site.url,
-  logo: new URL("/logo.svg", Astro.site ?? site.url).href,
-  description: site.description,
-  email: site.email,
-  slogan: site.slogan,
-};
-
-// 앱 랜딩이므로 제품 자체도 기술한다. 생성형 검색이 "들리가 뭐냐"에 답할 근거가 된다.
-const appJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "MobileApplication",
-  "@id": `${site.url}/#app`,
-  name: `${site.nameKo} (${site.name})`,
-  applicationCategory: "EducationalApplication",
-  operatingSystem: "iOS, Android",
-  url: site.url,
-  description: site.description,
-  inLanguage: "ko",
-  publisher: { "@id": `${site.url}/#organization` },
-  installUrl: [site.stores.appStore, site.stores.googlePlay],
-  sameAs: [site.stores.appStore, site.stores.googlePlay],
-  featureList: [
-    "영어 팟캐스트 듣기",
-    "영어 스크립트와 한국어 번역 확인",
-    "놓친 문장부터 다시 듣기",
-    "지원되는 공식 콘텐츠에서 진행자별 음성 언어 선택",
-    "원하는 주제로 팟캐스트 생성",
-  ],
-};
+const origin = Astro.site ?? site.url;
+const canonical = new URL(canonicalPath, origin).href;
+const ogImage = new URL(image ?? site.ogImage, origin).href;
+const alternateLinks = alternates.map((alternate) => ({
+  lang: alternate.lang,
+  href: new URL(alternate.path, origin).href,
+}));
 ---
 
 <!doctype html>
@@ -77,35 +59,32 @@ const appJsonLd = {
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
-    <!-- mark JS as active before first paint so .reveal can hide-then-animate
-         (no-JS users keep all content visible) -->
-    <script is:inline>
-      document.documentElement.classList.add("js");
-    </script>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/logo.svg" />
-    <meta name="generator" content={Astro.generator} />
-
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content={keywords} />
     <link rel="canonical" href={canonical} />
     {
-      alternates.map((alternate) => (
+      alternateLinks.map((alternate) => (
+        <link rel="alternate" hreflang={alternate.lang} href={alternate.href} />
+      ))
+    }
+    {
+      alternateLinks[0] && (
         <link
           rel="alternate"
-          hreflang={alternate.lang}
-          href={new URL(alternate.path, Astro.site ?? site.url).href}
+          hreflang="x-default"
+          href={alternateLinks[0].href}
         />
-      ))
+      )
     }
     <meta
       name="robots"
       content={noindex
         ? "noindex, nofollow"
-        : "index, follow, max-image-preview:large, max-snippet:-1"}
+        : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
     />
     <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <!-- Self-hosted Pretendard (variable · unicode-range dynamic subset) -->
     <link
@@ -113,8 +92,7 @@ const appJsonLd = {
       href="/fonts/pretendard/pretendardvariable-dynamic-subset.css"
     />
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={site.nameKo} />
     <meta property="og:locale" content={lang === "en" ? "en_US" : "ko_KR"} />
     <meta property="og:title" content={title} />
@@ -124,25 +102,35 @@ const appJsonLd = {
     {!image && <meta property="og:image:width" content="1200" />}
     {!image && <meta property="og:image:height" content="630" />}
     <meta property="og:image:alt" content={imageAlt} />
+    {
+      ogType === "article" && publishedAt && (
+        <meta
+          property="article:published_time"
+          content={isoDate(publishedAt)}
+        />
+      )
+    }
+    {
+      ogType === "article" && updatedAt && (
+        <meta property="article:modified_time" content={isoDate(updatedAt)} />
+      )
+    }
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content={imageAlt} />
-    <meta name="twitter:url" content={canonical} />
 
-    <script
-      is:inline
-      type="application/ld+json"
-      set:html={JSON.stringify(orgJsonLd)}
-    />
-    <script
-      is:inline
-      type="application/ld+json"
-      set:html={JSON.stringify(appJsonLd)}
-    />
+    {
+      jsonLd.length > 0 && (
+        <script
+          is:inline
+          type="application/ld+json"
+          set:html={jsonLdGraph(jsonLd)}
+        />
+      )
+    }
 
     <Analytics />
     <MetaPixel />
@@ -150,42 +138,5 @@ const appJsonLd = {
   <body>
     <MetaPixel fallback />
     <slot />
-
-    <!-- scroll-reveal: adds .is-visible to .reveal elements as they enter view -->
-    <script>
-      const reduce = window.matchMedia(
-        "(prefers-reduced-motion: reduce)",
-      ).matches;
-      const items = document.querySelectorAll<HTMLElement>(".reveal");
-      if (reduce || !("IntersectionObserver" in window)) {
-        items.forEach((el) => el.classList.add("is-visible"));
-      } else {
-        const io = new IntersectionObserver(
-          (entries, obs) => {
-            for (const entry of entries) {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-                obs.unobserve(entry.target);
-              }
-            }
-          },
-          { rootMargin: "0px 0px -10% 0px", threshold: 0.1 },
-        );
-        items.forEach((el) => {
-          // 첫 화면에 이미 들어와 있는 요소는 옵저버에 맡기지 않는다.
-          // rootMargin의 -10%가 화면 하단 10%에 걸친 요소를 제외시키는데,
-          // 스크롤할 여지가 없는 한 화면짜리 페이지에서는 그 요소가 영영
-          // opacity:0으로 남는다.
-          if (el.getBoundingClientRect().top < window.innerHeight) {
-            // 다음 프레임에 넣어야 초기 스타일이 커밋된 뒤라 transition이 재생된다
-            requestAnimationFrame(() =>
-              requestAnimationFrame(() => el.classList.add("is-visible")),
-            );
-          } else {
-            io.observe(el);
-          }
-        });
-      }
-    </script>
   </body>
 </html>

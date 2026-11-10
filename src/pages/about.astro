@@ -1,0 +1,25 @@
+---
+import { render } from "astro:content";
+import ArticleLayout from "../layouts/ArticleLayout.astro";
+import { getPage } from "../lib/content";
+import { appNode } from "../lib/seo";
+
+const page = await getPage("about");
+const { Content } = await render(page);
+---
+
+<ArticleLayout
+  title={page.data.title}
+  description={page.data.description}
+  path="/about/"
+  crumbLabel="앱 소개"
+  publishedAt={page.data.publishedAt}
+  updatedAt={page.data.updatedAt}
+  alternates={[
+    { lang: "ko", path: "/about/" },
+    { lang: "en", path: "/en/about/" },
+  ]}
+  jsonLd={[appNode()]}
+>
+  <Content />
+</ArticleLayout>

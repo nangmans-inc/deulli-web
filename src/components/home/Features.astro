@@ -1,0 +1,64 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import { features } from "../../data/site";
+---
+
+<section class="section-y features" aria-labelledby="features-title">
+  <div class="container-content">
+    <SectionHeading
+      id="features-title"
+      title="들리에 있는 기능"
+      lead="에피소드에 따라 쓸 수 있는 기능이 다릅니다. 요금과 지원 기기는 앱과 스토어에 나옵니다."
+    />
+    <ul>
+      {
+        features.map((feature) => (
+          <li>
+            <h3>{feature.title}</h3>
+            <p>{feature.body}</p>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="more"><a href="/about/">앱 소개 읽기</a></p>
+  </div>
+</section>
+
+<style>
+  .features {
+    background: var(--color-bg-subtle);
+  }
+  ul {
+    display: grid;
+    gap: 1rem;
+  }
+  li {
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background: var(--color-bg);
+  }
+  h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  li p {
+    margin-top: 0.5rem;
+    color: var(--color-fg-muted);
+    line-height: 1.75;
+  }
+  .more {
+    margin-top: 2rem;
+  }
+  @media (min-width: 640px) {
+    ul {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 1024px) {
+    ul {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

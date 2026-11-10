@@ -1,3 +1,9 @@
+/**
+ * 익명 공개 상태를 확인한 들리 공식 채널 에피소드. 홈·공식 팟캐스트 페이지·사이트맵·llms.txt가 쓴다.
+ * level은 앱에 표시된 난이도다.
+ */
+export const featuredEpisodesCheckedAt = "2026-11-06";
+
 export const featuredEpisodes = [
   {
     id: 105972,

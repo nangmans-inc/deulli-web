@@ -1,0 +1,42 @@
+---
+/** 공개 확인된 공식 에피소드 목록. 홈과 공식 팟캐스트 페이지가 함께 쓴다. */
+import { featuredEpisodes } from "../data/featured-episodes";
+---
+
+<ul class="episode-list">
+  {
+    featuredEpisodes.map((episode) => (
+      <li>
+        <p class="meta">
+          {episode.topic} · 난이도 {episode.level}
+        </p>
+        <a href={`/share/episode/${episode.id}`}>{episode.title}</a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .episode-list {
+    border-top: 1px solid var(--color-border);
+  }
+  li {
+    padding-block: 1.25rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .meta {
+    color: var(--color-fg-muted);
+    font-size: 0.9375rem;
+  }
+  a {
+    display: inline-block;
+    margin-top: 0.25rem;
+    color: var(--color-fg);
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+  a:hover {
+    color: var(--color-brand);
+  }
+</style>
